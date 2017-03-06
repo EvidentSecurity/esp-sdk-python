@@ -1,6 +1,7 @@
 from __future__ import unicode_literals
 
 import os
+import json
 import base64
 from datetime import datetime
 import hashlib
@@ -64,8 +65,10 @@ class ApiAuthentication(object):
         Returns a base64 string of the content body passed in.
         """
         if not self.body:
-            self.body = ''
-        body_bytes = self.body.encode('utf-8')
+            body = ''
+        else:
+            body = json.dumps(self.body)
+        body_bytes = body.encode('utf-8')
         b64 = base64.b64encode(hashlib.md5(body_bytes).digest())
         return b64.decode()
 

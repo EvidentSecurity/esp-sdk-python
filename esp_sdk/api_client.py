@@ -27,8 +27,9 @@ from six.moves.urllib.parse import quote
 from . import models
 from .configuration import Configuration
 from .rest import ApiException, RESTClientObject
-from .extensions.api_authentication import ApiAuthentication
-
+from .extensions.json_api import JsonApi
+from .extensions.utilities import (singularize,
+                        underscore_to_titlecase)
 
 class ApiClient(object):
     """
@@ -141,9 +142,6 @@ class ApiClient(object):
 
         # request url
         url = self.host + resource_path
-
-        # Add HMAC Authentication headers
-        header_params.update(ApiAuthentication(method, url, body).auth_headers())
 
         # perform request and return response
         response_data = self.request(method, url,
@@ -623,11 +621,17 @@ class ApiClient(object):
         if not instance.swagger_types:
             return data
 
+        data = JsonApi(data).convert()
+
         for attr, attr_type in iteritems(instance.swagger_types):
             if data is not None \
                and instance.attribute_map[attr] in data \
                and isinstance(data, (list, dict)):
                 value = data[instance.attribute_map[attr]]
+                if isinstance(value, list):
+                    if isinstance(value[0], dict):
+                        list_type = value[0].get('type', attr_type)
+                        attr_type = 'list[' + singularize(underscore_to_titlecase(list_type)) + ']'
                 setattr(instance, attr, self.__deserialize(value, attr_type))
 
         return instance

@@ -304,8 +304,6 @@ class OrganizationsApi(object):
         path_params = {}
 
         query_params = {}
-        if 'page' in params:
-            query_params['page'] = params['page']
         if 'include' in params:
             query_params['include'] = params['include']
 
@@ -313,6 +311,8 @@ class OrganizationsApi(object):
 
         form_params = []
         local_var_files = {}
+        if 'page' in params:
+            form_params.append(('page', params['page']))
         if 'filter' in params:
             form_params.append(('filter', params['filter']))
 

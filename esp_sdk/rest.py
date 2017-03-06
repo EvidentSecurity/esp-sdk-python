@@ -25,6 +25,7 @@ from six import PY3
 from six.moves.urllib.parse import urlencode
 
 from .configuration import Configuration
+from .extensions.api_authentication import ApiAuthentication
 
 try:
     import urllib3
@@ -114,6 +115,18 @@ class RESTClientObject(object):
         method = method.upper()
         assert method in ['GET', 'HEAD', 'DELETE', 'POST', 'PUT', 'PATCH', 'OPTIONS']
 
+        if not body:
+            body = {}
+        if post_params:
+            body_params = {}
+            for key, val in post_params:
+                body_params[key] = val
+            if 'filter' in body_params or 'page' in body_params:
+                body.update(body_params)
+            else:
+                body.update({'data': {'attributes': body_params}})
+        post_params = None
+
         if post_params and body:
             raise ValueError(
                 "body parameter cannot be used with post_params parameter."
@@ -137,6 +150,8 @@ class RESTClientObject(object):
             if method in ['POST', 'PUT', 'PATCH', 'OPTIONS', 'DELETE']:
                 if query_params:
                     url += '?' + urlencode(query_params)
+                # Add HMAC Authenticathen headers
+                headers.update(ApiAuthentication(method, url, body).auth_headers())
                 if re.search('json', headers['Content-Type'], re.IGNORECASE):
                     request_body = None
                     if body:
@@ -180,6 +195,10 @@ class RESTClientObject(object):
                     raise ApiException(status=0, reason=msg)
             # For `GET`, `HEAD`
             else:
+                if query_params:
+                    final_url = url + '?' + urlencode(query_params)
+                # Add HMAC Authenticathen headers
+                headers.update(ApiAuthentication(method, final_url, body).auth_headers())
                 r = self.pool_manager.request(method, url,
                                               fields=query_params,
                                               preload_content=_preload_content,
