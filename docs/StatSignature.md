@@ -1,0 +1,36 @@
+# StatSignature
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**new_1h_pass** | **int** |  | [optional] 
+**new_1d_pass** | **int** |  | [optional] 
+**new_1w_pass** | **int** |  | [optional] 
+**old_pass** | **int** |  | [optional] 
+**new_1h_fail** | **int** |  | [optional] 
+**new_1d_fail** | **int** |  | [optional] 
+**new_1w_fail** | **int** |  | [optional] 
+**old_fail** | **int** |  | [optional] 
+**new_1h_warn** | **int** |  | [optional] 
+**new_1d_warn** | **int** |  | [optional] 
+**new_1w_warn** | **int** |  | [optional] 
+**old_warn** | **int** |  | [optional] 
+**new_1h_error** | **int** |  | [optional] 
+**new_1d_error** | **int** |  | [optional] 
+**new_1w_error** | **int** |  | [optional] 
+**old_error** | **int** |  | [optional] 
+**suppressed_pass** | **int** |  | [optional] 
+**suppressed_fail** | **int** |  | [optional] 
+**suppressed_warn** | **int** |  | [optional] 
+**suppressed_error** | **int** |  | [optional] 
+**new_1h_info** | **int** |  | [optional] 
+**new_1d_info** | **int** |  | [optional] 
+**new_1w_info** | **int** |  | [optional] 
+**old_info** | **int** |  | [optional] 
+**suppressed_info** | **int** |  | [optional] 
+**signature** | [**Signature**](Signature.md) | Associated Signature | [optional] 
+**signature_id** | **int** | Associated Signature Id | [optional] 
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

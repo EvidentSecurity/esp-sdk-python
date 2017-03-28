@@ -4,17 +4,17 @@ All URIs are relative to *http://localhost/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create**](OrganizationsApi.md#create) | **POST** /v2/organizations.json | Create an Organization
-[**destroy**](OrganizationsApi.md#destroy) | **DELETE** /v2/organizations/{id}.json | Remove an Organization
+[**create**](OrganizationsApi.md#create) | **POST** /v2/organizations.json | Create a(n) Organization
+[**destroy**](OrganizationsApi.md#destroy) | **DELETE** /v2/organizations/{id}.json | Remove a(n) Organization
 [**list**](OrganizationsApi.md#list) | **PUT** /v2/organizations.json | Get a list of Organizations
 [**show**](OrganizationsApi.md#show) | **GET** /v2/organizations/{id}.json | Show a single Organization
-[**update**](OrganizationsApi.md#update) | **PATCH** /v2/organizations/{id}.json | Update an Organization
+[**update**](OrganizationsApi.md#update) | **PATCH** /v2/organizations/{id}.json | Update a(n) Organization
 
 
 # **create**
-> Organization create(name=name)
+> Organization create(name)
 
-Create an Organization
+Create a(n) Organization
 
 ### Example 
 ```python
@@ -26,11 +26,11 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = esp_sdk.OrganizationsApi()
-name = 'name_example' # str | Name (optional)
+name = 'name_example' # str | Name
 
 try: 
-    # Create an Organization
-    api_response = api_instance.create(name=name)
+    # Create a(n) Organization
+    api_response = api_instance.create(name)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling OrganizationsApi->create: %s\n" % e)
@@ -40,7 +40,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **name** | **str**| Name | [optional] 
+ **name** | **str**| Name | 
 
 ### Return type
 
@@ -60,7 +60,7 @@ No authorization required
 # **destroy**
 > Organization destroy(id)
 
-Remove an Organization
+Remove a(n) Organization
 
 ### Example 
 ```python
@@ -75,7 +75,7 @@ api_instance = esp_sdk.OrganizationsApi()
 id = 56 # int | Organization Id
 
 try: 
-    # Remove an Organization
+    # Remove a(n) Organization
     api_response = api_instance.destroy(id)
     pprint(api_response)
 except ApiException as e:
@@ -107,8 +107,6 @@ No authorization required
 > PaginatedCollection list(page=page, filter=filter, include=include)
 
 Get a list of Organizations
-
-A successful call to this API returns a paginated list of organizations.
 
 ### Example 
 ```python
@@ -204,9 +202,9 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update**
-> Organization update(id, name=name)
+> Organization update(id, name)
 
-Update an Organization
+Update a(n) Organization
 
 ### Example 
 ```python
@@ -219,11 +217,11 @@ from pprint import pprint
 # create an instance of the API class
 api_instance = esp_sdk.OrganizationsApi()
 id = 56 # int | Organization Id
-name = 'name_example' # str | Name (optional)
+name = 'name_example' # str | Name
 
 try: 
-    # Update an Organization
-    api_response = api_instance.update(id, name=name)
+    # Update a(n) Organization
+    api_response = api_instance.update(id, name)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling OrganizationsApi->update: %s\n" % e)
@@ -234,7 +232,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| Organization Id | 
- **name** | **str**| Name | [optional] 
+ **name** | **str**| Name | 
 
 ### Return type
 

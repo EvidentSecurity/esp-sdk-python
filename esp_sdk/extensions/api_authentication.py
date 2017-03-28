@@ -14,17 +14,7 @@ from six.moves.urllib.parse import urlparse
 
 CONTENT_TYPE = 'application/vnd.api+json'
 
-
-class UnauthorizedError(Exception):
-    pass
-
-
 class ApiAuthentication(object):
-    """
-    An instance of this class should be passed into a requests call as
-    the `auth` parameter.
-    """
-
     def __init__(self, method, url, body):
         """
         :param access_key_id: public access key from ESP
