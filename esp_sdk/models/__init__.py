@@ -32,3 +32,4 @@ from .team import Team
 
 # import model overrides
 from ..extensions.paginated_collection import PaginatedCollection
+from ..extensions.base_object import BaseObject

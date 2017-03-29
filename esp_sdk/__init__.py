@@ -50,5 +50,6 @@ from .configuration import Configuration
 from .extensions.api_authentication import ApiAuthentication
 from .extensions.json_api import JsonApi
 from .extensions.paginated_collection import PaginatedCollection
+from .extensions.base_object import BaseObject
 
 configuration = Configuration()
