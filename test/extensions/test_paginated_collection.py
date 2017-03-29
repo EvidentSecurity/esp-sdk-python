@@ -93,9 +93,9 @@ class TestPaginatedCollection(TestBase):
 
         orgs = api.list()
 
-        self.assertEqual(orgs.next_page_params['size'], '1')
-        self.assertEqual(orgs.previous_page_params['size'], '1')
-        self.assertEqual(orgs.last_page_params['size'], '1')
+        self.assertEqual(orgs._next_page_params['size'], '1')
+        self.assertEqual(orgs._previous_page_params['size'], '1')
+        self.assertEqual(orgs._last_page_params['size'], '1')
 
     def test_page_size_on_previous_link_is_not_set_if_on_last_page(self):
         rest_client = RESTClientObject()
@@ -107,7 +107,7 @@ class TestPaginatedCollection(TestBase):
 
         orgs = api.list()
 
-        self.assertNotIn('page[size]', orgs.previous_page_params)
+        self.assertNotIn('size', orgs._previous_page_params)
 
     def test_first_page_calls_the_api_with_original_url_and_params_and_page_number_1_param(self):
         rest_client = RESTClientObject()

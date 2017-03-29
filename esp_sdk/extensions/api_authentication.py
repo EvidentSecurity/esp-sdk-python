@@ -16,12 +16,6 @@ CONTENT_TYPE = 'application/vnd.api+json'
 
 class ApiAuthentication(object):
     def __init__(self, method, url, body):
-        """
-        :param access_key_id: public access key from ESP
-        :type access_key_id: string
-        :param secret_access_key: secret access key from ESP
-        :type secret_access_key: string
-        """
         self.access_key_id = os.environ.get('ESP_ACCESS_KEY_ID', None)
         self.secret_access_key = os.environ.get('ESP_SECRET_ACCESS_KEY', None)
         self.method = method
@@ -31,8 +25,8 @@ class ApiAuthentication(object):
 
     def auth_headers(self):
         """
-        :param r: requests Request object instance
-        :type r: requests.Request
+        :return: dict of headers necessary for ESP API HMAC authentication
+        :rtype: dict
         """
         self.date = self._request_date()
         headers = {}
@@ -50,9 +44,8 @@ class ApiAuthentication(object):
 
     def body_md5(self):
         """
-        :type: string
-
-        Returns a base64 string of the content body passed in.
+        :return: A base64 string of the content body passed in.
+        :rtype: str
         """
         if not self.body:
             body = ''
@@ -64,13 +57,10 @@ class ApiAuthentication(object):
 
     def sign_request(self):
         """
-        :param r: requests Request object instance
-        :type r: requests.Request
-        :returns: str
-
-        Sign request takes pieces of information about the request and
+        :return: Sign request takes pieces of information about the request and
         generates a hmac hash digest for authentication. This will return a
         base64 string of the digest
+        :rtype: str
         """
         url = urlparse(self.url)
         uri = url.path

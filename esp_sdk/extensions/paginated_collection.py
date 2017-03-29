@@ -5,18 +5,27 @@ from six.moves.urllib.parse import parse_qs, urlparse
 
 
 class PaginatedCollection(PaginatedCollection):
-    # @PaginatedCollection.links.setter
-    # def links(self, links):
-    #     PaginatedCollection.links = links
-    #     self.__parse_pagination_links()
+    """
+    A PaginatedCollection object is returned on any api object that returns a
+    paginated list from the ESP API.  Mostly the api list endpoints.
+
+    This is an override of the auto generated PaginatedCollection class to
+    provide the functions necessary for pagination.
+    """
 
     def __init__(self, data=None, included=None, links=None):
+        """
+        Overidden initializer to add additional attributes
+        """
         # create a local cache for memoization
         self._local_cache = {}
         super(PaginatedCollection, self).__init__(data, included, links)
 
     def __iter__(self):
-        # return iter(self.data)
+        """
+        Iterator to loop over the entire paginated collection in data.
+
+        """
         for i in self.data:
             yield i
         if self.has_next_page:
@@ -24,36 +33,95 @@ class PaginatedCollection(PaginatedCollection):
                 yield n
 
     def __len__(self):
+        """
+        A delegator to give the length of the collection in data.
+        """
         return len(self.data)
 
     def __getitem__(self, idx):
+        """
+        A delegator to get items from data.
+        """
         return self.data[idx]
 
     def first_page(self):
+        """
+        :return: The first page of results.
+        :rtype: PaginatedCollection
+        Returns +self+ (and no API call is made) when already on the first page.
+
+        >>> alerts.current_page_number # => 5
+        >>> first_page = alerts.first_page
+        >>> alerts.current_page_number # => 5
+        >>> first_page.current_page_number # => 1
+        """
         if self.has_previous_page:
             return self._updated_collection({'number': 1})
         else:
             return self
 
     def previous_page(self):
+        """
+        :return: The previous page of results.
+        :rtype: PaginatedCollection
+        Returns +self+ (and no API call is made) when already on the first page.
+
+        >>> alerts.current_page_number # => 5
+        >>> previous_page = alerts.previous_page
+        >>> alerts.current_page_number # => 5
+        >>> previous_page.current_page_number # => 4
+        """
         if self.has_previous_page:
-            return self._updated_collection(self.previous_page_params)
+            return self._updated_collection(self._previous_page_params)
         else:
             return self
 
     def next_page(self):
+        """
+        :return: The next page of results.
+        :rtype: PaginatedCollection
+        Returns +self+ (and no API call is made) when already on the last page.
+
+        >>> alerts.current_page_number # => 5
+        >>> next_page = alerts.next_page
+        >>> alerts.current_page_number # => 5
+        >>> next_page.current_page_number # => 6
+        """
         if self.has_next_page:
-            return self._updated_collection(self.next_page_params)
+            return self._updated_collection(self._next_page_params)
         else:
             return self
 
     def last_page(self):
+        """
+        :return: The last page of results.
+        :rtype: PaginatedCollection
+        Returns +self+ (and no API call is made)  when already on the last page.
+
+        >>> alerts.current_page_number # => 5
+        >>> last_page = alerts.last_page
+        >>> alerts.current_page_number # => 5
+        >>> last_page.current_page_number # => 25
+        """
         if not self.is_last_page:
-            return self._updated_collection(self.last_page_params)
+            return self._updated_collection(self._last_page_params)
         else:
             return self
 
     def page(self, page_number=None):
+        """
+        :return: The +page_number+ page of data.
+        :rtype: PaginatedCollection
+        Returns +self+ when +page_number+ == +#current_page_number+
+
+        :param int page_number: The page number of the data wanted.
+            Must be between 1 and +#last_page_number+. (required)
+        :raise ValueError if no page number or an out-of-bounds page number is supplied.
+        >>> alerts.current_page_number # => 5
+        >>> page = alerts.page(2)
+        >>> alerts.current_page_number # => 5
+        >>> page.current_page_number # => 2
+        """
         if page_number is None:
             raise ValueError('You must supply a page number.')
         if int(page_number) < 1:
@@ -61,14 +129,17 @@ class PaginatedCollection(PaginatedCollection):
         if int(page_number) > int(self.last_page_number):
             raise ValueError('Page number cannot be greater than the last page number.')
 
-
         if int(page_number) != int(self.current_page_number):
-            return self._updated_collection({'number': str(page_number), 'size': (self.next_page_params or self.previous_page_params)['size']})
+            return self._updated_collection({'number': str(page_number), 'size': (self._next_page_params or self._previous_page_params)['size']})
         else:
             return self
 
     @property
     def current_page_number(self):
+        """
+        :return: The current page number of data.
+        :rtype: str
+        """
         previous = self.previous_page_number
         page = '1'
         if previous:
@@ -77,30 +148,54 @@ class PaginatedCollection(PaginatedCollection):
 
     @property
     def previous_page_number(self):
-        return self.previous_page_params.get('number', None)
+        """
+        :return: The previous page number of data.
+        :rtype: str, None
+        """
+        return self._previous_page_params.get('number', None)
 
     @property
     def next_page_number(self):
-        return self.next_page_params.get('number', None)
+        """
+        :return: The next page number of data.
+        :rtype: str, None
+        """
+        return self._next_page_params.get('number', None)
 
     @property
     def last_page_number(self):
-        return self.last_page_params.get('number', None)
+        """
+        :return: The previous page number of data.
+        :rtype: str, None
+        """
+        return self._last_page_params.get('number', None)
 
     @property
     def has_previous_page(self):
+        """
+        :return: Whether or not there is a previous page of data in the collection.
+        :rtype: bool
+        """
         return self.previous_page_number is not None
 
     @property
     def has_next_page(self):
+        """
+        :return: Whether or not there is a next page of data in the collection.
+        :rtype: bool
+        """
         return self.next_page_number is not None
 
     @property
     def is_last_page(self):
+        """
+        :return: Whether or not the collection is on the last page.
+        :rtype: bool
+        """
         return self.last_page_number is None
 
     @property
-    def next_page_params(self):
+    def _next_page_params(self):
         if 'next_page_params' not in self._local_cache:
             self._local_cache['next_page_params'] = {}
             if 'next' in self.links:
@@ -112,7 +207,7 @@ class PaginatedCollection(PaginatedCollection):
         return self._local_cache['next_page_params']
 
     @property
-    def previous_page_params(self):
+    def _previous_page_params(self):
         if 'previous_page_params' not in self._local_cache:
             self._local_cache['previous_page_params'] = {}
             if 'prev' in self.links:
@@ -129,7 +224,7 @@ class PaginatedCollection(PaginatedCollection):
         return self._local_cache['previous_page_params']
 
     @property
-    def last_page_params(self):
+    def _last_page_params(self):
         if 'last_page_params' not in self._local_cache:
             self._local_cache['last_page_params'] = {}
             if 'last' in self.links:

@@ -36,6 +36,7 @@ class TestApiClient(TestBase):
                      _return_http_data_only=None, collection_formats=None, _preload_content=True,
                      _request_timeout=None)
 
+        self.assertEqual(api_client, response._api_client)
         self.assertEqual('resource_path', response._resource_path)
         self.assertEqual('PUT', response._method)
         self.assertEqual([('path', 'params')], response._path_params)
