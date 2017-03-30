@@ -57,7 +57,7 @@ class StatCustomSignature(BaseObject):
             'new_1w_info': 'int',
             'old_info': 'int',
             'suppressed_info': 'int',
-            # 'custom_signature': 'CustomSignature',
+            'custom_signature': 'CustomSignature',
             'custom_signature_id': 'int'
         }
 

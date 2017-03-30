@@ -42,7 +42,7 @@ class Alert(BaseObject):
             'status': 'str',
             'risk_level': 'str',
             'updated_at': 'datetime',
-            # 'custom_signature': 'CustomSignature',
+            'custom_signature': 'CustomSignature',
             'custom_signature_id': 'int',
             'external_account': 'ExternalAccount',
             'external_account_id': 'int',
@@ -50,13 +50,13 @@ class Alert(BaseObject):
             'region_id': 'int',
             'signature': 'Signature',
             'signature_id': 'int',
-            # 'supression': 'Suppression',
+            'supression': 'Suppression',
             'supression_id': 'int',
-            # 'metadata': 'Metadata',
+            'metadata': 'Metadata',
             'metadata_id': 'int',
             'cloud_trail_events': 'list[CloudTrailEvent]',
             'cloud_trail_event_ids': 'list[int]',
-            # 'tags': 'list[Tag]',
+            'tags': 'list[Tag]',
             'tag_ids': 'list[int]'
         }
 

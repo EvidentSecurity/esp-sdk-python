@@ -42,7 +42,7 @@ class Signature(BaseObject):
             'resolution': 'str',
             'risk_level': 'str',
             'updated_at': 'datetime',
-            # 'service': 'Service',
+            'service': 'Service',
             'service_id': 'int'
         }
 

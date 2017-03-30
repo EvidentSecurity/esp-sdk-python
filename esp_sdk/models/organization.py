@@ -38,7 +38,7 @@ class Organization(BaseObject):
             'name': 'str',
             'created_at': 'datetime',
             'updated_at': 'datetime',
-            # 'custom_signatures': 'list[CustomSignature]',
+            'custom_signatures': 'list[CustomSignature]',
             'custom_signature_ids': 'list[int]',
             'external_accounts': 'list[ExternalAccount]',
             'external_account_ids': 'list[int]',
