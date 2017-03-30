@@ -3,7 +3,11 @@ from __future__ import absolute_import
 import unittest
 import json
 import math
+from esp_sdk.configuration import Configuration
 
+c = Configuration()
+c.access_key_id = 'abc'
+c.secret_access_key = '345'
 
 class TestBase(unittest.TestCase):
     import esp_sdk as esp_sdk

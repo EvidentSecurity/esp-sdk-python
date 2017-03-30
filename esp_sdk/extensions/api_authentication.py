@@ -8,16 +8,17 @@ import hashlib
 import hmac
 from time import mktime
 from wsgiref.handlers import format_date_time
+from ..configuration import Configuration
 
 # from .packages.requests.auth import AuthBase
 from six.moves.urllib.parse import urlparse
 
 CONTENT_TYPE = 'application/vnd.api+json'
 
+
 class ApiAuthentication(object):
     def __init__(self, method, url, body):
-        self.access_key_id = os.environ.get('ESP_ACCESS_KEY_ID', None)
-        self.secret_access_key = os.environ.get('ESP_SECRET_ACCESS_KEY', None)
+        self.config = Configuration()
         self.method = method
         self.url = url
         self.body = body
@@ -72,9 +73,9 @@ class ApiAuthentication(object):
             md5=self.body_md5(),
             uri=uri,
             date=self.date)
-        digest = hmac.new(self.secret_access_key.encode('utf-8'),
+        digest = hmac.new(self.config.secret_access_key.encode('utf-8'),
                           canonical.encode('utf-8'),
                           digestmod=hashlib.sha1).digest()
         return 'APIAuth {access_key}:{signature}'.format(
-            access_key=self.access_key_id,
+            access_key=self.config.access_key_id,
             signature=base64.b64encode(digest).decode())
