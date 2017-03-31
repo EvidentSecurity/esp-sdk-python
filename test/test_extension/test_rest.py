@@ -1,5 +1,6 @@
 # coding: utf-8
-from base import TestBase
+from six import PY3
+from test.test_extension.base import TestBase
 from mock import Mock
 from esp_sdk.rest import *
 from esp_sdk.api_client import ApiClient
@@ -24,7 +25,10 @@ class TestRESTClientObject(TestBase):
 
         args, kwargs = rest_client.pool_manager.request.call_args
         self.assertEqual(args[0], 'PUT')
-        self.assertRegexpMatches(args[1], "/v2/organizations.json")
+        if PY3:
+            self.assertRegex(args[1], "/v2/organizations.json")
+        else:
+            self.assertRegexpMatches(args[1], "/v2/organizations.json")
         self.assertEqual(kwargs['body'], json.dumps({"filter": {"name_cont": "Evid"}}))
 
     def test_request_puts_page_params_in_the_body(self):
@@ -39,7 +43,10 @@ class TestRESTClientObject(TestBase):
 
         args, kwargs = rest_client.pool_manager.request.call_args
         self.assertEqual(args[0], 'PUT')
-        self.assertRegexpMatches(args[1], "/v2/organizations.json")
+        if PY3:
+            self.assertRegex(args[1], "/v2/organizations.json")
+        else:
+            self.assertRegexpMatches(args[1], "/v2/organizations.json")
         self.assertEqual(kwargs['body'], json.dumps({"page": {"number": 3}}))
 
     def test_request_puts_form_params_in_json_api_format(self):
@@ -54,7 +61,10 @@ class TestRESTClientObject(TestBase):
 
         args, kwargs = rest_client.pool_manager.request.call_args
         self.assertEqual(args[0], 'POST')
-        self.assertRegexpMatches(args[1], "/v2/organizations.json")
+        if PY3:
+            self.assertRegex(args[1], "/v2/organizations.json")
+        else:
+            self.assertRegexpMatches(args[1], "/v2/organizations.json")
         self.assertEqual(kwargs['body'], json.dumps({'data': {'attributes': {'name': 'Evident'}}}))
 
     def test_request_sets_authorization_headers_for_non_GET(self):
@@ -69,7 +79,10 @@ class TestRESTClientObject(TestBase):
 
         args, kwargs = rest_client.pool_manager.request.call_args
         self.assertEqual(args[0], 'POST')
-        self.assertRegexpMatches(args[1], "/v2/organizations.json")
+        if PY3:
+            self.assertRegex(args[1], "/v2/organizations.json")
+        else:
+            self.assertRegexpMatches(args[1], "/v2/organizations.json")
         self.assertIsNotNone(kwargs['headers']['Authorization'])
         self.assertIsNotNone(kwargs['headers']['Date'])
         self.assertIsNotNone(kwargs['headers']['Content-MD5'])
@@ -88,7 +101,10 @@ class TestRESTClientObject(TestBase):
 
         args, kwargs = rest_client.pool_manager.request.call_args
         self.assertEqual(args[0], 'GET')
-        self.assertRegexpMatches(args[1], "/v2/organizations/1.json")
+        if PY3:
+            self.assertRegex(args[1], "/v2/organizations/1.json")
+        else:
+            self.assertRegexpMatches(args[1], "/v2/organizations/1.json")
         self.assertIsNotNone(kwargs['headers']['Authorization'])
         self.assertIsNotNone(kwargs['headers']['Date'])
         self.assertIsNotNone(kwargs['headers']['Content-MD5'])

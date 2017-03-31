@@ -54,7 +54,7 @@ class JsonApi(object):
 
     def __parse_elements(self, object):
         elements = {}
-        for a, v in object.iteritems():
+        for a, v in iteritems(object):
             if isinstance(v, dict):
                 elements[a] = self.__parse_object(v)
             elif isinstance(v, list):

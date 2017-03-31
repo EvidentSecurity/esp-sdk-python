@@ -1,5 +1,6 @@
 # coding: utf-8
-from base import TestBase
+from six import PY3
+from test.test_extension.base import TestBase
 from esp_sdk.extensions.api_authentication import ApiAuthentication
 
 class TestApiAuthentication(TestBase):
@@ -15,4 +16,7 @@ class TestApiAuthentication(TestBase):
         self.assertIsNotNone(auth_headers['Content-MD5'])
         self.assertEqual(auth_headers['Accept'], 'application/vnd.api+json')
         self.assertEqual(auth_headers['Content-Type'], 'application/vnd.api+json')
-        self.assertRegexpMatches(auth_headers['Authorization'], 'APIAuth')
+        if PY3:
+            self.assertRegex(auth_headers['Authorization'], 'APIAuth')
+        else:
+            self.assertRegexpMatches(auth_headers['Authorization'], 'APIAuth')

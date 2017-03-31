@@ -1,5 +1,5 @@
 # coding: utf-8
-from base import TestBase
+from test.test_extension.base import TestBase
 from mock import Mock
 import json
 import esp_sdk

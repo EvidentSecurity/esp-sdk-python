@@ -1,5 +1,5 @@
 # coding: utf-8
-from base import TestBase
+from test.test_extension.base import TestBase
 from mock import Mock
 from esp_sdk.rest import *
 from esp_sdk.api_client import ApiClient
@@ -9,18 +9,18 @@ import esp_sdk
 class TestApiClient(TestBase):
     """ ApiClient unit tests """
 
-    # def test_deserialize_model_handles_paginated_collection(self):
-    #     api_client = ApiClient()
-    #     response = Mock(data=str(self.json_list([self.organization_response()])))
-    #     data = api_client.deserialize(response, 'PaginatedCollection')
-    #     self.assertIsInstance(data, esp_sdk.models.paginated_collection.PaginatedCollection)
-    #     self.assertIsInstance(data.data[0], esp_sdk.models.organization.Organization)
-    #
-    # def test_deserialize_model_handles_esp_objects(self):
-    #     api_client = ApiClient()
-    #     response = Mock(data=self.alert_response())
-    #     data = api_client.deserialize(response, 'Alert')
-    #     self.assertIsInstance(data, esp_sdk.models.alert.Alert)
+    def test_deserialize_model_handles_paginated_collection(self):
+        api_client = ApiClient()
+        response = Mock(data=str(self.json_list([self.organization_response()])))
+        data = api_client.deserialize(response, 'PaginatedCollection')
+        self.assertIsInstance(data, esp_sdk.models.paginated_collection.PaginatedCollection)
+        self.assertIsInstance(data.data[0], esp_sdk.models.organization.Organization)
+
+    def test_deserialize_model_handles_esp_objects(self):
+        api_client = ApiClient()
+        response = Mock(data=self.alert_response())
+        data = api_client.deserialize(response, 'Alert')
+        self.assertIsInstance(data, esp_sdk.models.alert.Alert)
 
     def test_call_api_sets_original_params_and_path_on_PaginatedCollection(self):
         rest_client = RESTClientObject()

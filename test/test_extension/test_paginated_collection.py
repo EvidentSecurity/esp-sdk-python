@@ -1,5 +1,6 @@
 # coding: utf-8
-from base import TestBase
+from six import PY3
+from test.test_extension.base import TestBase
 from mock import Mock
 from esp_sdk.rest import *
 from esp_sdk.api_client import ApiClient
@@ -123,7 +124,10 @@ class TestPaginatedCollection(TestBase):
 
         args1, kwargs1 = rest_client.pool_manager.request.call_args
         self.assertEqual(args1[0], 'PUT')
-        self.assertRegexpMatches(args1[1], "/v2/organizations.json")
+        if PY3:
+            self.assertRegex(args1[1], "/v2/organizations.json")
+        else:
+            self.assertRegexpMatches(args1[1], "/v2/organizations.json")
         self.assertEqual(kwargs1['body'], json.dumps({"filter": {"name_eq": "name"}}))
         self.assertNotIn('page', json.loads(kwargs1['body']))
 
@@ -134,7 +138,10 @@ class TestPaginatedCollection(TestBase):
         self.assertEqual(orgs.current_page_number, '2')
         args2, kwargs2 = rest_client.pool_manager.request.call_args
         self.assertEqual(args2[0], args1[0])
-        self.assertRegexpMatches(args2[1], args1[1])
+        if PY3:
+            self.assertRegex(args2[1], args1[1])
+        else:
+            self.assertRegexpMatches(args2[1], args1[1])
         self.assertEqual(kwargs2['body'], json.dumps({"filter": {"name_eq": "name"}, "page": {"number": 1}}))
         self.assertEqual(kwargs2['preload_content'], kwargs1['preload_content'])
         self.assertEqual(kwargs2['timeout'], kwargs1['timeout'])
@@ -187,7 +194,10 @@ class TestPaginatedCollection(TestBase):
 
         args1, kwargs1 = rest_client.pool_manager.request.call_args
         self.assertEqual(args1[0], 'PUT')
-        self.assertRegexpMatches(args1[1], "/v2/organizations.json")
+        if PY3:
+            self.assertRegex(args1[1], "/v2/organizations.json")
+        else:
+            self.assertRegexpMatches(args1[1], "/v2/organizations.json")
         self.assertEqual(kwargs1['body'], json.dumps({"filter": {"name_eq": "name"}}))
         self.assertNotIn('page', json.loads(kwargs1['body']))
 
@@ -198,7 +208,10 @@ class TestPaginatedCollection(TestBase):
         self.assertEqual(orgs.current_page_number, '2')
         args2, kwargs2 = rest_client.pool_manager.request.call_args
         self.assertEqual(args2[0], args1[0])
-        self.assertRegexpMatches(args2[1], args1[1])
+        if PY3:
+            self.assertRegex(args2[1], args1[1])
+        else:
+            self.assertRegexpMatches(args2[1], args1[1])
         self.assertEqual(kwargs2['body'], json.dumps({"filter": {"name_eq": "name"}, "page": {"number": '1', "size": '1'}}))
         self.assertEqual(kwargs2['preload_content'], kwargs1['preload_content'])
         self.assertEqual(kwargs2['timeout'], kwargs1['timeout'])
@@ -251,7 +264,10 @@ class TestPaginatedCollection(TestBase):
 
         args1, kwargs1 = rest_client.pool_manager.request.call_args
         self.assertEqual(args1[0], 'PUT')
-        self.assertRegexpMatches(args1[1], "/v2/organizations.json")
+        if PY3:
+            self.assertRegex(args1[1], "/v2/organizations.json")
+        else:
+            self.assertRegexpMatches(args1[1], "/v2/organizations.json")
         self.assertEqual(kwargs1['body'], json.dumps({"filter": {"name_eq": "name"}}))
         self.assertNotIn('page', json.loads(kwargs1['body']))
 
@@ -262,7 +278,10 @@ class TestPaginatedCollection(TestBase):
         self.assertEqual(orgs.current_page_number, '2')
         args2, kwargs2 = rest_client.pool_manager.request.call_args
         self.assertEqual(args2[0], args1[0])
-        self.assertRegexpMatches(args2[1], args1[1])
+        if PY3:
+            self.assertRegex(args2[1], args1[1])
+        else:
+            self.assertRegexpMatches(args2[1], args1[1])
         self.assertEqual(kwargs2['body'], json.dumps({"filter": {"name_eq": "name"}, "page": {"number": '3', "size": '1'}}))
         self.assertEqual(kwargs2['preload_content'], kwargs1['preload_content'])
         self.assertEqual(kwargs2['timeout'], kwargs1['timeout'])
@@ -315,7 +334,10 @@ class TestPaginatedCollection(TestBase):
 
         args1, kwargs1 = rest_client.pool_manager.request.call_args
         self.assertEqual(args1[0], 'PUT')
-        self.assertRegexpMatches(args1[1], "/v2/organizations.json")
+        if PY3:
+            self.assertRegex(args1[1], "/v2/organizations.json")
+        else:
+            self.assertRegexpMatches(args1[1], "/v2/organizations.json")
         self.assertEqual(kwargs1['body'], json.dumps({"filter": {"name_eq": "name"}}))
         self.assertNotIn('page', json.loads(kwargs1['body']))
 
@@ -326,7 +348,10 @@ class TestPaginatedCollection(TestBase):
         self.assertEqual(orgs.current_page_number, '2')
         args2, kwargs2 = rest_client.pool_manager.request.call_args
         self.assertEqual(args2[0], args1[0])
-        self.assertRegexpMatches(args2[1], args1[1])
+        if PY3:
+            self.assertRegex(args2[1], args1[1])
+        else:
+            self.assertRegexpMatches(args2[1], args1[1])
         self.assertEqual(kwargs2['body'], json.dumps({"filter": {"name_eq": "name"}, "page": {"number": '3', "size": '1'}}))
         self.assertEqual(kwargs2['preload_content'], kwargs1['preload_content'])
         self.assertEqual(kwargs2['timeout'], kwargs1['timeout'])
@@ -376,8 +401,12 @@ class TestPaginatedCollection(TestBase):
         api = OrganizationsApi(api_client)
         orgs = api.list()
 
-        with self.assertRaisesRegexp(ValueError, 'You must supply a page number.'):
-            page = orgs.page()
+        if PY3:
+            with self.assertRaisesRegex(ValueError, 'You must supply a page number.'):
+                page = orgs.page()
+        else:
+            with self.assertRaisesRegexp(ValueError, 'You must supply a page number.'):
+                page = orgs.page()
 
     def test_error_raised_if_page_number_is_not_positive(self):
         rest_client = RESTClientObject()
@@ -390,8 +419,12 @@ class TestPaginatedCollection(TestBase):
         api = OrganizationsApi(api_client)
         orgs = api.list()
 
-        with self.assertRaisesRegexp(ValueError, 'Page number cannot be less than 1.'):
-            page = orgs.page(0)
+        if PY3:
+            with self.assertRaisesRegex(ValueError, 'Page number cannot be less than 1.'):
+                page = orgs.page(0)
+        else:
+            with self.assertRaisesRegexp(ValueError, 'Page number cannot be less than 1.'):
+                page = orgs.page(0)
 
     def test_error_raised_if_page_number_is_greater_than_last_page_number(self):
         rest_client = RESTClientObject()
@@ -404,8 +437,12 @@ class TestPaginatedCollection(TestBase):
         api = OrganizationsApi(api_client)
         orgs = api.list()
 
-        with self.assertRaisesRegexp(ValueError, 'Page number cannot be greater than the last page number.'):
-            page = orgs.page(4)
+        if PY3:
+            with self.assertRaisesRegex(ValueError, 'Page number cannot be greater than the last page number.'):
+                page = orgs.page(4)
+        else:
+            with self.assertRaisesRegexp(ValueError, 'Page number cannot be greater than the last page number.'):
+                page = orgs.page(4)
 
     def test_page_calls_the_api_with_original_url_and_params_and_the_page_number_param(self):
         rest_client = RESTClientObject()
@@ -421,7 +458,10 @@ class TestPaginatedCollection(TestBase):
 
         args1, kwargs1 = rest_client.pool_manager.request.call_args
         self.assertEqual(args1[0], 'PUT')
-        self.assertRegexpMatches(args1[1], "/v2/organizations.json")
+        if PY3:
+            self.assertRegex(args1[1], "/v2/organizations.json")
+        else:
+            self.assertRegexpMatches(args1[1], "/v2/organizations.json")
         self.assertEqual(kwargs1['body'], json.dumps({"filter": {"name_eq": "name"}}))
         self.assertNotIn('page', json.loads(kwargs1['body']))
 
@@ -432,7 +472,10 @@ class TestPaginatedCollection(TestBase):
         self.assertEqual(orgs.current_page_number, '2')
         args2, kwargs2 = rest_client.pool_manager.request.call_args
         self.assertEqual(args2[0], args1[0])
-        self.assertRegexpMatches(args2[1], args1[1])
+        if PY3:
+            self.assertRegex(args2[1], args1[1])
+        else:
+            self.assertRegexpMatches(args2[1], args1[1])
         self.assertEqual(kwargs2['body'], json.dumps({"filter": {"name_eq": "name"}, "page": {"number": '3', "size": '1'}}))
         self.assertEqual(kwargs2['preload_content'], kwargs1['preload_content'])
         self.assertEqual(kwargs2['timeout'], kwargs1['timeout'])
