@@ -142,7 +142,10 @@ class TestPaginatedCollection(TestBase):
             self.assertRegex(args2[1], args1[1])
         else:
             self.assertRegexpMatches(args2[1], args1[1])
-        self.assertEqual(kwargs2['body'], json.dumps({"filter": {"name_eq": "name"}, "page": {"number": 1}}))
+        expected_body = {"filter": {"name_eq": "name"}, "page": {"number": 1}}
+        body = json.loads(kwargs2['body'])
+        self.assertEqual(body['filter'], expected_body['filter'])
+        self.assertEqual(body['page']['number'], expected_body['page']['number'])
         self.assertEqual(kwargs2['preload_content'], kwargs1['preload_content'])
         self.assertEqual(kwargs2['timeout'], kwargs1['timeout'])
 
@@ -212,7 +215,11 @@ class TestPaginatedCollection(TestBase):
             self.assertRegex(args2[1], args1[1])
         else:
             self.assertRegexpMatches(args2[1], args1[1])
-        self.assertEqual(kwargs2['body'], json.dumps({"filter": {"name_eq": "name"}, "page": {"number": '1', "size": '1'}}))
+        expected_body = {"filter": {"name_eq": "name"}, "page": {"number": '1', "size": '1'}}
+        body = json.loads(kwargs2['body'])
+        self.assertEqual(body['filter'], expected_body['filter'])
+        self.assertEqual(body['page']['number'], expected_body['page']['number'])
+        self.assertEqual(body['page']['size'], expected_body['page']['size'])
         self.assertEqual(kwargs2['preload_content'], kwargs1['preload_content'])
         self.assertEqual(kwargs2['timeout'], kwargs1['timeout'])
 
@@ -282,7 +289,11 @@ class TestPaginatedCollection(TestBase):
             self.assertRegex(args2[1], args1[1])
         else:
             self.assertRegexpMatches(args2[1], args1[1])
-        self.assertEqual(kwargs2['body'], json.dumps({"filter": {"name_eq": "name"}, "page": {"number": '3', "size": '1'}}))
+        expected_body = {"filter": {"name_eq": "name"}, "page": {"number": '3', "size": '1'}}
+        body = json.loads(kwargs2['body'])
+        self.assertEqual(body['filter'], expected_body['filter'])
+        self.assertEqual(body['page']['number'], expected_body['page']['number'])
+        self.assertEqual(body['page']['size'], expected_body['page']['size'])
         self.assertEqual(kwargs2['preload_content'], kwargs1['preload_content'])
         self.assertEqual(kwargs2['timeout'], kwargs1['timeout'])
 
@@ -352,7 +363,11 @@ class TestPaginatedCollection(TestBase):
             self.assertRegex(args2[1], args1[1])
         else:
             self.assertRegexpMatches(args2[1], args1[1])
-        self.assertEqual(kwargs2['body'], json.dumps({"filter": {"name_eq": "name"}, "page": {"number": '3', "size": '1'}}))
+        expected_body = {"filter": {"name_eq": "name"}, "page": {"number": '3', "size": '1'}}
+        body = json.loads(kwargs2['body'])
+        self.assertEqual(body['filter'], expected_body['filter'])
+        self.assertEqual(body['page']['number'], expected_body['page']['number'])
+        self.assertEqual(body['page']['size'], expected_body['page']['size'])
         self.assertEqual(kwargs2['preload_content'], kwargs1['preload_content'])
         self.assertEqual(kwargs2['timeout'], kwargs1['timeout'])
 
@@ -476,7 +491,11 @@ class TestPaginatedCollection(TestBase):
             self.assertRegex(args2[1], args1[1])
         else:
             self.assertRegexpMatches(args2[1], args1[1])
-        self.assertEqual(kwargs2['body'], json.dumps({"filter": {"name_eq": "name"}, "page": {"number": '3', "size": '1'}}))
+        expected_body = {"filter": {"name_eq": "name"}, "page": {"number": '3', "size": '1'}}
+        body = json.loads(kwargs2['body'])
+        self.assertEqual(body['filter'], expected_body['filter'])
+        self.assertEqual(body['page']['number'], expected_body['page']['number'])
+        self.assertEqual(body['page']['size'], expected_body['page']['size'])
         self.assertEqual(kwargs2['preload_content'], kwargs1['preload_content'])
         self.assertEqual(kwargs2['timeout'], kwargs1['timeout'])
 
