@@ -1,11 +1,11 @@
 # esp_sdk.RegionsApi
 
-All URIs are relative to *http://localhost/api*
+All URIs are relative to *http://localhost/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**list**](RegionsApi.md#list) | **PUT** /v2/regions.json | Get a list of Regions
-[**show**](RegionsApi.md#show) | **GET** /v2/regions/{id}.json | Show a single Region
+[**list**](RegionsApi.md#list) | **PUT** /api/v2/regions.json_api | Get a list of Regions
+[**show**](RegionsApi.md#show) | **GET** /api/v2/regions/{id}.json_api | Show a single Region
 
 
 # **list**

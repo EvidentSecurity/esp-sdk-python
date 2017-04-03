@@ -40,6 +40,192 @@ class ExternalaccountsApi(object):
                 config.api_client = ApiClient()
             self.api_client = config.api_client
 
+    def api_v2_external_accounts_id_complete_json_api_patch(self, id, **kwargs):
+        """
+        Show the latest completed report for an External Account
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.api_v2_external_accounts_id_complete_json_api_patch(id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param int id: External Account Id (required)
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.api_v2_external_accounts_id_complete_json_api_patch_with_http_info(id, **kwargs)
+        else:
+            (data) = self.api_v2_external_accounts_id_complete_json_api_patch_with_http_info(id, **kwargs)
+            return data
+
+    def api_v2_external_accounts_id_complete_json_api_patch_with_http_info(self, id, **kwargs):
+        """
+        Show the latest completed report for an External Account
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.api_v2_external_accounts_id_complete_json_api_patch_with_http_info(id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param int id: External Account Id (required)
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['id']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method api_v2_external_accounts_id_complete_json_api_patch" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'id' is set
+        if ('id' not in params) or (params['id'] is None):
+            raise ValueError("Missing the required parameter `id` when calling `api_v2_external_accounts_id_complete_json_api_patch`")
+
+
+        collection_formats = {}
+
+        resource_path = '/api/v2/external_accounts/{id}/complete.json_api'.replace('{format}', 'json')
+        path_params = {}
+        if 'id' in params:
+            path_params['id'] = params['id']
+
+        query_params = {}
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api(resource_path, 'PATCH',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type=None,
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def api_v2_external_accounts_subscribed_accounts_json_api_get(self, **kwargs):
+        """
+        Show a list of Subscribed Accounts
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.api_v2_external_accounts_subscribed_accounts_json_api_get(callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.api_v2_external_accounts_subscribed_accounts_json_api_get_with_http_info(**kwargs)
+        else:
+            (data) = self.api_v2_external_accounts_subscribed_accounts_json_api_get_with_http_info(**kwargs)
+            return data
+
+    def api_v2_external_accounts_subscribed_accounts_json_api_get_with_http_info(self, **kwargs):
+        """
+        Show a list of Subscribed Accounts
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.api_v2_external_accounts_subscribed_accounts_json_api_get_with_http_info(callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = []
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method api_v2_external_accounts_subscribed_accounts_json_api_get" % key
+                )
+            params[key] = val
+        del params['kwargs']
+
+        collection_formats = {}
+
+        resource_path = '/api/v2/external_accounts/subscribed_accounts.json_api'.replace('{format}', 'json')
+        path_params = {}
+
+        query_params = {}
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api(resource_path, 'GET',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type=None,
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
     def create(self, **kwargs):
         """
         Create a(n) External Account
@@ -117,7 +303,7 @@ class ExternalaccountsApi(object):
 
         collection_formats = {}
 
-        resource_path = '/v2/external_accounts.json'.replace('{format}', 'json')
+        resource_path = '/api/v2/external_accounts.json_api'.replace('{format}', 'json')
         path_params = {}
 
         query_params = {}
@@ -176,7 +362,7 @@ class ExternalaccountsApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param int id: External Account Id (required)
-        :return: ExternalAccount
+        :return: object
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -201,7 +387,7 @@ class ExternalaccountsApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param int id: External Account Id (required)
-        :return: ExternalAccount
+        :return: object
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -228,7 +414,7 @@ class ExternalaccountsApi(object):
 
         collection_formats = {}
 
-        resource_path = '/v2/external_accounts/{id}.json'.replace('{format}', 'json')
+        resource_path = '/api/v2/external_accounts/{id}.json_api'.replace('{format}', 'json')
         path_params = {}
         if 'id' in params:
             path_params['id'] = params['id']
@@ -251,7 +437,7 @@ class ExternalaccountsApi(object):
                                         body=body_params,
                                         post_params=form_params,
                                         files=local_var_files,
-                                        response_type='ExternalAccount',
+                                        response_type='object',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -326,7 +512,7 @@ class ExternalaccountsApi(object):
 
         collection_formats = {}
 
-        resource_path = '/v2/external_accounts.json'.replace('{format}', 'json')
+        resource_path = '/api/v2/external_accounts.json_api'.replace('{format}', 'json')
         path_params = {}
 
         query_params = {}
@@ -429,7 +615,7 @@ class ExternalaccountsApi(object):
 
         collection_formats = {}
 
-        resource_path = '/v2/external_accounts/{id}.json'.replace('{format}', 'json')
+        resource_path = '/api/v2/external_accounts/{id}.json_api'.replace('{format}', 'json')
         path_params = {}
         if 'id' in params:
             path_params['id'] = params['id']
@@ -534,7 +720,7 @@ class ExternalaccountsApi(object):
 
         collection_formats = {}
 
-        resource_path = '/v2/external_accounts/{id}.json'.replace('{format}', 'json')
+        resource_path = '/api/v2/external_accounts/{id}.json_api'.replace('{format}', 'json')
         path_params = {}
         if 'id' in params:
             path_params['id'] = params['id']
@@ -564,192 +750,6 @@ class ExternalaccountsApi(object):
                                         post_params=form_params,
                                         files=local_var_files,
                                         response_type='ExternalAccount',
-                                        auth_settings=auth_settings,
-                                        callback=params.get('callback'),
-                                        _return_http_data_only=params.get('_return_http_data_only'),
-                                        _preload_content=params.get('_preload_content', True),
-                                        _request_timeout=params.get('_request_timeout'),
-                                        collection_formats=collection_formats)
-
-    def v2_external_accounts_id_complete_json_patch(self, id, **kwargs):
-        """
-        Show the latest completed report for an External Account
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.v2_external_accounts_id_complete_json_patch(id, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param int id: External Account Id (required)
-        :return: None
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('callback'):
-            return self.v2_external_accounts_id_complete_json_patch_with_http_info(id, **kwargs)
-        else:
-            (data) = self.v2_external_accounts_id_complete_json_patch_with_http_info(id, **kwargs)
-            return data
-
-    def v2_external_accounts_id_complete_json_patch_with_http_info(self, id, **kwargs):
-        """
-        Show the latest completed report for an External Account
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.v2_external_accounts_id_complete_json_patch_with_http_info(id, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param int id: External Account Id (required)
-        :return: None
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = ['id']
-        all_params.append('callback')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
-
-        params = locals()
-        for key, val in iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method v2_external_accounts_id_complete_json_patch" % key
-                )
-            params[key] = val
-        del params['kwargs']
-        # verify the required parameter 'id' is set
-        if ('id' not in params) or (params['id'] is None):
-            raise ValueError("Missing the required parameter `id` when calling `v2_external_accounts_id_complete_json_patch`")
-
-
-        collection_formats = {}
-
-        resource_path = '/v2/external_accounts/{id}/complete.json'.replace('{format}', 'json')
-        path_params = {}
-        if 'id' in params:
-            path_params['id'] = params['id']
-
-        query_params = {}
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        # Authentication setting
-        auth_settings = []
-
-        return self.api_client.call_api(resource_path, 'PATCH',
-                                        path_params,
-                                        query_params,
-                                        header_params,
-                                        body=body_params,
-                                        post_params=form_params,
-                                        files=local_var_files,
-                                        response_type=None,
-                                        auth_settings=auth_settings,
-                                        callback=params.get('callback'),
-                                        _return_http_data_only=params.get('_return_http_data_only'),
-                                        _preload_content=params.get('_preload_content', True),
-                                        _request_timeout=params.get('_request_timeout'),
-                                        collection_formats=collection_formats)
-
-    def v2_external_accounts_subscribed_accounts_json_get(self, **kwargs):
-        """
-        Show a list of Subscribed Accounts
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.v2_external_accounts_subscribed_accounts_json_get(callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :return: None
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('callback'):
-            return self.v2_external_accounts_subscribed_accounts_json_get_with_http_info(**kwargs)
-        else:
-            (data) = self.v2_external_accounts_subscribed_accounts_json_get_with_http_info(**kwargs)
-            return data
-
-    def v2_external_accounts_subscribed_accounts_json_get_with_http_info(self, **kwargs):
-        """
-        Show a list of Subscribed Accounts
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.v2_external_accounts_subscribed_accounts_json_get_with_http_info(callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :return: None
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = []
-        all_params.append('callback')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
-
-        params = locals()
-        for key, val in iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method v2_external_accounts_subscribed_accounts_json_get" % key
-                )
-            params[key] = val
-        del params['kwargs']
-
-        collection_formats = {}
-
-        resource_path = '/v2/external_accounts/subscribed_accounts.json'.replace('{format}', 'json')
-        path_params = {}
-
-        query_params = {}
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        # Authentication setting
-        auth_settings = []
-
-        return self.api_client.call_api(resource_path, 'GET',
-                                        path_params,
-                                        query_params,
-                                        header_params,
-                                        body=body_params,
-                                        post_params=form_params,
-                                        files=local_var_files,
-                                        response_type=None,
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),

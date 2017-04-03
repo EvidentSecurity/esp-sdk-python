@@ -1,11 +1,11 @@
 # esp_sdk.StatsApi
 
-All URIs are relative to *http://localhost/api*
+All URIs are relative to *http://localhost/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**for_report**](StatsApi.md#for_report) | **GET** /v2/reports/{report_id}/stats.json | A successful call to this API returns all the stats of all the alerts for a report identified by the report_id parameter. Said report contains all statistics for this alert triggered from signatures contained in all regions for the selected hour.
-[**latest_for_teams**](StatsApi.md#latest_for_teams) | **GET** /v2/stats/latest_for_teams.json | A successful call to this API returns all the stats for the most recent report of each team accessible by the given API key
+[**for_report**](StatsApi.md#for_report) | **GET** /api/v2/reports/{report_id}/stats.json_api | A successful call to this API returns all the stats of all the alerts for a report identified by the report_id parameter. Said report contains all statistics for this alert triggered from signatures contained in all regions for the selected hour.
+[**latest_for_teams**](StatsApi.md#latest_for_teams) | **GET** /api/v2/stats/latest_for_teams.json_api | A successful call to this API returns all the stats for the most recent report of each team accessible by the given API key
 
 
 # **for_report**

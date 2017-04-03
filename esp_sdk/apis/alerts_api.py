@@ -112,7 +112,7 @@ class AlertsApi(object):
 
         collection_formats = {}
 
-        resource_path = '/v2/reports/{report_id}/alerts.json'.replace('{format}', 'json')
+        resource_path = '/api/v2/reports/{report_id}/alerts.json_api'.replace('{format}', 'json')
         path_params = {}
         if 'report_id' in params:
             path_params['report_id'] = params['report_id']
@@ -217,7 +217,7 @@ class AlertsApi(object):
 
         collection_formats = {}
 
-        resource_path = '/v2/alerts/{id}.json'.replace('{format}', 'json')
+        resource_path = '/api/v2/alerts/{id}.json_api'.replace('{format}', 'json')
         path_params = {}
         if 'id' in params:
             path_params['id'] = params['id']

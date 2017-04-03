@@ -1,14 +1,14 @@
 # esp_sdk.OrganizationsApi
 
-All URIs are relative to *http://localhost/api*
+All URIs are relative to *http://localhost/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create**](OrganizationsApi.md#create) | **POST** /v2/organizations.json | Create a(n) Organization
-[**destroy**](OrganizationsApi.md#destroy) | **DELETE** /v2/organizations/{id}.json | Remove a(n) Organization
-[**list**](OrganizationsApi.md#list) | **PUT** /v2/organizations.json | Get a list of Organizations
-[**show**](OrganizationsApi.md#show) | **GET** /v2/organizations/{id}.json | Show a single Organization
-[**update**](OrganizationsApi.md#update) | **PATCH** /v2/organizations/{id}.json | Update a(n) Organization
+[**create**](OrganizationsApi.md#create) | **POST** /api/v2/organizations.json_api | Create a(n) Organization
+[**destroy**](OrganizationsApi.md#destroy) | **DELETE** /api/v2/organizations/{id}.json_api | Remove a(n) Organization
+[**list**](OrganizationsApi.md#list) | **PUT** /api/v2/organizations.json_api | Get a list of Organizations
+[**show**](OrganizationsApi.md#show) | **GET** /api/v2/organizations/{id}.json_api | Show a single Organization
+[**update**](OrganizationsApi.md#update) | **PATCH** /api/v2/organizations/{id}.json_api | Update a(n) Organization
 
 
 # **create**
@@ -58,7 +58,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **destroy**
-> Organization destroy(id)
+> object destroy(id)
 
 Remove a(n) Organization
 
@@ -90,7 +90,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Organization**](Organization.md)
+**object**
 
 ### Authorization
 

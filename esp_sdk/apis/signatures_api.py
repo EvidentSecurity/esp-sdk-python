@@ -107,7 +107,7 @@ class SignaturesApi(object):
 
         collection_formats = {}
 
-        resource_path = '/v2/signatures.json'.replace('{format}', 'json')
+        resource_path = '/api/v2/signatures.json_api'.replace('{format}', 'json')
         path_params = {}
 
         query_params = {}
@@ -215,7 +215,7 @@ class SignaturesApi(object):
 
         collection_formats = {}
 
-        resource_path = '/v2/signatures/{id}/run.json'.replace('{format}', 'json')
+        resource_path = '/api/v2/signatures/{id}/run.json_api'.replace('{format}', 'json')
         path_params = {}
         if 'id' in params:
             path_params['id'] = params['id']
@@ -318,7 +318,7 @@ class SignaturesApi(object):
 
         collection_formats = {}
 
-        resource_path = '/v2/signatures/{id}.json'.replace('{format}', 'json')
+        resource_path = '/api/v2/signatures/{id}.json_api'.replace('{format}', 'json')
         path_params = {}
         if 'id' in params:
             path_params['id'] = params['id']

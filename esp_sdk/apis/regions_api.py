@@ -105,7 +105,7 @@ class RegionsApi(object):
 
         collection_formats = {}
 
-        resource_path = '/v2/regions.json'.replace('{format}', 'json')
+        resource_path = '/api/v2/regions.json_api'.replace('{format}', 'json')
         path_params = {}
 
         query_params = {}
@@ -206,7 +206,7 @@ class RegionsApi(object):
 
         collection_formats = {}
 
-        resource_path = '/v2/regions/{id}.json'.replace('{format}', 'json')
+        resource_path = '/api/v2/regions/{id}.json_api'.replace('{format}', 'json')
         path_params = {}
         if 'id' in params:
             path_params['id'] = params['id']

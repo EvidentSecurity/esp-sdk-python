@@ -110,7 +110,7 @@ class CloudtraileventsApi(object):
 
         collection_formats = {}
 
-        resource_path = '/v2/alerts/{alert_id}/cloud_trail_events.json'.replace('{format}', 'json')
+        resource_path = '/api/v2/alerts/{alert_id}/cloud_trail_events.json_api'.replace('{format}', 'json')
         path_params = {}
         if 'alert_id' in params:
             path_params['alert_id'] = params['alert_id']
@@ -213,7 +213,7 @@ class CloudtraileventsApi(object):
 
         collection_formats = {}
 
-        resource_path = '/v2/cloud_trail_events/{id}.json'.replace('{format}', 'json')
+        resource_path = '/api/v2/cloud_trail_events/{id}.json_api'.replace('{format}', 'json')
         path_params = {}
         if 'id' in params:
             path_params['id'] = params['id']

@@ -1,10 +1,10 @@
 # esp_sdk.DashboardApi
 
-All URIs are relative to *http://localhost/api*
+All URIs are relative to *http://localhost/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**recent**](DashboardApi.md#recent) | **GET** /v2/dashboard/recent.json | 
+[**recent**](DashboardApi.md#recent) | **GET** /api/v2/dashboard/recent.json_api | 
 
 
 # **recent**

@@ -106,7 +106,7 @@ class StatsApi(object):
 
         collection_formats = {}
 
-        resource_path = '/v2/reports/{report_id}/stats.json'.replace('{format}', 'json')
+        resource_path = '/api/v2/reports/{report_id}/stats.json_api'.replace('{format}', 'json')
         path_params = {}
         if 'report_id' in params:
             path_params['report_id'] = params['report_id']
@@ -197,7 +197,7 @@ class StatsApi(object):
 
         collection_formats = {}
 
-        resource_path = '/v2/stats/latest_for_teams.json'.replace('{format}', 'json')
+        resource_path = '/api/v2/stats/latest_for_teams.json_api'.replace('{format}', 'json')
         path_params = {}
 
         query_params = {}

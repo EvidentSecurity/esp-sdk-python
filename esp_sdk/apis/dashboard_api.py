@@ -101,7 +101,7 @@ class DashboardApi(object):
 
         collection_formats = {}
 
-        resource_path = '/v2/dashboard/recent.json'.replace('{format}', 'json')
+        resource_path = '/api/v2/dashboard/recent.json_api'.replace('{format}', 'json')
         path_params = {}
 
         query_params = {}

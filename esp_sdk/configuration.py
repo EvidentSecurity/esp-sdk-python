@@ -47,9 +47,9 @@ class Configuration(object):
         """
         # Default Base url
         if os.environ.get('ESP_ENV', None)  == 'development':
-            self.host = 'http://localhost:3000/api'
+            self.host = 'http://localhost:3000'
         else:
-            self.host = 'https://api.evident.io/api'
+            self.host = 'https://api.evident.io'
         # Default api client
         self.api_client = None
         # Temp file folder for downloading files

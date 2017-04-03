@@ -1,11 +1,11 @@
 # esp_sdk.CloudtraileventsApi
 
-All URIs are relative to *http://localhost/api*
+All URIs are relative to *http://localhost/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**list**](CloudtraileventsApi.md#list) | **GET** /v2/alerts/{alert_id}/cloud_trail_events.json | Get a list of Cloud Trail Events
-[**show**](CloudtraileventsApi.md#show) | **GET** /v2/cloud_trail_events/{id}.json | Show a single Cloud Trail Event
+[**list**](CloudtraileventsApi.md#list) | **GET** /api/v2/alerts/{alert_id}/cloud_trail_events.json_api | Get a list of Cloud Trail Events
+[**show**](CloudtraileventsApi.md#show) | **GET** /api/v2/cloud_trail_events/{id}.json_api | Show a single Cloud Trail Event
 
 
 # **list**

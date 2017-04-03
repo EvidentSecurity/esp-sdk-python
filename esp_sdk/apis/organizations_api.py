@@ -106,7 +106,7 @@ class OrganizationsApi(object):
 
         collection_formats = {}
 
-        resource_path = '/v2/organizations.json'.replace('{format}', 'json')
+        resource_path = '/api/v2/organizations.json_api'.replace('{format}', 'json')
         path_params = {}
 
         query_params = {}
@@ -151,7 +151,7 @@ class OrganizationsApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param int id: Organization Id (required)
-        :return: Organization
+        :return: object
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -176,7 +176,7 @@ class OrganizationsApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param int id: Organization Id (required)
-        :return: Organization
+        :return: object
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -203,7 +203,7 @@ class OrganizationsApi(object):
 
         collection_formats = {}
 
-        resource_path = '/v2/organizations/{id}.json'.replace('{format}', 'json')
+        resource_path = '/api/v2/organizations/{id}.json_api'.replace('{format}', 'json')
         path_params = {}
         if 'id' in params:
             path_params['id'] = params['id']
@@ -226,7 +226,7 @@ class OrganizationsApi(object):
                                         body=body_params,
                                         post_params=form_params,
                                         files=local_var_files,
-                                        response_type='Organization',
+                                        response_type='object',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -301,7 +301,7 @@ class OrganizationsApi(object):
 
         collection_formats = {}
 
-        resource_path = '/v2/organizations.json'.replace('{format}', 'json')
+        resource_path = '/api/v2/organizations.json_api'.replace('{format}', 'json')
         path_params = {}
 
         query_params = {}
@@ -404,7 +404,7 @@ class OrganizationsApi(object):
 
         collection_formats = {}
 
-        resource_path = '/v2/organizations/{id}.json'.replace('{format}', 'json')
+        resource_path = '/api/v2/organizations/{id}.json_api'.replace('{format}', 'json')
         path_params = {}
         if 'id' in params:
             path_params['id'] = params['id']
@@ -508,7 +508,7 @@ class OrganizationsApi(object):
 
         collection_formats = {}
 
-        resource_path = '/v2/organizations/{id}.json'.replace('{format}', 'json')
+        resource_path = '/api/v2/organizations/{id}.json_api'.replace('{format}', 'json')
         path_params = {}
         if 'id' in params:
             path_params['id'] = params['id']

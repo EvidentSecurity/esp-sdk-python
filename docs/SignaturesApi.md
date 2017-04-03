@@ -1,12 +1,12 @@
 # esp_sdk.SignaturesApi
 
-All URIs are relative to *http://localhost/api*
+All URIs are relative to *http://localhost/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**list**](SignaturesApi.md#list) | **PUT** /v2/signatures.json | Get a list of Signatures
-[**run**](SignaturesApi.md#run) | **POST** /v2/signatures/{id}/run.json | A successful call to this API returns a list of alerts for the specific signature identified by the id parameter. The body of the request must contain a json api compliant hash of attributes with type signatures
-[**show**](SignaturesApi.md#show) | **GET** /v2/signatures/{id}.json | Show a single Signature
+[**list**](SignaturesApi.md#list) | **PUT** /api/v2/signatures.json_api | Get a list of Signatures
+[**run**](SignaturesApi.md#run) | **POST** /api/v2/signatures/{id}/run.json_api | A successful call to this API returns a list of alerts for the specific signature identified by the id parameter. The body of the request must contain a json api compliant hash of attributes with type signatures
+[**show**](SignaturesApi.md#show) | **GET** /api/v2/signatures/{id}.json_api | Show a single Signature
 
 
 # **list**

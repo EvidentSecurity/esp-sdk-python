@@ -1,11 +1,11 @@
 # esp_sdk.AlertsApi
 
-All URIs are relative to *http://localhost/api*
+All URIs are relative to *http://localhost/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**list**](AlertsApi.md#list) | **PUT** /v2/reports/{report_id}/alerts.json | Get a list of Alerts
-[**show**](AlertsApi.md#show) | **GET** /v2/alerts/{id}.json | Show a single Alert
+[**list**](AlertsApi.md#list) | **PUT** /api/v2/reports/{report_id}/alerts.json_api | Get a list of Alerts
+[**show**](AlertsApi.md#show) | **GET** /api/v2/alerts/{id}.json_api | Show a single Alert
 
 
 # **list**
