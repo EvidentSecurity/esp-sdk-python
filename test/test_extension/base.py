@@ -3,9 +3,11 @@ from __future__ import absolute_import
 import unittest
 import json
 import math
+import os
 from esp_sdk.configuration import Configuration
 
 c = Configuration()
+os.environ['ESP_ENV'] = 'test'
 c.access_key_id = 'abc'
 c.secret_access_key = '345'
 
