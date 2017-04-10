@@ -55,6 +55,7 @@ class RegionsApi(object):
             for asynchronous request. (optional)
         :param dict(str, str) page: Page Number
         :param dict(str, str) filter: Filter Params for Searching
+        :param str include: Included Objects
         :return: PaginatedCollection
                  If the method is called asynchronously,
                  returns the request thread.
@@ -81,12 +82,13 @@ class RegionsApi(object):
             for asynchronous request. (optional)
         :param dict(str, str) page: Page Number
         :param dict(str, str) filter: Filter Params for Searching
+        :param str include: Included Objects
         :return: PaginatedCollection
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['page', 'filter']
+        all_params = ['page', 'filter', 'include']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -109,6 +111,8 @@ class RegionsApi(object):
         path_params = {}
 
         query_params = {}
+        if 'include' in params:
+            query_params['include'] = params['include']
 
         header_params = {}
 

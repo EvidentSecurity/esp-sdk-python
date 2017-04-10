@@ -55,7 +55,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **latest_for_teams**
-> list[Stat] latest_for_teams()
+> PaginatedCollection latest_for_teams()
 
 A successful call to this API returns all the stats for the most recent report of each team accessible by the given API key
 
@@ -83,7 +83,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**list[Stat]**](Stat.md)
+[**PaginatedCollection**](PaginatedCollection.md)
 
 ### Authorization
 

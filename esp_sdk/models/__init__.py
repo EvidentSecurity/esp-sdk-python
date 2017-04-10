@@ -16,19 +16,33 @@ from __future__ import absolute_import
 # import models into model package
 from .alert import Alert
 from .cloud_trail_event import CloudTrailEvent
-from .dashboard import Dashboard
+from .contact_request import ContactRequest
+from .custom_signature import CustomSignature
+from .custom_signature_definition import CustomSignatureDefinition
+from .definition import Definition
 from .external_account import ExternalAccount
+from .metadata import Metadata
 from .organization import Organization
 from .paginated_collection import PaginatedCollection
 from .region import Region
 from .report import Report
+from .result import Result
+from .role import Role
+from .scan_interval import ScanInterval
+from .service import Service
 from .signature import Signature
+from .signature_custom_risk_level import SignatureCustomRiskLevel
 from .stat import Stat
 from .stat_custom_signature import StatCustomSignature
 from .stat_region import StatRegion
 from .stat_service import StatService
 from .stat_signature import StatSignature
+from .sub_organization import SubOrganization
+from .suppression import Suppression
+from .tag import Tag
 from .team import Team
+from .time_zone import TimeZone
+from .user import User
 
 # import model overrides
 from ..extensions.paginated_collection import PaginatedCollection

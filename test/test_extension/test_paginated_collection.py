@@ -125,9 +125,9 @@ class TestPaginatedCollection(TestBase):
         args1, kwargs1 = rest_client.pool_manager.request.call_args
         self.assertEqual(args1[0], 'PUT')
         if PY3:
-            self.assertRegex(args1[1], "/v2/organizations.json")
+            self.assertRegex(args1[1], "/v2/organizations.json_api")
         else:
-            self.assertRegexpMatches(args1[1], "/v2/organizations.json")
+            self.assertRegexpMatches(args1[1], "/v2/organizations.json_api")
         self.assertEqual(kwargs1['body'], json.dumps({"filter": {"name_eq": "name"}}))
         self.assertNotIn('page', json.loads(kwargs1['body']))
 
@@ -198,9 +198,9 @@ class TestPaginatedCollection(TestBase):
         args1, kwargs1 = rest_client.pool_manager.request.call_args
         self.assertEqual(args1[0], 'PUT')
         if PY3:
-            self.assertRegex(args1[1], "/v2/organizations.json")
+            self.assertRegex(args1[1], "/v2/organizations.json_api")
         else:
-            self.assertRegexpMatches(args1[1], "/v2/organizations.json")
+            self.assertRegexpMatches(args1[1], "/v2/organizations.json_api")
         self.assertEqual(kwargs1['body'], json.dumps({"filter": {"name_eq": "name"}}))
         self.assertNotIn('page', json.loads(kwargs1['body']))
 
@@ -272,9 +272,9 @@ class TestPaginatedCollection(TestBase):
         args1, kwargs1 = rest_client.pool_manager.request.call_args
         self.assertEqual(args1[0], 'PUT')
         if PY3:
-            self.assertRegex(args1[1], "/v2/organizations.json")
+            self.assertRegex(args1[1], "/v2/organizations.json_api")
         else:
-            self.assertRegexpMatches(args1[1], "/v2/organizations.json")
+            self.assertRegexpMatches(args1[1], "/v2/organizations.json_api")
         self.assertEqual(kwargs1['body'], json.dumps({"filter": {"name_eq": "name"}}))
         self.assertNotIn('page', json.loads(kwargs1['body']))
 
@@ -346,9 +346,9 @@ class TestPaginatedCollection(TestBase):
         args1, kwargs1 = rest_client.pool_manager.request.call_args
         self.assertEqual(args1[0], 'PUT')
         if PY3:
-            self.assertRegex(args1[1], "/v2/organizations.json")
+            self.assertRegex(args1[1], "/v2/organizations.json_api")
         else:
-            self.assertRegexpMatches(args1[1], "/v2/organizations.json")
+            self.assertRegexpMatches(args1[1], "/v2/organizations.json_api")
         self.assertEqual(kwargs1['body'], json.dumps({"filter": {"name_eq": "name"}}))
         self.assertNotIn('page', json.loads(kwargs1['body']))
 
@@ -474,9 +474,9 @@ class TestPaginatedCollection(TestBase):
         args1, kwargs1 = rest_client.pool_manager.request.call_args
         self.assertEqual(args1[0], 'PUT')
         if PY3:
-            self.assertRegex(args1[1], "/v2/organizations.json")
+            self.assertRegex(args1[1], "/v2/organizations.json_api")
         else:
-            self.assertRegexpMatches(args1[1], "/v2/organizations.json")
+            self.assertRegexpMatches(args1[1], "/v2/organizations.json_api")
         self.assertEqual(kwargs1['body'], json.dumps({"filter": {"name_eq": "name"}}))
         self.assertNotIn('page', json.loads(kwargs1['body']))
 

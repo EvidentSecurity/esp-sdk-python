@@ -2,11 +2,32 @@ from __future__ import absolute_import
 
 # import apis into api package
 from .alerts_api import AlertsApi
-from .cloudtrailevents_api import CloudtraileventsApi
+from .cloud_trail_events_api import CloudTrailEventsApi
+from .contact_requests_api import ContactRequestsApi
+from .custom_signature_definitions_api import CustomSignatureDefinitionsApi
+from .custom_signature_results_api import CustomSignatureResultsApi
+from .custom_signature_stats_api import CustomSignatureStatsApi
+from .custom_signatures_api import CustomSignaturesApi
 from .dashboard_api import DashboardApi
-from .externalaccounts_api import ExternalaccountsApi
+from .external_accounts_api import ExternalAccountsApi
+from .metadata_api import MetadataApi
 from .organizations_api import OrganizationsApi
+from .region_stats_api import RegionStatsApi
+from .region_suppressions_api import RegionSuppressionsApi
 from .regions_api import RegionsApi
+from .reports_api import ReportsApi
+from .roles_api import RolesApi
+from .scan_intervals_api import ScanIntervalsApi
+from .service_stats_api import ServiceStatsApi
+from .services_api import ServicesApi
+from .signature_custom_risk_levels_api import SignatureCustomRiskLevelsApi
+from .signature_stats_api import SignatureStatsApi
+from .signature_suppressions_api import SignatureSuppressionsApi
 from .signatures_api import SignaturesApi
 from .stats_api import StatsApi
+from .sub_organizations_api import SubOrganizationsApi
+from .suppressions_api import SuppressionsApi
+from .tags_api import TagsApi
 from .teams_api import TeamsApi
+from .time_zones_api import TimeZonesApi
+from .users_api import UsersApi

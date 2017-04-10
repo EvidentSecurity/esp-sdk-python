@@ -146,8 +146,6 @@ class Team(BaseObject):
         :param id: The id of this Team.
         :type: int
         """
-        if id is None:
-            raise ValueError("Invalid value for `id`, must not be `None`")
 
         self._id = id
 

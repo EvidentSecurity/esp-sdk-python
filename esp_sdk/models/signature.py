@@ -124,7 +124,7 @@ class Signature(BaseObject):
     def id(self):
         """
         Gets the id of this Signature.
-        Unique Id
+        Unique ID
 
         :return: The id of this Signature.
         :rtype: int
@@ -135,13 +135,11 @@ class Signature(BaseObject):
     def id(self, id):
         """
         Sets the id of this Signature.
-        Unique Id
+        Unique ID
 
         :param id: The id of this Signature.
         :type: int
         """
-        if id is None:
-            raise ValueError("Invalid value for `id`, must not be `None`")
 
         self._id = id
 
@@ -172,7 +170,7 @@ class Signature(BaseObject):
     def description(self):
         """
         Gets the description of this Signature.
-        The description of the signature
+        The description of the user
 
         :return: The description of this Signature.
         :rtype: str
@@ -183,7 +181,7 @@ class Signature(BaseObject):
     def description(self, description):
         """
         Sets the description of this Signature.
-        The description of the signature
+        The description of the user
 
         :param description: The description of this Signature.
         :type: str

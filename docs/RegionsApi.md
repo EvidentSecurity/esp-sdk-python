@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 
 # **list**
-> PaginatedCollection list(page=page, filter=filter)
+> PaginatedCollection list(page=page, filter=filter, include=include)
 
 Get a list of Regions
 
@@ -25,10 +25,11 @@ from pprint import pprint
 api_instance = esp_sdk.RegionsApi()
 page = {'key': 'page_example'} # dict(str, str) | Page Number (optional)
 filter = {'key': 'filter_example'} # dict(str, str) | Filter Params for Searching (optional)
+include = 'include_example' # str | Included Objects (optional)
 
 try: 
     # Get a list of Regions
-    api_response = api_instance.list(page=page, filter=filter)
+    api_response = api_instance.list(page=page, filter=filter, include=include)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling RegionsApi->list: %s\n" % e)
@@ -40,6 +41,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | [**dict(str, str)**](str.md)| Page Number | [optional] 
  **filter** | [**dict(str, str)**](str.md)| Filter Params for Searching | [optional] 
+ **include** | **str**| Included Objects | [optional] 
 
 ### Return type
 

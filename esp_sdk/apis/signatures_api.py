@@ -142,50 +142,50 @@ class SignaturesApi(object):
                                         _request_timeout=params.get('_request_timeout'),
                                         collection_formats=collection_formats)
 
-    def run(self, id, external_account_id, **kwargs):
+    def run(self, id, external_account_id, region, **kwargs):
         """
-        A successful call to this API returns a list of alerts for the specific signature identified by the id parameter. The body of the request must contain a json api compliant hash of attributes with type signatures
+        Run a Signature
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.run(id, external_account_id, callback=callback_function)
+        >>> thread = api.run(id, external_account_id, region, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param int id: The ID of the signature to run (required)
-        :param int external_account_id: The ID of the external account to run this signature against (required)
-        :param Object region: A single region name to run this signature against
-        :return: list[Alert]
+        :param int external_account_id: The ID of the external account to run the signature against (required)
+        :param str region: A single region name to run this signature against (required)
+        :return: PaginatedCollection
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.run_with_http_info(id, external_account_id, **kwargs)
+            return self.run_with_http_info(id, external_account_id, region, **kwargs)
         else:
-            (data) = self.run_with_http_info(id, external_account_id, **kwargs)
+            (data) = self.run_with_http_info(id, external_account_id, region, **kwargs)
             return data
 
-    def run_with_http_info(self, id, external_account_id, **kwargs):
+    def run_with_http_info(self, id, external_account_id, region, **kwargs):
         """
-        A successful call to this API returns a list of alerts for the specific signature identified by the id parameter. The body of the request must contain a json api compliant hash of attributes with type signatures
+        Run a Signature
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.run_with_http_info(id, external_account_id, callback=callback_function)
+        >>> thread = api.run_with_http_info(id, external_account_id, region, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param int id: The ID of the signature to run (required)
-        :param int external_account_id: The ID of the external account to run this signature against (required)
-        :param Object region: A single region name to run this signature against
-        :return: list[Alert]
+        :param int external_account_id: The ID of the external account to run the signature against (required)
+        :param str region: A single region name to run this signature against (required)
+        :return: PaginatedCollection
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -211,6 +211,9 @@ class SignaturesApi(object):
         # verify the required parameter 'external_account_id' is set
         if ('external_account_id' not in params) or (params['external_account_id'] is None):
             raise ValueError("Missing the required parameter `external_account_id` when calling `run`")
+        # verify the required parameter 'region' is set
+        if ('region' not in params) or (params['region'] is None):
+            raise ValueError("Missing the required parameter `region` when calling `run`")
 
 
         collection_formats = {}
@@ -242,7 +245,7 @@ class SignaturesApi(object):
                                         body=body_params,
                                         post_params=form_params,
                                         files=local_var_files,
-                                        response_type='list[Alert]',
+                                        response_type='PaginatedCollection',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),

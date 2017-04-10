@@ -5,11 +5,11 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **relationships** | **object** | Links to Associated Objects | [optional] 
 **errors** | **list[str]** | Array of error messages if the request failed | [optional] 
-**id** | **int** | Unique Id | 
+**id** | **int** | Unique Id | [optional] 
 **created_at** | [**datetime**](DateTime.md) | ISO 8601 timestamp when the resource was created | [optional] 
 **ended_at** | [**datetime**](DateTime.md) | ISO 8601 timestamp when the alert stopped being active | [optional] 
 **resource** | **str** | Resource identifier in Amazon | [optional] 
-**stated_at** | [**datetime**](DateTime.md) | ISO 8601 timestamp when the alert started being active | [optional] 
+**started_at** | [**datetime**](DateTime.md) | ISO 8601 timestamp when the alert started being active | [optional] 
 **status** | **str** | Status of the alert | [optional] 
 **risk_level** | **str** | Risk Level of the alert | [optional] 
 **updated_at** | [**datetime**](DateTime.md) | ISO 8601 timestamp when the resource was last updated | [optional] 

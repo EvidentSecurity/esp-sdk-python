@@ -5,7 +5,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **relationships** | **object** | Links to Associated Objects | [optional] 
 **errors** | **list[str]** | Array of error messages if the request failed | [optional] 
-**id** | **int** | Unique Id | 
+**id** | **int** | Unique Id | [optional] 
 **name** | **str** | Name | [optional] 
 **created_at** | [**datetime**](DateTime.md) | Created At | [optional] 
 **updated_at** | [**datetime**](DateTime.md) | Updated At | [optional] 

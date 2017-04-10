@@ -152,8 +152,6 @@ class Organization(BaseObject):
         :param id: The id of this Organization.
         :type: int
         """
-        if id is None:
-            raise ValueError("Invalid value for `id`, must not be `None`")
 
         self._id = id
 
@@ -161,7 +159,7 @@ class Organization(BaseObject):
     def name(self):
         """
         Gets the name of this Organization.
-        Name
+        Name of the organization
 
         :return: The name of this Organization.
         :rtype: str
@@ -172,7 +170,7 @@ class Organization(BaseObject):
     def name(self, name):
         """
         Sets the name of this Organization.
-        Name
+        Name of the organization
 
         :param name: The name of this Organization.
         :type: str

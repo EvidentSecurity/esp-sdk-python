@@ -5,7 +5,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **relationships** | **object** | Links to Associated Objects | [optional] 
 **errors** | **list[str]** | Array of error messages if the request failed | [optional] 
-**id** | **int** | Unique Id | 
+**id** | **int** | Unique Id | [optional] 
 **created_at** | [**datetime**](DateTime.md) | ISO 8601 timestamp when the resource was created | [optional] 
 **new_1h_high_pass** | **int** |  | [optional] 
 **new_1d_high_pass** | **int** |  | [optional] 

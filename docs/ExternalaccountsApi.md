@@ -1,16 +1,16 @@
-# esp_sdk.ExternalaccountsApi
+# esp_sdk.ExternalAccountsApi
 
 All URIs are relative to *http://localhost/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**api_v2_external_accounts_id_complete_json_api_patch**](ExternalaccountsApi.md#api_v2_external_accounts_id_complete_json_api_patch) | **PATCH** /api/v2/external_accounts/{id}/complete.json_api | Show the latest completed report for an External Account
-[**api_v2_external_accounts_subscribed_accounts_json_api_get**](ExternalaccountsApi.md#api_v2_external_accounts_subscribed_accounts_json_api_get) | **GET** /api/v2/external_accounts/subscribed_accounts.json_api | Show a list of Subscribed Accounts
-[**create**](ExternalaccountsApi.md#create) | **POST** /api/v2/external_accounts.json_api | Create a(n) External Account
-[**destroy**](ExternalaccountsApi.md#destroy) | **DELETE** /api/v2/external_accounts/{id}.json_api | Remove a(n) External Account
-[**list**](ExternalaccountsApi.md#list) | **PUT** /api/v2/external_accounts.json_api | Get a list of External Accounts
-[**show**](ExternalaccountsApi.md#show) | **GET** /api/v2/external_accounts/{id}.json_api | Show a single External Account
-[**update**](ExternalaccountsApi.md#update) | **PATCH** /api/v2/external_accounts/{id}.json_api | Update a(n) External Account
+[**api_v2_external_accounts_id_complete_json_api_patch**](ExternalAccountsApi.md#api_v2_external_accounts_id_complete_json_api_patch) | **PATCH** /api/v2/external_accounts/{id}/complete.json_api | Show the latest completed report for an External Account
+[**api_v2_external_accounts_subscribed_accounts_json_api_get**](ExternalAccountsApi.md#api_v2_external_accounts_subscribed_accounts_json_api_get) | **GET** /api/v2/external_accounts/subscribed_accounts.json_api | Show a list of Subscribed Accounts
+[**create**](ExternalAccountsApi.md#create) | **POST** /api/v2/external_accounts.json_api | Create a(n) External Account
+[**destroy**](ExternalAccountsApi.md#destroy) | **DELETE** /api/v2/external_accounts/{id}.json_api | Remove a(n) External Account
+[**list**](ExternalAccountsApi.md#list) | **PUT** /api/v2/external_accounts.json_api | Get a list of External Accounts
+[**show**](ExternalAccountsApi.md#show) | **GET** /api/v2/external_accounts/{id}.json_api | Show a single External Account
+[**update**](ExternalAccountsApi.md#update) | **PATCH** /api/v2/external_accounts/{id}.json_api | Update a(n) External Account
 
 
 # **api_v2_external_accounts_id_complete_json_api_patch**
@@ -27,14 +27,14 @@ from esp_sdk.rest import ApiException
 from pprint import pprint
 
 # create an instance of the API class
-api_instance = esp_sdk.ExternalaccountsApi()
+api_instance = esp_sdk.ExternalAccountsApi()
 id = 56 # int | External Account Id
 
 try: 
     # Show the latest completed report for an External Account
     api_instance.api_v2_external_accounts_id_complete_json_api_patch(id)
 except ApiException as e:
-    print("Exception when calling ExternalaccountsApi->api_v2_external_accounts_id_complete_json_api_patch: %s\n" % e)
+    print("Exception when calling ExternalAccountsApi->api_v2_external_accounts_id_complete_json_api_patch: %s\n" % e)
 ```
 
 ### Parameters
@@ -72,13 +72,13 @@ from esp_sdk.rest import ApiException
 from pprint import pprint
 
 # create an instance of the API class
-api_instance = esp_sdk.ExternalaccountsApi()
+api_instance = esp_sdk.ExternalAccountsApi()
 
 try: 
     # Show a list of Subscribed Accounts
     api_instance.api_v2_external_accounts_subscribed_accounts_json_api_get()
 except ApiException as e:
-    print("Exception when calling ExternalaccountsApi->api_v2_external_accounts_subscribed_accounts_json_api_get: %s\n" % e)
+    print("Exception when calling ExternalAccountsApi->api_v2_external_accounts_subscribed_accounts_json_api_get: %s\n" % e)
 ```
 
 ### Parameters
@@ -100,7 +100,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create**
-> ExternalAccount create(name=name, nickname=nickname, team_id=team_id, arn=arn, external_id=external_id, agency=agency, mission=mission, role=role)
+> ExternalAccount create(team_id, arn, external_id, name=name)
 
 Create a(n) External Account
 
@@ -113,36 +113,28 @@ from esp_sdk.rest import ApiException
 from pprint import pprint
 
 # create an instance of the API class
-api_instance = esp_sdk.ExternalaccountsApi()
+api_instance = esp_sdk.ExternalAccountsApi()
+team_id = 56 # int | Team Id
+arn = 'arn_example' # str | ARN
+external_id = 'external_id_example' # str | External Id
 name = 'name_example' # str | Name (optional)
-nickname = 'nickname_example' # str | Nickname (optional)
-team_id = 56 # int | Team Id (optional)
-arn = 'arn_example' # str | ARN (optional)
-external_id = 'external_id_example' # str | External Id (optional)
-agency = 'agency_example' # str | Agency (optional)
-mission = 'mission_example' # str | Mission (optional)
-role = 'role_example' # str | Role (optional)
 
 try: 
     # Create a(n) External Account
-    api_response = api_instance.create(name=name, nickname=nickname, team_id=team_id, arn=arn, external_id=external_id, agency=agency, mission=mission, role=role)
+    api_response = api_instance.create(team_id, arn, external_id, name=name)
     pprint(api_response)
 except ApiException as e:
-    print("Exception when calling ExternalaccountsApi->create: %s\n" % e)
+    print("Exception when calling ExternalAccountsApi->create: %s\n" % e)
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **team_id** | **int**| Team Id | 
+ **arn** | **str**| ARN | 
+ **external_id** | **str**| External Id | 
  **name** | **str**| Name | [optional] 
- **nickname** | **str**| Nickname | [optional] 
- **team_id** | **int**| Team Id | [optional] 
- **arn** | **str**| ARN | [optional] 
- **external_id** | **str**| External Id | [optional] 
- **agency** | **str**| Agency | [optional] 
- **mission** | **str**| Mission | [optional] 
- **role** | **str**| Role | [optional] 
 
 ### Return type
 
@@ -173,7 +165,7 @@ from esp_sdk.rest import ApiException
 from pprint import pprint
 
 # create an instance of the API class
-api_instance = esp_sdk.ExternalaccountsApi()
+api_instance = esp_sdk.ExternalAccountsApi()
 id = 56 # int | External Account Id
 
 try: 
@@ -181,7 +173,7 @@ try:
     api_response = api_instance.destroy(id)
     pprint(api_response)
 except ApiException as e:
-    print("Exception when calling ExternalaccountsApi->destroy: %s\n" % e)
+    print("Exception when calling ExternalAccountsApi->destroy: %s\n" % e)
 ```
 
 ### Parameters
@@ -219,7 +211,7 @@ from esp_sdk.rest import ApiException
 from pprint import pprint
 
 # create an instance of the API class
-api_instance = esp_sdk.ExternalaccountsApi()
+api_instance = esp_sdk.ExternalAccountsApi()
 page = {'key': 'page_example'} # dict(str, str) | Page Number (optional)
 filter = {'key': 'filter_example'} # dict(str, str) | Filter Params for Searching (optional)
 include = 'include_example' # str | Included Objects (optional)
@@ -229,7 +221,7 @@ try:
     api_response = api_instance.list(page=page, filter=filter, include=include)
     pprint(api_response)
 except ApiException as e:
-    print("Exception when calling ExternalaccountsApi->list: %s\n" % e)
+    print("Exception when calling ExternalAccountsApi->list: %s\n" % e)
 ```
 
 ### Parameters
@@ -269,7 +261,7 @@ from esp_sdk.rest import ApiException
 from pprint import pprint
 
 # create an instance of the API class
-api_instance = esp_sdk.ExternalaccountsApi()
+api_instance = esp_sdk.ExternalAccountsApi()
 id = 56 # int | External Account Id
 include = 'include_example' # str | Included Objects (optional)
 
@@ -278,7 +270,7 @@ try:
     api_response = api_instance.show(id, include=include)
     pprint(api_response)
 except ApiException as e:
-    print("Exception when calling ExternalaccountsApi->show: %s\n" % e)
+    print("Exception when calling ExternalAccountsApi->show: %s\n" % e)
 ```
 
 ### Parameters
@@ -304,7 +296,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update**
-> ExternalAccount update(id, name=name, nickname=nickname, team_id=team_id)
+> ExternalAccount update(id, arn, external_id, sub_organization_id, team_id, name=name)
 
 Update a(n) External Account
 
@@ -317,18 +309,20 @@ from esp_sdk.rest import ApiException
 from pprint import pprint
 
 # create an instance of the API class
-api_instance = esp_sdk.ExternalaccountsApi()
+api_instance = esp_sdk.ExternalAccountsApi()
 id = 56 # int | External Account Id
+arn = 'arn_example' # str | ARN
+external_id = 56 # int | External Id
+sub_organization_id = 56 # int | Sub Organization Id
+team_id = 56 # int | Team Id
 name = 'name_example' # str | Name (optional)
-nickname = 'nickname_example' # str | Nickname (optional)
-team_id = 56 # int | Team Id (optional)
 
 try: 
     # Update a(n) External Account
-    api_response = api_instance.update(id, name=name, nickname=nickname, team_id=team_id)
+    api_response = api_instance.update(id, arn, external_id, sub_organization_id, team_id, name=name)
     pprint(api_response)
 except ApiException as e:
-    print("Exception when calling ExternalaccountsApi->update: %s\n" % e)
+    print("Exception when calling ExternalAccountsApi->update: %s\n" % e)
 ```
 
 ### Parameters
@@ -336,9 +330,11 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| External Account Id | 
+ **arn** | **str**| ARN | 
+ **external_id** | **int**| External Id | 
+ **sub_organization_id** | **int**| Sub Organization Id | 
+ **team_id** | **int**| Team Id | 
  **name** | **str**| Name | [optional] 
- **nickname** | **str**| Nickname | [optional] 
- **team_id** | **int**| Team Id | [optional] 
 
 ### Return type
 

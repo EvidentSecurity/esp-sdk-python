@@ -152,8 +152,6 @@ class ExternalAccount(BaseObject):
         :param id: The id of this ExternalAccount.
         :type: int
         """
-        if id is None:
-            raise ValueError("Invalid value for `id`, must not be `None`")
 
         self._id = id
 
@@ -161,6 +159,7 @@ class ExternalAccount(BaseObject):
     def account(self):
         """
         Gets the account of this ExternalAccount.
+        The name of the account created
 
         :return: The account of this ExternalAccount.
         :rtype: str
@@ -171,6 +170,7 @@ class ExternalAccount(BaseObject):
     def account(self, account):
         """
         Sets the account of this ExternalAccount.
+        The name of the account created
 
         :param account: The account of this ExternalAccount.
         :type: str
@@ -182,6 +182,7 @@ class ExternalAccount(BaseObject):
     def arn(self):
         """
         Gets the arn of this ExternalAccount.
+        Amazon Resource Name for the IAM role
 
         :return: The arn of this ExternalAccount.
         :rtype: str
@@ -192,6 +193,7 @@ class ExternalAccount(BaseObject):
     def arn(self, arn):
         """
         Sets the arn of this ExternalAccount.
+        Amazon Resource Name for the IAM role
 
         :param arn: The arn of this ExternalAccount.
         :type: str
@@ -226,6 +228,7 @@ class ExternalAccount(BaseObject):
     def external_id(self):
         """
         Gets the external_id of this ExternalAccount.
+        External Identifier set on the role
 
         :return: The external_id of this ExternalAccount.
         :rtype: str
@@ -236,6 +239,7 @@ class ExternalAccount(BaseObject):
     def external_id(self, external_id):
         """
         Sets the external_id of this ExternalAccount.
+        External Identifier set on the role
 
         :param external_id: The external_id of this ExternalAccount.
         :type: str
@@ -293,6 +297,7 @@ class ExternalAccount(BaseObject):
     def cloudtrail_name(self):
         """
         Gets the cloudtrail_name of this ExternalAccount.
+        Cloudtrail Name
 
         :return: The cloudtrail_name of this ExternalAccount.
         :rtype: str
@@ -303,6 +308,7 @@ class ExternalAccount(BaseObject):
     def cloudtrail_name(self, cloudtrail_name):
         """
         Sets the cloudtrail_name of this ExternalAccount.
+        Cloudtrail Name
 
         :param cloudtrail_name: The cloudtrail_name of this ExternalAccount.
         :type: str

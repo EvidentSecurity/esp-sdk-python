@@ -57,6 +57,17 @@ class AlertsApi(object):
         :param dict(str, str) page: Page Number
         :param dict(str, str) filter: Filter Params for Searching
         :param str include: Included Objects
+        :param int region_id: Return only alerts for this region.
+        :param str status: Return only alerts for the give status(es). Valid values are fail, warn, error, pass, info
+        :param int first_seen: Return only alerts that have started within a number of hours of the report. For example, first_seen of 3 will return alerts that started showing up within the last 3 hours of the report.
+        :param bool suppressed: Return only suppressed alerts
+        :param int team_id: Return only alerts for the given team.
+        :param int external_account_id: Return only alerts for the given external id.
+        :param int service_id: Return only alerts on signatures with the given service.
+        :param str signature_severity: Return only alerts for signatures with the given risk_level. Valid values are Low, Medium, High
+        :param str signature_name: Return only alerts for signatures with the given name.
+        :param str resource: Return only alerts for the given resource or tag.
+        :param str signature_identifier: Return only alerts for signatures with the given identifier.
         :return: PaginatedCollection
                  If the method is called asynchronously,
                  returns the request thread.
@@ -85,12 +96,23 @@ class AlertsApi(object):
         :param dict(str, str) page: Page Number
         :param dict(str, str) filter: Filter Params for Searching
         :param str include: Included Objects
+        :param int region_id: Return only alerts for this region.
+        :param str status: Return only alerts for the give status(es). Valid values are fail, warn, error, pass, info
+        :param int first_seen: Return only alerts that have started within a number of hours of the report. For example, first_seen of 3 will return alerts that started showing up within the last 3 hours of the report.
+        :param bool suppressed: Return only suppressed alerts
+        :param int team_id: Return only alerts for the given team.
+        :param int external_account_id: Return only alerts for the given external id.
+        :param int service_id: Return only alerts on signatures with the given service.
+        :param str signature_severity: Return only alerts for signatures with the given risk_level. Valid values are Low, Medium, High
+        :param str signature_name: Return only alerts for signatures with the given name.
+        :param str resource: Return only alerts for the given resource or tag.
+        :param str signature_identifier: Return only alerts for signatures with the given identifier.
         :return: PaginatedCollection
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['report_id', 'page', 'filter', 'include']
+        all_params = ['report_id', 'page', 'filter', 'include', 'region_id', 'status', 'first_seen', 'suppressed', 'team_id', 'external_account_id', 'service_id', 'signature_severity', 'signature_name', 'resource', 'signature_identifier']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -129,6 +151,28 @@ class AlertsApi(object):
             form_params.append(('page', params['page']))
         if 'filter' in params:
             form_params.append(('filter', params['filter']))
+        if 'region_id' in params:
+            form_params.append(('region_id', params['region_id']))
+        if 'status' in params:
+            form_params.append(('status', params['status']))
+        if 'first_seen' in params:
+            form_params.append(('first_seen', params['first_seen']))
+        if 'suppressed' in params:
+            form_params.append(('suppressed', params['suppressed']))
+        if 'team_id' in params:
+            form_params.append(('team_id', params['team_id']))
+        if 'external_account_id' in params:
+            form_params.append(('external_account_id', params['external_account_id']))
+        if 'service_id' in params:
+            form_params.append(('service_id', params['service_id']))
+        if 'signature_severity' in params:
+            form_params.append(('signature_severity', params['signature_severity']))
+        if 'signature_name' in params:
+            form_params.append(('signature_name', params['signature_name']))
+        if 'resource' in params:
+            form_params.append(('resource', params['resource']))
+        if 'signature_identifier' in params:
+            form_params.append(('signature_identifier', params['signature_identifier']))
 
         body_params = None
         # Authentication setting

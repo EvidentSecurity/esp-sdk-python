@@ -5,8 +5,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **relationships** | **object** | Links to Associated Objects | [optional] 
 **errors** | **list[str]** | Array of error messages if the request failed | [optional] 
-**id** | **int** | Unique Id | 
-**name** | **str** | Name | [optional] 
+**id** | **int** | Unique Id | [optional] 
+**name** | **str** | Name of the organization | [optional] 
 **created_at** | [**datetime**](DateTime.md) | ISO 8601 timestamp when the resource was created | [optional] 
 **updated_at** | [**datetime**](DateTime.md) | ISO 8601 timestamp when the resource was last updated | [optional] 
 **custom_signatures** | [**list[CustomSignature]**](CustomSignature.md) | Associated Custom Signatures | [optional] 
