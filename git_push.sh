@@ -26,11 +26,10 @@ fi
 # Adds the files in the local repository and stages them for commit.
 git add .
 
-# Commits the tracked changes and prepares them to be pushed to a remote repository. 
+# Commits the tracked changes and prepares them to be pushed to a remote repository.
 git commit -m "$release_note"
 
 # Pushes (Forces) the changes in the local repository up to the remote repository
-echo "Git pushing to https://github.com/${git_user_id}/${git_repo_id}.git"
+echo "Git pushing to git@github.com:${git_user_id}/${git_repo_id}.git"
 git branch --set-upstream-to=origin/$branch
-git push -f origin $branch
-
+git push -u -f origin $branch
