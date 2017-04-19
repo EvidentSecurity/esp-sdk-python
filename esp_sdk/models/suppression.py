@@ -43,7 +43,7 @@ class Suppression(BaseObject):
             'updated_at': 'datetime',
             'organization': 'Organization',
             'organization_id': 'int',
-            'created_by': 'list[object]',
+            'created_by': 'User',
             'created_by_id': 'int',
             'external_accounts': 'list[ExternalAccount]',
             'external_account_ids': 'list[int]',
@@ -361,7 +361,7 @@ class Suppression(BaseObject):
         User That Created This Suppression
 
         :return: The created_by of this Suppression.
-        :rtype: list[object]
+        :rtype: User
         """
         return self._created_by
 
@@ -372,7 +372,7 @@ class Suppression(BaseObject):
         User That Created This Suppression
 
         :param created_by: The created_by of this Suppression.
-        :type: list[object]
+        :type: User
         """
 
         self._created_by = created_by

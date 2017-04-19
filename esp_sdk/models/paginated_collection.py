@@ -51,6 +51,7 @@ class PaginatedCollection(BaseObject):
     def data(self):
         """
         Gets the data of this PaginatedCollection.
+        Array of objects
 
         :return: The data of this PaginatedCollection.
         :rtype: list[object]
@@ -61,6 +62,7 @@ class PaginatedCollection(BaseObject):
     def data(self, data):
         """
         Sets the data of this PaginatedCollection.
+        Array of objects
 
         :param data: The data of this PaginatedCollection.
         :type: list[object]
@@ -74,6 +76,7 @@ class PaginatedCollection(BaseObject):
     def included(self):
         """
         Gets the included of this PaginatedCollection.
+        Array of related objects returned using the 'included' parameter.
 
         :return: The included of this PaginatedCollection.
         :rtype: list[object]
@@ -84,6 +87,7 @@ class PaginatedCollection(BaseObject):
     def included(self, included):
         """
         Sets the included of this PaginatedCollection.
+        Array of related objects returned using the 'included' parameter.
 
         :param included: The included of this PaginatedCollection.
         :type: list[object]
@@ -95,7 +99,7 @@ class PaginatedCollection(BaseObject):
     def links(self):
         """
         Gets the links of this PaginatedCollection.
-        Links
+        Pagination Links
 
         :return: The links of this PaginatedCollection.
         :rtype: object
@@ -106,7 +110,7 @@ class PaginatedCollection(BaseObject):
     def links(self, links):
         """
         Sets the links of this PaginatedCollection.
-        Links
+        Pagination Links
 
         :param links: The links of this PaginatedCollection.
         :type: object

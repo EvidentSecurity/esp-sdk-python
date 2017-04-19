@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **updated_at** | [**datetime**](DateTime.md) | ISO 8601 timestamp when the suppression was last updated | [optional] 
 **organization** | [**Organization**](Organization.md) | Associated Organization | [optional] 
 **organization_id** | **int** | Associated Organization Id | [optional] 
-**created_by** | **list[object]** | User That Created This Suppression | [optional] 
+**created_by** | [**User**](User.md) | User That Created This Suppression | [optional] 
 **created_by_id** | **int** | User That Created This Suppression&#39;s Id | [optional] 
 **external_accounts** | [**list[ExternalAccount]**](ExternalAccount.md) | Associated External Accounts | [optional] 
 **external_account_ids** | **list[int]** | Associated External Account Ids | [optional] 
