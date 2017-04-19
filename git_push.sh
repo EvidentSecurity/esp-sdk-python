@@ -29,6 +29,12 @@ git add .
 # Commits the tracked changes and prepares them to be pushed to a remote repository.
 git commit -m "$release_note"
 
+# Sets the new remote
+git_remote=`git remote`
+if [ "$git_remote" = "" ]; then # git remote not defined
+    git remote add origin ssh://git@${git_repo_id}.github.com/${git_user_id}/${git_repo_id}.git
+fi
+
 # Pushes (Forces) the changes in the local repository up to the remote repository
 echo "Git pushing to git@github.com:${git_user_id}/${git_repo_id}.git"
 git branch --set-upstream-to=origin/$branch
