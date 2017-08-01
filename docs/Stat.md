@@ -3,9 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**relationships** | **object** | Links to Associated Objects | [optional] 
-**errors** | **list[str]** | Array of error messages if the request failed | [optional] 
-**id** | **int** | Unique Id | [optional] 
+**id** | **int** | Unique ID | [optional] 
 **created_at** | [**datetime**](DateTime.md) | ISO 8601 timestamp when the resource was created | [optional] 
 **new_1h_high_pass** | **int** |  | [optional] 
 **new_1d_high_pass** | **int** |  | [optional] 
@@ -87,18 +85,20 @@ Name | Type | Description | Notes
 **total_error** | **int** |  | [optional] 
 **total_pass** | **int** |  | [optional] 
 **total_info** | **int** |  | [optional] 
-**total_high** | **int** |  | [optional] 
-**total_medium** | **int** |  | [optional] 
 **total_low** | **int** |  | [optional] 
-**report** | [**Report**](Report.md) |  | [optional] 
-**stat_regions** | [**list[StatRegion]**](StatRegion.md) | Associated StatRegion | [optional] 
-**stat_region_ids** | **list[int]** | Associated StatRegion Ids | [optional] 
-**stat_services** | [**list[StatService]**](StatService.md) | Associated StatServices | [optional] 
-**stat_service_ids** | **list[int]** | Associated StatService Ids | [optional] 
-**stat_signatures** | [**list[StatSignature]**](StatSignature.md) | Associated StatSignatures | [optional] 
-**stat_signature_ids** | **list[int]** | Associated StatSignature Ids | [optional] 
-**stat_custom_signatures** | [**list[StatCustomSignature]**](StatCustomSignature.md) | Associated StatCustom Signatures | [optional] 
-**stat_custom_signature_ids** | **list[int]** | Associated StatCustom Signature Ids | [optional] 
+**total_medium** | **int** |  | [optional] 
+**total_high** | **int** |  | [optional] 
+**report** | [**Report**](Report.md) | Associated Report | [optional] 
+**report_id** | **int** | Associated Report Id | [optional] 
+**regions** | [**list[StatsRegion]**](StatsRegion.md) | Associated Regions | [optional] 
+**region_ids** | **list[int]** | Associated Regions Ids | [optional] 
+**services** | [**list[StatsService]**](StatsService.md) | Associated Services | [optional] 
+**service_ids** | **list[int]** | Associated Services Ids | [optional] 
+**signatures** | [**list[StatsSignature]**](StatsSignature.md) | Associated Signatures | [optional] 
+**signature_ids** | **list[int]** | Associated Signatures Ids | [optional] 
+**custom_signatures** | [**list[StatsCustomSignature]**](StatsCustomSignature.md) | Associated Custom Signatures | [optional] 
+**custom_signature_ids** | **list[int]** | Associated Custom Signatures Ids | [optional] 
+**errors** | **list[str]** | Array of error messages if the request failed | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

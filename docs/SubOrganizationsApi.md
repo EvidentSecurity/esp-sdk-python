@@ -5,14 +5,14 @@ All URIs are relative to *http://localhost/*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**create**](SubOrganizationsApi.md#create) | **POST** /api/v2/sub_organizations.json_api | Create a(n) Sub Organization
-[**destroy**](SubOrganizationsApi.md#destroy) | **DELETE** /api/v2/sub_organizations/{id}.json_api | Remove a(n) Sub Organization
+[**destroy**](SubOrganizationsApi.md#destroy) | **DELETE** /api/v2/sub_organizations/{id}.json_api | Remove a(n) SubOrganization
 [**list**](SubOrganizationsApi.md#list) | **PUT** /api/v2/sub_organizations.json_api | Get a list of Sub Organizations
 [**show**](SubOrganizationsApi.md#show) | **GET** /api/v2/sub_organizations/{id}.json_api | Show a single Sub Organization
 [**update**](SubOrganizationsApi.md#update) | **PATCH** /api/v2/sub_organizations/{id}.json_api | Update a(n) Sub Organization
 
 
 # **create**
-> SubOrganization create(name)
+> SubOrganization create(organization_id, name)
 
 Create a(n) Sub Organization
 
@@ -26,11 +26,12 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = esp_sdk.SubOrganizationsApi()
+organization_id = 56 # int | The Id of the organization this sub organization should belong to
 name = 'name_example' # str | The name of the sub organization
 
 try: 
     # Create a(n) Sub Organization
-    api_response = api_instance.create(name)
+    api_response = api_instance.create(organization_id, name)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling SubOrganizationsApi->create: %s\n" % e)
@@ -40,6 +41,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **organization_id** | **int**| The Id of the organization this sub organization should belong to | 
  **name** | **str**| The name of the sub organization | 
 
 ### Return type
@@ -53,14 +55,14 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/vnd.api+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **destroy**
-> object destroy(id)
+> SubOrganization destroy(id)
 
-Remove a(n) Sub Organization
+Remove a(n) SubOrganization
 
 ### Example 
 ```python
@@ -72,10 +74,10 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = esp_sdk.SubOrganizationsApi()
-id = 56 # int | Sub Organization Id
+id = 56 # int | SubOrganization Id
 
 try: 
-    # Remove a(n) Sub Organization
+    # Remove a(n) SubOrganization
     api_response = api_instance.destroy(id)
     pprint(api_response)
 except ApiException as e:
@@ -86,11 +88,11 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **int**| Sub Organization Id | 
+ **id** | **int**| SubOrganization Id | 
 
 ### Return type
 
-**object**
+[**SubOrganization**](SubOrganization.md)
 
 ### Authorization
 
@@ -99,12 +101,12 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/vnd.api+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list**
-> PaginatedCollection list(page=page, filter=filter, include=include)
+> PaginatedCollection list(filter=filter, include=include, page=page)
 
 Get a list of Sub Organizations
 
@@ -118,13 +120,13 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = esp_sdk.SubOrganizationsApi()
-page = {'key': 'page_example'} # dict(str, str) | Page Number (optional)
-filter = {'key': 'filter_example'} # dict(str, str) | Filter Params for Searching (optional)
-include = 'include_example' # str | Included Objects (optional)
+filter = {'key': 'filter_example'} # dict(str, str) | Filter Params for Searching.  Equality Searchable Attributes: [id, name] Matching Searchable Attribute: [name]  Sortable Attributes: [name, updated_at, created_at, id] Searchable Association: [organization] See the filter parameter of the association's list action to see what attributes are searchable on each association. See Searching on Relationships for more information. See Searching Lists for more information. Example: filter: {name_eq: 'Bob'} (optional)
+include = 'include_example' # str | Objects that can be included in the response:  external_accounts,organization,teams  See Including Objects for more information. (optional)
+page = {'key': 'page_example'} # dict(str, str) | Page Number and Page Size.  Example: page: {number: 1, size: 20} (optional)
 
 try: 
     # Get a list of Sub Organizations
-    api_response = api_instance.list(page=page, filter=filter, include=include)
+    api_response = api_instance.list(filter=filter, include=include, page=page)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling SubOrganizationsApi->list: %s\n" % e)
@@ -134,9 +136,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **page** | [**dict(str, str)**](str.md)| Page Number | [optional] 
- **filter** | [**dict(str, str)**](str.md)| Filter Params for Searching | [optional] 
- **include** | **str**| Included Objects | [optional] 
+ **filter** | [**dict(str, str)**](str.md)| Filter Params for Searching.  Equality Searchable Attributes: [id, name] Matching Searchable Attribute: [name]  Sortable Attributes: [name, updated_at, created_at, id] Searchable Association: [organization] See the filter parameter of the association&#39;s list action to see what attributes are searchable on each association. See Searching on Relationships for more information. See Searching Lists for more information. Example: filter: {name_eq: &#39;Bob&#39;} | [optional] 
+ **include** | **str**| Objects that can be included in the response:  external_accounts,organization,teams  See Including Objects for more information. | [optional] 
+ **page** | [**dict(str, str)**](str.md)| Page Number and Page Size.  Example: page: {number: 1, size: 20} | [optional] 
 
 ### Return type
 
@@ -149,7 +151,7 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/vnd.api+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -169,7 +171,7 @@ from pprint import pprint
 # create an instance of the API class
 api_instance = esp_sdk.SubOrganizationsApi()
 id = 56 # int | Sub Organization Id
-include = 'include_example' # str | Included Objects (optional)
+include = 'include_example' # str | Objects that can be included in the response:  external_accounts,organization,teams  See Including Objects for more information. (optional)
 
 try: 
     # Show a single Sub Organization
@@ -184,7 +186,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| Sub Organization Id | 
- **include** | **str**| Included Objects | [optional] 
+ **include** | **str**| Objects that can be included in the response:  external_accounts,organization,teams  See Including Objects for more information. | [optional] 
 
 ### Return type
 
@@ -197,7 +199,7 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/vnd.api+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -245,7 +247,7 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/vnd.api+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

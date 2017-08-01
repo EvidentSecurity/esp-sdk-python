@@ -4,100 +4,12 @@ All URIs are relative to *http://localhost/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**api_v2_external_accounts_id_complete_json_api_patch**](ExternalAccountsApi.md#api_v2_external_accounts_id_complete_json_api_patch) | **PATCH** /api/v2/external_accounts/{id}/complete.json_api | Show the latest completed report for an External Account
-[**api_v2_external_accounts_subscribed_accounts_json_api_get**](ExternalAccountsApi.md#api_v2_external_accounts_subscribed_accounts_json_api_get) | **GET** /api/v2/external_accounts/subscribed_accounts.json_api | Show a list of Subscribed Accounts
 [**create**](ExternalAccountsApi.md#create) | **POST** /api/v2/external_accounts.json_api | Create a(n) External Account
-[**destroy**](ExternalAccountsApi.md#destroy) | **DELETE** /api/v2/external_accounts/{id}.json_api | Remove a(n) External Account
+[**destroy**](ExternalAccountsApi.md#destroy) | **DELETE** /api/v2/external_accounts/{id}.json_api | Remove a(n) ExternalAccount
 [**list**](ExternalAccountsApi.md#list) | **PUT** /api/v2/external_accounts.json_api | Get a list of External Accounts
 [**show**](ExternalAccountsApi.md#show) | **GET** /api/v2/external_accounts/{id}.json_api | Show a single External Account
 [**update**](ExternalAccountsApi.md#update) | **PATCH** /api/v2/external_accounts/{id}.json_api | Update a(n) External Account
 
-
-# **api_v2_external_accounts_id_complete_json_api_patch**
-> api_v2_external_accounts_id_complete_json_api_patch(id)
-
-Show the latest completed report for an External Account
-
-### Example 
-```python
-from __future__ import print_statement
-import time
-import esp_sdk
-from esp_sdk.rest import ApiException
-from pprint import pprint
-
-# create an instance of the API class
-api_instance = esp_sdk.ExternalAccountsApi()
-id = 56 # int | External Account Id
-
-try: 
-    # Show the latest completed report for an External Account
-    api_instance.api_v2_external_accounts_id_complete_json_api_patch(id)
-except ApiException as e:
-    print("Exception when calling ExternalAccountsApi->api_v2_external_accounts_id_complete_json_api_patch: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **int**| External Account Id | 
-
-### Return type
-
-void (empty response body)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: Not defined
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **api_v2_external_accounts_subscribed_accounts_json_api_get**
-> api_v2_external_accounts_subscribed_accounts_json_api_get()
-
-Show a list of Subscribed Accounts
-
-### Example 
-```python
-from __future__ import print_statement
-import time
-import esp_sdk
-from esp_sdk.rest import ApiException
-from pprint import pprint
-
-# create an instance of the API class
-api_instance = esp_sdk.ExternalAccountsApi()
-
-try: 
-    # Show a list of Subscribed Accounts
-    api_instance.api_v2_external_accounts_subscribed_accounts_json_api_get()
-except ApiException as e:
-    print("Exception when calling ExternalAccountsApi->api_v2_external_accounts_subscribed_accounts_json_api_get: %s\n" % e)
-```
-
-### Parameters
-This endpoint does not need any parameter.
-
-### Return type
-
-void (empty response body)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: Not defined
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create**
 > ExternalAccount create(team_id, arn, external_id, name=name)
@@ -114,10 +26,10 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = esp_sdk.ExternalAccountsApi()
-team_id = 56 # int | Team Id
-arn = 'arn_example' # str | ARN
-external_id = 'external_id_example' # str | External Id
-name = 'name_example' # str | Name (optional)
+team_id = 56 # int | The ID of the team the external account will belong to
+arn = 'arn_example' # str | Amazon Resource Name for the IAM role
+external_id = 'external_id_example' # str | External identifier set on the role
+name = 'name_example' # str | The name for this external account (optional)
 
 try: 
     # Create a(n) External Account
@@ -131,10 +43,10 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **team_id** | **int**| Team Id | 
- **arn** | **str**| ARN | 
- **external_id** | **str**| External Id | 
- **name** | **str**| Name | [optional] 
+ **team_id** | **int**| The ID of the team the external account will belong to | 
+ **arn** | **str**| Amazon Resource Name for the IAM role | 
+ **external_id** | **str**| External identifier set on the role | 
+ **name** | **str**| The name for this external account | [optional] 
 
 ### Return type
 
@@ -147,14 +59,14 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/vnd.api+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **destroy**
-> object destroy(id)
+> ExternalAccount destroy(id)
 
-Remove a(n) External Account
+Remove a(n) ExternalAccount
 
 ### Example 
 ```python
@@ -166,10 +78,10 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = esp_sdk.ExternalAccountsApi()
-id = 56 # int | External Account Id
+id = 56 # int | ExternalAccount Id
 
 try: 
-    # Remove a(n) External Account
+    # Remove a(n) ExternalAccount
     api_response = api_instance.destroy(id)
     pprint(api_response)
 except ApiException as e:
@@ -180,11 +92,11 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **int**| External Account Id | 
+ **id** | **int**| ExternalAccount Id | 
 
 ### Return type
 
-**object**
+[**ExternalAccount**](ExternalAccount.md)
 
 ### Authorization
 
@@ -193,12 +105,12 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/vnd.api+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list**
-> PaginatedCollection list(page=page, filter=filter, include=include)
+> PaginatedCollection list(filter=filter, include=include, page=page)
 
 Get a list of External Accounts
 
@@ -212,13 +124,13 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = esp_sdk.ExternalAccountsApi()
-page = {'key': 'page_example'} # dict(str, str) | Page Number (optional)
-filter = {'key': 'filter_example'} # dict(str, str) | Filter Params for Searching (optional)
-include = 'include_example' # str | Included Objects (optional)
+filter = {'key': 'filter_example'} # dict(str, str) | Filter Params for Searching.  Equality Searchable Attributes: [id, nickname, name] Matching Searchable Attributes: [nickname, name] Limited Searchable Attributes: [account_eq, arn_eq] Sortable Attributes: [name, updated_at, created_at, id] Searchable Associations: [organization, sub_organization, team, compliance_standards, disabled_signatures] See the filter parameter of the association's list action to see what attributes are searchable on each association. See Searching on Relationships for more information. See Searching Lists for more information. Example: filter: {name_eq: 'Bob'} (optional)
+include = 'include_example' # str | Objects that can be included in the response:  organization,sub_organization,team,scan_intervals,disabled_signatures,credentials  See Including Objects for more information. (optional)
+page = {'key': 'page_example'} # dict(str, str) | Page Number and Page Size.  Example: page: {number: 1, size: 20} (optional)
 
 try: 
     # Get a list of External Accounts
-    api_response = api_instance.list(page=page, filter=filter, include=include)
+    api_response = api_instance.list(filter=filter, include=include, page=page)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling ExternalAccountsApi->list: %s\n" % e)
@@ -228,9 +140,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **page** | [**dict(str, str)**](str.md)| Page Number | [optional] 
- **filter** | [**dict(str, str)**](str.md)| Filter Params for Searching | [optional] 
- **include** | **str**| Included Objects | [optional] 
+ **filter** | [**dict(str, str)**](str.md)| Filter Params for Searching.  Equality Searchable Attributes: [id, nickname, name] Matching Searchable Attributes: [nickname, name] Limited Searchable Attributes: [account_eq, arn_eq] Sortable Attributes: [name, updated_at, created_at, id] Searchable Associations: [organization, sub_organization, team, compliance_standards, disabled_signatures] See the filter parameter of the association&#39;s list action to see what attributes are searchable on each association. See Searching on Relationships for more information. See Searching Lists for more information. Example: filter: {name_eq: &#39;Bob&#39;} | [optional] 
+ **include** | **str**| Objects that can be included in the response:  organization,sub_organization,team,scan_intervals,disabled_signatures,credentials  See Including Objects for more information. | [optional] 
+ **page** | [**dict(str, str)**](str.md)| Page Number and Page Size.  Example: page: {number: 1, size: 20} | [optional] 
 
 ### Return type
 
@@ -243,7 +155,7 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/vnd.api+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -263,7 +175,7 @@ from pprint import pprint
 # create an instance of the API class
 api_instance = esp_sdk.ExternalAccountsApi()
 id = 56 # int | External Account Id
-include = 'include_example' # str | Included Objects (optional)
+include = 'include_example' # str | Objects that can be included in the response:  organization,sub_organization,team,scan_intervals,disabled_signatures,credentials  See Including Objects for more information. (optional)
 
 try: 
     # Show a single External Account
@@ -278,7 +190,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| External Account Id | 
- **include** | **str**| Included Objects | [optional] 
+ **include** | **str**| Objects that can be included in the response:  organization,sub_organization,team,scan_intervals,disabled_signatures,credentials  See Including Objects for more information. | [optional] 
 
 ### Return type
 
@@ -291,7 +203,7 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/vnd.api+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -311,11 +223,11 @@ from pprint import pprint
 # create an instance of the API class
 api_instance = esp_sdk.ExternalAccountsApi()
 id = 56 # int | External Account Id
-arn = 'arn_example' # str | ARN
-external_id = 56 # int | External Id
-sub_organization_id = 56 # int | Sub Organization Id
-team_id = 56 # int | Team Id
-name = 'name_example' # str | Name (optional)
+arn = 'arn_example' # str | Amazon Resource Name for the IAM role
+external_id = 56 # int | External identifier set on the role
+sub_organization_id = 56 # int | The ID of the sub organization the external account will belong to
+team_id = 56 # int | The ID of the team the external account will belong to
+name = 'name_example' # str | The name for this external account (optional)
 
 try: 
     # Update a(n) External Account
@@ -330,11 +242,11 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| External Account Id | 
- **arn** | **str**| ARN | 
- **external_id** | **int**| External Id | 
- **sub_organization_id** | **int**| Sub Organization Id | 
- **team_id** | **int**| Team Id | 
- **name** | **str**| Name | [optional] 
+ **arn** | **str**| Amazon Resource Name for the IAM role | 
+ **external_id** | **int**| External identifier set on the role | 
+ **sub_organization_id** | **int**| The ID of the sub organization the external account will belong to | 
+ **team_id** | **int**| The ID of the team the external account will belong to | 
+ **name** | **str**| The name for this external account | [optional] 
 
 ### Return type
 
@@ -347,7 +259,7 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/vnd.api+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

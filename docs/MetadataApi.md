@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 
 # **for_alert**
-> for_alert(alert_id)
+> Metadata for_alert(alert_id)
 
 Show the metadata for an alert
 
@@ -27,7 +27,8 @@ alert_id = 56 # int | Alert Id
 
 try: 
     # Show the metadata for an alert
-    api_instance.for_alert(alert_id)
+    api_response = api_instance.for_alert(alert_id)
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling MetadataApi->for_alert: %s\n" % e)
 ```
@@ -40,7 +41,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**Metadata**](Metadata.md)
 
 ### Authorization
 
@@ -49,12 +50,12 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/vnd.api+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **show**
-> Metadata show(id, include=include)
+> Metadata show(id)
 
 Show a single Metadata
 
@@ -69,11 +70,10 @@ from pprint import pprint
 # create an instance of the API class
 api_instance = esp_sdk.MetadataApi()
 id = 56 # int | Metadata Id
-include = 'include_example' # str | Included Objects (optional)
 
 try: 
     # Show a single Metadata
-    api_response = api_instance.show(id, include=include)
+    api_response = api_instance.show(id)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling MetadataApi->show: %s\n" % e)
@@ -84,7 +84,6 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| Metadata Id | 
- **include** | **str**| Included Objects | [optional] 
 
 ### Return type
 
@@ -97,7 +96,7 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/vnd.api+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

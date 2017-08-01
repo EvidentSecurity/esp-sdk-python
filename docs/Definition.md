@@ -3,8 +3,6 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**relationships** | **object** | Links to Associated Objects | [optional] 
-**errors** | **list[str]** | Array of error messages if the request failed | [optional] 
 **id** | **int** | Unique ID | [optional] 
 **code** | **str** | The code for this definition | [optional] 
 **created_at** | [**datetime**](DateTime.md) | ISO 8601 timestamp when the resource was created | [optional] 

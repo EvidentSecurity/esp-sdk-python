@@ -4,12 +4,12 @@ All URIs are relative to *http://localhost/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**list**](ServicesApi.md#list) | **GET** /api/v2/services.json_api | Get a list of Services
+[**list**](ServicesApi.md#list) | **PUT** /api/v2/services.json_api | Get a list of Services
 [**show**](ServicesApi.md#show) | **GET** /api/v2/services/{id}.json_api | Show a single Service
 
 
 # **list**
-> PaginatedCollection list(page=page, filter=filter, include=include)
+> PaginatedCollection list(filter=filter, page=page)
 
 Get a list of Services
 
@@ -23,13 +23,12 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = esp_sdk.ServicesApi()
-page = {'key': 'page_example'} # dict(str, str) | Page Number (optional)
-filter = {'key': 'filter_example'} # dict(str, str) | Filter Params for Searching (optional)
-include = 'include_example' # str | Included Objects (optional)
+filter = {'key': 'filter_example'} # dict(str, str) | Filter Params for Searching.  Equality Searchable Attributes: [id, name, policy_name] Matching Searchable Attributes: [name, policy_name] Limited Searchable Attribute: [provider_eq]   Example: filter: {name_eq: 'Bob'} (optional)
+page = {'key': 'page_example'} # dict(str, str) | Page Number and Page Size.  Example: page: {number: 1, size: 20} (optional)
 
 try: 
     # Get a list of Services
-    api_response = api_instance.list(page=page, filter=filter, include=include)
+    api_response = api_instance.list(filter=filter, page=page)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling ServicesApi->list: %s\n" % e)
@@ -39,9 +38,8 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **page** | [**dict(str, str)**](str.md)| Page Number | [optional] 
- **filter** | [**dict(str, str)**](str.md)| Filter Params for Searching | [optional] 
- **include** | **str**| Included Objects | [optional] 
+ **filter** | [**dict(str, str)**](str.md)| Filter Params for Searching.  Equality Searchable Attributes: [id, name, policy_name] Matching Searchable Attributes: [name, policy_name] Limited Searchable Attribute: [provider_eq]   Example: filter: {name_eq: &#39;Bob&#39;} | [optional] 
+ **page** | [**dict(str, str)**](str.md)| Page Number and Page Size.  Example: page: {number: 1, size: 20} | [optional] 
 
 ### Return type
 
@@ -54,12 +52,12 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/vnd.api+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **show**
-> Service show(id, include=include)
+> Service show(id)
 
 Show a single Service
 
@@ -74,11 +72,10 @@ from pprint import pprint
 # create an instance of the API class
 api_instance = esp_sdk.ServicesApi()
 id = 56 # int | Service Id
-include = 'include_example' # str | Included Objects (optional)
 
 try: 
     # Show a single Service
-    api_response = api_instance.show(id, include=include)
+    api_response = api_instance.show(id)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling ServicesApi->show: %s\n" % e)
@@ -89,7 +86,6 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| Service Id | 
- **include** | **str**| Included Objects | [optional] 
 
 ### Return type
 
@@ -102,7 +98,7 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/vnd.api+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

@@ -57,7 +57,7 @@ class TestRESTClientObject(TestBase):
         api_client.rest_client = rest_client
         api = SubOrganizationsApi(api_client)
 
-        api.create('Evident')
+        api.create(1, 'Evident')
 
         args, kwargs = rest_client.pool_manager.request.call_args
         self.assertEqual(args[0], 'POST')
@@ -65,7 +65,7 @@ class TestRESTClientObject(TestBase):
             self.assertRegex(args[1], "/v2/sub_organizations.json_api")
         else:
             self.assertRegexpMatches(args[1], "/v2/sub_organizations.json_api")
-        self.assertEqual(kwargs['body'], json.dumps({'data': {'attributes': {'name': 'Evident'}}}))
+        self.assertEqual(kwargs['body'], json.dumps({'data': {'attributes': {"organization_id": 1, 'name': 'Evident'}}}))
 
     def test_request_sets_authorization_headers_for_non_GET(self):
         rest_client = RESTClientObject()
@@ -75,7 +75,7 @@ class TestRESTClientObject(TestBase):
         api_client.rest_client = rest_client
         api = SubOrganizationsApi(api_client)
 
-        api.create('Evident')
+        api.create(1, 'Evident')
 
         args, kwargs = rest_client.pool_manager.request.call_args
         self.assertEqual(args[0], 'POST')

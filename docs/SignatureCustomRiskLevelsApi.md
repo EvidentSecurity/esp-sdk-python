@@ -5,7 +5,7 @@ All URIs are relative to *http://localhost/*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**create**](SignatureCustomRiskLevelsApi.md#create) | **POST** /api/v2/signature_custom_risk_levels.json_api | Create a(n) Signature Custom Risk Level
-[**destroy**](SignatureCustomRiskLevelsApi.md#destroy) | **DELETE** /api/v2/signature_custom_risk_levels/{id}.json_api | Remove a(n) Signature Custom Risk Level
+[**destroy**](SignatureCustomRiskLevelsApi.md#destroy) | **DELETE** /api/v2/signature_custom_risk_levels/{id}.json_api | Remove a(n) SignatureCustomRiskLevel
 [**list**](SignatureCustomRiskLevelsApi.md#list) | **GET** /api/v2/external_accounts/{external_account_id}/signature_custom_risk_levels.json_api | Get a list of Signature Custom Risk Levels
 [**show**](SignatureCustomRiskLevelsApi.md#show) | **GET** /api/v2/signature_custom_risk_levels/{id}.json_api | Show a single Signature Custom Risk Level
 [**update**](SignatureCustomRiskLevelsApi.md#update) | **PATCH** /api/v2/signature_custom_risk_levels/{id}.json_api | Update a(n) Signature Custom Risk Level
@@ -57,14 +57,14 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/vnd.api+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **destroy**
-> object destroy(id)
+> SignatureCustomRiskLevel destroy(id)
 
-Remove a(n) Signature Custom Risk Level
+Remove a(n) SignatureCustomRiskLevel
 
 ### Example 
 ```python
@@ -76,10 +76,10 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = esp_sdk.SignatureCustomRiskLevelsApi()
-id = 56 # int | Signature Custom Risk Level Id
+id = 56 # int | SignatureCustomRiskLevel Id
 
 try: 
-    # Remove a(n) Signature Custom Risk Level
+    # Remove a(n) SignatureCustomRiskLevel
     api_response = api_instance.destroy(id)
     pprint(api_response)
 except ApiException as e:
@@ -90,11 +90,11 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **int**| Signature Custom Risk Level Id | 
+ **id** | **int**| SignatureCustomRiskLevel Id | 
 
 ### Return type
 
-**object**
+[**SignatureCustomRiskLevel**](SignatureCustomRiskLevel.md)
 
 ### Authorization
 
@@ -103,12 +103,12 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/vnd.api+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list**
-> PaginatedCollection list(external_account_id, page=page, filter=filter, include=include)
+> PaginatedCollection list(external_account_id, include=include, page=page)
 
 Get a list of Signature Custom Risk Levels
 
@@ -123,13 +123,12 @@ from pprint import pprint
 # create an instance of the API class
 api_instance = esp_sdk.SignatureCustomRiskLevelsApi()
 external_account_id = 56 # int | The ID of the external account to retrieve
-page = {'key': 'page_example'} # dict(str, str) | Page Number (optional)
-filter = {'key': 'filter_example'} # dict(str, str) | Filter Params for Searching (optional)
-include = 'include_example' # str | Included Objects (optional)
+include = 'include_example' # str | Objects that can be included in the response:  external_account,signature  See Including Objects for more information. (optional)
+page = {'key': 'page_example'} # dict(str, str) | Page Number and Page Size.  Example: page: {number: 1, size: 20} (optional)
 
 try: 
     # Get a list of Signature Custom Risk Levels
-    api_response = api_instance.list(external_account_id, page=page, filter=filter, include=include)
+    api_response = api_instance.list(external_account_id, include=include, page=page)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling SignatureCustomRiskLevelsApi->list: %s\n" % e)
@@ -140,9 +139,8 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **external_account_id** | **int**| The ID of the external account to retrieve | 
- **page** | [**dict(str, str)**](str.md)| Page Number | [optional] 
- **filter** | [**dict(str, str)**](str.md)| Filter Params for Searching | [optional] 
- **include** | **str**| Included Objects | [optional] 
+ **include** | **str**| Objects that can be included in the response:  external_account,signature  See Including Objects for more information. | [optional] 
+ **page** | [**dict(str, str)**](str.md)| Page Number and Page Size.  Example: page: {number: 1, size: 20} | [optional] 
 
 ### Return type
 
@@ -155,7 +153,7 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/vnd.api+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -175,7 +173,7 @@ from pprint import pprint
 # create an instance of the API class
 api_instance = esp_sdk.SignatureCustomRiskLevelsApi()
 id = 56 # int | Signature Custom Risk Level Id
-include = 'include_example' # str | Included Objects (optional)
+include = 'include_example' # str | Objects that can be included in the response:  external_account,signature  See Including Objects for more information. (optional)
 
 try: 
     # Show a single Signature Custom Risk Level
@@ -190,7 +188,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| Signature Custom Risk Level Id | 
- **include** | **str**| Included Objects | [optional] 
+ **include** | **str**| Objects that can be included in the response:  external_account,signature  See Including Objects for more information. | [optional] 
 
 ### Return type
 
@@ -203,7 +201,7 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/vnd.api+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -255,7 +253,7 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/vnd.api+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

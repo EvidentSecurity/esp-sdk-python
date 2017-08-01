@@ -4,15 +4,66 @@ All URIs are relative to *http://localhost/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create**](CustomSignatureResultsApi.md#create) | **POST** /api/v2/custom_signature_results.json_api | Create a(n) Result
-[**list**](CustomSignatureResultsApi.md#list) | **PUT** /api/v2/custom_signature_results.json_api | Get a list of Results
-[**show**](CustomSignatureResultsApi.md#show) | **GET** /api/v2/custom_signature_results/{id}.json_api | Show a single Result
+[**alerts**](CustomSignatureResultsApi.md#alerts) | **GET** /api/v2/custom_signature_results/{custom_signature_result_id}/alerts.json_api | Returns the alerts for a given result. Note that this format is slightly different than the standard alert format. A successful call to this API returns a list of alerts for the custom signature result identified by the id parameter.
+[**create**](CustomSignatureResultsApi.md#create) | **POST** /api/v2/custom_signature_results.json_api | Create a(n) Custom Signature/Result
+[**list**](CustomSignatureResultsApi.md#list) | **PUT** /api/v2/custom_signature_results.json_api | Get a list of Custom Signature/Results
+[**show**](CustomSignatureResultsApi.md#show) | **GET** /api/v2/custom_signature_results/{id}.json_api | Show a single Custom Signature/Result
 
+
+# **alerts**
+> PaginatedCollection alerts(custom_signature_result_id, include=include, page=page)
+
+Returns the alerts for a given result. Note that this format is slightly different than the standard alert format. A successful call to this API returns a list of alerts for the custom signature result identified by the id parameter.
+
+### Example 
+```python
+from __future__ import print_statement
+import time
+import esp_sdk
+from esp_sdk.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = esp_sdk.CustomSignatureResultsApi()
+custom_signature_result_id = 56 # int | Custom Signature Result Id
+include = 'include_example' # str | Objects that can be included in the response:  external_account,region,custom_signature  See Including Objects for more information. (optional)
+page = {'key': 'page_example'} # dict(str, str) | Page Number and Page Size.  Example: page: {number: 1, size: 20} (optional)
+
+try: 
+    # Returns the alerts for a given result. Note that this format is slightly different than the standard alert format. A successful call to this API returns a list of alerts for the custom signature result identified by the id parameter.
+    api_response = api_instance.alerts(custom_signature_result_id, include=include, page=page)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling CustomSignatureResultsApi->alerts: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **custom_signature_result_id** | **int**| Custom Signature Result Id | 
+ **include** | **str**| Objects that can be included in the response:  external_account,region,custom_signature  See Including Objects for more information. | [optional] 
+ **page** | [**dict(str, str)**](str.md)| Page Number and Page Size.  Example: page: {number: 1, size: 20} | [optional] 
+
+### Return type
+
+[**PaginatedCollection**](PaginatedCollection.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/vnd.api+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create**
-> Result create(code, custom_signature_definition_id, external_account_id, language, region_id, region=region)
+> CustomSignatureResult create(code, custom_signature_definition_id, external_account_id, language, region_id, region=region)
 
-Create a(n) Result
+Create a(n) Custom Signature/Result
 
 ### Example 
 ```python
@@ -32,7 +83,7 @@ region_id = 56 # int | ID of the region the code should run for.
 region = 'region_example' # str | Code of the region the result code should run for. Ex: us-east-1. This can be sent instead of region_id (optional)
 
 try: 
-    # Create a(n) Result
+    # Create a(n) Custom Signature/Result
     api_response = api_instance.create(code, custom_signature_definition_id, external_account_id, language, region_id, region=region)
     pprint(api_response)
 except ApiException as e:
@@ -52,7 +103,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Result**](Result.md)
+[**CustomSignatureResult**](CustomSignatureResult.md)
 
 ### Authorization
 
@@ -61,14 +112,14 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/vnd.api+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list**
-> PaginatedCollection list(page=page, filter=filter, include=include)
+> PaginatedCollection list(filter=filter, include=include, page=page)
 
-Get a list of Results
+Get a list of Custom Signature/Results
 
 ### Example 
 ```python
@@ -80,13 +131,13 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = esp_sdk.CustomSignatureResultsApi()
-page = {'key': 'page_example'} # dict(str, str) | Page Number (optional)
-filter = {'key': 'filter_example'} # dict(str, str) | Filter Params for Searching (optional)
-include = 'include_example' # str | Included Objects (optional)
+filter = {'key': 'filter_example'} # dict(str, str) | Filter Params for Searching.  Equality Searchable Attributes: [id, language, status]    Searchable Associations: [definition, region, external_account] See the filter parameter of the association's list action to see what attributes are searchable on each association. See Searching on Relationships for more information. See Searching Lists for more information. Example: filter: {name_eq: 'Bob'} (optional)
+include = 'include_example' # str | Objects that can be included in the response:  external_account,region,definition,alerts  See Including Objects for more information. (optional)
+page = {'key': 'page_example'} # dict(str, str) | Page Number and Page Size.  Example: page: {number: 1, size: 20} (optional)
 
 try: 
-    # Get a list of Results
-    api_response = api_instance.list(page=page, filter=filter, include=include)
+    # Get a list of Custom Signature/Results
+    api_response = api_instance.list(filter=filter, include=include, page=page)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling CustomSignatureResultsApi->list: %s\n" % e)
@@ -96,9 +147,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **page** | [**dict(str, str)**](str.md)| Page Number | [optional] 
- **filter** | [**dict(str, str)**](str.md)| Filter Params for Searching | [optional] 
- **include** | **str**| Included Objects | [optional] 
+ **filter** | [**dict(str, str)**](str.md)| Filter Params for Searching.  Equality Searchable Attributes: [id, language, status]    Searchable Associations: [definition, region, external_account] See the filter parameter of the association&#39;s list action to see what attributes are searchable on each association. See Searching on Relationships for more information. See Searching Lists for more information. Example: filter: {name_eq: &#39;Bob&#39;} | [optional] 
+ **include** | **str**| Objects that can be included in the response:  external_account,region,definition,alerts  See Including Objects for more information. | [optional] 
+ **page** | [**dict(str, str)**](str.md)| Page Number and Page Size.  Example: page: {number: 1, size: 20} | [optional] 
 
 ### Return type
 
@@ -111,14 +162,14 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/vnd.api+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **show**
-> Result show(id, include=include)
+> CustomSignatureResult show(id, include=include)
 
-Show a single Result
+Show a single Custom Signature/Result
 
 ### Example 
 ```python
@@ -130,11 +181,11 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = esp_sdk.CustomSignatureResultsApi()
-id = 56 # int | Result Id
-include = 'include_example' # str | Included Objects (optional)
+id = 56 # int | Custom Signature/Result Id
+include = 'include_example' # str | Objects that can be included in the response:  external_account,region,definition,alerts  See Including Objects for more information. (optional)
 
 try: 
-    # Show a single Result
+    # Show a single Custom Signature/Result
     api_response = api_instance.show(id, include=include)
     pprint(api_response)
 except ApiException as e:
@@ -145,12 +196,12 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **int**| Result Id | 
- **include** | **str**| Included Objects | [optional] 
+ **id** | **int**| Custom Signature/Result Id | 
+ **include** | **str**| Objects that can be included in the response:  external_account,region,definition,alerts  See Including Objects for more information. | [optional] 
 
 ### Return type
 
-[**Result**](Result.md)
+[**CustomSignatureResult**](CustomSignatureResult.md)
 
 ### Authorization
 
@@ -159,7 +210,7 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/vnd.api+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
