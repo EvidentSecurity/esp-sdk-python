@@ -32,7 +32,7 @@ email = 'email_example' # str | The email of the user
 role_id = 'role_id_example' # str | The role of the user (optional)
 sub_organization_ids = [56] # list[int] | A list of sub organization IDs that the user should have access to (optional)
 team_ids = [56] # list[int] | A list of team IDs that the user should have access to (optional)
-disable_daily_emails = 'disable_daily_emails_example' # str | Whether the daily emails should be turned off or not. Valid values are true/false (optional)
+disable_daily_emails = true # bool | Whether the daily emails should be turned off or not. (optional)
 phone = 'phone_example' # str | The phone number of the user (optional)
 time_zone = 'time_zone_example' # str | The time zone of the user. See Time Zones for a list of valid time zones (optional)
 
@@ -54,7 +54,7 @@ Name | Type | Description  | Notes
  **role_id** | **str**| The role of the user | [optional] 
  **sub_organization_ids** | [**list[int]**](int.md)| A list of sub organization IDs that the user should have access to | [optional] 
  **team_ids** | [**list[int]**](int.md)| A list of team IDs that the user should have access to | [optional] 
- **disable_daily_emails** | **str**| Whether the daily emails should be turned off or not. Valid values are true/false | [optional] 
+ **disable_daily_emails** | **bool**| Whether the daily emails should be turned off or not. | [optional] 
  **phone** | **str**| The phone number of the user | [optional] 
  **time_zone** | **str**| The time zone of the user. See Time Zones for a list of valid time zones | [optional] 
 
@@ -69,12 +69,12 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/vnd.api+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **destroy**
-> object destroy(id)
+> User destroy(id)
 
 Remove a(n) User
 
@@ -106,7 +106,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**User**](User.md)
 
 ### Authorization
 
@@ -115,12 +115,12 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/vnd.api+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list**
-> PaginatedCollection list(page=page, filter=filter, include=include)
+> PaginatedCollection list(filter=filter, include=include, page=page)
 
 Get a list of Users
 
@@ -134,13 +134,13 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = esp_sdk.UsersApi()
-page = {'key': 'page_example'} # dict(str, str) | Page Number (optional)
-filter = {'key': 'filter_example'} # dict(str, str) | Filter Params for Searching (optional)
-include = 'include_example' # str | Included Objects (optional)
+filter = {'key': 'filter_example'} # dict(str, str) | Filter Params for Searching.  Equality Searchable Attributes: [id, email] Matching Searchable Attribute: [email]  Sortable Attributes: [email, current_sign_in_at, updated_at, created_at, id] Searchable Associations: [role, organization, sub_organizations, teams] See the filter parameter of the association's list action to see what attributes are searchable on each association. See Searching on Relationships for more information. See Searching Lists for more information. Example: filter: {name_eq: 'Bob'} (optional)
+include = 'include_example' # str | Objects that can be included in the response:  organization,sub_organizations,teams,role  See Including Objects for more information. (optional)
+page = {'key': 'page_example'} # dict(str, str) | Page Number and Page Size.  Example: page: {number: 1, size: 20} (optional)
 
 try: 
     # Get a list of Users
-    api_response = api_instance.list(page=page, filter=filter, include=include)
+    api_response = api_instance.list(filter=filter, include=include, page=page)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling UsersApi->list: %s\n" % e)
@@ -150,9 +150,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **page** | [**dict(str, str)**](str.md)| Page Number | [optional] 
- **filter** | [**dict(str, str)**](str.md)| Filter Params for Searching | [optional] 
- **include** | **str**| Included Objects | [optional] 
+ **filter** | [**dict(str, str)**](str.md)| Filter Params for Searching.  Equality Searchable Attributes: [id, email] Matching Searchable Attribute: [email]  Sortable Attributes: [email, current_sign_in_at, updated_at, created_at, id] Searchable Associations: [role, organization, sub_organizations, teams] See the filter parameter of the association&#39;s list action to see what attributes are searchable on each association. See Searching on Relationships for more information. See Searching Lists for more information. Example: filter: {name_eq: &#39;Bob&#39;} | [optional] 
+ **include** | **str**| Objects that can be included in the response:  organization,sub_organizations,teams,role  See Including Objects for more information. | [optional] 
+ **page** | [**dict(str, str)**](str.md)| Page Number and Page Size.  Example: page: {number: 1, size: 20} | [optional] 
 
 ### Return type
 
@@ -165,7 +165,7 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/vnd.api+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -185,7 +185,7 @@ from pprint import pprint
 # create an instance of the API class
 api_instance = esp_sdk.UsersApi()
 id = 56 # int | User Id
-include = 'include_example' # str | Included Objects (optional)
+include = 'include_example' # str | Objects that can be included in the response:  organization,sub_organizations,teams,role  See Including Objects for more information. (optional)
 
 try: 
     # Show a single User
@@ -200,7 +200,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| User Id | 
- **include** | **str**| Included Objects | [optional] 
+ **include** | **str**| Objects that can be included in the response:  organization,sub_organizations,teams,role  See Including Objects for more information. | [optional] 
 
 ### Return type
 
@@ -213,7 +213,7 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/vnd.api+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -239,7 +239,7 @@ email = 'email_example' # str | The email of the user
 role_id = 'role_id_example' # str | The role of the user (optional)
 sub_organization_ids = [56] # list[int] | A list of sub organization IDs that the user should have access to (optional)
 team_ids = [56] # list[int] | A list of team IDs that the user should have access to (optional)
-disable_daily_emails = 'disable_daily_emails_example' # str | Whether the daily emails should be turned off or not. Valid values are true/false (optional)
+disable_daily_emails = true # bool | Whether the daily emails should be turned off or not. (optional)
 phone = 'phone_example' # str | The phone number of the user (optional)
 time_zone = 'time_zone_example' # str | The time zone of the user. See Time Zones for a list of valid time zones (optional)
 
@@ -262,7 +262,7 @@ Name | Type | Description  | Notes
  **role_id** | **str**| The role of the user | [optional] 
  **sub_organization_ids** | [**list[int]**](int.md)| A list of sub organization IDs that the user should have access to | [optional] 
  **team_ids** | [**list[int]**](int.md)| A list of team IDs that the user should have access to | [optional] 
- **disable_daily_emails** | **str**| Whether the daily emails should be turned off or not. Valid values are true/false | [optional] 
+ **disable_daily_emails** | **bool**| Whether the daily emails should be turned off or not. | [optional] 
  **phone** | **str**| The phone number of the user | [optional] 
  **time_zone** | **str**| The time zone of the user. See Time Zones for a list of valid time zones | [optional] 
 
@@ -277,7 +277,7 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/vnd.api+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

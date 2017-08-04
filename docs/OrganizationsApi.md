@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 
 # **list**
-> PaginatedCollection list(page=page, filter=filter, include=include)
+> PaginatedCollection list(filter=filter, include=include, page=page)
 
 Get a list of Organizations
 
@@ -24,13 +24,13 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = esp_sdk.OrganizationsApi()
-page = {'key': 'page_example'} # dict(str, str) | Page Number (optional)
-filter = {'key': 'filter_example'} # dict(str, str) | Filter Params for Searching (optional)
-include = 'include_example' # str | Included Objects (optional)
+filter = {'key': 'filter_example'} # dict(str, str) | Filter Params for Searching.  Equality Searchable Attributes: [id, name] Matching Searchable Attribute: [name]  Sortable Attributes: [name, updated_at, created_at, id]  Example: filter: {name_eq: 'Bob'} (optional)
+include = 'include_example' # str | Objects that can be included in the response:  subscription,custom_signatures,external_accounts,sub_organizations,teams,users,compliance_standards,integrations  See Including Objects for more information. (optional)
+page = {'key': 'page_example'} # dict(str, str) | Page Number and Page Size.  Example: page: {number: 1, size: 20} (optional)
 
 try: 
     # Get a list of Organizations
-    api_response = api_instance.list(page=page, filter=filter, include=include)
+    api_response = api_instance.list(filter=filter, include=include, page=page)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling OrganizationsApi->list: %s\n" % e)
@@ -40,9 +40,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **page** | [**dict(str, str)**](str.md)| Page Number | [optional] 
- **filter** | [**dict(str, str)**](str.md)| Filter Params for Searching | [optional] 
- **include** | **str**| Included Objects | [optional] 
+ **filter** | [**dict(str, str)**](str.md)| Filter Params for Searching.  Equality Searchable Attributes: [id, name] Matching Searchable Attribute: [name]  Sortable Attributes: [name, updated_at, created_at, id]  Example: filter: {name_eq: &#39;Bob&#39;} | [optional] 
+ **include** | **str**| Objects that can be included in the response:  subscription,custom_signatures,external_accounts,sub_organizations,teams,users,compliance_standards,integrations  See Including Objects for more information. | [optional] 
+ **page** | [**dict(str, str)**](str.md)| Page Number and Page Size.  Example: page: {number: 1, size: 20} | [optional] 
 
 ### Return type
 
@@ -55,7 +55,7 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/vnd.api+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -75,7 +75,7 @@ from pprint import pprint
 # create an instance of the API class
 api_instance = esp_sdk.OrganizationsApi()
 id = 56 # int | Organization Id
-include = 'include_example' # str | Included Objects (optional)
+include = 'include_example' # str | Objects that can be included in the response:  subscription,custom_signatures,external_accounts,sub_organizations,teams,users,compliance_standards,integrations  See Including Objects for more information. (optional)
 
 try: 
     # Show a single Organization
@@ -90,7 +90,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| Organization Id | 
- **include** | **str**| Included Objects | [optional] 
+ **include** | **str**| Objects that can be included in the response:  subscription,custom_signatures,external_accounts,sub_organizations,teams,users,compliance_standards,integrations  See Including Objects for more information. | [optional] 
 
 ### Return type
 
@@ -103,7 +103,7 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/vnd.api+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -151,7 +151,7 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/vnd.api+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

@@ -2,27 +2,30 @@ from __future__ import absolute_import
 
 # import apis into api package
 from .alerts_api import AlertsApi
+from .audit_log_file_export_api import AuditLogFileExportApi
+from .audit_logs_api import AuditLogsApi
 from .cloud_trail_events_api import CloudTrailEventsApi
+from .compliance_controls_api import ComplianceControlsApi
+from .compliance_domains_api import ComplianceDomainsApi
+from .compliance_standards_api import ComplianceStandardsApi
 from .contact_requests_api import ContactRequestsApi
 from .custom_signature_definitions_api import CustomSignatureDefinitionsApi
 from .custom_signature_results_api import CustomSignatureResultsApi
-from .custom_signature_stats_api import CustomSignatureStatsApi
 from .custom_signatures_api import CustomSignaturesApi
-from .dashboard_api import DashboardApi
+from .external_account_disabled_signatures_api import ExternalAccountDisabledSignaturesApi
+from .external_account_user_attribution_channels_api import ExternalAccountUserAttributionChannelsApi
+from .external_account_user_attributions_api import ExternalAccountUserAttributionsApi
 from .external_accounts_api import ExternalAccountsApi
 from .metadata_api import MetadataApi
 from .organizations_api import OrganizationsApi
-from .region_stats_api import RegionStatsApi
-from .region_suppressions_api import RegionSuppressionsApi
+from .permissions_api import PermissionsApi
 from .regions_api import RegionsApi
+from .report_integrations_api import ReportIntegrationsApi
 from .reports_api import ReportsApi
 from .roles_api import RolesApi
 from .scan_intervals_api import ScanIntervalsApi
-from .service_stats_api import ServiceStatsApi
 from .services_api import ServicesApi
 from .signature_custom_risk_levels_api import SignatureCustomRiskLevelsApi
-from .signature_stats_api import SignatureStatsApi
-from .signature_suppressions_api import SignatureSuppressionsApi
 from .signatures_api import SignaturesApi
 from .stats_api import StatsApi
 from .sub_organizations_api import SubOrganizationsApi

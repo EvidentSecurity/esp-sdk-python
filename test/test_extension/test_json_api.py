@@ -13,21 +13,6 @@ from esp_sdk.apis.dashboard_api import DashboardApi
 class TestJsonApi(TestBase):
     """ JsonApi unit tests """
 
-    def test_parses_nested_objects_correctly(self):
-        data = self.dashboard_response()
-        parsed_json = json.loads(data)
-        rest_client = RESTClientObject()
-        response = Mock(status=200, data=self.json_list([data]))
-        rest_client.pool_manager.request = Mock(return_value=response)
-        api_client = ApiClient()
-        api_client.rest_client = rest_client
-        api = DashboardApi(api_client)
-
-        dashboard = api.recent()
-
-        self.assertEqual(dashboard.data[0].stat.stat_signatures[0].signature.name, parsed_json['included'][0]['attributes']['stat_signatures'][0]['signature']['name'])
-
-
     def test_merges_nested_included_objects(self):
         data = self.alert_response()
         parsed_json = json.loads(data)

@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 
 # **list**
-> PaginatedCollection list(alert_id, page=page, filter=filter, include=include)
+> PaginatedCollection list(alert_id, page=page)
 
 Get a list of Cloud Trail Events
 
@@ -24,13 +24,11 @@ from pprint import pprint
 # create an instance of the API class
 api_instance = esp_sdk.CloudTrailEventsApi()
 alert_id = 56 # int | The ID of the alert to retrieve cloud trail events for
-page = {'key': 'page_example'} # dict(str, str) | Page Number (optional)
-filter = {'key': 'filter_example'} # dict(str, str) | Filter Params for Searching (optional)
-include = 'include_example' # str | Included Objects (optional)
+page = {'key': 'page_example'} # dict(str, str) | Page Number and Page Size.  Example: page: {number: 1, size: 20} (optional)
 
 try: 
     # Get a list of Cloud Trail Events
-    api_response = api_instance.list(alert_id, page=page, filter=filter, include=include)
+    api_response = api_instance.list(alert_id, page=page)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling CloudTrailEventsApi->list: %s\n" % e)
@@ -41,9 +39,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **alert_id** | **int**| The ID of the alert to retrieve cloud trail events for | 
- **page** | [**dict(str, str)**](str.md)| Page Number | [optional] 
- **filter** | [**dict(str, str)**](str.md)| Filter Params for Searching | [optional] 
- **include** | **str**| Included Objects | [optional] 
+ **page** | [**dict(str, str)**](str.md)| Page Number and Page Size.  Example: page: {number: 1, size: 20} | [optional] 
 
 ### Return type
 
@@ -56,12 +52,12 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/vnd.api+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **show**
-> CloudTrailEvent show(id, include=include)
+> CloudTrailEvent show(id)
 
 Show a single Cloud Trail Event
 
@@ -76,11 +72,10 @@ from pprint import pprint
 # create an instance of the API class
 api_instance = esp_sdk.CloudTrailEventsApi()
 id = 56 # int | Cloud Trail Event Id
-include = 'include_example' # str | Included Objects (optional)
 
 try: 
     # Show a single Cloud Trail Event
-    api_response = api_instance.show(id, include=include)
+    api_response = api_instance.show(id)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling CloudTrailEventsApi->show: %s\n" % e)
@@ -91,7 +86,6 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| Cloud Trail Event Id | 
- **include** | **str**| Included Objects | [optional] 
 
 ### Return type
 
@@ -104,7 +98,7 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/vnd.api+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

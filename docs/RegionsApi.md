@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 
 # **list**
-> PaginatedCollection list(page=page, filter=filter, include=include)
+> PaginatedCollection list(filter=filter, page=page)
 
 Get a list of Regions
 
@@ -23,13 +23,12 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = esp_sdk.RegionsApi()
-page = {'key': 'page_example'} # dict(str, str) | Page Number (optional)
-filter = {'key': 'filter_example'} # dict(str, str) | Filter Params for Searching (optional)
-include = 'include_example' # str | Included Objects (optional)
+filter = {'key': 'filter_example'} # dict(str, str) | Filter Params for Searching.  Equality Searchable Attributes: [id, code] Matching Searchable Attribute: [code] Limited Searchable Attribute: [provider_eq]  Searchable Association: [suppressions] See the filter parameter of the association's list action to see what attributes are searchable on each association. See Searching on Relationships for more information. See Searching Lists for more information. Example: filter: {name_eq: 'Bob'} (optional)
+page = {'key': 'page_example'} # dict(str, str) | Page Number and Page Size.  Example: page: {number: 1, size: 20} (optional)
 
 try: 
     # Get a list of Regions
-    api_response = api_instance.list(page=page, filter=filter, include=include)
+    api_response = api_instance.list(filter=filter, page=page)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling RegionsApi->list: %s\n" % e)
@@ -39,9 +38,8 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **page** | [**dict(str, str)**](str.md)| Page Number | [optional] 
- **filter** | [**dict(str, str)**](str.md)| Filter Params for Searching | [optional] 
- **include** | **str**| Included Objects | [optional] 
+ **filter** | [**dict(str, str)**](str.md)| Filter Params for Searching.  Equality Searchable Attributes: [id, code] Matching Searchable Attribute: [code] Limited Searchable Attribute: [provider_eq]  Searchable Association: [suppressions] See the filter parameter of the association&#39;s list action to see what attributes are searchable on each association. See Searching on Relationships for more information. See Searching Lists for more information. Example: filter: {name_eq: &#39;Bob&#39;} | [optional] 
+ **page** | [**dict(str, str)**](str.md)| Page Number and Page Size.  Example: page: {number: 1, size: 20} | [optional] 
 
 ### Return type
 
@@ -54,12 +52,12 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/vnd.api+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **show**
-> Region show(id, include=include)
+> Region show(id)
 
 Show a single Region
 
@@ -74,11 +72,10 @@ from pprint import pprint
 # create an instance of the API class
 api_instance = esp_sdk.RegionsApi()
 id = 56 # int | Region Id
-include = 'include_example' # str | Included Objects (optional)
 
 try: 
     # Show a single Region
-    api_response = api_instance.show(id, include=include)
+    api_response = api_instance.show(id)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling RegionsApi->show: %s\n" % e)
@@ -89,7 +86,6 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| Region Id | 
- **include** | **str**| Included Objects | [optional] 
 
 ### Return type
 
@@ -102,7 +98,7 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/vnd.api+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

@@ -4,13 +4,13 @@ All URIs are relative to *http://localhost/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**list**](SignatureStatsApi.md#list) | **GET** /api/v2/stats/{stat_id}/signatures.json_api | A successful call to this API returns all the stats of all the signatures for a report identified by the stat_id parameter. Said report contains all statistics for this alert triggered from signatures contained in all signatures for the selected hour.
+[**api_v2_stats_stat_id_signatures_json_api_get**](SignatureStatsApi.md#api_v2_stats_stat_id_signatures_json_api_get) | **GET** /api/v2/stats/{stat_id}/signatures.json_api | 
 
 
-# **list**
-> PaginatedCollection list(stat_id)
+# **api_v2_stats_stat_id_signatures_json_api_get**
+> api_v2_stats_stat_id_signatures_json_api_get(stat_id)
 
-A successful call to this API returns all the stats of all the signatures for a report identified by the stat_id parameter. Said report contains all statistics for this alert triggered from signatures contained in all signatures for the selected hour.
+
 
 ### Example 
 ```python
@@ -22,25 +22,23 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = esp_sdk.SignatureStatsApi()
-stat_id = 56 # int | The ID of the stat to retrieve service stats for
+stat_id = 56 # int | The ID of the stat to retrieve signature stats for
 
 try: 
-    # A successful call to this API returns all the stats of all the signatures for a report identified by the stat_id parameter. Said report contains all statistics for this alert triggered from signatures contained in all signatures for the selected hour.
-    api_response = api_instance.list(stat_id)
-    pprint(api_response)
+    api_instance.api_v2_stats_stat_id_signatures_json_api_get(stat_id)
 except ApiException as e:
-    print("Exception when calling SignatureStatsApi->list: %s\n" % e)
+    print("Exception when calling SignatureStatsApi->api_v2_stats_stat_id_signatures_json_api_get: %s\n" % e)
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **stat_id** | **int**| The ID of the stat to retrieve service stats for | 
+ **stat_id** | **int**| The ID of the stat to retrieve signature stats for | 
 
 ### Return type
 
-[**PaginatedCollection**](PaginatedCollection.md)
+void (empty response body)
 
 ### Authorization
 
@@ -49,7 +47,7 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/vnd.api+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
