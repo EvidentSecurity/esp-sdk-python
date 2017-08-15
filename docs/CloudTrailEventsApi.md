@@ -2,6 +2,7 @@
 
 All URIs are relative to https://api.evident.io
 
+
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**list**](CloudTrailEventsApi.md#list) | **GET** /api/v2/alerts/{alert_id}/cloud_trail_events.json_api | Get a list of Cloud Trail Events
@@ -52,6 +53,7 @@ See https://github.com/EvidentSecurity/esp-sdk-python2#set-your-hmac-security-ke
 ### HTTP request headers
 
  - **Content-Type**: application/vnd.api+json
+
  - **Accept**: application/vnd.api+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -98,6 +100,7 @@ See https://github.com/EvidentSecurity/esp-sdk-python2#set-your-hmac-security-ke
 ### HTTP request headers
 
  - **Content-Type**: application/vnd.api+json
+
  - **Accept**: application/vnd.api+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
