@@ -395,7 +395,7 @@ Lists can be sorted by multiple fields by specifying an ordered array.
 ```python
 esp_sdk.SignaturesApi().list(filter={ "name_cont": 'dns', "sorts": ['risk_level desc', 'created_at'] })
 #=> will return signatures `where name LIKE '%dns%'` sorted by `risk_level` in descending order and then by `created_at` in ascending order.
-    ```    
+```
     
 ## Documentation for API Endpoints
 
