@@ -127,6 +127,10 @@ class TagsApi(object):
         header_params['Accept'] = self.api_client.\
             select_header_accept(['application/vnd.api+json'])
 
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/vnd.api+json'])
+
         # Authentication setting
         auth_settings = []
 
@@ -227,6 +231,10 @@ class TagsApi(object):
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.\
             select_header_accept(['application/vnd.api+json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/vnd.api+json'])
 
         # Authentication setting
         auth_settings = []
