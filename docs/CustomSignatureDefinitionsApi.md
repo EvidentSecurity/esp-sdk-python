@@ -1,6 +1,6 @@
 # esp_sdk.CustomSignatureDefinitionsApi
 
-All URIs are relative to *http://localhost/*
+All URIs are relative to https://api.evident.io
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -50,11 +50,11 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+See https://github.com/EvidentSecurity/esp-sdk-python2#set-your-hmac-security-keys
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/vnd.api+json
  - **Accept**: application/vnd.api+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -96,11 +96,11 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+See https://github.com/EvidentSecurity/esp-sdk-python2#set-your-hmac-security-keys
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/vnd.api+json
  - **Accept**: application/vnd.api+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -142,11 +142,11 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+See https://github.com/EvidentSecurity/esp-sdk-python2#set-your-hmac-security-keys
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/vnd.api+json
  - **Accept**: application/vnd.api+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -188,11 +188,11 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+See https://github.com/EvidentSecurity/esp-sdk-python2#set-your-hmac-security-keys
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/vnd.api+json
  - **Accept**: application/vnd.api+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -238,11 +238,11 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+See https://github.com/EvidentSecurity/esp-sdk-python2#set-your-hmac-security-keys
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/vnd.api+json
  - **Accept**: application/vnd.api+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -286,11 +286,11 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+See https://github.com/EvidentSecurity/esp-sdk-python2#set-your-hmac-security-keys
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/vnd.api+json
  - **Accept**: application/vnd.api+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -336,11 +336,11 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+See https://github.com/EvidentSecurity/esp-sdk-python2#set-your-hmac-security-keys
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/vnd.api+json
  - **Accept**: application/vnd.api+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
