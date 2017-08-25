@@ -32,7 +32,7 @@ pip install git+https://github.com/EvidentSecurity/esp-sdk-python2.git
 
 Then import the package:
 ```python
-import esp_sdk 
+import esp_sdk
 ```
 
 ### Setuptools
@@ -96,7 +96,7 @@ import esp_sdk
 from esp_sdk.rest import ApiException
 from pprint import pprint
 
-    
+
 # create an instance of the API class
 api_instance = esp_sdk.AlertsApi()
 report_id = 56 # int | Id of the Report to Return Alerts For
@@ -396,7 +396,7 @@ Lists can be sorted by multiple fields by specifying an ordered array.
 esp_sdk.SignaturesApi().list(filter={ "name_cont": 'dns', "sorts": ['risk_level desc', 'created_at'] })
 #=> will return signatures `where name LIKE '%dns%'` sorted by `risk_level` in descending order and then by `created_at` in ascending order.
 ```
-    
+
 ## Documentation for API Endpoints
 
 All URIs are relative to *https://api.evident.io/*
@@ -476,7 +476,6 @@ Class | Method | HTTP request | Description
 *OrganizationsApi* | [**list**](docs/OrganizationsApi.md#list) | **PUT** /api/v2/organizations.json_api | Get a list of Organizations
 *OrganizationsApi* | [**show**](docs/OrganizationsApi.md#show) | **GET** /api/v2/organizations/{id}.json_api | Show a single Organization
 *OrganizationsApi* | [**update**](docs/OrganizationsApi.md#update) | **PATCH** /api/v2/organizations/{id}.json_api | Update a(n) Organization
-*PermissionsApi* | [**list**](docs/PermissionsApi.md#list) | **GET** /api/v2/permissions.json_api | This API provides a list of all the permissions that the current user has
 *RegionsApi* | [**list**](docs/RegionsApi.md#list) | **PUT** /api/v2/regions.json_api | Get a list of Regions
 *RegionsApi* | [**show**](docs/RegionsApi.md#show) | **GET** /api/v2/regions/{id}.json_api | Show a single Region
 *ReportIntegrationsApi* | [**create**](docs/ReportIntegrationsApi.md#create) | **POST** /api/v2/reports/export/integrations.json_api | Export all alerts on reports to an integration
@@ -576,5 +575,3 @@ Class | Method | HTTP request | Description
  - [Team](docs/Team.md)
  - [TimeZone](docs/TimeZone.md)
  - [User](docs/User.md)
- - [UserPermission](docs/UserPermission.md)
-
