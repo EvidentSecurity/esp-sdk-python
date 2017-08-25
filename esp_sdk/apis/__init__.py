@@ -18,7 +18,6 @@ from .external_account_user_attributions_api import ExternalAccountUserAttributi
 from .external_accounts_api import ExternalAccountsApi
 from .metadata_api import MetadataApi
 from .organizations_api import OrganizationsApi
-from .permissions_api import PermissionsApi
 from .regions_api import RegionsApi
 from .report_integrations_api import ReportIntegrationsApi
 from .reports_api import ReportsApi
