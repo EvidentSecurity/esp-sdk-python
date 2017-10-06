@@ -54,7 +54,7 @@ class TagsApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param int alert_id: The ID of the alert to list tags for (required)
-        :param dict(str, str) page: Page Number and Page Size.  Example: page: {number: 1, size: 20}
+        :param str page: Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page
         :return: PaginatedCollection
                  If the method is called asynchronously,
                  returns the request thread.
@@ -80,7 +80,7 @@ class TagsApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param int alert_id: The ID of the alert to list tags for (required)
-        :param dict(str, str) page: Page Number and Page Size.  Example: page: {number: 1, size: 20}
+        :param str page: Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page
         :return: PaginatedCollection
                  If the method is called asynchronously,
                  returns the request thread.
@@ -162,7 +162,7 @@ class TagsApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param int id: Tag Id (required)
+        :param int id: Tag ID (required)
         :return: Tag
                  If the method is called asynchronously,
                  returns the request thread.
@@ -187,7 +187,7 @@ class TagsApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param int id: Tag Id (required)
+        :param int id: Tag ID (required)
         :return: Tag
                  If the method is called asynchronously,
                  returns the request thread.

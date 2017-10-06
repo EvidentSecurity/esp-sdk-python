@@ -5,17 +5,16 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **int** | Unique ID | [optional] 
 **created_at** | [**datetime**](DateTime.md) | ISO 8601 timestamp when the resource was created | [optional] 
-**description** | **str** | The description of the user | [optional] 
+**description** | **str** | The description of the signature | [optional] 
 **identifier** | **str** | The identifier of the signature | [optional] 
 **name** | **str** | The name of the signature | [optional] 
 **resolution** | **str** | Details for how to resolve this signature | [optional] 
-**updated_at** | [**datetime**](DateTime.md) | ISO 8601 timestamp when the resource was last updated | [optional] 
-**risk_level** | **str** | The risk-level of the problem identified by the signature. Valid values are Low, Medium, High | [optional] 
+**risk_level** | **str** | The risk-level of the problem identified by the signature. Valid values are low, medium, high | [optional] 
+**updated_at** | [**datetime**](DateTime.md) | ISO 8601 timestamp when the resource was updated | [optional] 
 **service** | [**Service**](Service.md) | Associated Service | [optional] 
-**service_id** | **int** | Associated Service Id | [optional] 
+**service_id** | **int** | Associated Service ID | [optional] 
 **disabled_external_accounts** | [**ExternalAccount**](ExternalAccount.md) | Associated Disabled External Accounts | [optional] 
-**disabled_external_accounts_id** | **int** | Associated Disabled External Accounts Id | [optional] 
-**errors** | **list[str]** | Array of error messages if the request failed | [optional] 
+**disabled_external_accounts_id** | **int** | Associated Disabled External Accounts ID | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

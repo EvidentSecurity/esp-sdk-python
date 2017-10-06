@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 
 # **create**
-> Channel create(external_account_id)
+> ExternalAccountUserAttributionChannel create(external_account_id)
 
 A successful call to this API will create a User Attribution Channel for an external account.
 
@@ -42,7 +42,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Channel**](Channel.md)
+[**ExternalAccountUserAttributionChannel**](ExternalAccountUserAttributionChannel.md)
 
 ### Authorization
 
@@ -56,7 +56,7 @@ See https://github.com/EvidentSecurity/esp-sdk-python2#set-your-hmac-security-ke
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **destroy**
-> Channel destroy(external_account_id)
+> Meta destroy(external_account_id)
 
 A successful call to this API will remove the User Attribution Channel for an external account.
 
@@ -88,7 +88,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Channel**](Channel.md)
+[**Meta**](Meta.md)
 
 ### Authorization
 
@@ -102,7 +102,7 @@ See https://github.com/EvidentSecurity/esp-sdk-python2#set-your-hmac-security-ke
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **show**
-> Channel show(external_account_id)
+> ExternalAccountUserAttributionChannel show(external_account_id)
 
 A successful call to this API will show the User Attribution Channel of an external account.
 
@@ -134,7 +134,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Channel**](Channel.md)
+[**ExternalAccountUserAttributionChannel**](ExternalAccountUserAttributionChannel.md)
 
 ### Authorization
 

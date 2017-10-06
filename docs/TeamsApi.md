@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 
 # **create**
-> Team create(sub_organization_id, name)
+> Team create(name, sub_organization_id)
 
 Create a(n) Team
 
@@ -26,12 +26,12 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = esp_sdk.TeamsApi()
+name = 'name_example' # str | Name of the team
 sub_organization_id = 56 # int | The ID of the sub organization to attach this team to
-name = 'name_example' # str | The name of the sub organization
 
 try: 
     # Create a(n) Team
-    api_response = api_instance.create(sub_organization_id, name)
+    api_response = api_instance.create(name, sub_organization_id)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling TeamsApi->create: %s\n" % e)
@@ -41,8 +41,8 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **name** | **str**| Name of the team | 
  **sub_organization_id** | **int**| The ID of the sub organization to attach this team to | 
- **name** | **str**| The name of the sub organization | 
 
 ### Return type
 
@@ -60,7 +60,7 @@ See https://github.com/EvidentSecurity/esp-sdk-python2#set-your-hmac-security-ke
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **destroy**
-> Team destroy(id)
+> Meta destroy(id)
 
 Remove a(n) Team
 
@@ -74,7 +74,7 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = esp_sdk.TeamsApi()
-id = 56 # int | Team Id
+id = 56 # int | Team ID
 
 try: 
     # Remove a(n) Team
@@ -88,11 +88,11 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **int**| Team Id | 
+ **id** | **int**| Team ID | 
 
 ### Return type
 
-[**Team**](Team.md)
+[**Meta**](Meta.md)
 
 ### Authorization
 
@@ -120,9 +120,9 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = esp_sdk.TeamsApi()
-filter = {'key': 'filter_example'} # dict(str, str) | Filter Params for Searching.  Equality Searchable Attributes: [id, name] Matching Searchable Attribute: [name]  Sortable Attributes: [name, updated_at, created_at, id] Searchable Associations: [organization, sub_organization, custom_signatures, integrations] See the filter parameter of the association's list action to see what attributes are searchable on each association. See Searching on Relationships for more information. See Searching Lists for more information. Example: filter: {name_eq: 'Bob'} (optional)
-include = 'include_example' # str | Objects that can be included in the response:  custom_signatures,external_accounts,organization,sub_organization  See Including Objects for more information. (optional)
-page = {'key': 'page_example'} # dict(str, str) | Page Number and Page Size.  Example: page: {number: 1, size: 20} (optional)
+filter = {'key': 'filter_example'} # dict(str, str) | Filter Params for Searching.  See Searching Lists for more information. (optional)
+include = 'include_example' # str | Related objects that can be included in the response.  See Including Objects for more information. (optional)
+page = '{:number=>1,+:size=>20}' # str | Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page (optional) (default to {:number=>1,+:size=>20})
 
 try: 
     # Get a list of Teams
@@ -136,9 +136,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **filter** | [**dict(str, str)**](str.md)| Filter Params for Searching.  Equality Searchable Attributes: [id, name] Matching Searchable Attribute: [name]  Sortable Attributes: [name, updated_at, created_at, id] Searchable Associations: [organization, sub_organization, custom_signatures, integrations] See the filter parameter of the association&#39;s list action to see what attributes are searchable on each association. See Searching on Relationships for more information. See Searching Lists for more information. Example: filter: {name_eq: &#39;Bob&#39;} | [optional] 
- **include** | **str**| Objects that can be included in the response:  custom_signatures,external_accounts,organization,sub_organization  See Including Objects for more information. | [optional] 
- **page** | [**dict(str, str)**](str.md)| Page Number and Page Size.  Example: page: {number: 1, size: 20} | [optional] 
+ **filter** | [**dict(str, str)**](str.md)| Filter Params for Searching.  See Searching Lists for more information. | [optional] 
+ **include** | **str**| Related objects that can be included in the response.  See Including Objects for more information. | [optional] 
+ **page** | **str**| Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page | [optional] [default to {:number&#x3D;&gt;1,+:size&#x3D;&gt;20}]
 
 ### Return type
 
@@ -170,8 +170,8 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = esp_sdk.TeamsApi()
-id = 56 # int | Team Id
-include = 'include_example' # str | Objects that can be included in the response:  custom_signatures,external_accounts,organization,sub_organization  See Including Objects for more information. (optional)
+id = 56 # int | Team ID
+include = 'include_example' # str | Related objects that can be included in the response.  See Including Objects for more information. (optional)
 
 try: 
     # Show a single Team
@@ -185,8 +185,8 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **int**| Team Id | 
- **include** | **str**| Objects that can be included in the response:  custom_signatures,external_accounts,organization,sub_organization  See Including Objects for more information. | [optional] 
+ **id** | **int**| Team ID | 
+ **include** | **str**| Related objects that can be included in the response.  See Including Objects for more information. | [optional] 
 
 ### Return type
 
@@ -218,8 +218,8 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = esp_sdk.TeamsApi()
-id = 56 # int | Team Id
-name = 'name_example' # str | The name of the sub organization
+id = 56 # int | Team ID
+name = 'name_example' # str | Name of the team
 
 try: 
     # Update a(n) Team
@@ -233,8 +233,8 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **int**| Team Id | 
- **name** | **str**| The name of the sub organization | 
+ **id** | **int**| Team ID | 
+ **name** | **str**| Name of the team | 
 
 ### Return type
 

@@ -111,23 +111,9 @@ class TestRESTClientObject(TestBase):
         self.assertEqual(kwargs['headers']['Content-Type'], 'application/vnd.api+json')
         self.assertEqual(kwargs['headers']['Accept'], 'application/vnd.api+json')
 
-    def test_raises_an_ApiException_if_response_is_not_success_or_422(self):
+    def test_raises_an_ApiException_if_response_is_not_success(self):
         rest_client = RESTClientObject()
-        response = Mock(status=401, data=self.active_record_error_response())
-        rest_client.pool_manager.request = Mock(return_value=response)
-        api_client = ApiClient()
-        api_client.rest_client = rest_client
-        api = TeamsApi(api_client)
-
-        with self.assertRaises(ApiException) as cm:
-            api.show(1)
-
-        self.assertEqual(cm.exception.status, 401)
-        self.assertEqual(cm.exception.reason, "Failed.  Response code = 401.  Response message = Name can't be blank Name is invalid Description can't be blank")
-
-    def test_raises_an_ApiException_if_response_is_422_and_errors_are_not_set_in_the_body(self):
-        rest_client = RESTClientObject()
-        response = Mock(status=422, data=None)
+        response = Mock(status=422, data=self.active_record_error_response())
         rest_client.pool_manager.request = Mock(return_value=response)
         api_client = ApiClient()
         api_client.rest_client = rest_client
@@ -137,16 +123,4 @@ class TestRESTClientObject(TestBase):
             api.show(1)
 
         self.assertEqual(cm.exception.status, 422)
-        self.assertEqual(cm.exception.reason, "Failed.  Response code = 422.  Response message = NA")
-
-    def test_sets_errors_attribute_if_response_is_422_and_errors_are_set_in_the_body(self):
-        rest_client = RESTClientObject()
-        response = Mock(status=422, data=self.active_record_error_response())
-        rest_client.pool_manager.request = Mock(return_value=response)
-        api_client = ApiClient()
-        api_client.rest_client = rest_client
-        api = TeamsApi(api_client)
-
-        team = api.create(1, "")
-
-        self.assertIn("Name can't be blank", team.errors)
+        self.assertEqual(cm.exception.reason, "Failed.  Response code = 422.  Response message = Name can't be blank Name is invalid Description can't be blank")

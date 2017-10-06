@@ -23,10 +23,10 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = esp_sdk.AlertsApi()
-report_id = 56 # int | Id of the Report to Return Alerts For
-filter = {'key': 'filter_example'} # dict(str, str) | Filter Params for Searching.  Equality Searchable Attribute: [id]  Limited Searchable Attributes: [signature_service_id_in, signature_risk_level_in, risk_level_in, risk_level_eq, resource_or_tag_cont, suppressed, not_suppressed, signature_name_cont, signature_identifier_cont, external_account_id_in, external_account_id_eq, external_account_team_id_in, external_account_team_id_eq, region_id_in, region_id_eq, status_in, status_eq, cloud_trail_events_present, open_as_of, signature_id_in, signature_id_eq]   Example: filter: {name_eq: 'Bob'} (optional)
-include = 'include_example' # str | Objects that can be included in the response:  external_account,region,signature,custom_signature,suppression,metadata,cloud_trail_events,tags,compliance_controls  See Including Objects for more information. (optional)
-page = {'key': 'page_example'} # dict(str, str) | Page Number and Page Size.  Example: page: {number: 1, size: 20} (optional)
+report_id = 56 # int | ID of the Report to Return Alerts For
+filter = {'key': 'filter_example'} # dict(str, str) | Filter Params for Searching.  See Searching Lists for more information. (optional)
+include = 'include_example' # str | Related objects that can be included in the response.  See Including Objects for more information. (optional)
+page = '{:number=>1,+:size=>20}' # str | Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page (optional) (default to {:number=>1,+:size=>20})
 
 try: 
     # Get a list of Alerts
@@ -40,10 +40,10 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **report_id** | **int**| Id of the Report to Return Alerts For | 
- **filter** | [**dict(str, str)**](str.md)| Filter Params for Searching.  Equality Searchable Attribute: [id]  Limited Searchable Attributes: [signature_service_id_in, signature_risk_level_in, risk_level_in, risk_level_eq, resource_or_tag_cont, suppressed, not_suppressed, signature_name_cont, signature_identifier_cont, external_account_id_in, external_account_id_eq, external_account_team_id_in, external_account_team_id_eq, region_id_in, region_id_eq, status_in, status_eq, cloud_trail_events_present, open_as_of, signature_id_in, signature_id_eq]   Example: filter: {name_eq: &#39;Bob&#39;} | [optional] 
- **include** | **str**| Objects that can be included in the response:  external_account,region,signature,custom_signature,suppression,metadata,cloud_trail_events,tags,compliance_controls  See Including Objects for more information. | [optional] 
- **page** | [**dict(str, str)**](str.md)| Page Number and Page Size.  Example: page: {number: 1, size: 20} | [optional] 
+ **report_id** | **int**| ID of the Report to Return Alerts For | 
+ **filter** | [**dict(str, str)**](str.md)| Filter Params for Searching.  See Searching Lists for more information. | [optional] 
+ **include** | **str**| Related objects that can be included in the response.  See Including Objects for more information. | [optional] 
+ **page** | **str**| Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page | [optional] [default to {:number&#x3D;&gt;1,+:size&#x3D;&gt;20}]
 
 ### Return type
 
@@ -75,8 +75,8 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = esp_sdk.AlertsApi()
-id = 56 # int | Alert Id
-include = 'include_example' # str | Objects that can be included in the response:  external_account,region,signature,custom_signature,suppression,metadata,cloud_trail_events,tags,compliance_controls  See Including Objects for more information. (optional)
+id = 56 # int | Alert ID
+include = 'include_example' # str | Related objects that can be included in the response.  See Including Objects for more information. (optional)
 
 try: 
     # Show a single Alert
@@ -90,8 +90,8 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **int**| Alert Id | 
- **include** | **str**| Objects that can be included in the response:  external_account,region,signature,custom_signature,suppression,metadata,cloud_trail_events,tags,compliance_controls  See Including Objects for more information. | [optional] 
+ **id** | **int**| Alert ID | 
+ **include** | **str**| Related objects that can be included in the response.  See Including Objects for more information. | [optional] 
 
 ### Return type
 

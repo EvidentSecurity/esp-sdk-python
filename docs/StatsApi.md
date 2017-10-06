@@ -5,13 +5,20 @@ All URIs are relative to https://api.evident.io
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**for_compliance_controls**](StatsApi.md#for_compliance_controls) | **GET** /api/v2/stats/{stat_id}/compliance_controls.json_api | A successful call to this API returns all the stats of all the compliance controls for a report identified by the stat_id parameter. Said report contains all statistics for this alert triggered from signatures contained in all compliance controls for the selected hour.
+[**for_custom_compliance_controls**](StatsApi.md#for_custom_compliance_controls) | **GET** /api/v2/stats/{stat_id}/custom_compliance_controls.json_api | A successful call to this API returns all the stats of all the custom compliance controls for a report identified by the stat_id parameter. Said report contains all statistics for this alert triggered from signatures contained in all custom compliance controls for the selected hour.
 [**for_custom_signatures**](StatsApi.md#for_custom_signatures) | **GET** /api/v2/stats/{stat_id}/custom_signatures.json_api | A successful call to this API returns all the stats of all the custom signatures for a report identified by the stat_id parameter. Said report contains all statistics for this alert triggered from signatures contained in all custom_signatures for the selected hour.
 [**for_regions**](StatsApi.md#for_regions) | **GET** /api/v2/stats/{stat_id}/regions.json_api | A successful call to this API returns all the stats of all the regions for a report identified by the stat_id parameter. Said report contains all statistics for this alert triggered from signatures contained in all regions for the selected hour.
 [**for_report**](StatsApi.md#for_report) | **GET** /api/v2/reports/{report_id}/stats.json_api | A successful call to this API returns all the stats of all the alerts for a report identified by the report_id parameter. Said report contains all statistics for this alert triggered from signatures contained in all regions for the selected hour.
-[**for_services**](StatsApi.md#for_services) | **GET** /api/v2/stats/{stat_id}/services.json_api | A successful call to this API returns all the stats of all the services for a report identified by the stat_id parameter. Said report contains all statistics for this alert triggered from signatures contained in all services for the selected hour.
+[**for_services**](StatsApi.md#for_services) | **GET** /api/v2/stats/{stat_id}/services.json_api | A successful call to this API returns all the stats of all the services for a report identified by the stat_id parameter. Said report contains all statistics for this alert triggered from services contained in all services for the selected hour.
 [**for_signatures**](StatsApi.md#for_signatures) | **GET** /api/v2/stats/{stat_id}/signatures.json_api | A successful call to this API returns all the stats of all the signatures for a report identified by the stat_id parameter. Said report contains all statistics for this alert triggered from signatures contained in all signatures for the selected hour.
-[**latest_for_teams**](StatsApi.md#latest_for_teams) | **GET** /api/v2/stats/latest_for_teams.json_api | A successful call to this API returns all the stats for the most recent report of each team accessible by the given API key
-[**show**](StatsApi.md#show) | **GET** /api/v2/stats/{id}.json_api | Show a single Stat
+[**latest_for_teams**](StatsApi.md#latest_for_teams) | **PUT** /api/v2/stats/latest_for_teams.json_api | A successful call to this API returns all the stats for the most recent report of each team accessible by the given API key
+[**show**](StatsApi.md#show) | **GET** /api/v2/stats/custom_compliance_controls/{id}.json_api | Show a single StatCustomComplianceControl
+[**show_0**](StatsApi.md#show_0) | **GET** /api/v2/stats/compliance_controls/{id}.json_api | Show a single StatComplianceControl
+[**show_1**](StatsApi.md#show_1) | **GET** /api/v2/stats/signatures/{id}.json_api | Show a single StatSignature
+[**show_2**](StatsApi.md#show_2) | **GET** /api/v2/stats/{id}.json_api | Show a single Stat
+[**show_3**](StatsApi.md#show_3) | **GET** /api/v2/stats/regions/{id}.json_api | Show a single StatRegion
+[**show_4**](StatsApi.md#show_4) | **GET** /api/v2/stats/custom_signatures/{id}.json_api | Show a single StatCustomSignature
+[**show_5**](StatsApi.md#show_5) | **GET** /api/v2/stats/services/{id}.json_api | Show a single StatService
 
 
 # **for_compliance_controls**
@@ -30,8 +37,8 @@ from pprint import pprint
 # create an instance of the API class
 api_instance = esp_sdk.StatsApi()
 stat_id = 56 # int | The ID of the stat to retrieve compliance control stats for
-include = 'include_example' # str | Objects that can be included in the response:  compliance_control,stat  See Including Objects for more information. (optional)
-page = {'key': 'page_example'} # dict(str, str) | Page Number and Page Size.  Example: page: {number: 1, size: 20} (optional)
+include = 'include_example' # str | Related objects that can be included in the response.  See Including Objects for more information. (optional)
+page = '{:number=>1,+:size=>20}' # str | Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page (optional) (default to {:number=>1,+:size=>20})
 
 try: 
     # A successful call to this API returns all the stats of all the compliance controls for a report identified by the stat_id parameter. Said report contains all statistics for this alert triggered from signatures contained in all compliance controls for the selected hour.
@@ -46,8 +53,58 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **stat_id** | **int**| The ID of the stat to retrieve compliance control stats for | 
- **include** | **str**| Objects that can be included in the response:  compliance_control,stat  See Including Objects for more information. | [optional] 
- **page** | [**dict(str, str)**](str.md)| Page Number and Page Size.  Example: page: {number: 1, size: 20} | [optional] 
+ **include** | **str**| Related objects that can be included in the response.  See Including Objects for more information. | [optional] 
+ **page** | **str**| Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page | [optional] [default to {:number&#x3D;&gt;1,+:size&#x3D;&gt;20}]
+
+### Return type
+
+[**PaginatedCollection**](PaginatedCollection.md)
+
+### Authorization
+
+See https://github.com/EvidentSecurity/esp-sdk-python2#set-your-hmac-security-keys
+
+### HTTP request headers
+
+ - **Content-Type**: application/vnd.api+json
+ - **Accept**: application/vnd.api+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **for_custom_compliance_controls**
+> PaginatedCollection for_custom_compliance_controls(stat_id, include=include, page=page)
+
+A successful call to this API returns all the stats of all the custom compliance controls for a report identified by the stat_id parameter. Said report contains all statistics for this alert triggered from signatures contained in all custom compliance controls for the selected hour.
+
+### Example 
+```python
+from __future__ import print_statement
+import time
+import esp_sdk
+from esp_sdk.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = esp_sdk.StatsApi()
+stat_id = 56 # int | The ID of the stat to retrieve custom compliance control stats for
+include = 'include_example' # str | Related objects that can be included in the response.  See Including Objects for more information. (optional)
+page = '{:number=>1,+:size=>20}' # str | Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page (optional) (default to {:number=>1,+:size=>20})
+
+try: 
+    # A successful call to this API returns all the stats of all the custom compliance controls for a report identified by the stat_id parameter. Said report contains all statistics for this alert triggered from signatures contained in all custom compliance controls for the selected hour.
+    api_response = api_instance.for_custom_compliance_controls(stat_id, include=include, page=page)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling StatsApi->for_custom_compliance_controls: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **stat_id** | **int**| The ID of the stat to retrieve custom compliance control stats for | 
+ **include** | **str**| Related objects that can be included in the response.  See Including Objects for more information. | [optional] 
+ **page** | **str**| Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page | [optional] [default to {:number&#x3D;&gt;1,+:size&#x3D;&gt;20}]
 
 ### Return type
 
@@ -80,8 +137,8 @@ from pprint import pprint
 # create an instance of the API class
 api_instance = esp_sdk.StatsApi()
 stat_id = 56 # int | The ID of the stat to retrieve custom signature stats for
-include = 'include_example' # str | Objects that can be included in the response:  custom_signature,stat  See Including Objects for more information. (optional)
-page = {'key': 'page_example'} # dict(str, str) | Page Number and Page Size.  Example: page: {number: 1, size: 20} (optional)
+include = 'include_example' # str | Related objects that can be included in the response.  See Including Objects for more information. (optional)
+page = '{:number=>1,+:size=>20}' # str | Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page (optional) (default to {:number=>1,+:size=>20})
 
 try: 
     # A successful call to this API returns all the stats of all the custom signatures for a report identified by the stat_id parameter. Said report contains all statistics for this alert triggered from signatures contained in all custom_signatures for the selected hour.
@@ -96,8 +153,8 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **stat_id** | **int**| The ID of the stat to retrieve custom signature stats for | 
- **include** | **str**| Objects that can be included in the response:  custom_signature,stat  See Including Objects for more information. | [optional] 
- **page** | [**dict(str, str)**](str.md)| Page Number and Page Size.  Example: page: {number: 1, size: 20} | [optional] 
+ **include** | **str**| Related objects that can be included in the response.  See Including Objects for more information. | [optional] 
+ **page** | **str**| Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page | [optional] [default to {:number&#x3D;&gt;1,+:size&#x3D;&gt;20}]
 
 ### Return type
 
@@ -130,8 +187,8 @@ from pprint import pprint
 # create an instance of the API class
 api_instance = esp_sdk.StatsApi()
 stat_id = 56 # int | The ID of the stat to retrieve region stats for
-include = 'include_example' # str | Objects that can be included in the response:  region,stat  See Including Objects for more information. (optional)
-page = {'key': 'page_example'} # dict(str, str) | Page Number and Page Size.  Example: page: {number: 1, size: 20} (optional)
+include = 'include_example' # str | Related objects that can be included in the response.  See Including Objects for more information. (optional)
+page = '{:number=>1,+:size=>20}' # str | Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page (optional) (default to {:number=>1,+:size=>20})
 
 try: 
     # A successful call to this API returns all the stats of all the regions for a report identified by the stat_id parameter. Said report contains all statistics for this alert triggered from signatures contained in all regions for the selected hour.
@@ -146,8 +203,8 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **stat_id** | **int**| The ID of the stat to retrieve region stats for | 
- **include** | **str**| Objects that can be included in the response:  region,stat  See Including Objects for more information. | [optional] 
- **page** | [**dict(str, str)**](str.md)| Page Number and Page Size.  Example: page: {number: 1, size: 20} | [optional] 
+ **include** | **str**| Related objects that can be included in the response.  See Including Objects for more information. | [optional] 
+ **page** | **str**| Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page | [optional] [default to {:number&#x3D;&gt;1,+:size&#x3D;&gt;20}]
 
 ### Return type
 
@@ -180,7 +237,7 @@ from pprint import pprint
 # create an instance of the API class
 api_instance = esp_sdk.StatsApi()
 report_id = 56 # int | The ID of the report to retrieve stats for
-include = 'include_example' # str | Objects that can be included in the response:  report,regions,services,signatures,custom_signatures  See Including Objects for more information. (optional)
+include = 'include_example' # str | Related objects that can be included in the response.  See Including Objects for more information. (optional)
 
 try: 
     # A successful call to this API returns all the stats of all the alerts for a report identified by the report_id parameter. Said report contains all statistics for this alert triggered from signatures contained in all regions for the selected hour.
@@ -195,7 +252,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **report_id** | **int**| The ID of the report to retrieve stats for | 
- **include** | **str**| Objects that can be included in the response:  report,regions,services,signatures,custom_signatures  See Including Objects for more information. | [optional] 
+ **include** | **str**| Related objects that can be included in the response.  See Including Objects for more information. | [optional] 
 
 ### Return type
 
@@ -215,7 +272,7 @@ See https://github.com/EvidentSecurity/esp-sdk-python2#set-your-hmac-security-ke
 # **for_services**
 > PaginatedCollection for_services(stat_id, include=include, page=page)
 
-A successful call to this API returns all the stats of all the services for a report identified by the stat_id parameter. Said report contains all statistics for this alert triggered from signatures contained in all services for the selected hour.
+A successful call to this API returns all the stats of all the services for a report identified by the stat_id parameter. Said report contains all statistics for this alert triggered from services contained in all services for the selected hour.
 
 ### Example 
 ```python
@@ -228,11 +285,11 @@ from pprint import pprint
 # create an instance of the API class
 api_instance = esp_sdk.StatsApi()
 stat_id = 56 # int | The ID of the stat to retrieve service stats for
-include = 'include_example' # str | Objects that can be included in the response:  service,stat  See Including Objects for more information. (optional)
-page = {'key': 'page_example'} # dict(str, str) | Page Number and Page Size.  Example: page: {number: 1, size: 20} (optional)
+include = 'include_example' # str | Related objects that can be included in the response.  See Including Objects for more information. (optional)
+page = '{:number=>1,+:size=>20}' # str | Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page (optional) (default to {:number=>1,+:size=>20})
 
 try: 
-    # A successful call to this API returns all the stats of all the services for a report identified by the stat_id parameter. Said report contains all statistics for this alert triggered from signatures contained in all services for the selected hour.
+    # A successful call to this API returns all the stats of all the services for a report identified by the stat_id parameter. Said report contains all statistics for this alert triggered from services contained in all services for the selected hour.
     api_response = api_instance.for_services(stat_id, include=include, page=page)
     pprint(api_response)
 except ApiException as e:
@@ -244,8 +301,8 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **stat_id** | **int**| The ID of the stat to retrieve service stats for | 
- **include** | **str**| Objects that can be included in the response:  service,stat  See Including Objects for more information. | [optional] 
- **page** | [**dict(str, str)**](str.md)| Page Number and Page Size.  Example: page: {number: 1, size: 20} | [optional] 
+ **include** | **str**| Related objects that can be included in the response.  See Including Objects for more information. | [optional] 
+ **page** | **str**| Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page | [optional] [default to {:number&#x3D;&gt;1,+:size&#x3D;&gt;20}]
 
 ### Return type
 
@@ -278,8 +335,8 @@ from pprint import pprint
 # create an instance of the API class
 api_instance = esp_sdk.StatsApi()
 stat_id = 56 # int | The ID of the stat to retrieve signature stats for
-include = 'include_example' # str | Objects that can be included in the response:  signature,stat  See Including Objects for more information. (optional)
-page = {'key': 'page_example'} # dict(str, str) | Page Number and Page Size.  Example: page: {number: 1, size: 20} (optional)
+include = 'include_example' # str | Related objects that can be included in the response.  See Including Objects for more information. (optional)
+page = '{:number=>1,+:size=>20}' # str | Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page (optional) (default to {:number=>1,+:size=>20})
 
 try: 
     # A successful call to this API returns all the stats of all the signatures for a report identified by the stat_id parameter. Said report contains all statistics for this alert triggered from signatures contained in all signatures for the selected hour.
@@ -294,8 +351,8 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **stat_id** | **int**| The ID of the stat to retrieve signature stats for | 
- **include** | **str**| Objects that can be included in the response:  signature,stat  See Including Objects for more information. | [optional] 
- **page** | [**dict(str, str)**](str.md)| Page Number and Page Size.  Example: page: {number: 1, size: 20} | [optional] 
+ **include** | **str**| Related objects that can be included in the response.  See Including Objects for more information. | [optional] 
+ **page** | **str**| Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page | [optional] [default to {:number&#x3D;&gt;1,+:size&#x3D;&gt;20}]
 
 ### Return type
 
@@ -313,7 +370,7 @@ See https://github.com/EvidentSecurity/esp-sdk-python2#set-your-hmac-security-ke
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **latest_for_teams**
-> PaginatedCollection latest_for_teams(include=include, page=page)
+> PaginatedCollection latest_for_teams(filter=filter, include=include, page=page)
 
 A successful call to this API returns all the stats for the most recent report of each team accessible by the given API key
 
@@ -327,12 +384,13 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = esp_sdk.StatsApi()
-include = 'include_example' # str | Objects that can be included in the response:  report,regions,services,signatures,custom_signatures  See Including Objects for more information. (optional)
-page = {'key': 'page_example'} # dict(str, str) | Page Number and Page Size.  Example: page: {number: 1, size: 20} (optional)
+filter = {'key': 'filter_example'} # dict(str, str) | Filter Params for Searching.  See Searching Lists for more information. (optional)
+include = 'include_example' # str | Related objects that can be included in the response.  See Including Objects for more information. (optional)
+page = '{:number=>1,+:size=>20}' # str | Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page (optional) (default to {:number=>1,+:size=>20})
 
 try: 
     # A successful call to this API returns all the stats for the most recent report of each team accessible by the given API key
-    api_response = api_instance.latest_for_teams(include=include, page=page)
+    api_response = api_instance.latest_for_teams(filter=filter, include=include, page=page)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling StatsApi->latest_for_teams: %s\n" % e)
@@ -342,8 +400,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **include** | **str**| Objects that can be included in the response:  report,regions,services,signatures,custom_signatures  See Including Objects for more information. | [optional] 
- **page** | [**dict(str, str)**](str.md)| Page Number and Page Size.  Example: page: {number: 1, size: 20} | [optional] 
+ **filter** | [**dict(str, str)**](str.md)| Filter Params for Searching.  See Searching Lists for more information. | [optional] 
+ **include** | **str**| Related objects that can be included in the response.  See Including Objects for more information. | [optional] 
+ **page** | **str**| Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page | [optional] [default to {:number&#x3D;&gt;1,+:size&#x3D;&gt;20}]
 
 ### Return type
 
@@ -361,7 +420,151 @@ See https://github.com/EvidentSecurity/esp-sdk-python2#set-your-hmac-security-ke
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **show**
-> Stat show(id, include=include)
+> StatCustomComplianceControl show(id, include=include)
+
+Show a single StatCustomComplianceControl
+
+### Example 
+```python
+from __future__ import print_statement
+import time
+import esp_sdk
+from esp_sdk.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = esp_sdk.StatsApi()
+id = 56 # int | StatCustomComplianceControl ID
+include = 'include_example' # str | Related objects that can be included in the response.  See Including Objects for more information. (optional)
+
+try: 
+    # Show a single StatCustomComplianceControl
+    api_response = api_instance.show(id, include=include)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling StatsApi->show: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**| StatCustomComplianceControl ID | 
+ **include** | **str**| Related objects that can be included in the response.  See Including Objects for more information. | [optional] 
+
+### Return type
+
+[**StatCustomComplianceControl**](StatCustomComplianceControl.md)
+
+### Authorization
+
+See https://github.com/EvidentSecurity/esp-sdk-python2#set-your-hmac-security-keys
+
+### HTTP request headers
+
+ - **Content-Type**: application/vnd.api+json
+ - **Accept**: application/vnd.api+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **show_0**
+> StatComplianceControl show_0(id, include=include)
+
+Show a single StatComplianceControl
+
+### Example 
+```python
+from __future__ import print_statement
+import time
+import esp_sdk
+from esp_sdk.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = esp_sdk.StatsApi()
+id = 56 # int | StatComplianceControl ID
+include = 'include_example' # str | Related objects that can be included in the response.  See Including Objects for more information. (optional)
+
+try: 
+    # Show a single StatComplianceControl
+    api_response = api_instance.show_0(id, include=include)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling StatsApi->show_0: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**| StatComplianceControl ID | 
+ **include** | **str**| Related objects that can be included in the response.  See Including Objects for more information. | [optional] 
+
+### Return type
+
+[**StatComplianceControl**](StatComplianceControl.md)
+
+### Authorization
+
+See https://github.com/EvidentSecurity/esp-sdk-python2#set-your-hmac-security-keys
+
+### HTTP request headers
+
+ - **Content-Type**: application/vnd.api+json
+ - **Accept**: application/vnd.api+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **show_1**
+> StatSignature show_1(id, include=include)
+
+Show a single StatSignature
+
+### Example 
+```python
+from __future__ import print_statement
+import time
+import esp_sdk
+from esp_sdk.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = esp_sdk.StatsApi()
+id = 56 # int | StatSignature ID
+include = 'include_example' # str | Related objects that can be included in the response.  See Including Objects for more information. (optional)
+
+try: 
+    # Show a single StatSignature
+    api_response = api_instance.show_1(id, include=include)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling StatsApi->show_1: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**| StatSignature ID | 
+ **include** | **str**| Related objects that can be included in the response.  See Including Objects for more information. | [optional] 
+
+### Return type
+
+[**StatSignature**](StatSignature.md)
+
+### Authorization
+
+See https://github.com/EvidentSecurity/esp-sdk-python2#set-your-hmac-security-keys
+
+### HTTP request headers
+
+ - **Content-Type**: application/vnd.api+json
+ - **Accept**: application/vnd.api+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **show_2**
+> Stat show_2(id, include=include)
 
 Show a single Stat
 
@@ -375,27 +578,171 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = esp_sdk.StatsApi()
-id = 56 # int | Stat Id
-include = 'include_example' # str | Objects that can be included in the response:  report,regions,services,signatures,custom_signatures  See Including Objects for more information. (optional)
+id = 56 # int | Stat ID
+include = 'include_example' # str | Related objects that can be included in the response.  See Including Objects for more information. (optional)
 
 try: 
     # Show a single Stat
-    api_response = api_instance.show(id, include=include)
+    api_response = api_instance.show_2(id, include=include)
     pprint(api_response)
 except ApiException as e:
-    print("Exception when calling StatsApi->show: %s\n" % e)
+    print("Exception when calling StatsApi->show_2: %s\n" % e)
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **int**| Stat Id | 
- **include** | **str**| Objects that can be included in the response:  report,regions,services,signatures,custom_signatures  See Including Objects for more information. | [optional] 
+ **id** | **int**| Stat ID | 
+ **include** | **str**| Related objects that can be included in the response.  See Including Objects for more information. | [optional] 
 
 ### Return type
 
 [**Stat**](Stat.md)
+
+### Authorization
+
+See https://github.com/EvidentSecurity/esp-sdk-python2#set-your-hmac-security-keys
+
+### HTTP request headers
+
+ - **Content-Type**: application/vnd.api+json
+ - **Accept**: application/vnd.api+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **show_3**
+> StatRegion show_3(id, include=include)
+
+Show a single StatRegion
+
+### Example 
+```python
+from __future__ import print_statement
+import time
+import esp_sdk
+from esp_sdk.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = esp_sdk.StatsApi()
+id = 56 # int | StatRegion ID
+include = 'include_example' # str | Related objects that can be included in the response.  See Including Objects for more information. (optional)
+
+try: 
+    # Show a single StatRegion
+    api_response = api_instance.show_3(id, include=include)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling StatsApi->show_3: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**| StatRegion ID | 
+ **include** | **str**| Related objects that can be included in the response.  See Including Objects for more information. | [optional] 
+
+### Return type
+
+[**StatRegion**](StatRegion.md)
+
+### Authorization
+
+See https://github.com/EvidentSecurity/esp-sdk-python2#set-your-hmac-security-keys
+
+### HTTP request headers
+
+ - **Content-Type**: application/vnd.api+json
+ - **Accept**: application/vnd.api+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **show_4**
+> StatCustomSignature show_4(id, include=include)
+
+Show a single StatCustomSignature
+
+### Example 
+```python
+from __future__ import print_statement
+import time
+import esp_sdk
+from esp_sdk.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = esp_sdk.StatsApi()
+id = 56 # int | StatCustomSignature ID
+include = 'include_example' # str | Related objects that can be included in the response.  See Including Objects for more information. (optional)
+
+try: 
+    # Show a single StatCustomSignature
+    api_response = api_instance.show_4(id, include=include)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling StatsApi->show_4: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**| StatCustomSignature ID | 
+ **include** | **str**| Related objects that can be included in the response.  See Including Objects for more information. | [optional] 
+
+### Return type
+
+[**StatCustomSignature**](StatCustomSignature.md)
+
+### Authorization
+
+See https://github.com/EvidentSecurity/esp-sdk-python2#set-your-hmac-security-keys
+
+### HTTP request headers
+
+ - **Content-Type**: application/vnd.api+json
+ - **Accept**: application/vnd.api+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **show_5**
+> StatService show_5(id, include=include)
+
+Show a single StatService
+
+### Example 
+```python
+from __future__ import print_statement
+import time
+import esp_sdk
+from esp_sdk.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = esp_sdk.StatsApi()
+id = 56 # int | StatService ID
+include = 'include_example' # str | Related objects that can be included in the response.  See Including Objects for more information. (optional)
+
+try: 
+    # Show a single StatService
+    api_response = api_instance.show_5(id, include=include)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling StatsApi->show_5: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**| StatService ID | 
+ **include** | **str**| Related objects that can be included in the response.  See Including Objects for more information. | [optional] 
+
+### Return type
+
+[**StatService**](StatService.md)
 
 ### Authorization
 

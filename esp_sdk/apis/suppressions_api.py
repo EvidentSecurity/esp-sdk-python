@@ -53,7 +53,7 @@ class SuppressionsApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param int id: Suppression Id (required)
+        :param int id: Suppression ID (required)
         :return: Suppression
                  If the method is called asynchronously,
                  returns the request thread.
@@ -78,7 +78,7 @@ class SuppressionsApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param int id: Suppression Id (required)
+        :param int id: Suppression ID (required)
         :return: Suppression
                  If the method is called asynchronously,
                  returns the request thread.
@@ -158,9 +158,9 @@ class SuppressionsApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param dict(str, str) filter: Filter Params for Searching.  Equality Searchable Attributes: [id, aasm_state, status, suppression_type, type_type, resource, reason] Matching Searchable Attributes: [suppression_type, type_type, resource, reason]  Sortable Attributes: [suppression_type, type_type, updated_at, created_at, id, aasm_state, status] Searchable Associations: [regions, created_by, user, type, signatures] See the filter parameter of the association's list action to see what attributes are searchable on each association. See Searching on Relationships for more information. See Searching Lists for more information. Example: filter: {name_eq: 'Bob'}
-        :param str include: Objects that can be included in the response:  organization,created_by,regions,external_accounts,signatures,custom_signatures  See Including Objects for more information.
-        :param dict(str, str) page: Page Number and Page Size.  Example: page: {number: 1, size: 20}
+        :param dict(str, str) filter: Filter Params for Searching.  See Searching Lists for more information.
+        :param str include: Related objects that can be included in the response.  See Including Objects for more information.
+        :param str page: Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page
         :return: PaginatedCollection
                  If the method is called asynchronously,
                  returns the request thread.
@@ -185,9 +185,9 @@ class SuppressionsApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param dict(str, str) filter: Filter Params for Searching.  Equality Searchable Attributes: [id, aasm_state, status, suppression_type, type_type, resource, reason] Matching Searchable Attributes: [suppression_type, type_type, resource, reason]  Sortable Attributes: [suppression_type, type_type, updated_at, created_at, id, aasm_state, status] Searchable Associations: [regions, created_by, user, type, signatures] See the filter parameter of the association's list action to see what attributes are searchable on each association. See Searching on Relationships for more information. See Searching Lists for more information. Example: filter: {name_eq: 'Bob'}
-        :param str include: Objects that can be included in the response:  organization,created_by,regions,external_accounts,signatures,custom_signatures  See Including Objects for more information.
-        :param dict(str, str) page: Page Number and Page Size.  Example: page: {number: 1, size: 20}
+        :param dict(str, str) filter: Filter Params for Searching.  See Searching Lists for more information.
+        :param str include: Related objects that can be included in the response.  See Including Objects for more information.
+        :param str page: Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page
         :return: PaginatedCollection
                  If the method is called asynchronously,
                  returns the request thread.
@@ -268,8 +268,8 @@ class SuppressionsApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param int id: Suppression Id (required)
-        :param str include: Objects that can be included in the response:  organization,created_by,regions,external_accounts,signatures,custom_signatures  See Including Objects for more information.
+        :param int id: Suppression ID (required)
+        :param str include: Related objects that can be included in the response.  See Including Objects for more information.
         :return: Suppression
                  If the method is called asynchronously,
                  returns the request thread.
@@ -294,8 +294,8 @@ class SuppressionsApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param int id: Suppression Id (required)
-        :param str include: Objects that can be included in the response:  organization,created_by,regions,external_accounts,signatures,custom_signatures  See Including Objects for more information.
+        :param int id: Suppression ID (required)
+        :param str include: Related objects that can be included in the response.  See Including Objects for more information.
         :return: Suppression
                  If the method is called asynchronously,
                  returns the request thread.
@@ -364,51 +364,51 @@ class SuppressionsApi(object):
                                         _request_timeout=params.get('_request_timeout'),
                                         collection_formats=collection_formats)
 
-    def suppress_region(self, regions, external_account_ids, reason, resource, **kwargs):
+    def suppress_region(self, regions, external_account_ids, reason, **kwargs):
         """
-        A successful call to this API creates a new region suppression for the supplied regions . The body of the request must contain a json api compliant hash of attributes with type suppression/regions.
+        A successful call to this API creates a new region suppression for the supplied regions. The body of the request must contain a json api compliant hash of attributes with type suppression/regions.
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.suppress_region(regions, external_account_ids, reason, resource, callback=callback_function)
+        >>> thread = api.suppress_region(regions, external_account_ids, reason, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param list[str] regions: An array of region names to suppress (required)
         :param list[int] external_account_ids: An Array of the external accounts identified by external_account_id to suppress the signature or custom signature on (required)
         :param str reason: The reason for creating the suppression (required)
-        :param str resource: The resource string this suppression will suppress alerts for (required)
+        :param str resource: The resource string this suppression will suppress alerts for
         :return: Suppression
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.suppress_region_with_http_info(regions, external_account_ids, reason, resource, **kwargs)
+            return self.suppress_region_with_http_info(regions, external_account_ids, reason, **kwargs)
         else:
-            (data) = self.suppress_region_with_http_info(regions, external_account_ids, reason, resource, **kwargs)
+            (data) = self.suppress_region_with_http_info(regions, external_account_ids, reason, **kwargs)
             return data
 
-    def suppress_region_with_http_info(self, regions, external_account_ids, reason, resource, **kwargs):
+    def suppress_region_with_http_info(self, regions, external_account_ids, reason, **kwargs):
         """
-        A successful call to this API creates a new region suppression for the supplied regions . The body of the request must contain a json api compliant hash of attributes with type suppression/regions.
+        A successful call to this API creates a new region suppression for the supplied regions. The body of the request must contain a json api compliant hash of attributes with type suppression/regions.
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.suppress_region_with_http_info(regions, external_account_ids, reason, resource, callback=callback_function)
+        >>> thread = api.suppress_region_with_http_info(regions, external_account_ids, reason, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param list[str] regions: An array of region names to suppress (required)
         :param list[int] external_account_ids: An Array of the external accounts identified by external_account_id to suppress the signature or custom signature on (required)
         :param str reason: The reason for creating the suppression (required)
-        :param str resource: The resource string this suppression will suppress alerts for (required)
+        :param str resource: The resource string this suppression will suppress alerts for
         :return: Suppression
                  If the method is called asynchronously,
                  returns the request thread.
@@ -438,9 +438,6 @@ class SuppressionsApi(object):
         # verify the required parameter 'reason' is set
         if ('reason' not in params) or (params['reason'] is None):
             raise ValueError("Missing the required parameter `reason` when calling `suppress_region`")
-        # verify the required parameter 'resource' is set
-        if ('resource' not in params) or (params['resource'] is None):
-            raise ValueError("Missing the required parameter `resource` when calling `suppress_region`")
 
 
         collection_formats = {}
@@ -505,7 +502,7 @@ class SuppressionsApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param int alert_id: The id for the alert you want to create a suppression for (required)
+        :param int alert_id: The ID for the alert you want to create a suppression for (required)
         :param str reason: The reason for creating the suppression (required)
         :return: Suppression
                  If the method is called asynchronously,
@@ -531,7 +528,7 @@ class SuppressionsApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param int alert_id: The id for the alert you want to create a suppression for (required)
+        :param int alert_id: The ID for the alert you want to create a suppression for (required)
         :param str reason: The reason for creating the suppression (required)
         :return: Suppression
                  If the method is called asynchronously,
@@ -604,7 +601,7 @@ class SuppressionsApi(object):
                                         _request_timeout=params.get('_request_timeout'),
                                         collection_formats=collection_formats)
 
-    def suppress_signature(self, regions, external_account_ids, reason, resource, **kwargs):
+    def suppress_signature(self, regions, external_account_ids, reason, **kwargs):
         """
         A successful call to this API creates a new signature suppression for the supplied signature_ids or custom_signature_ids. The body of the request must contain a json API compliant hash of attributes with type suppression/signatures.
         This method makes a synchronous HTTP request by default. To make an
@@ -613,28 +610,28 @@ class SuppressionsApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.suppress_signature(regions, external_account_ids, reason, resource, callback=callback_function)
+        >>> thread = api.suppress_signature(regions, external_account_ids, reason, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param list[str] regions: An array of region names to suppress (required)
         :param list[int] external_account_ids: An Array of the external accounts identified by external_account_id to suppress the signature or custom signature on (required)
         :param str reason: The reason for creating the suppression (required)
-        :param str resource: The resource string this suppression will suppress alerts for (required)
-        :param list[int] signature_ids: An array of signatures identified by signature_id to suppress. Required if custom_signature_ids is blank
-        :param list[int] custom_signature_ids: An array of custom signatures identified by custom_signature_id to suppress. Required if signature_ids is blank
+        :param list[int] signature_ids: An array of signatures identified by signature_id to suppress. Required if custom_signature_ids is blank.
+        :param list[int] custom_signature_ids: An array of custom signatures identified by custom_signature_id to suppress. Required if signature_ids is blank.
+        :param str resource: The resource string this suppression will suppress alerts for
         :return: Suppression
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.suppress_signature_with_http_info(regions, external_account_ids, reason, resource, **kwargs)
+            return self.suppress_signature_with_http_info(regions, external_account_ids, reason, **kwargs)
         else:
-            (data) = self.suppress_signature_with_http_info(regions, external_account_ids, reason, resource, **kwargs)
+            (data) = self.suppress_signature_with_http_info(regions, external_account_ids, reason, **kwargs)
             return data
 
-    def suppress_signature_with_http_info(self, regions, external_account_ids, reason, resource, **kwargs):
+    def suppress_signature_with_http_info(self, regions, external_account_ids, reason, **kwargs):
         """
         A successful call to this API creates a new signature suppression for the supplied signature_ids or custom_signature_ids. The body of the request must contain a json API compliant hash of attributes with type suppression/signatures.
         This method makes a synchronous HTTP request by default. To make an
@@ -643,22 +640,22 @@ class SuppressionsApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.suppress_signature_with_http_info(regions, external_account_ids, reason, resource, callback=callback_function)
+        >>> thread = api.suppress_signature_with_http_info(regions, external_account_ids, reason, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param list[str] regions: An array of region names to suppress (required)
         :param list[int] external_account_ids: An Array of the external accounts identified by external_account_id to suppress the signature or custom signature on (required)
         :param str reason: The reason for creating the suppression (required)
-        :param str resource: The resource string this suppression will suppress alerts for (required)
-        :param list[int] signature_ids: An array of signatures identified by signature_id to suppress. Required if custom_signature_ids is blank
-        :param list[int] custom_signature_ids: An array of custom signatures identified by custom_signature_id to suppress. Required if signature_ids is blank
+        :param list[int] signature_ids: An array of signatures identified by signature_id to suppress. Required if custom_signature_ids is blank.
+        :param list[int] custom_signature_ids: An array of custom signatures identified by custom_signature_id to suppress. Required if signature_ids is blank.
+        :param str resource: The resource string this suppression will suppress alerts for
         :return: Suppression
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['regions', 'external_account_ids', 'reason', 'resource', 'signature_ids', 'custom_signature_ids']
+        all_params = ['regions', 'external_account_ids', 'reason', 'signature_ids', 'custom_signature_ids', 'resource']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -682,9 +679,6 @@ class SuppressionsApi(object):
         # verify the required parameter 'reason' is set
         if ('reason' not in params) or (params['reason'] is None):
             raise ValueError("Missing the required parameter `reason` when calling `suppress_signature`")
-        # verify the required parameter 'resource' is set
-        if ('resource' not in params) or (params['resource'] is None):
-            raise ValueError("Missing the required parameter `resource` when calling `suppress_signature`")
 
 
         collection_formats = {}
@@ -755,7 +749,7 @@ class SuppressionsApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param int alert_id: The id for the alert you want to create a suppression for (required)
+        :param int alert_id: The ID for the alert you want to create a suppression for (required)
         :param str reason: The reason for creating the suppression (required)
         :return: Suppression
                  If the method is called asynchronously,
@@ -781,7 +775,7 @@ class SuppressionsApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param int alert_id: The id for the alert you want to create a suppression for (required)
+        :param int alert_id: The ID for the alert you want to create a suppression for (required)
         :param str reason: The reason for creating the suppression (required)
         :return: Suppression
                  If the method is called asynchronously,
@@ -856,7 +850,7 @@ class SuppressionsApi(object):
 
     def suppress_unique_identifier_from_alert(self, alert_id, reason, **kwargs):
         """
-        A successful call to this API creates a new unique identifier suppression based on the supplied alert_id. The body of the request must contain a json api compliant hash of attributes with type suppression/signatures.
+        A successful call to this API creates a new unique identifier suppression based on the supplied alert_id. The body of the request must contain a json api compliant hash of attributes with type suppression/unique_identifier.
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -867,7 +861,7 @@ class SuppressionsApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param int alert_id: The id for the alert you want to create a suppression for (required)
+        :param int alert_id: The ID for the alert you want to create a suppression for (required)
         :param str reason: The reason for creating the suppression (required)
         :return: Suppression
                  If the method is called asynchronously,
@@ -882,7 +876,7 @@ class SuppressionsApi(object):
 
     def suppress_unique_identifier_from_alert_with_http_info(self, alert_id, reason, **kwargs):
         """
-        A successful call to this API creates a new unique identifier suppression based on the supplied alert_id. The body of the request must contain a json api compliant hash of attributes with type suppression/signatures.
+        A successful call to this API creates a new unique identifier suppression based on the supplied alert_id. The body of the request must contain a json api compliant hash of attributes with type suppression/unique_identifier.
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -893,7 +887,7 @@ class SuppressionsApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param int alert_id: The id for the alert you want to create a suppression for (required)
+        :param int alert_id: The ID for the alert you want to create a suppression for (required)
         :param str reason: The reason for creating the suppression (required)
         :return: Suppression
                  If the method is called asynchronously,

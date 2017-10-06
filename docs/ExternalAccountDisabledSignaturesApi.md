@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 
 # **create**
-> SuccessObject create(external_account_id, signature_id)
+> Meta create(external_account_id, signature_id)
 
 A successful call to this API will disable a signature for an external account.
 
@@ -25,7 +25,7 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = esp_sdk.ExternalAccountDisabledSignaturesApi()
-external_account_id = 56 # int | The ID of the external account to disable a signature on.
+external_account_id = 56 # int | The ID of the external account to disable a signature on
 signature_id = 56 # int | The ID of the signature to disable
 
 try: 
@@ -40,12 +40,12 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **external_account_id** | **int**| The ID of the external account to disable a signature on. | 
+ **external_account_id** | **int**| The ID of the external account to disable a signature on | 
  **signature_id** | **int**| The ID of the signature to disable | 
 
 ### Return type
 
-[**SuccessObject**](SuccessObject.md)
+[**Meta**](Meta.md)
 
 ### Authorization
 
@@ -59,7 +59,7 @@ See https://github.com/EvidentSecurity/esp-sdk-python2#set-your-hmac-security-ke
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **destroy**
-> SuccessObject destroy(external_account_id, signature_id)
+> Meta destroy(external_account_id, signature_id)
 
 A successful call to this API will remove a signature from the disabled signature list on an external account.
 
@@ -73,7 +73,7 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = esp_sdk.ExternalAccountDisabledSignaturesApi()
-external_account_id = 56 # int | The ID of the external account to enable the signature on.
+external_account_id = 56 # int | The ID of the external account to enable a signature on
 signature_id = 56 # int | The ID of the signature to enable
 
 try: 
@@ -88,12 +88,12 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **external_account_id** | **int**| The ID of the external account to enable the signature on. | 
+ **external_account_id** | **int**| The ID of the external account to enable a signature on | 
  **signature_id** | **int**| The ID of the signature to enable | 
 
 ### Return type
 
-[**SuccessObject**](SuccessObject.md)
+[**Meta**](Meta.md)
 
 ### Authorization
 
@@ -121,10 +121,10 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = esp_sdk.ExternalAccountDisabledSignaturesApi()
-external_account_id = 56 # int | The ID of the external account to retrieve the disabled signatures for.
-filter = {'key': 'filter_example'} # dict(str, str) | Filter Params for Searching.  Equality Searchable Attributes: [id, risk_level, service_id, disabled, supports_user_attribution, name, identifier, description, resolution] Matching Searchable Attributes: [name, identifier, description, resolution]  Sortable Attributes: [name, identifier, updated_at, created_at, id] Searchable Associations: [signature_copy, disabled_external_accounts, integrations] See the filter parameter of the association's list action to see what attributes are searchable on each association. See Searching on Relationships for more information. See Searching Lists for more information. Example: filter: {name_eq: 'Bob'} (optional)
-include = 'include_example' # str | Objects that can be included in the response:  service,disabled_external_accounts  See Including Objects for more information. (optional)
-page = {'key': 'page_example'} # dict(str, str) | Page Number and Page Size.  Example: page: {number: 1, size: 20} (optional)
+external_account_id = 56 # int | The ID of the external account to retrieve the disabled signatures for
+filter = {'key': 'filter_example'} # dict(str, str) | Filter Params for Searching.  See Searching Lists for more information. (optional)
+include = 'include_example' # str | Related objects that can be included in the response.  See Including Objects for more information. (optional)
+page = '{:number=>1,+:size=>20}' # str | Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page (optional) (default to {:number=>1,+:size=>20})
 
 try: 
     # A successful call to this API returns all the disabled signatures of the associated external account, identified by the external_account_id parameter.
@@ -138,10 +138,10 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **external_account_id** | **int**| The ID of the external account to retrieve the disabled signatures for. | 
- **filter** | [**dict(str, str)**](str.md)| Filter Params for Searching.  Equality Searchable Attributes: [id, risk_level, service_id, disabled, supports_user_attribution, name, identifier, description, resolution] Matching Searchable Attributes: [name, identifier, description, resolution]  Sortable Attributes: [name, identifier, updated_at, created_at, id] Searchable Associations: [signature_copy, disabled_external_accounts, integrations] See the filter parameter of the association&#39;s list action to see what attributes are searchable on each association. See Searching on Relationships for more information. See Searching Lists for more information. Example: filter: {name_eq: &#39;Bob&#39;} | [optional] 
- **include** | **str**| Objects that can be included in the response:  service,disabled_external_accounts  See Including Objects for more information. | [optional] 
- **page** | [**dict(str, str)**](str.md)| Page Number and Page Size.  Example: page: {number: 1, size: 20} | [optional] 
+ **external_account_id** | **int**| The ID of the external account to retrieve the disabled signatures for | 
+ **filter** | [**dict(str, str)**](str.md)| Filter Params for Searching.  See Searching Lists for more information. | [optional] 
+ **include** | **str**| Related objects that can be included in the response.  See Including Objects for more information. | [optional] 
+ **page** | **str**| Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page | [optional] [default to {:number&#x3D;&gt;1,+:size&#x3D;&gt;20}]
 
 ### Return type
 
@@ -173,8 +173,8 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = esp_sdk.ExternalAccountDisabledSignaturesApi()
-external_account_id = 56 # int | The ID of the external account to update the disabled signatures of.
-disabled_signature_ids = [56] # list[int] | An array of all the signatures to disable on the external account.
+external_account_id = 56 # int | The ID of the external account to update the disabled signatures of
+disabled_signature_ids = [56] # list[int] | An array of all the signatures to disable on the external account.  This will enable signature IDs that were previously disabled but not included on this list
 
 try: 
     # A successful call to this API will update the disabled signatures on an external account.
@@ -188,8 +188,8 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **external_account_id** | **int**| The ID of the external account to update the disabled signatures of. | 
- **disabled_signature_ids** | [**list[int]**](int.md)| An array of all the signatures to disable on the external account. | 
+ **external_account_id** | **int**| The ID of the external account to update the disabled signatures of | 
+ **disabled_signature_ids** | [**list[int]**](int.md)| An array of all the signatures to disable on the external account.  This will enable signature IDs that were previously disabled but not included on this list | 
 
 ### Return type
 

@@ -53,8 +53,8 @@ class ExternalAccountUserAttributionsApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param int external_account_id: The ID of the external account to update the user attributions of. (required)
-        :param str cloudtrail_name: An array of all the signatures to disable on the external account. (required)
+        :param int external_account_id: The ID of the external account to update the user attributions of (required)
+        :param str cloudtrail_name: The name of the cloudetrail associated with the user attribution. (required)
         :return: ExternalAccount
                  If the method is called asynchronously,
                  returns the request thread.
@@ -79,8 +79,8 @@ class ExternalAccountUserAttributionsApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param int external_account_id: The ID of the external account to update the user attributions of. (required)
-        :param str cloudtrail_name: An array of all the signatures to disable on the external account. (required)
+        :param int external_account_id: The ID of the external account to update the user attributions of (required)
+        :param str cloudtrail_name: The name of the cloudetrail associated with the user attribution. (required)
         :return: ExternalAccount
                  If the method is called asynchronously,
                  returns the request thread.

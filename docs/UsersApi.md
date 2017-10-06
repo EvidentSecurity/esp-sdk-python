@@ -29,10 +29,10 @@ api_instance = esp_sdk.UsersApi()
 first_name = 'first_name_example' # str | The first name of the user
 last_name = 'last_name_example' # str | The last name of the user
 email = 'email_example' # str | The email of the user
-role_id = 'role_id_example' # str | The role of the user (optional)
+role_id = 56 # int | The ID of the role of the user (optional)
 sub_organization_ids = [56] # list[int] | A list of sub organization IDs that the user should have access to (optional)
 team_ids = [56] # list[int] | A list of team IDs that the user should have access to (optional)
-disable_daily_emails = true # bool | Whether the daily emails should be turned off or not. (optional)
+disable_daily_emails = true # bool | Specifies whether the daily emails should be turned off or not (optional)
 phone = 'phone_example' # str | The phone number of the user (optional)
 time_zone = 'time_zone_example' # str | The time zone of the user. See Time Zones for a list of valid time zones (optional)
 
@@ -51,10 +51,10 @@ Name | Type | Description  | Notes
  **first_name** | **str**| The first name of the user | 
  **last_name** | **str**| The last name of the user | 
  **email** | **str**| The email of the user | 
- **role_id** | **str**| The role of the user | [optional] 
+ **role_id** | **int**| The ID of the role of the user | [optional] 
  **sub_organization_ids** | [**list[int]**](int.md)| A list of sub organization IDs that the user should have access to | [optional] 
  **team_ids** | [**list[int]**](int.md)| A list of team IDs that the user should have access to | [optional] 
- **disable_daily_emails** | **bool**| Whether the daily emails should be turned off or not. | [optional] 
+ **disable_daily_emails** | **bool**| Specifies whether the daily emails should be turned off or not | [optional] 
  **phone** | **str**| The phone number of the user | [optional] 
  **time_zone** | **str**| The time zone of the user. See Time Zones for a list of valid time zones | [optional] 
 
@@ -74,7 +74,7 @@ See https://github.com/EvidentSecurity/esp-sdk-python2#set-your-hmac-security-ke
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **destroy**
-> User destroy(id)
+> Meta destroy(id)
 
 Remove a(n) User
 
@@ -88,7 +88,7 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = esp_sdk.UsersApi()
-id = 56 # int | User Id
+id = 56 # int | User ID
 
 try: 
     # Remove a(n) User
@@ -102,11 +102,11 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **int**| User Id | 
+ **id** | **int**| User ID | 
 
 ### Return type
 
-[**User**](User.md)
+[**Meta**](Meta.md)
 
 ### Authorization
 
@@ -134,9 +134,9 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = esp_sdk.UsersApi()
-filter = {'key': 'filter_example'} # dict(str, str) | Filter Params for Searching.  Equality Searchable Attributes: [id, email] Matching Searchable Attribute: [email]  Sortable Attributes: [email, current_sign_in_at, updated_at, created_at, id] Searchable Associations: [role, organization, sub_organizations, teams] See the filter parameter of the association's list action to see what attributes are searchable on each association. See Searching on Relationships for more information. See Searching Lists for more information. Example: filter: {name_eq: 'Bob'} (optional)
-include = 'include_example' # str | Objects that can be included in the response:  organization,sub_organizations,teams,role  See Including Objects for more information. (optional)
-page = {'key': 'page_example'} # dict(str, str) | Page Number and Page Size.  Example: page: {number: 1, size: 20} (optional)
+filter = {'key': 'filter_example'} # dict(str, str) | Filter Params for Searching.  See Searching Lists for more information. (optional)
+include = 'include_example' # str | Related objects that can be included in the response.  See Including Objects for more information. (optional)
+page = '{:number=>1,+:size=>20}' # str | Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page (optional) (default to {:number=>1,+:size=>20})
 
 try: 
     # Get a list of Users
@@ -150,9 +150,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **filter** | [**dict(str, str)**](str.md)| Filter Params for Searching.  Equality Searchable Attributes: [id, email] Matching Searchable Attribute: [email]  Sortable Attributes: [email, current_sign_in_at, updated_at, created_at, id] Searchable Associations: [role, organization, sub_organizations, teams] See the filter parameter of the association&#39;s list action to see what attributes are searchable on each association. See Searching on Relationships for more information. See Searching Lists for more information. Example: filter: {name_eq: &#39;Bob&#39;} | [optional] 
- **include** | **str**| Objects that can be included in the response:  organization,sub_organizations,teams,role  See Including Objects for more information. | [optional] 
- **page** | [**dict(str, str)**](str.md)| Page Number and Page Size.  Example: page: {number: 1, size: 20} | [optional] 
+ **filter** | [**dict(str, str)**](str.md)| Filter Params for Searching.  See Searching Lists for more information. | [optional] 
+ **include** | **str**| Related objects that can be included in the response.  See Including Objects for more information. | [optional] 
+ **page** | **str**| Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page | [optional] [default to {:number&#x3D;&gt;1,+:size&#x3D;&gt;20}]
 
 ### Return type
 
@@ -184,8 +184,8 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = esp_sdk.UsersApi()
-id = 56 # int | User Id
-include = 'include_example' # str | Objects that can be included in the response:  organization,sub_organizations,teams,role  See Including Objects for more information. (optional)
+id = 56 # int | User ID
+include = 'include_example' # str | Related objects that can be included in the response.  See Including Objects for more information. (optional)
 
 try: 
     # Show a single User
@@ -199,8 +199,8 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **int**| User Id | 
- **include** | **str**| Objects that can be included in the response:  organization,sub_organizations,teams,role  See Including Objects for more information. | [optional] 
+ **id** | **int**| User ID | 
+ **include** | **str**| Related objects that can be included in the response.  See Including Objects for more information. | [optional] 
 
 ### Return type
 
@@ -232,14 +232,14 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = esp_sdk.UsersApi()
-id = 56 # int | User Id
+id = 56 # int | User ID
 first_name = 'first_name_example' # str | The first name of the user
 last_name = 'last_name_example' # str | The last name of the user
 email = 'email_example' # str | The email of the user
-role_id = 'role_id_example' # str | The role of the user (optional)
+role_id = 56 # int | The ID of the role of the user (optional)
 sub_organization_ids = [56] # list[int] | A list of sub organization IDs that the user should have access to (optional)
 team_ids = [56] # list[int] | A list of team IDs that the user should have access to (optional)
-disable_daily_emails = true # bool | Whether the daily emails should be turned off or not. (optional)
+disable_daily_emails = true # bool | Specifies whether the daily emails should be turned off or not (optional)
 phone = 'phone_example' # str | The phone number of the user (optional)
 time_zone = 'time_zone_example' # str | The time zone of the user. See Time Zones for a list of valid time zones (optional)
 
@@ -255,14 +255,14 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **int**| User Id | 
+ **id** | **int**| User ID | 
  **first_name** | **str**| The first name of the user | 
  **last_name** | **str**| The last name of the user | 
  **email** | **str**| The email of the user | 
- **role_id** | **str**| The role of the user | [optional] 
+ **role_id** | **int**| The ID of the role of the user | [optional] 
  **sub_organization_ids** | [**list[int]**](int.md)| A list of sub organization IDs that the user should have access to | [optional] 
  **team_ids** | [**list[int]**](int.md)| A list of team IDs that the user should have access to | [optional] 
- **disable_daily_emails** | **bool**| Whether the daily emails should be turned off or not. | [optional] 
+ **disable_daily_emails** | **bool**| Specifies whether the daily emails should be turned off or not | [optional] 
  **phone** | **str**| The phone number of the user | [optional] 
  **time_zone** | **str**| The time zone of the user. See Time Zones for a list of valid time zones | [optional] 
 

@@ -42,7 +42,7 @@ class ScanIntervalsApi(object):
 
     def create(self, external_account_id, interval, service_id, **kwargs):
         """
-        Create a(n) Scan Interval
+        Create a(n) ScanInterval
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -55,7 +55,7 @@ class ScanIntervalsApi(object):
             for asynchronous request. (optional)
         :param int external_account_id: The ID of the external account this scan interval is for (required)
         :param int interval: The interval, in minutes, this service will be scanned (required)
-        :param int service_id: The service ID this scan interval is for (required)
+        :param int service_id: The service ID for the scan interval (required)
         :return: ScanInterval
                  If the method is called asynchronously,
                  returns the request thread.
@@ -69,7 +69,7 @@ class ScanIntervalsApi(object):
 
     def create_with_http_info(self, external_account_id, interval, service_id, **kwargs):
         """
-        Create a(n) Scan Interval
+        Create a(n) ScanInterval
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -82,7 +82,7 @@ class ScanIntervalsApi(object):
             for asynchronous request. (optional)
         :param int external_account_id: The ID of the external account this scan interval is for (required)
         :param int interval: The interval, in minutes, this service will be scanned (required)
-        :param int service_id: The service ID this scan interval is for (required)
+        :param int service_id: The service ID for the scan interval (required)
         :return: ScanInterval
                  If the method is called asynchronously,
                  returns the request thread.
@@ -172,8 +172,8 @@ class ScanIntervalsApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param int id: ScanInterval Id (required)
-        :return: ScanInterval
+        :param int id: ScanInterval ID (required)
+        :return: Meta
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -197,8 +197,8 @@ class ScanIntervalsApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param int id: ScanInterval Id (required)
-        :return: ScanInterval
+        :param int id: ScanInterval ID (required)
+        :return: Meta
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -256,7 +256,7 @@ class ScanIntervalsApi(object):
                                         body=body_params,
                                         post_params=form_params,
                                         files=local_var_files,
-                                        response_type='ScanInterval',
+                                        response_type='Meta',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -266,7 +266,7 @@ class ScanIntervalsApi(object):
 
     def list(self, external_account_id, **kwargs):
         """
-        Get a list of Scan Intervals
+        Get a list of ScanIntervals
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -277,9 +277,9 @@ class ScanIntervalsApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param int external_account_id: (required)
-        :param str include: Objects that can be included in the response:  external_account,service  See Including Objects for more information.
-        :param dict(str, str) page: Page Number and Page Size.  Example: page: {number: 1, size: 20}
+        :param int external_account_id: The ID of the external account to retrieve (required)
+        :param str include: Related objects that can be included in the response.  See Including Objects for more information.
+        :param str page: Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page
         :return: PaginatedCollection
                  If the method is called asynchronously,
                  returns the request thread.
@@ -293,7 +293,7 @@ class ScanIntervalsApi(object):
 
     def list_with_http_info(self, external_account_id, **kwargs):
         """
-        Get a list of Scan Intervals
+        Get a list of ScanIntervals
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -304,9 +304,9 @@ class ScanIntervalsApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param int external_account_id: (required)
-        :param str include: Objects that can be included in the response:  external_account,service  See Including Objects for more information.
-        :param dict(str, str) page: Page Number and Page Size.  Example: page: {number: 1, size: 20}
+        :param int external_account_id: The ID of the external account to retrieve (required)
+        :param str include: Related objects that can be included in the response.  See Including Objects for more information.
+        :param str page: Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page
         :return: PaginatedCollection
                  If the method is called asynchronously,
                  returns the request thread.
@@ -379,7 +379,7 @@ class ScanIntervalsApi(object):
 
     def show(self, id, **kwargs):
         """
-        Show a single Scan Interval
+        Show a single ScanInterval
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -390,8 +390,8 @@ class ScanIntervalsApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param int id: Scan Interval Id (required)
-        :param str include: Objects that can be included in the response:  external_account,service  See Including Objects for more information.
+        :param int id: ScanInterval ID (required)
+        :param str include: Related objects that can be included in the response.  See Including Objects for more information.
         :return: ScanInterval
                  If the method is called asynchronously,
                  returns the request thread.
@@ -405,7 +405,7 @@ class ScanIntervalsApi(object):
 
     def show_with_http_info(self, id, **kwargs):
         """
-        Show a single Scan Interval
+        Show a single ScanInterval
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -416,8 +416,8 @@ class ScanIntervalsApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param int id: Scan Interval Id (required)
-        :param str include: Objects that can be included in the response:  external_account,service  See Including Objects for more information.
+        :param int id: ScanInterval ID (required)
+        :param str include: Related objects that can be included in the response.  See Including Objects for more information.
         :return: ScanInterval
                  If the method is called asynchronously,
                  returns the request thread.
@@ -488,7 +488,7 @@ class ScanIntervalsApi(object):
 
     def update(self, id, external_account_id, interval, service_id, **kwargs):
         """
-        Update a(n) Scan Interval
+        Update a(n) ScanInterval
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -499,10 +499,10 @@ class ScanIntervalsApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param int id: Scan Interval Id (required)
+        :param int id: ScanInterval ID (required)
         :param int external_account_id: The ID of the external account this scan interval is for (required)
         :param int interval: The interval, in minutes, this service will be scanned (required)
-        :param int service_id: The service ID this scan interval is for (required)
+        :param int service_id: The service ID for the scan interval (required)
         :return: ScanInterval
                  If the method is called asynchronously,
                  returns the request thread.
@@ -516,7 +516,7 @@ class ScanIntervalsApi(object):
 
     def update_with_http_info(self, id, external_account_id, interval, service_id, **kwargs):
         """
-        Update a(n) Scan Interval
+        Update a(n) ScanInterval
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -527,10 +527,10 @@ class ScanIntervalsApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param int id: Scan Interval Id (required)
+        :param int id: ScanInterval ID (required)
         :param int external_account_id: The ID of the external account this scan interval is for (required)
         :param int interval: The interval, in minutes, this service will be scanned (required)
-        :param int service_id: The service ID this scan interval is for (required)
+        :param int service_id: The service ID for the scan interval (required)
         :return: ScanInterval
                  If the method is called asynchronously,
                  returns the request thread.

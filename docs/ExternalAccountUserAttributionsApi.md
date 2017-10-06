@@ -22,8 +22,8 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = esp_sdk.ExternalAccountUserAttributionsApi()
-external_account_id = 56 # int | The ID of the external account to update the user attributions of.
-cloudtrail_name = 'cloudtrail_name_example' # str | An array of all the signatures to disable on the external account.
+external_account_id = 56 # int | The ID of the external account to update the user attributions of
+cloudtrail_name = 'cloudtrail_name_example' # str | The name of the cloudetrail associated with the user attribution.
 
 try: 
     # A successful call to this API will update the user attributions on an external account.
@@ -37,8 +37,8 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **external_account_id** | **int**| The ID of the external account to update the user attributions of. | 
- **cloudtrail_name** | **str**| An array of all the signatures to disable on the external account. | 
+ **external_account_id** | **int**| The ID of the external account to update the user attributions of | 
+ **cloudtrail_name** | **str**| The name of the cloudetrail associated with the user attribution. | 
 
 ### Return type
 

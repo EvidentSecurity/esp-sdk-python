@@ -7,7 +7,6 @@ import esp_sdk
 from esp_sdk.rest import RESTClientObject
 from esp_sdk.api_client import ApiClient
 from esp_sdk.apis.alerts_api import AlertsApi
-from esp_sdk.apis.dashboard_api import DashboardApi
 
 
 class TestJsonApi(TestBase):
@@ -72,18 +71,3 @@ class TestJsonApi(TestBase):
         self.assertIsNotNone(alert.tag_ids)
         self.assertIsNotNone(alert.cloud_trail_event_ids)
         self.assertIsNotNone(alert.external_account.organization_id)
-
-    def test_error_response_is_parsed_correctly(self):
-        data = self.active_record_error_response()
-        rest_client = RESTClientObject()
-        response = Mock(status=200, data=data)
-        rest_client.pool_manager.request = Mock(return_value=response)
-        api_client = ApiClient()
-        api_client.rest_client = rest_client
-        api = AlertsApi(api_client)
-
-        alert = api.show(1)
-
-        self.assertIn("Name can't be blank", alert.errors)
-        self.assertIn("Name is invalid", alert.errors)
-        self.assertIn("Description can't be blank", alert.errors)

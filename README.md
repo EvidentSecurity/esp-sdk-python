@@ -32,7 +32,7 @@ pip install git+https://github.com/EvidentSecurity/esp-sdk-python2.git
 
 Then import the package:
 ```python
-import esp_sdk
+import esp_sdk 
 ```
 
 ### Setuptools
@@ -96,13 +96,13 @@ import esp_sdk
 from esp_sdk.rest import ApiException
 from pprint import pprint
 
-
+    
 # create an instance of the API class
 api_instance = esp_sdk.AlertsApi()
-report_id = 56 # int | Id of the Report to Return Alerts For
-filter = {'key': 'filter_example'} # dict(str, str) | Filter Params for Searching.  Equality Searchable Attribute: [id]  Limited Searchable Attributes: [signature_service_id_in, signature_risk_level_in, risk_level_in, risk_level_eq, resource_or_tag_cont, suppressed, not_suppressed, signature_name_cont, signature_identifier_cont, external_account_id_in, external_account_id_eq, external_account_team_id_in, external_account_team_id_eq, region_id_in, region_id_eq, status_in, status_eq, cloud_trail_events_present, open_as_of, signature_id_in, signature_id_eq]   Example: filter: {name_eq: 'Bob'} (optional)
-include = 'include_example' # str | Objects that can be included in the response:  external_account,region,signature,custom_signature,suppression,metadata,cloud_trail_events,tags,compliance_controls  See Including Objects for more information. (optional)
-page = {'key': 'page_example'} # dict(str, str) | Page Number and Page Size.  Example: page: {number: 1, size: 20} (optional)
+report_id = 56 # int | ID of the Report to Return Alerts For
+filter = {'key': 'filter_example'} # dict(str, str) | Filter Params for Searching.  See Searching Lists for more information. (optional)
+include = 'include_example' # str | Related objects that can be included in the response.  See Including Objects for more information. (optional)
+page = '{:number=>1,+:size=>20}' # str | Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page (optional) (default to {:number=>1,+:size=>20})
 
 try:
     # Get a list of Alerts
@@ -396,7 +396,7 @@ Lists can be sorted by multiple fields by specifying an ordered array.
 esp_sdk.SignaturesApi().list(filter={ "name_cont": 'dns', "sorts": ['risk_level desc', 'created_at'] })
 #=> will return signatures `where name LIKE '%dns%'` sorted by `risk_level` in descending order and then by `created_at` in ascending order.
 ```
-
+    
 ## Documentation for API Endpoints
 
 All URIs are relative to *https://api.evident.io/*
@@ -430,34 +430,34 @@ Class | Method | HTTP request | Description
 *AlertsApi* | [**list**](docs/AlertsApi.md#list) | **PUT** /api/v2/reports/{report_id}/alerts.json_api | Get a list of Alerts
 *AlertsApi* | [**show**](docs/AlertsApi.md#show) | **GET** /api/v2/alerts/{id}.json_api | Show a single Alert
 *AuditLogFileExportApi* | [**create**](docs/AuditLogFileExportApi.md#create) | **POST** /api/v2/audit_logs/export/files.json_api | Export an Audit Log File
-*AuditLogFileExportApi* | [**show**](docs/AuditLogFileExportApi.md#show) | **GET** /api/v2/audit_logs/export/files/{id}.json_api | Show a single Audit Log File
-*AuditLogsApi* | [**list**](docs/AuditLogsApi.md#list) | **PUT** /api/v2/audit_logs.json_api | Get a list of Audit Logs
-*AuditLogsApi* | [**show**](docs/AuditLogsApi.md#show) | **GET** /api/v2/audit_logs/{id}.json_api | Show a single Audit Log
-*CloudTrailEventsApi* | [**list**](docs/CloudTrailEventsApi.md#list) | **GET** /api/v2/alerts/{alert_id}/cloud_trail_events.json_api | Get a list of Cloud Trail Events
-*CloudTrailEventsApi* | [**show**](docs/CloudTrailEventsApi.md#show) | **GET** /api/v2/cloud_trail_events/{id}.json_api | Show a single Cloud Trail Event
-*ComplianceControlsApi* | [**list**](docs/ComplianceControlsApi.md#list) | **PUT** /api/v2/compliance_controls.json_api | Get a list of Compliance Controls
-*ComplianceControlsApi* | [**show**](docs/ComplianceControlsApi.md#show) | **GET** /api/v2/compliance_controls/{id}.json_api | Show a single Compliance Control
-*ComplianceDomainsApi* | [**list**](docs/ComplianceDomainsApi.md#list) | **PUT** /api/v2/compliance_domains.json_api | Get a list of Compliance Domains
-*ComplianceDomainsApi* | [**show**](docs/ComplianceDomainsApi.md#show) | **GET** /api/v2/compliance_domains/{id}.json_api | Show a single Compliance Domain
-*ComplianceStandardsApi* | [**list**](docs/ComplianceStandardsApi.md#list) | **PUT** /api/v2/compliance_standards.json_api | Get a list of Compliance Standards
-*ComplianceStandardsApi* | [**show**](docs/ComplianceStandardsApi.md#show) | **GET** /api/v2/compliance_standards/{id}.json_api | Show a single Compliance Standard
-*ContactRequestsApi* | [**create**](docs/ContactRequestsApi.md#create) | **POST** /api/v2/contact_requests.json_api | Create a(n) Contact Request
-*CustomSignatureDefinitionsApi* | [**activate**](docs/CustomSignatureDefinitionsApi.md#activate) | **PATCH** /api/v2/custom_signature_definitions/{custom_signature_definition_id}/activate.json_api | A successful call to this API activates and returns a specific custom signature definition identified by the id parameter. The definition must have a status of editable to be activated.
+*AuditLogFileExportApi* | [**show**](docs/AuditLogFileExportApi.md#show) | **GET** /api/v2/audit_logs/export/files/{id}.json_api | Show a single AuditLogFile
+*AuditLogsApi* | [**list**](docs/AuditLogsApi.md#list) | **PUT** /api/v2/audit_logs.json_api | Get a list of AuditLogs
+*AuditLogsApi* | [**show**](docs/AuditLogsApi.md#show) | **GET** /api/v2/audit_logs/{id}.json_api | Show a single AuditLog
+*CloudTrailEventsApi* | [**list**](docs/CloudTrailEventsApi.md#list) | **GET** /api/v2/alerts/{alert_id}/cloud_trail_events.json_api | Get a list of CloudTrailEvents
+*CloudTrailEventsApi* | [**show**](docs/CloudTrailEventsApi.md#show) | **GET** /api/v2/cloud_trail_events/{id}.json_api | Show a single CloudTrailEvent
+*ComplianceControlsApi* | [**list**](docs/ComplianceControlsApi.md#list) | **PUT** /api/v2/compliance_controls.json_api | Get a list of ComplianceControls
+*ComplianceControlsApi* | [**show**](docs/ComplianceControlsApi.md#show) | **GET** /api/v2/compliance_controls/{id}.json_api | Show a single ComplianceControl
+*ComplianceDomainsApi* | [**list**](docs/ComplianceDomainsApi.md#list) | **PUT** /api/v2/compliance_domains.json_api | Get a list of ComplianceDomains
+*ComplianceDomainsApi* | [**show**](docs/ComplianceDomainsApi.md#show) | **GET** /api/v2/compliance_domains/{id}.json_api | Show a single ComplianceDomain
+*ComplianceStandardsApi* | [**list**](docs/ComplianceStandardsApi.md#list) | **PUT** /api/v2/compliance_standards.json_api | Get a list of ComplianceStandards
+*ComplianceStandardsApi* | [**show**](docs/ComplianceStandardsApi.md#show) | **GET** /api/v2/compliance_standards/{id}.json_api | Show a single ComplianceStandard
+*ContactRequestsApi* | [**create**](docs/ContactRequestsApi.md#create) | **POST** /api/v2/contact_requests.json_api | Create a(n) ContactRequest
+*CustomSignatureDefinitionsApi* | [**activate**](docs/CustomSignatureDefinitionsApi.md#activate) | **PATCH** /api/v2/custom_signature_definitions/{custom_signature_definition_id}/activate.json_api | A successful call to this API marks the definition for activation.  The definition will go into the &#39;validating&#39; state and will be tested before activating. The definition must have a status of editable to be activated.
 *CustomSignatureDefinitionsApi* | [**archive**](docs/CustomSignatureDefinitionsApi.md#archive) | **PATCH** /api/v2/custom_signature_definitions/{custom_signature_definition_id}/archive.json_api | A successful call to this API archives and returns a specific custom signature definition identified by the id parameter. The definition must have a status of active to be archived.
-*CustomSignatureDefinitionsApi* | [**create**](docs/CustomSignatureDefinitionsApi.md#create) | **POST** /api/v2/custom_signature_definitions.json_api | Create a(n) Custom Signature/Definition
-*CustomSignatureDefinitionsApi* | [**destroy**](docs/CustomSignatureDefinitionsApi.md#destroy) | **DELETE** /api/v2/custom_signature_definitions/{id}.json_api | Remove a(n) CustomSignature::Definition
-*CustomSignatureDefinitionsApi* | [**list**](docs/CustomSignatureDefinitionsApi.md#list) | **PUT** /api/v2/custom_signature_definitions.json_api | Get a list of Custom Signature/Definitions
-*CustomSignatureDefinitionsApi* | [**show**](docs/CustomSignatureDefinitionsApi.md#show) | **GET** /api/v2/custom_signature_definitions/{id}.json_api | Show a single Custom Signature/Definition
-*CustomSignatureDefinitionsApi* | [**update**](docs/CustomSignatureDefinitionsApi.md#update) | **PATCH** /api/v2/custom_signature_definitions/{id}.json_api | Update a(n) Custom Signature/Definition
-*CustomSignatureResultsApi* | [**alerts**](docs/CustomSignatureResultsApi.md#alerts) | **GET** /api/v2/custom_signature_results/{custom_signature_result_id}/alerts.json_api | Returns the alerts for a given result. Note that this format is slightly different than the standard alert format. A successful call to this API returns a list of alerts for the custom signature result identified by the id parameter.
-*CustomSignatureResultsApi* | [**create**](docs/CustomSignatureResultsApi.md#create) | **POST** /api/v2/custom_signature_results.json_api | Create a(n) Custom Signature/Result
-*CustomSignatureResultsApi* | [**list**](docs/CustomSignatureResultsApi.md#list) | **PUT** /api/v2/custom_signature_results.json_api | Get a list of Custom Signature/Results
-*CustomSignatureResultsApi* | [**show**](docs/CustomSignatureResultsApi.md#show) | **GET** /api/v2/custom_signature_results/{id}.json_api | Show a single Custom Signature/Result
-*CustomSignaturesApi* | [**create**](docs/CustomSignaturesApi.md#create) | **POST** /api/v2/custom_signatures.json_api | Create a(n) Custom Signature
+*CustomSignatureDefinitionsApi* | [**create**](docs/CustomSignatureDefinitionsApi.md#create) | **POST** /api/v2/custom_signature_definitions.json_api | Create a(n) CustomSignatureDefinition
+*CustomSignatureDefinitionsApi* | [**destroy**](docs/CustomSignatureDefinitionsApi.md#destroy) | **DELETE** /api/v2/custom_signature_definitions/{id}.json_api | Remove a(n) CustomSignatureDefinition
+*CustomSignatureDefinitionsApi* | [**list**](docs/CustomSignatureDefinitionsApi.md#list) | **PUT** /api/v2/custom_signature_definitions.json_api | Get a list of CustomSignatureDefinitions
+*CustomSignatureDefinitionsApi* | [**show**](docs/CustomSignatureDefinitionsApi.md#show) | **GET** /api/v2/custom_signature_definitions/{id}.json_api | Show a single CustomSignatureDefinition
+*CustomSignatureDefinitionsApi* | [**update**](docs/CustomSignatureDefinitionsApi.md#update) | **PATCH** /api/v2/custom_signature_definitions/{id}.json_api | Update a(n) CustomSignatureDefinition
+*CustomSignatureResultsApi* | [**alerts**](docs/CustomSignatureResultsApi.md#alerts) | **GET** /api/v2/custom_signature_results/{custom_signature_result_id}/alerts.json_api | Returns the alerts for a given result. Note that this format is slightly different than the standard alert format. A successful call to this API returns a list of alerts for the custom signature result identified by the custom_signature_result_id parameter.
+*CustomSignatureResultsApi* | [**create**](docs/CustomSignatureResultsApi.md#create) | **POST** /api/v2/custom_signature_results.json_api | Create a(n) CustomSignatureResult
+*CustomSignatureResultsApi* | [**list**](docs/CustomSignatureResultsApi.md#list) | **PUT** /api/v2/custom_signature_results.json_api | Get a list of CustomSignatureResults
+*CustomSignatureResultsApi* | [**show**](docs/CustomSignatureResultsApi.md#show) | **GET** /api/v2/custom_signature_results/{id}.json_api | Show a single CustomSignatureResult
+*CustomSignaturesApi* | [**create**](docs/CustomSignaturesApi.md#create) | **POST** /api/v2/custom_signatures.json_api | Create a(n) CustomSignature
 *CustomSignaturesApi* | [**destroy**](docs/CustomSignaturesApi.md#destroy) | **DELETE** /api/v2/custom_signatures/{id}.json_api | Remove a(n) CustomSignature
-*CustomSignaturesApi* | [**list**](docs/CustomSignaturesApi.md#list) | **PUT** /api/v2/custom_signatures.json_api | Get a list of Custom Signatures
-*CustomSignaturesApi* | [**show**](docs/CustomSignaturesApi.md#show) | **GET** /api/v2/custom_signatures/{id}.json_api | Show a single Custom Signature
-*CustomSignaturesApi* | [**update**](docs/CustomSignaturesApi.md#update) | **PATCH** /api/v2/custom_signatures/{id}.json_api | Update a(n) Custom Signature
+*CustomSignaturesApi* | [**list**](docs/CustomSignaturesApi.md#list) | **PUT** /api/v2/custom_signatures.json_api | Get a list of CustomSignatures
+*CustomSignaturesApi* | [**show**](docs/CustomSignaturesApi.md#show) | **GET** /api/v2/custom_signatures/{id}.json_api | Show a single CustomSignature
+*CustomSignaturesApi* | [**update**](docs/CustomSignaturesApi.md#update) | **PATCH** /api/v2/custom_signatures/{id}.json_api | Update a(n) CustomSignature
 *ExternalAccountDisabledSignaturesApi* | [**create**](docs/ExternalAccountDisabledSignaturesApi.md#create) | **POST** /api/v2/external_accounts/{external_account_id}/disabled_signatures.json_api | A successful call to this API will disable a signature for an external account.
 *ExternalAccountDisabledSignaturesApi* | [**destroy**](docs/ExternalAccountDisabledSignaturesApi.md#destroy) | **DELETE** /api/v2/external_accounts/{external_account_id}/disabled_signatures.json_api | A successful call to this API will remove a signature from the disabled signature list on an external account.
 *ExternalAccountDisabledSignaturesApi* | [**list**](docs/ExternalAccountDisabledSignaturesApi.md#list) | **GET** /api/v2/external_accounts/{external_account_id}/disabled_signatures.json_api | A successful call to this API returns all the disabled signatures of the associated external account, identified by the external_account_id parameter.
@@ -466,11 +466,12 @@ Class | Method | HTTP request | Description
 *ExternalAccountUserAttributionChannelsApi* | [**destroy**](docs/ExternalAccountUserAttributionChannelsApi.md#destroy) | **DELETE** /api/v2/external_accounts/{external_account_id}/user_attribution/channel.json_api | A successful call to this API will remove the User Attribution Channel for an external account.
 *ExternalAccountUserAttributionChannelsApi* | [**show**](docs/ExternalAccountUserAttributionChannelsApi.md#show) | **GET** /api/v2/external_accounts/{external_account_id}/user_attribution/channel.json_api | A successful call to this API will show the User Attribution Channel of an external account.
 *ExternalAccountUserAttributionsApi* | [**update**](docs/ExternalAccountUserAttributionsApi.md#update) | **PATCH** /api/v2/external_accounts/{external_account_id}/user_attribution.json_api | A successful call to this API will update the user attributions on an external account.
-*ExternalAccountsApi* | [**create**](docs/ExternalAccountsApi.md#create) | **POST** /api/v2/external_accounts.json_api | Create a(n) External Account
+*ExternalAccountsApi* | [**create**](docs/ExternalAccountsApi.md#create) | **POST** /api/v2/external_accounts.json_api | Create a(n) ExternalAccount
 *ExternalAccountsApi* | [**destroy**](docs/ExternalAccountsApi.md#destroy) | **DELETE** /api/v2/external_accounts/{id}.json_api | Remove a(n) ExternalAccount
-*ExternalAccountsApi* | [**list**](docs/ExternalAccountsApi.md#list) | **PUT** /api/v2/external_accounts.json_api | Get a list of External Accounts
-*ExternalAccountsApi* | [**show**](docs/ExternalAccountsApi.md#show) | **GET** /api/v2/external_accounts/{id}.json_api | Show a single External Account
-*ExternalAccountsApi* | [**update**](docs/ExternalAccountsApi.md#update) | **PATCH** /api/v2/external_accounts/{id}.json_api | Update a(n) External Account
+*ExternalAccountsApi* | [**list**](docs/ExternalAccountsApi.md#list) | **PUT** /api/v2/external_accounts.json_api | Get a list of ExternalAccounts
+*ExternalAccountsApi* | [**show**](docs/ExternalAccountsApi.md#show) | **GET** /api/v2/external_accounts/{id}.json_api | Show a single ExternalAccount
+*ExternalAccountsApi* | [**update**](docs/ExternalAccountsApi.md#update) | **PATCH** /api/v2/external_accounts/{id}.json_api | Update a(n) ExternalAccount
+*IntegrationsApi* | [**show**](docs/IntegrationsApi.md#show) | **GET** /api/v2/integrations/{id}.json_api | Show a single Integration
 *MetadataApi* | [**for_alert**](docs/MetadataApi.md#for_alert) | **GET** /api/v2/alerts/{alert_id}/metadata.json_api | Show the metadata for an alert
 *MetadataApi* | [**show**](docs/MetadataApi.md#show) | **GET** /api/v2/metadata/{id}.json_api | Show a single Metadata
 *OrganizationsApi* | [**list**](docs/OrganizationsApi.md#list) | **PUT** /api/v2/organizations.json_api | Get a list of Organizations
@@ -484,42 +485,48 @@ Class | Method | HTTP request | Description
 *ReportsApi* | [**show**](docs/ReportsApi.md#show) | **GET** /api/v2/reports/{id}.json_api | Show a single Report
 *RolesApi* | [**list**](docs/RolesApi.md#list) | **GET** /api/v2/roles.json_api | Get a list of Roles
 *RolesApi* | [**show**](docs/RolesApi.md#show) | **GET** /api/v2/roles/{id}.json_api | Show a single Role
-*ScanIntervalsApi* | [**create**](docs/ScanIntervalsApi.md#create) | **POST** /api/v2/scan_intervals.json_api | Create a(n) Scan Interval
+*ScanIntervalsApi* | [**create**](docs/ScanIntervalsApi.md#create) | **POST** /api/v2/scan_intervals.json_api | Create a(n) ScanInterval
 *ScanIntervalsApi* | [**destroy**](docs/ScanIntervalsApi.md#destroy) | **DELETE** /api/v2/scan_intervals/{id}.json_api | Remove a(n) ScanInterval
-*ScanIntervalsApi* | [**list**](docs/ScanIntervalsApi.md#list) | **GET** /api/v2/external_accounts/{external_account_id}/scan_intervals.json_api | Get a list of Scan Intervals
-*ScanIntervalsApi* | [**show**](docs/ScanIntervalsApi.md#show) | **GET** /api/v2/scan_intervals/{id}.json_api | Show a single Scan Interval
-*ScanIntervalsApi* | [**update**](docs/ScanIntervalsApi.md#update) | **PATCH** /api/v2/scan_intervals/{id}.json_api | Update a(n) Scan Interval
+*ScanIntervalsApi* | [**list**](docs/ScanIntervalsApi.md#list) | **GET** /api/v2/external_accounts/{external_account_id}/scan_intervals.json_api | Get a list of ScanIntervals
+*ScanIntervalsApi* | [**show**](docs/ScanIntervalsApi.md#show) | **GET** /api/v2/scan_intervals/{id}.json_api | Show a single ScanInterval
+*ScanIntervalsApi* | [**update**](docs/ScanIntervalsApi.md#update) | **PATCH** /api/v2/scan_intervals/{id}.json_api | Update a(n) ScanInterval
 *ServicesApi* | [**list**](docs/ServicesApi.md#list) | **PUT** /api/v2/services.json_api | Get a list of Services
 *ServicesApi* | [**show**](docs/ServicesApi.md#show) | **GET** /api/v2/services/{id}.json_api | Show a single Service
-*SignatureCustomRiskLevelsApi* | [**create**](docs/SignatureCustomRiskLevelsApi.md#create) | **POST** /api/v2/signature_custom_risk_levels.json_api | Create a(n) Signature Custom Risk Level
+*SignatureCustomRiskLevelsApi* | [**create**](docs/SignatureCustomRiskLevelsApi.md#create) | **POST** /api/v2/signature_custom_risk_levels.json_api | Create a(n) SignatureCustomRiskLevel
 *SignatureCustomRiskLevelsApi* | [**destroy**](docs/SignatureCustomRiskLevelsApi.md#destroy) | **DELETE** /api/v2/signature_custom_risk_levels/{id}.json_api | Remove a(n) SignatureCustomRiskLevel
-*SignatureCustomRiskLevelsApi* | [**list**](docs/SignatureCustomRiskLevelsApi.md#list) | **GET** /api/v2/external_accounts/{external_account_id}/signature_custom_risk_levels.json_api | Get a list of Signature Custom Risk Levels
-*SignatureCustomRiskLevelsApi* | [**show**](docs/SignatureCustomRiskLevelsApi.md#show) | **GET** /api/v2/signature_custom_risk_levels/{id}.json_api | Show a single Signature Custom Risk Level
-*SignatureCustomRiskLevelsApi* | [**update**](docs/SignatureCustomRiskLevelsApi.md#update) | **PATCH** /api/v2/signature_custom_risk_levels/{id}.json_api | Update a(n) Signature Custom Risk Level
+*SignatureCustomRiskLevelsApi* | [**list**](docs/SignatureCustomRiskLevelsApi.md#list) | **GET** /api/v2/external_accounts/{external_account_id}/signature_custom_risk_levels.json_api | Get a list of SignatureCustomRiskLevels
+*SignatureCustomRiskLevelsApi* | [**show**](docs/SignatureCustomRiskLevelsApi.md#show) | **GET** /api/v2/signature_custom_risk_levels/{id}.json_api | Show a single SignatureCustomRiskLevel
+*SignatureCustomRiskLevelsApi* | [**update**](docs/SignatureCustomRiskLevelsApi.md#update) | **PATCH** /api/v2/signature_custom_risk_levels/{id}.json_api | Update a(n) SignatureCustomRiskLevel
 *SignaturesApi* | [**list**](docs/SignaturesApi.md#list) | **PUT** /api/v2/signatures.json_api | Get a list of Signatures
-*SignaturesApi* | [**run**](docs/SignaturesApi.md#run) | **POST** /api/v2/signatures/{id}/run.json_api | Run a Signature
 *SignaturesApi* | [**show**](docs/SignaturesApi.md#show) | **GET** /api/v2/signatures/{id}.json_api | Show a single Signature
 *StatsApi* | [**for_compliance_controls**](docs/StatsApi.md#for_compliance_controls) | **GET** /api/v2/stats/{stat_id}/compliance_controls.json_api | A successful call to this API returns all the stats of all the compliance controls for a report identified by the stat_id parameter. Said report contains all statistics for this alert triggered from signatures contained in all compliance controls for the selected hour.
+*StatsApi* | [**for_custom_compliance_controls**](docs/StatsApi.md#for_custom_compliance_controls) | **GET** /api/v2/stats/{stat_id}/custom_compliance_controls.json_api | A successful call to this API returns all the stats of all the custom compliance controls for a report identified by the stat_id parameter. Said report contains all statistics for this alert triggered from signatures contained in all custom compliance controls for the selected hour.
 *StatsApi* | [**for_custom_signatures**](docs/StatsApi.md#for_custom_signatures) | **GET** /api/v2/stats/{stat_id}/custom_signatures.json_api | A successful call to this API returns all the stats of all the custom signatures for a report identified by the stat_id parameter. Said report contains all statistics for this alert triggered from signatures contained in all custom_signatures for the selected hour.
 *StatsApi* | [**for_regions**](docs/StatsApi.md#for_regions) | **GET** /api/v2/stats/{stat_id}/regions.json_api | A successful call to this API returns all the stats of all the regions for a report identified by the stat_id parameter. Said report contains all statistics for this alert triggered from signatures contained in all regions for the selected hour.
 *StatsApi* | [**for_report**](docs/StatsApi.md#for_report) | **GET** /api/v2/reports/{report_id}/stats.json_api | A successful call to this API returns all the stats of all the alerts for a report identified by the report_id parameter. Said report contains all statistics for this alert triggered from signatures contained in all regions for the selected hour.
-*StatsApi* | [**for_services**](docs/StatsApi.md#for_services) | **GET** /api/v2/stats/{stat_id}/services.json_api | A successful call to this API returns all the stats of all the services for a report identified by the stat_id parameter. Said report contains all statistics for this alert triggered from signatures contained in all services for the selected hour.
+*StatsApi* | [**for_services**](docs/StatsApi.md#for_services) | **GET** /api/v2/stats/{stat_id}/services.json_api | A successful call to this API returns all the stats of all the services for a report identified by the stat_id parameter. Said report contains all statistics for this alert triggered from services contained in all services for the selected hour.
 *StatsApi* | [**for_signatures**](docs/StatsApi.md#for_signatures) | **GET** /api/v2/stats/{stat_id}/signatures.json_api | A successful call to this API returns all the stats of all the signatures for a report identified by the stat_id parameter. Said report contains all statistics for this alert triggered from signatures contained in all signatures for the selected hour.
-*StatsApi* | [**latest_for_teams**](docs/StatsApi.md#latest_for_teams) | **GET** /api/v2/stats/latest_for_teams.json_api | A successful call to this API returns all the stats for the most recent report of each team accessible by the given API key
-*StatsApi* | [**show**](docs/StatsApi.md#show) | **GET** /api/v2/stats/{id}.json_api | Show a single Stat
-*SubOrganizationsApi* | [**create**](docs/SubOrganizationsApi.md#create) | **POST** /api/v2/sub_organizations.json_api | Create a(n) Sub Organization
+*StatsApi* | [**latest_for_teams**](docs/StatsApi.md#latest_for_teams) | **PUT** /api/v2/stats/latest_for_teams.json_api | A successful call to this API returns all the stats for the most recent report of each team accessible by the given API key
+*StatsApi* | [**show**](docs/StatsApi.md#show) | **GET** /api/v2/stats/custom_compliance_controls/{id}.json_api | Show a single StatCustomComplianceControl
+*StatsApi* | [**show_0**](docs/StatsApi.md#show_0) | **GET** /api/v2/stats/compliance_controls/{id}.json_api | Show a single StatComplianceControl
+*StatsApi* | [**show_1**](docs/StatsApi.md#show_1) | **GET** /api/v2/stats/signatures/{id}.json_api | Show a single StatSignature
+*StatsApi* | [**show_2**](docs/StatsApi.md#show_2) | **GET** /api/v2/stats/{id}.json_api | Show a single Stat
+*StatsApi* | [**show_3**](docs/StatsApi.md#show_3) | **GET** /api/v2/stats/regions/{id}.json_api | Show a single StatRegion
+*StatsApi* | [**show_4**](docs/StatsApi.md#show_4) | **GET** /api/v2/stats/custom_signatures/{id}.json_api | Show a single StatCustomSignature
+*StatsApi* | [**show_5**](docs/StatsApi.md#show_5) | **GET** /api/v2/stats/services/{id}.json_api | Show a single StatService
+*SubOrganizationsApi* | [**create**](docs/SubOrganizationsApi.md#create) | **POST** /api/v2/sub_organizations.json_api | Create a(n) SubOrganization
 *SubOrganizationsApi* | [**destroy**](docs/SubOrganizationsApi.md#destroy) | **DELETE** /api/v2/sub_organizations/{id}.json_api | Remove a(n) SubOrganization
-*SubOrganizationsApi* | [**list**](docs/SubOrganizationsApi.md#list) | **PUT** /api/v2/sub_organizations.json_api | Get a list of Sub Organizations
-*SubOrganizationsApi* | [**show**](docs/SubOrganizationsApi.md#show) | **GET** /api/v2/sub_organizations/{id}.json_api | Show a single Sub Organization
-*SubOrganizationsApi* | [**update**](docs/SubOrganizationsApi.md#update) | **PATCH** /api/v2/sub_organizations/{id}.json_api | Update a(n) Sub Organization
+*SubOrganizationsApi* | [**list**](docs/SubOrganizationsApi.md#list) | **PUT** /api/v2/sub_organizations.json_api | Get a list of SubOrganizations
+*SubOrganizationsApi* | [**show**](docs/SubOrganizationsApi.md#show) | **GET** /api/v2/sub_organizations/{id}.json_api | Show a single SubOrganization
+*SubOrganizationsApi* | [**update**](docs/SubOrganizationsApi.md#update) | **PATCH** /api/v2/sub_organizations/{id}.json_api | Update a(n) SubOrganization
 *SuppressionsApi* | [**deactivate**](docs/SuppressionsApi.md#deactivate) | **PATCH** /api/v2/suppressions/{id}/deactivate.json_api | A successful call to this API will deactivate a suppression identified by the id parameter.
 *SuppressionsApi* | [**list**](docs/SuppressionsApi.md#list) | **PUT** /api/v2/suppressions.json_api | Get a list of Suppressions
 *SuppressionsApi* | [**show**](docs/SuppressionsApi.md#show) | **GET** /api/v2/suppressions/{id}.json_api | Show a single Suppression
-*SuppressionsApi* | [**suppress_region**](docs/SuppressionsApi.md#suppress_region) | **POST** /api/v2/suppressions/regions.json_api | A successful call to this API creates a new region suppression for the supplied regions . The body of the request must contain a json api compliant hash of attributes with type suppression/regions.
+*SuppressionsApi* | [**suppress_region**](docs/SuppressionsApi.md#suppress_region) | **POST** /api/v2/suppressions/regions.json_api | A successful call to this API creates a new region suppression for the supplied regions. The body of the request must contain a json api compliant hash of attributes with type suppression/regions.
 *SuppressionsApi* | [**suppress_region_from_alert**](docs/SuppressionsApi.md#suppress_region_from_alert) | **POST** /api/v2/suppressions/alert/{alert_id}/regions.json_api | A successful call to this API creates a new signature suppression based on the supplied alert_id. The body of the request must contain a json api compliant hash of attributes with type suppression/regions.
 *SuppressionsApi* | [**suppress_signature**](docs/SuppressionsApi.md#suppress_signature) | **POST** /api/v2/suppressions/signatures.json_api | A successful call to this API creates a new signature suppression for the supplied signature_ids or custom_signature_ids. The body of the request must contain a json API compliant hash of attributes with type suppression/signatures.
 *SuppressionsApi* | [**suppress_signature_from_alert**](docs/SuppressionsApi.md#suppress_signature_from_alert) | **POST** /api/v2/suppressions/alert/{alert_id}/signatures.json_api | A successful call to this API creates a new signature suppression based on the supplied alert_id. The body of the request must contain a json api compliant hash of attributes with type suppression/signatures.
-*SuppressionsApi* | [**suppress_unique_identifier_from_alert**](docs/SuppressionsApi.md#suppress_unique_identifier_from_alert) | **POST** /api/v2/suppressions/alert/{alert_id}/unique_identifiers.json_api | A successful call to this API creates a new unique identifier suppression based on the supplied alert_id. The body of the request must contain a json api compliant hash of attributes with type suppression/signatures.
+*SuppressionsApi* | [**suppress_unique_identifier_from_alert**](docs/SuppressionsApi.md#suppress_unique_identifier_from_alert) | **POST** /api/v2/suppressions/alert/{alert_id}/unique_identifiers.json_api | A successful call to this API creates a new unique identifier suppression based on the supplied alert_id. The body of the request must contain a json api compliant hash of attributes with type suppression/unique_identifier.
 *TagsApi* | [**list**](docs/TagsApi.md#list) | **GET** /api/v2/alerts/{alert_id}/tags.json_api | Get a list of Tags
 *TagsApi* | [**show**](docs/TagsApi.md#show) | **GET** /api/v2/tags/{id}.json_api | Show a single Tag
 *TeamsApi* | [**create**](docs/TeamsApi.md#create) | **POST** /api/v2/teams.json_api | Create a(n) Team
@@ -540,7 +547,6 @@ Class | Method | HTTP request | Description
  - [Alert](docs/Alert.md)
  - [AuditLog](docs/AuditLog.md)
  - [AuditLogFile](docs/AuditLogFile.md)
- - [Channel](docs/Channel.md)
  - [CloudTrailEvent](docs/CloudTrailEvent.md)
  - [ComplianceControl](docs/ComplianceControl.md)
  - [ComplianceDomain](docs/ComplianceDomain.md)
@@ -551,8 +557,9 @@ Class | Method | HTTP request | Description
  - [CustomSignatureResult](docs/CustomSignatureResult.md)
  - [CustomSignatureResultAlert](docs/CustomSignatureResultAlert.md)
  - [ExternalAccount](docs/ExternalAccount.md)
- - [MessageObject](docs/MessageObject.md)
- - [MetaMessageObject](docs/MetaMessageObject.md)
+ - [ExternalAccountUserAttributionChannel](docs/ExternalAccountUserAttributionChannel.md)
+ - [Integration](docs/Integration.md)
+ - [Meta](docs/Meta.md)
  - [Metadata](docs/Metadata.md)
  - [Organization](docs/Organization.md)
  - [PaginatedCollection](docs/PaginatedCollection.md)
@@ -564,14 +571,16 @@ Class | Method | HTTP request | Description
  - [Signature](docs/Signature.md)
  - [SignatureCustomRiskLevel](docs/SignatureCustomRiskLevel.md)
  - [Stat](docs/Stat.md)
- - [StatsComplianceControl](docs/StatsComplianceControl.md)
- - [StatsCustomSignature](docs/StatsCustomSignature.md)
- - [StatsRegion](docs/StatsRegion.md)
- - [StatsService](docs/StatsService.md)
- - [StatsSignature](docs/StatsSignature.md)
+ - [StatComplianceControl](docs/StatComplianceControl.md)
+ - [StatCustomComplianceControl](docs/StatCustomComplianceControl.md)
+ - [StatCustomSignature](docs/StatCustomSignature.md)
+ - [StatRegion](docs/StatRegion.md)
+ - [StatService](docs/StatService.md)
+ - [StatSignature](docs/StatSignature.md)
  - [SubOrganization](docs/SubOrganization.md)
  - [Suppression](docs/Suppression.md)
  - [Tag](docs/Tag.md)
  - [Team](docs/Team.md)
  - [TimeZone](docs/TimeZone.md)
  - [User](docs/User.md)
+

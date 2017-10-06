@@ -2,17 +2,16 @@
 
 All URIs are relative to https://api.evident.io
 
-
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**list**](CloudTrailEventsApi.md#list) | **GET** /api/v2/alerts/{alert_id}/cloud_trail_events.json_api | Get a list of Cloud Trail Events
-[**show**](CloudTrailEventsApi.md#show) | **GET** /api/v2/cloud_trail_events/{id}.json_api | Show a single Cloud Trail Event
+[**list**](CloudTrailEventsApi.md#list) | **GET** /api/v2/alerts/{alert_id}/cloud_trail_events.json_api | Get a list of CloudTrailEvents
+[**show**](CloudTrailEventsApi.md#show) | **GET** /api/v2/cloud_trail_events/{id}.json_api | Show a single CloudTrailEvent
 
 
 # **list**
 > PaginatedCollection list(alert_id, page=page)
 
-Get a list of Cloud Trail Events
+Get a list of CloudTrailEvents
 
 ### Example 
 ```python
@@ -25,10 +24,10 @@ from pprint import pprint
 # create an instance of the API class
 api_instance = esp_sdk.CloudTrailEventsApi()
 alert_id = 56 # int | The ID of the alert to retrieve cloud trail events for
-page = {'key': 'page_example'} # dict(str, str) | Page Number and Page Size.  Example: page: {number: 1, size: 20} (optional)
+page = '{:number=>1,+:size=>20}' # str | Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page (optional) (default to {:number=>1,+:size=>20})
 
 try: 
-    # Get a list of Cloud Trail Events
+    # Get a list of CloudTrailEvents
     api_response = api_instance.list(alert_id, page=page)
     pprint(api_response)
 except ApiException as e:
@@ -40,7 +39,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **alert_id** | **int**| The ID of the alert to retrieve cloud trail events for | 
- **page** | [**dict(str, str)**](str.md)| Page Number and Page Size.  Example: page: {number: 1, size: 20} | [optional] 
+ **page** | **str**| Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page | [optional] [default to {:number&#x3D;&gt;1,+:size&#x3D;&gt;20}]
 
 ### Return type
 
@@ -53,7 +52,6 @@ See https://github.com/EvidentSecurity/esp-sdk-python2#set-your-hmac-security-ke
 ### HTTP request headers
 
  - **Content-Type**: application/vnd.api+json
-
  - **Accept**: application/vnd.api+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -61,7 +59,7 @@ See https://github.com/EvidentSecurity/esp-sdk-python2#set-your-hmac-security-ke
 # **show**
 > CloudTrailEvent show(id)
 
-Show a single Cloud Trail Event
+Show a single CloudTrailEvent
 
 ### Example 
 ```python
@@ -73,10 +71,10 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = esp_sdk.CloudTrailEventsApi()
-id = 56 # int | Cloud Trail Event Id
+id = 56 # int | CloudTrailEvent ID
 
 try: 
-    # Show a single Cloud Trail Event
+    # Show a single CloudTrailEvent
     api_response = api_instance.show(id)
     pprint(api_response)
 except ApiException as e:
@@ -87,7 +85,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **int**| Cloud Trail Event Id | 
+ **id** | **int**| CloudTrailEvent ID | 
 
 ### Return type
 
@@ -100,7 +98,6 @@ See https://github.com/EvidentSecurity/esp-sdk-python2#set-your-hmac-security-ke
 ### HTTP request headers
 
  - **Content-Type**: application/vnd.api+json
-
  - **Accept**: application/vnd.api+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

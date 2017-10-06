@@ -42,7 +42,7 @@ class SignatureCustomRiskLevelsApi(object):
 
     def create(self, external_account_id, risk_level, signature_id, **kwargs):
         """
-        Create a(n) Signature Custom Risk Level
+        Create a(n) SignatureCustomRiskLevel
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -54,7 +54,7 @@ class SignatureCustomRiskLevelsApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param int external_account_id: The ID of the external account this signature custom risk level is for (required)
-        :param str risk_level: The risk-level of the problem identified by the signature. Valid values are Low, Medium, High (required)
+        :param str risk_level: The risk-level of the problem identified by the signature. Valid values are low, medium, high (required)
         :param int signature_id: The signature ID this signature custom risk level is for (required)
         :return: SignatureCustomRiskLevel
                  If the method is called asynchronously,
@@ -69,7 +69,7 @@ class SignatureCustomRiskLevelsApi(object):
 
     def create_with_http_info(self, external_account_id, risk_level, signature_id, **kwargs):
         """
-        Create a(n) Signature Custom Risk Level
+        Create a(n) SignatureCustomRiskLevel
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -81,7 +81,7 @@ class SignatureCustomRiskLevelsApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param int external_account_id: The ID of the external account this signature custom risk level is for (required)
-        :param str risk_level: The risk-level of the problem identified by the signature. Valid values are Low, Medium, High (required)
+        :param str risk_level: The risk-level of the problem identified by the signature. Valid values are low, medium, high (required)
         :param int signature_id: The signature ID this signature custom risk level is for (required)
         :return: SignatureCustomRiskLevel
                  If the method is called asynchronously,
@@ -172,8 +172,8 @@ class SignatureCustomRiskLevelsApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param int id: SignatureCustomRiskLevel Id (required)
-        :return: SignatureCustomRiskLevel
+        :param int id: SignatureCustomRiskLevel ID (required)
+        :return: Meta
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -197,8 +197,8 @@ class SignatureCustomRiskLevelsApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param int id: SignatureCustomRiskLevel Id (required)
-        :return: SignatureCustomRiskLevel
+        :param int id: SignatureCustomRiskLevel ID (required)
+        :return: Meta
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -256,7 +256,7 @@ class SignatureCustomRiskLevelsApi(object):
                                         body=body_params,
                                         post_params=form_params,
                                         files=local_var_files,
-                                        response_type='SignatureCustomRiskLevel',
+                                        response_type='Meta',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -266,7 +266,7 @@ class SignatureCustomRiskLevelsApi(object):
 
     def list(self, external_account_id, **kwargs):
         """
-        Get a list of Signature Custom Risk Levels
+        Get a list of SignatureCustomRiskLevels
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -278,8 +278,8 @@ class SignatureCustomRiskLevelsApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param int external_account_id: The ID of the external account to retrieve (required)
-        :param str include: Objects that can be included in the response:  external_account,signature  See Including Objects for more information.
-        :param dict(str, str) page: Page Number and Page Size.  Example: page: {number: 1, size: 20}
+        :param str include: Related objects that can be included in the response.  See Including Objects for more information.
+        :param str page: Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page
         :return: PaginatedCollection
                  If the method is called asynchronously,
                  returns the request thread.
@@ -293,7 +293,7 @@ class SignatureCustomRiskLevelsApi(object):
 
     def list_with_http_info(self, external_account_id, **kwargs):
         """
-        Get a list of Signature Custom Risk Levels
+        Get a list of SignatureCustomRiskLevels
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -305,8 +305,8 @@ class SignatureCustomRiskLevelsApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param int external_account_id: The ID of the external account to retrieve (required)
-        :param str include: Objects that can be included in the response:  external_account,signature  See Including Objects for more information.
-        :param dict(str, str) page: Page Number and Page Size.  Example: page: {number: 1, size: 20}
+        :param str include: Related objects that can be included in the response.  See Including Objects for more information.
+        :param str page: Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page
         :return: PaginatedCollection
                  If the method is called asynchronously,
                  returns the request thread.
@@ -379,7 +379,7 @@ class SignatureCustomRiskLevelsApi(object):
 
     def show(self, id, **kwargs):
         """
-        Show a single Signature Custom Risk Level
+        Show a single SignatureCustomRiskLevel
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -390,8 +390,8 @@ class SignatureCustomRiskLevelsApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param int id: Signature Custom Risk Level Id (required)
-        :param str include: Objects that can be included in the response:  external_account,signature  See Including Objects for more information.
+        :param int id: SignatureCustomRiskLevel ID (required)
+        :param str include: Related objects that can be included in the response.  See Including Objects for more information.
         :return: SignatureCustomRiskLevel
                  If the method is called asynchronously,
                  returns the request thread.
@@ -405,7 +405,7 @@ class SignatureCustomRiskLevelsApi(object):
 
     def show_with_http_info(self, id, **kwargs):
         """
-        Show a single Signature Custom Risk Level
+        Show a single SignatureCustomRiskLevel
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -416,8 +416,8 @@ class SignatureCustomRiskLevelsApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param int id: Signature Custom Risk Level Id (required)
-        :param str include: Objects that can be included in the response:  external_account,signature  See Including Objects for more information.
+        :param int id: SignatureCustomRiskLevel ID (required)
+        :param str include: Related objects that can be included in the response.  See Including Objects for more information.
         :return: SignatureCustomRiskLevel
                  If the method is called asynchronously,
                  returns the request thread.
@@ -488,7 +488,7 @@ class SignatureCustomRiskLevelsApi(object):
 
     def update(self, id, external_account_id, risk_level, signature_id, **kwargs):
         """
-        Update a(n) Signature Custom Risk Level
+        Update a(n) SignatureCustomRiskLevel
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -499,9 +499,9 @@ class SignatureCustomRiskLevelsApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param int id: Signature Custom Risk Level Id (required)
+        :param int id: SignatureCustomRiskLevel ID (required)
         :param int external_account_id: The ID of the external account this signature custom risk level is for (required)
-        :param str risk_level: The risk-level of the problem identified by the signature. Valid values are Low, Medium, High (required)
+        :param str risk_level: The risk-level of the problem identified by the signature. Valid values are low, medium, high (required)
         :param int signature_id: The signature ID this signature custom risk level is for (required)
         :return: SignatureCustomRiskLevel
                  If the method is called asynchronously,
@@ -516,7 +516,7 @@ class SignatureCustomRiskLevelsApi(object):
 
     def update_with_http_info(self, id, external_account_id, risk_level, signature_id, **kwargs):
         """
-        Update a(n) Signature Custom Risk Level
+        Update a(n) SignatureCustomRiskLevel
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -527,9 +527,9 @@ class SignatureCustomRiskLevelsApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param int id: Signature Custom Risk Level Id (required)
+        :param int id: SignatureCustomRiskLevel ID (required)
         :param int external_account_id: The ID of the external account this signature custom risk level is for (required)
-        :param str risk_level: The risk-level of the problem identified by the signature. Valid values are Low, Medium, High (required)
+        :param str risk_level: The risk-level of the problem identified by the signature. Valid values are low, medium, high (required)
         :param int signature_id: The signature ID this signature custom risk level is for (required)
         :return: SignatureCustomRiskLevel
                  If the method is called asynchronously,
