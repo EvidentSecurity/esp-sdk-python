@@ -4,19 +4,19 @@ All URIs are relative to https://api.evident.io
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**activate**](CustomSignatureDefinitionsApi.md#activate) | **PATCH** /api/v2/custom_signature_definitions/{custom_signature_definition_id}/activate.json_api | A successful call to this API activates and returns a specific custom signature definition identified by the id parameter. The definition must have a status of editable to be activated.
+[**activate**](CustomSignatureDefinitionsApi.md#activate) | **PATCH** /api/v2/custom_signature_definitions/{custom_signature_definition_id}/activate.json_api | A successful call to this API marks the definition for activation.  The definition will go into the &#39;validating&#39; state and will be tested before activating. The definition must have a status of editable to be activated.
 [**archive**](CustomSignatureDefinitionsApi.md#archive) | **PATCH** /api/v2/custom_signature_definitions/{custom_signature_definition_id}/archive.json_api | A successful call to this API archives and returns a specific custom signature definition identified by the id parameter. The definition must have a status of active to be archived.
-[**create**](CustomSignatureDefinitionsApi.md#create) | **POST** /api/v2/custom_signature_definitions.json_api | Create a(n) Custom Signature/Definition
-[**destroy**](CustomSignatureDefinitionsApi.md#destroy) | **DELETE** /api/v2/custom_signature_definitions/{id}.json_api | Remove a(n) CustomSignature::Definition
-[**list**](CustomSignatureDefinitionsApi.md#list) | **PUT** /api/v2/custom_signature_definitions.json_api | Get a list of Custom Signature/Definitions
-[**show**](CustomSignatureDefinitionsApi.md#show) | **GET** /api/v2/custom_signature_definitions/{id}.json_api | Show a single Custom Signature/Definition
-[**update**](CustomSignatureDefinitionsApi.md#update) | **PATCH** /api/v2/custom_signature_definitions/{id}.json_api | Update a(n) Custom Signature/Definition
+[**create**](CustomSignatureDefinitionsApi.md#create) | **POST** /api/v2/custom_signature_definitions.json_api | Create a(n) CustomSignatureDefinition
+[**destroy**](CustomSignatureDefinitionsApi.md#destroy) | **DELETE** /api/v2/custom_signature_definitions/{id}.json_api | Remove a(n) CustomSignatureDefinition
+[**list**](CustomSignatureDefinitionsApi.md#list) | **PUT** /api/v2/custom_signature_definitions.json_api | Get a list of CustomSignatureDefinitions
+[**show**](CustomSignatureDefinitionsApi.md#show) | **GET** /api/v2/custom_signature_definitions/{id}.json_api | Show a single CustomSignatureDefinition
+[**update**](CustomSignatureDefinitionsApi.md#update) | **PATCH** /api/v2/custom_signature_definitions/{id}.json_api | Update a(n) CustomSignatureDefinition
 
 
 # **activate**
 > CustomSignatureDefinition activate(custom_signature_definition_id)
 
-A successful call to this API activates and returns a specific custom signature definition identified by the id parameter. The definition must have a status of editable to be activated.
+A successful call to this API marks the definition for activation.  The definition will go into the 'validating' state and will be tested before activating. The definition must have a status of editable to be activated.
 
 ### Example 
 ```python
@@ -28,10 +28,10 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = esp_sdk.CustomSignatureDefinitionsApi()
-custom_signature_definition_id = 56 # int | Custom Signature Definition Id
+custom_signature_definition_id = 56 # int | ID of Custom Signature Definition
 
 try: 
-    # A successful call to this API activates and returns a specific custom signature definition identified by the id parameter. The definition must have a status of editable to be activated.
+    # A successful call to this API marks the definition for activation.  The definition will go into the 'validating' state and will be tested before activating. The definition must have a status of editable to be activated.
     api_response = api_instance.activate(custom_signature_definition_id)
     pprint(api_response)
 except ApiException as e:
@@ -42,7 +42,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **custom_signature_definition_id** | **int**| Custom Signature Definition Id | 
+ **custom_signature_definition_id** | **int**| ID of Custom Signature Definition | 
 
 ### Return type
 
@@ -74,7 +74,7 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = esp_sdk.CustomSignatureDefinitionsApi()
-custom_signature_definition_id = 56 # int | Custom Signature Definition Id
+custom_signature_definition_id = 56 # int | ID of Custom Signature Definition
 
 try: 
     # A successful call to this API archives and returns a specific custom signature definition identified by the id parameter. The definition must have a status of active to be archived.
@@ -88,7 +88,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **custom_signature_definition_id** | **int**| Custom Signature Definition Id | 
+ **custom_signature_definition_id** | **int**| ID of Custom Signature Definition | 
 
 ### Return type
 
@@ -108,7 +108,7 @@ See https://github.com/EvidentSecurity/esp-sdk-python2#set-your-hmac-security-ke
 # **create**
 > CustomSignatureDefinition create(custom_signature_id)
 
-Create a(n) Custom Signature/Definition
+Create a(n) CustomSignatureDefinition
 
 ### Example 
 ```python
@@ -120,10 +120,10 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = esp_sdk.CustomSignatureDefinitionsApi()
-custom_signature_id = 56 # int | ID of the custom signature this definition should belong to.
+custom_signature_id = 56 # int | ID of the custom signature this definition belongs to
 
 try: 
-    # Create a(n) Custom Signature/Definition
+    # Create a(n) CustomSignatureDefinition
     api_response = api_instance.create(custom_signature_id)
     pprint(api_response)
 except ApiException as e:
@@ -134,7 +134,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **custom_signature_id** | **int**| ID of the custom signature this definition should belong to. | 
+ **custom_signature_id** | **int**| ID of the custom signature this definition belongs to | 
 
 ### Return type
 
@@ -152,9 +152,9 @@ See https://github.com/EvidentSecurity/esp-sdk-python2#set-your-hmac-security-ke
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **destroy**
-> CustomSignatureDefinition destroy(id)
+> Meta destroy(id)
 
-Remove a(n) CustomSignature::Definition
+Remove a(n) CustomSignatureDefinition
 
 ### Example 
 ```python
@@ -166,10 +166,10 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = esp_sdk.CustomSignatureDefinitionsApi()
-id = 56 # int | CustomSignature::Definition Id
+id = 56 # int | CustomSignatureDefinition ID
 
 try: 
-    # Remove a(n) CustomSignature::Definition
+    # Remove a(n) CustomSignatureDefinition
     api_response = api_instance.destroy(id)
     pprint(api_response)
 except ApiException as e:
@@ -180,11 +180,11 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **int**| CustomSignature::Definition Id | 
+ **id** | **int**| CustomSignatureDefinition ID | 
 
 ### Return type
 
-[**CustomSignatureDefinition**](CustomSignatureDefinition.md)
+[**Meta**](Meta.md)
 
 ### Authorization
 
@@ -200,7 +200,7 @@ See https://github.com/EvidentSecurity/esp-sdk-python2#set-your-hmac-security-ke
 # **list**
 > PaginatedCollection list(filter=filter, include=include, page=page)
 
-Get a list of Custom Signature/Definitions
+Get a list of CustomSignatureDefinitions
 
 ### Example 
 ```python
@@ -212,12 +212,12 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = esp_sdk.CustomSignatureDefinitionsApi()
-filter = {'key': 'filter_example'} # dict(str, str) | Filter Params for Searching.  Equality Searchable Attributes: [id, language, status, version_number]    Searchable Association: [custom_signature] See the filter parameter of the association's list action to see what attributes are searchable on each association. See Searching on Relationships for more information. See Searching Lists for more information. Example: filter: {name_eq: 'Bob'} (optional)
-include = 'include_example' # str | Objects that can be included in the response:  custom_signature,results  See Including Objects for more information. (optional)
-page = {'key': 'page_example'} # dict(str, str) | Page Number and Page Size.  Example: page: {number: 1, size: 20} (optional)
+filter = {'key': 'filter_example'} # dict(str, str) | Filter Params for Searching.  See Searching Lists for more information. (optional)
+include = 'include_example' # str | Related objects that can be included in the response.  See Including Objects for more information. (optional)
+page = '{:number=>1,+:size=>20}' # str | Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page (optional) (default to {:number=>1,+:size=>20})
 
 try: 
-    # Get a list of Custom Signature/Definitions
+    # Get a list of CustomSignatureDefinitions
     api_response = api_instance.list(filter=filter, include=include, page=page)
     pprint(api_response)
 except ApiException as e:
@@ -228,9 +228,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **filter** | [**dict(str, str)**](str.md)| Filter Params for Searching.  Equality Searchable Attributes: [id, language, status, version_number]    Searchable Association: [custom_signature] See the filter parameter of the association&#39;s list action to see what attributes are searchable on each association. See Searching on Relationships for more information. See Searching Lists for more information. Example: filter: {name_eq: &#39;Bob&#39;} | [optional] 
- **include** | **str**| Objects that can be included in the response:  custom_signature,results  See Including Objects for more information. | [optional] 
- **page** | [**dict(str, str)**](str.md)| Page Number and Page Size.  Example: page: {number: 1, size: 20} | [optional] 
+ **filter** | [**dict(str, str)**](str.md)| Filter Params for Searching.  See Searching Lists for more information. | [optional] 
+ **include** | **str**| Related objects that can be included in the response.  See Including Objects for more information. | [optional] 
+ **page** | **str**| Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page | [optional] [default to {:number&#x3D;&gt;1,+:size&#x3D;&gt;20}]
 
 ### Return type
 
@@ -250,7 +250,7 @@ See https://github.com/EvidentSecurity/esp-sdk-python2#set-your-hmac-security-ke
 # **show**
 > CustomSignatureDefinition show(id, include=include)
 
-Show a single Custom Signature/Definition
+Show a single CustomSignatureDefinition
 
 ### Example 
 ```python
@@ -262,11 +262,11 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = esp_sdk.CustomSignatureDefinitionsApi()
-id = 56 # int | Custom Signature/Definition Id
-include = 'include_example' # str | Objects that can be included in the response:  custom_signature,results  See Including Objects for more information. (optional)
+id = 56 # int | CustomSignatureDefinition ID
+include = 'include_example' # str | Related objects that can be included in the response.  See Including Objects for more information. (optional)
 
 try: 
-    # Show a single Custom Signature/Definition
+    # Show a single CustomSignatureDefinition
     api_response = api_instance.show(id, include=include)
     pprint(api_response)
 except ApiException as e:
@@ -277,8 +277,8 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **int**| Custom Signature/Definition Id | 
- **include** | **str**| Objects that can be included in the response:  custom_signature,results  See Including Objects for more information. | [optional] 
+ **id** | **int**| CustomSignatureDefinition ID | 
+ **include** | **str**| Related objects that can be included in the response.  See Including Objects for more information. | [optional] 
 
 ### Return type
 
@@ -298,7 +298,7 @@ See https://github.com/EvidentSecurity/esp-sdk-python2#set-your-hmac-security-ke
 # **update**
 > CustomSignatureDefinition update(id, code, language)
 
-Update a(n) Custom Signature/Definition
+Update a(n) CustomSignatureDefinition
 
 ### Example 
 ```python
@@ -310,12 +310,12 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = esp_sdk.CustomSignatureDefinitionsApi()
-id = 56 # int | Custom Signature/Definition Id
-code = 'code_example' # str | The code for the definition
-language = 'language_example' # str | The language of the code
+id = 56 # int | CustomSignatureDefinition ID
+code = 'code_example' # str | The code for this definition
+language = 'language_example' # str | The language of the definition. Valid values are ruby, javascript
 
 try: 
-    # Update a(n) Custom Signature/Definition
+    # Update a(n) CustomSignatureDefinition
     api_response = api_instance.update(id, code, language)
     pprint(api_response)
 except ApiException as e:
@@ -326,9 +326,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **int**| Custom Signature/Definition Id | 
- **code** | **str**| The code for the definition | 
- **language** | **str**| The language of the code | 
+ **id** | **int**| CustomSignatureDefinition ID | 
+ **code** | **str**| The code for this definition | 
+ **language** | **str**| The language of the definition. Valid values are ruby, javascript | 
 
 ### Return type
 

@@ -55,7 +55,7 @@ class ReportIntegrationsApi(object):
             for asynchronous request. (optional)
         :param list[int] report_ids: An array of report IDs (required)
         :param int integration_id: The ID of the integration to send the alerts to (required)
-        :return: SuccessObject
+        :return: Meta
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -81,7 +81,7 @@ class ReportIntegrationsApi(object):
             for asynchronous request. (optional)
         :param list[int] report_ids: An array of report IDs (required)
         :param int integration_id: The ID of the integration to send the alerts to (required)
-        :return: SuccessObject
+        :return: Meta
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -145,7 +145,7 @@ class ReportIntegrationsApi(object):
                                         body=body_params,
                                         post_params=form_params,
                                         files=local_var_files,
-                                        response_type='SuccessObject',
+                                        response_type='Meta',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),

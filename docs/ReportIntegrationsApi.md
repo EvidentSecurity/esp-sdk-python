@@ -8,7 +8,7 @@ Method | HTTP request | Description
 
 
 # **create**
-> SuccessObject create(report_ids, integration_id)
+> Meta create(report_ids, integration_id)
 
 Export all alerts on reports to an integration
 
@@ -42,7 +42,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SuccessObject**](SuccessObject.md)
+[**Meta**](Meta.md)
 
 ### Authorization
 

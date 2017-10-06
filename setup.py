@@ -30,7 +30,7 @@ setup(
     version=VERSION,
     description="ESP Documentation",
     author_email="",
-    url="",
+    url="https://github.com/EvidentSecurity/esp-sdk-python2",
     keywords=["Swagger", "ESP Documentation"],
     install_requires=REQUIRES,
     packages=find_packages(),

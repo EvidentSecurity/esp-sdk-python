@@ -16,6 +16,7 @@ from .external_account_disabled_signatures_api import ExternalAccountDisabledSig
 from .external_account_user_attribution_channels_api import ExternalAccountUserAttributionChannelsApi
 from .external_account_user_attributions_api import ExternalAccountUserAttributionsApi
 from .external_accounts_api import ExternalAccountsApi
+from .integrations_api import IntegrationsApi
 from .metadata_api import MetadataApi
 from .organizations_api import OrganizationsApi
 from .regions_api import RegionsApi

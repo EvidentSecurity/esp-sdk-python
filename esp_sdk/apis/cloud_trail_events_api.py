@@ -42,7 +42,7 @@ class CloudTrailEventsApi(object):
 
     def list(self, alert_id, **kwargs):
         """
-        Get a list of Cloud Trail Events
+        Get a list of CloudTrailEvents
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -54,7 +54,7 @@ class CloudTrailEventsApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param int alert_id: The ID of the alert to retrieve cloud trail events for (required)
-        :param dict(str, str) page: Page Number and Page Size.  Example: page: {number: 1, size: 20}
+        :param str page: Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page
         :return: PaginatedCollection
                  If the method is called asynchronously,
                  returns the request thread.
@@ -68,7 +68,7 @@ class CloudTrailEventsApi(object):
 
     def list_with_http_info(self, alert_id, **kwargs):
         """
-        Get a list of Cloud Trail Events
+        Get a list of CloudTrailEvents
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -80,7 +80,7 @@ class CloudTrailEventsApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param int alert_id: The ID of the alert to retrieve cloud trail events for (required)
-        :param dict(str, str) page: Page Number and Page Size.  Example: page: {number: 1, size: 20}
+        :param str page: Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page
         :return: PaginatedCollection
                  If the method is called asynchronously,
                  returns the request thread.
@@ -151,7 +151,7 @@ class CloudTrailEventsApi(object):
 
     def show(self, id, **kwargs):
         """
-        Show a single Cloud Trail Event
+        Show a single CloudTrailEvent
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -162,7 +162,7 @@ class CloudTrailEventsApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param int id: Cloud Trail Event Id (required)
+        :param int id: CloudTrailEvent ID (required)
         :return: CloudTrailEvent
                  If the method is called asynchronously,
                  returns the request thread.
@@ -176,7 +176,7 @@ class CloudTrailEventsApi(object):
 
     def show_with_http_info(self, id, **kwargs):
         """
-        Show a single Cloud Trail Event
+        Show a single CloudTrailEvent
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -187,7 +187,7 @@ class CloudTrailEventsApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param int id: Cloud Trail Event Id (required)
+        :param int id: CloudTrailEvent ID (required)
         :return: CloudTrailEvent
                  If the method is called asynchronously,
                  returns the request thread.

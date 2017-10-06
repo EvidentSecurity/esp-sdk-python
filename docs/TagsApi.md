@@ -24,7 +24,7 @@ from pprint import pprint
 # create an instance of the API class
 api_instance = esp_sdk.TagsApi()
 alert_id = 56 # int | The ID of the alert to list tags for
-page = {'key': 'page_example'} # dict(str, str) | Page Number and Page Size.  Example: page: {number: 1, size: 20} (optional)
+page = '{:number=>1,+:size=>20}' # str | Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page (optional) (default to {:number=>1,+:size=>20})
 
 try: 
     # Get a list of Tags
@@ -39,7 +39,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **alert_id** | **int**| The ID of the alert to list tags for | 
- **page** | [**dict(str, str)**](str.md)| Page Number and Page Size.  Example: page: {number: 1, size: 20} | [optional] 
+ **page** | **str**| Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page | [optional] [default to {:number&#x3D;&gt;1,+:size&#x3D;&gt;20}]
 
 ### Return type
 
@@ -71,7 +71,7 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = esp_sdk.TagsApi()
-id = 56 # int | Tag Id
+id = 56 # int | Tag ID
 
 try: 
     # Show a single Tag
@@ -85,7 +85,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **int**| Tag Id | 
+ **id** | **int**| Tag ID | 
 
 ### Return type
 

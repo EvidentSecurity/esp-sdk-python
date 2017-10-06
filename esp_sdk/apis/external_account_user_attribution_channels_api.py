@@ -54,7 +54,7 @@ class ExternalAccountUserAttributionChannelsApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param int external_account_id: The ID of the external account to create a User Attribution Channel for (required)
-        :return: Channel
+        :return: ExternalAccountUserAttributionChannel
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -79,7 +79,7 @@ class ExternalAccountUserAttributionChannelsApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param int external_account_id: The ID of the external account to create a User Attribution Channel for (required)
-        :return: Channel
+        :return: ExternalAccountUserAttributionChannel
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -137,7 +137,7 @@ class ExternalAccountUserAttributionChannelsApi(object):
                                         body=body_params,
                                         post_params=form_params,
                                         files=local_var_files,
-                                        response_type='Channel',
+                                        response_type='ExternalAccountUserAttributionChannel',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -159,7 +159,7 @@ class ExternalAccountUserAttributionChannelsApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param int external_account_id: The ID of the external account to remove the User Attribution Channel from (required)
-        :return: Channel
+        :return: Meta
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -184,7 +184,7 @@ class ExternalAccountUserAttributionChannelsApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param int external_account_id: The ID of the external account to remove the User Attribution Channel from (required)
-        :return: Channel
+        :return: Meta
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -242,7 +242,7 @@ class ExternalAccountUserAttributionChannelsApi(object):
                                         body=body_params,
                                         post_params=form_params,
                                         files=local_var_files,
-                                        response_type='Channel',
+                                        response_type='Meta',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -264,7 +264,7 @@ class ExternalAccountUserAttributionChannelsApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param int external_account_id: The ID of the external account to show the user attribution channel for (required)
-        :return: Channel
+        :return: ExternalAccountUserAttributionChannel
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -289,7 +289,7 @@ class ExternalAccountUserAttributionChannelsApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param int external_account_id: The ID of the external account to show the user attribution channel for (required)
-        :return: Channel
+        :return: ExternalAccountUserAttributionChannel
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -347,7 +347,7 @@ class ExternalAccountUserAttributionChannelsApi(object):
                                         body=body_params,
                                         post_params=form_params,
                                         files=local_var_files,
-                                        response_type='Channel',
+                                        response_type='ExternalAccountUserAttributionChannel',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),

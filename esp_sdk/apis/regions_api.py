@@ -53,8 +53,8 @@ class RegionsApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param dict(str, str) filter: Filter Params for Searching.  Equality Searchable Attributes: [id, code] Matching Searchable Attribute: [code] Limited Searchable Attribute: [provider_eq]  Searchable Association: [suppressions] See the filter parameter of the association's list action to see what attributes are searchable on each association. See Searching on Relationships for more information. See Searching Lists for more information. Example: filter: {name_eq: 'Bob'}
-        :param dict(str, str) page: Page Number and Page Size.  Example: page: {number: 1, size: 20}
+        :param dict(str, str) filter: Filter Params for Searching.  See Searching Lists for more information.
+        :param str page: Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page
         :return: PaginatedCollection
                  If the method is called asynchronously,
                  returns the request thread.
@@ -79,8 +79,8 @@ class RegionsApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param dict(str, str) filter: Filter Params for Searching.  Equality Searchable Attributes: [id, code] Matching Searchable Attribute: [code] Limited Searchable Attribute: [provider_eq]  Searchable Association: [suppressions] See the filter parameter of the association's list action to see what attributes are searchable on each association. See Searching on Relationships for more information. See Searching Lists for more information. Example: filter: {name_eq: 'Bob'}
-        :param dict(str, str) page: Page Number and Page Size.  Example: page: {number: 1, size: 20}
+        :param dict(str, str) filter: Filter Params for Searching.  See Searching Lists for more information.
+        :param str page: Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page
         :return: PaginatedCollection
                  If the method is called asynchronously,
                  returns the request thread.
@@ -159,7 +159,7 @@ class RegionsApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param int id: Region Id (required)
+        :param int id: Region ID (required)
         :return: Region
                  If the method is called asynchronously,
                  returns the request thread.
@@ -184,7 +184,7 @@ class RegionsApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param int id: Region Id (required)
+        :param int id: Region ID (required)
         :return: Region
                  If the method is called asynchronously,
                  returns the request thread.

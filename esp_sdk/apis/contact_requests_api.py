@@ -42,7 +42,7 @@ class ContactRequestsApi(object):
 
     def create(self, title, description, request_type, **kwargs):
         """
-        Create a(n) Contact Request
+        Create a(n) ContactRequest
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -55,7 +55,7 @@ class ContactRequestsApi(object):
             for asynchronous request. (optional)
         :param str title: Subject of your message (required)
         :param str description: Body of your message (required)
-        :param str request_type: Type of contact request. Supported values are support for support requests and feature for a feature request (required)
+        :param str request_type: Type of contact request. Valid values are support, feature (required)
         :return: ContactRequest
                  If the method is called asynchronously,
                  returns the request thread.
@@ -69,7 +69,7 @@ class ContactRequestsApi(object):
 
     def create_with_http_info(self, title, description, request_type, **kwargs):
         """
-        Create a(n) Contact Request
+        Create a(n) ContactRequest
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -82,7 +82,7 @@ class ContactRequestsApi(object):
             for asynchronous request. (optional)
         :param str title: Subject of your message (required)
         :param str description: Body of your message (required)
-        :param str request_type: Type of contact request. Supported values are support for support requests and feature for a feature request (required)
+        :param str request_type: Type of contact request. Valid values are support, feature (required)
         :return: ContactRequest
                  If the method is called asynchronously,
                  returns the request thread.

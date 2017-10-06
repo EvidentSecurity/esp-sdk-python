@@ -40,7 +40,7 @@ class TeamsApi(object):
                 config.api_client = ApiClient()
             self.api_client = config.api_client
 
-    def create(self, sub_organization_id, name, **kwargs):
+    def create(self, name, sub_organization_id, **kwargs):
         """
         Create a(n) Team
         This method makes a synchronous HTTP request by default. To make an
@@ -49,24 +49,24 @@ class TeamsApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.create(sub_organization_id, name, callback=callback_function)
+        >>> thread = api.create(name, sub_organization_id, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
+        :param str name: Name of the team (required)
         :param int sub_organization_id: The ID of the sub organization to attach this team to (required)
-        :param str name: The name of the sub organization (required)
         :return: Team
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.create_with_http_info(sub_organization_id, name, **kwargs)
+            return self.create_with_http_info(name, sub_organization_id, **kwargs)
         else:
-            (data) = self.create_with_http_info(sub_organization_id, name, **kwargs)
+            (data) = self.create_with_http_info(name, sub_organization_id, **kwargs)
             return data
 
-    def create_with_http_info(self, sub_organization_id, name, **kwargs):
+    def create_with_http_info(self, name, sub_organization_id, **kwargs):
         """
         Create a(n) Team
         This method makes a synchronous HTTP request by default. To make an
@@ -75,18 +75,18 @@ class TeamsApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.create_with_http_info(sub_organization_id, name, callback=callback_function)
+        >>> thread = api.create_with_http_info(name, sub_organization_id, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
+        :param str name: Name of the team (required)
         :param int sub_organization_id: The ID of the sub organization to attach this team to (required)
-        :param str name: The name of the sub organization (required)
         :return: Team
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['sub_organization_id', 'name']
+        all_params = ['name', 'sub_organization_id']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -101,12 +101,12 @@ class TeamsApi(object):
                 )
             params[key] = val
         del params['kwargs']
-        # verify the required parameter 'sub_organization_id' is set
-        if ('sub_organization_id' not in params) or (params['sub_organization_id'] is None):
-            raise ValueError("Missing the required parameter `sub_organization_id` when calling `create`")
         # verify the required parameter 'name' is set
         if ('name' not in params) or (params['name'] is None):
             raise ValueError("Missing the required parameter `name` when calling `create`")
+        # verify the required parameter 'sub_organization_id' is set
+        if ('sub_organization_id' not in params) or (params['sub_organization_id'] is None):
+            raise ValueError("Missing the required parameter `sub_organization_id` when calling `create`")
 
 
         collection_formats = {}
@@ -120,10 +120,10 @@ class TeamsApi(object):
 
         form_params = []
         local_var_files = {}
-        if 'sub_organization_id' in params:
-            form_params.append(('sub_organization_id', params['sub_organization_id']))
         if 'name' in params:
             form_params.append(('name', params['name']))
+        if 'sub_organization_id' in params:
+            form_params.append(('sub_organization_id', params['sub_organization_id']))
 
         body_params = None
         # HTTP header `Accept`
@@ -165,8 +165,8 @@ class TeamsApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param int id: Team Id (required)
-        :return: Team
+        :param int id: Team ID (required)
+        :return: Meta
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -190,8 +190,8 @@ class TeamsApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param int id: Team Id (required)
-        :return: Team
+        :param int id: Team ID (required)
+        :return: Meta
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -249,7 +249,7 @@ class TeamsApi(object):
                                         body=body_params,
                                         post_params=form_params,
                                         files=local_var_files,
-                                        response_type='Team',
+                                        response_type='Meta',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -270,9 +270,9 @@ class TeamsApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param dict(str, str) filter: Filter Params for Searching.  Equality Searchable Attributes: [id, name] Matching Searchable Attribute: [name]  Sortable Attributes: [name, updated_at, created_at, id] Searchable Associations: [organization, sub_organization, custom_signatures, integrations] See the filter parameter of the association's list action to see what attributes are searchable on each association. See Searching on Relationships for more information. See Searching Lists for more information. Example: filter: {name_eq: 'Bob'}
-        :param str include: Objects that can be included in the response:  custom_signatures,external_accounts,organization,sub_organization  See Including Objects for more information.
-        :param dict(str, str) page: Page Number and Page Size.  Example: page: {number: 1, size: 20}
+        :param dict(str, str) filter: Filter Params for Searching.  See Searching Lists for more information.
+        :param str include: Related objects that can be included in the response.  See Including Objects for more information.
+        :param str page: Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page
         :return: PaginatedCollection
                  If the method is called asynchronously,
                  returns the request thread.
@@ -297,9 +297,9 @@ class TeamsApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param dict(str, str) filter: Filter Params for Searching.  Equality Searchable Attributes: [id, name] Matching Searchable Attribute: [name]  Sortable Attributes: [name, updated_at, created_at, id] Searchable Associations: [organization, sub_organization, custom_signatures, integrations] See the filter parameter of the association's list action to see what attributes are searchable on each association. See Searching on Relationships for more information. See Searching Lists for more information. Example: filter: {name_eq: 'Bob'}
-        :param str include: Objects that can be included in the response:  custom_signatures,external_accounts,organization,sub_organization  See Including Objects for more information.
-        :param dict(str, str) page: Page Number and Page Size.  Example: page: {number: 1, size: 20}
+        :param dict(str, str) filter: Filter Params for Searching.  See Searching Lists for more information.
+        :param str include: Related objects that can be included in the response.  See Including Objects for more information.
+        :param str page: Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page
         :return: PaginatedCollection
                  If the method is called asynchronously,
                  returns the request thread.
@@ -380,8 +380,8 @@ class TeamsApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param int id: Team Id (required)
-        :param str include: Objects that can be included in the response:  custom_signatures,external_accounts,organization,sub_organization  See Including Objects for more information.
+        :param int id: Team ID (required)
+        :param str include: Related objects that can be included in the response.  See Including Objects for more information.
         :return: Team
                  If the method is called asynchronously,
                  returns the request thread.
@@ -406,8 +406,8 @@ class TeamsApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param int id: Team Id (required)
-        :param str include: Objects that can be included in the response:  custom_signatures,external_accounts,organization,sub_organization  See Including Objects for more information.
+        :param int id: Team ID (required)
+        :param str include: Related objects that can be included in the response.  See Including Objects for more information.
         :return: Team
                  If the method is called asynchronously,
                  returns the request thread.
@@ -489,8 +489,8 @@ class TeamsApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param int id: Team Id (required)
-        :param str name: The name of the sub organization (required)
+        :param int id: Team ID (required)
+        :param str name: Name of the team (required)
         :return: Team
                  If the method is called asynchronously,
                  returns the request thread.
@@ -515,8 +515,8 @@ class TeamsApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param int id: Team Id (required)
-        :param str name: The name of the sub organization (required)
+        :param int id: Team ID (required)
+        :param str name: Name of the team (required)
         :return: Team
                  If the method is called asynchronously,
                  returns the request thread.

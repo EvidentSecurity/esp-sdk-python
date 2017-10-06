@@ -19,8 +19,6 @@ class JsonApi(object):
         self.json_api_dict = json_api_dict
 
     def convert(self):
-        if self.json_api_dict.get('errors', None):
-            return self.__parse_errors()
         included = self.json_api_dict.get('included', None)
         if included:
             del self.json_api_dict['included']
@@ -32,9 +30,6 @@ class JsonApi(object):
             self.json_api_dict.update(self.__parse_object(data, included))
 
         return self.json_api_dict
-
-    def __parse_errors(self):
-        return {"errors": [e['title'] for e in self.json_api_dict['errors']]}
 
     def __parse_object(self, object, included=None):
         if not isinstance(object, list) and not isinstance(object, dict):

@@ -42,7 +42,7 @@ class ExternalAccountsApi(object):
 
     def create(self, team_id, arn, external_id, **kwargs):
         """
-        Create a(n) External Account
+        Create a(n) ExternalAccount
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -55,8 +55,8 @@ class ExternalAccountsApi(object):
             for asynchronous request. (optional)
         :param int team_id: The ID of the team the external account will belong to (required)
         :param str arn: Amazon Resource Name for the IAM role (required)
-        :param str external_id: External identifier set on the role (required)
-        :param str name: The name for this external account
+        :param str external_id: External Identifier set on the role (required)
+        :param str name: Name
         :return: ExternalAccount
                  If the method is called asynchronously,
                  returns the request thread.
@@ -70,7 +70,7 @@ class ExternalAccountsApi(object):
 
     def create_with_http_info(self, team_id, arn, external_id, **kwargs):
         """
-        Create a(n) External Account
+        Create a(n) ExternalAccount
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -83,8 +83,8 @@ class ExternalAccountsApi(object):
             for asynchronous request. (optional)
         :param int team_id: The ID of the team the external account will belong to (required)
         :param str arn: Amazon Resource Name for the IAM role (required)
-        :param str external_id: External identifier set on the role (required)
-        :param str name: The name for this external account
+        :param str external_id: External Identifier set on the role (required)
+        :param str name: Name
         :return: ExternalAccount
                  If the method is called asynchronously,
                  returns the request thread.
@@ -176,8 +176,8 @@ class ExternalAccountsApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param int id: ExternalAccount Id (required)
-        :return: ExternalAccount
+        :param int id: ExternalAccount ID (required)
+        :return: Meta
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -201,8 +201,8 @@ class ExternalAccountsApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param int id: ExternalAccount Id (required)
-        :return: ExternalAccount
+        :param int id: ExternalAccount ID (required)
+        :return: Meta
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -260,7 +260,7 @@ class ExternalAccountsApi(object):
                                         body=body_params,
                                         post_params=form_params,
                                         files=local_var_files,
-                                        response_type='ExternalAccount',
+                                        response_type='Meta',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -270,7 +270,7 @@ class ExternalAccountsApi(object):
 
     def list(self, **kwargs):
         """
-        Get a list of External Accounts
+        Get a list of ExternalAccounts
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -281,9 +281,9 @@ class ExternalAccountsApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param dict(str, str) filter: Filter Params for Searching.  Equality Searchable Attributes: [id, nickname, name] Matching Searchable Attributes: [nickname, name] Limited Searchable Attributes: [account_eq, arn_eq] Sortable Attributes: [name, updated_at, created_at, id] Searchable Associations: [organization, sub_organization, team, compliance_standards, disabled_signatures] See the filter parameter of the association's list action to see what attributes are searchable on each association. See Searching on Relationships for more information. See Searching Lists for more information. Example: filter: {name_eq: 'Bob'}
-        :param str include: Objects that can be included in the response:  organization,sub_organization,team,scan_intervals,disabled_signatures,credentials  See Including Objects for more information.
-        :param dict(str, str) page: Page Number and Page Size.  Example: page: {number: 1, size: 20}
+        :param dict(str, str) filter: Filter Params for Searching.  See Searching Lists for more information.
+        :param str include: Related objects that can be included in the response.  See Including Objects for more information.
+        :param str page: Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page
         :return: PaginatedCollection
                  If the method is called asynchronously,
                  returns the request thread.
@@ -297,7 +297,7 @@ class ExternalAccountsApi(object):
 
     def list_with_http_info(self, **kwargs):
         """
-        Get a list of External Accounts
+        Get a list of ExternalAccounts
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -308,9 +308,9 @@ class ExternalAccountsApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param dict(str, str) filter: Filter Params for Searching.  Equality Searchable Attributes: [id, nickname, name] Matching Searchable Attributes: [nickname, name] Limited Searchable Attributes: [account_eq, arn_eq] Sortable Attributes: [name, updated_at, created_at, id] Searchable Associations: [organization, sub_organization, team, compliance_standards, disabled_signatures] See the filter parameter of the association's list action to see what attributes are searchable on each association. See Searching on Relationships for more information. See Searching Lists for more information. Example: filter: {name_eq: 'Bob'}
-        :param str include: Objects that can be included in the response:  organization,sub_organization,team,scan_intervals,disabled_signatures,credentials  See Including Objects for more information.
-        :param dict(str, str) page: Page Number and Page Size.  Example: page: {number: 1, size: 20}
+        :param dict(str, str) filter: Filter Params for Searching.  See Searching Lists for more information.
+        :param str include: Related objects that can be included in the response.  See Including Objects for more information.
+        :param str page: Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page
         :return: PaginatedCollection
                  If the method is called asynchronously,
                  returns the request thread.
@@ -380,7 +380,7 @@ class ExternalAccountsApi(object):
 
     def show(self, id, **kwargs):
         """
-        Show a single External Account
+        Show a single ExternalAccount
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -391,8 +391,8 @@ class ExternalAccountsApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param int id: External Account Id (required)
-        :param str include: Objects that can be included in the response:  organization,sub_organization,team,scan_intervals,disabled_signatures,credentials  See Including Objects for more information.
+        :param int id: ExternalAccount ID (required)
+        :param str include: Related objects that can be included in the response.  See Including Objects for more information.
         :return: ExternalAccount
                  If the method is called asynchronously,
                  returns the request thread.
@@ -406,7 +406,7 @@ class ExternalAccountsApi(object):
 
     def show_with_http_info(self, id, **kwargs):
         """
-        Show a single External Account
+        Show a single ExternalAccount
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -417,8 +417,8 @@ class ExternalAccountsApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param int id: External Account Id (required)
-        :param str include: Objects that can be included in the response:  organization,sub_organization,team,scan_intervals,disabled_signatures,credentials  See Including Objects for more information.
+        :param int id: ExternalAccount ID (required)
+        :param str include: Related objects that can be included in the response.  See Including Objects for more information.
         :return: ExternalAccount
                  If the method is called asynchronously,
                  returns the request thread.
@@ -487,61 +487,55 @@ class ExternalAccountsApi(object):
                                         _request_timeout=params.get('_request_timeout'),
                                         collection_formats=collection_formats)
 
-    def update(self, id, arn, external_id, sub_organization_id, team_id, **kwargs):
+    def update(self, id, team_id, **kwargs):
         """
-        Update a(n) External Account
+        Update a(n) ExternalAccount
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.update(id, arn, external_id, sub_organization_id, team_id, callback=callback_function)
+        >>> thread = api.update(id, team_id, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param int id: External Account Id (required)
-        :param str arn: Amazon Resource Name for the IAM role (required)
-        :param int external_id: External identifier set on the role (required)
-        :param int sub_organization_id: The ID of the sub organization the external account will belong to (required)
+        :param int id: ExternalAccount ID (required)
         :param int team_id: The ID of the team the external account will belong to (required)
-        :param str name: The name for this external account
+        :param str name: Name
         :return: ExternalAccount
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.update_with_http_info(id, arn, external_id, sub_organization_id, team_id, **kwargs)
+            return self.update_with_http_info(id, team_id, **kwargs)
         else:
-            (data) = self.update_with_http_info(id, arn, external_id, sub_organization_id, team_id, **kwargs)
+            (data) = self.update_with_http_info(id, team_id, **kwargs)
             return data
 
-    def update_with_http_info(self, id, arn, external_id, sub_organization_id, team_id, **kwargs):
+    def update_with_http_info(self, id, team_id, **kwargs):
         """
-        Update a(n) External Account
+        Update a(n) ExternalAccount
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.update_with_http_info(id, arn, external_id, sub_organization_id, team_id, callback=callback_function)
+        >>> thread = api.update_with_http_info(id, team_id, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param int id: External Account Id (required)
-        :param str arn: Amazon Resource Name for the IAM role (required)
-        :param int external_id: External identifier set on the role (required)
-        :param int sub_organization_id: The ID of the sub organization the external account will belong to (required)
+        :param int id: ExternalAccount ID (required)
         :param int team_id: The ID of the team the external account will belong to (required)
-        :param str name: The name for this external account
+        :param str name: Name
         :return: ExternalAccount
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['id', 'arn', 'external_id', 'sub_organization_id', 'team_id', 'name']
+        all_params = ['id', 'team_id', 'name']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -559,15 +553,6 @@ class ExternalAccountsApi(object):
         # verify the required parameter 'id' is set
         if ('id' not in params) or (params['id'] is None):
             raise ValueError("Missing the required parameter `id` when calling `update`")
-        # verify the required parameter 'arn' is set
-        if ('arn' not in params) or (params['arn'] is None):
-            raise ValueError("Missing the required parameter `arn` when calling `update`")
-        # verify the required parameter 'external_id' is set
-        if ('external_id' not in params) or (params['external_id'] is None):
-            raise ValueError("Missing the required parameter `external_id` when calling `update`")
-        # verify the required parameter 'sub_organization_id' is set
-        if ('sub_organization_id' not in params) or (params['sub_organization_id'] is None):
-            raise ValueError("Missing the required parameter `sub_organization_id` when calling `update`")
         # verify the required parameter 'team_id' is set
         if ('team_id' not in params) or (params['team_id'] is None):
             raise ValueError("Missing the required parameter `team_id` when calling `update`")
@@ -586,14 +571,8 @@ class ExternalAccountsApi(object):
 
         form_params = []
         local_var_files = {}
-        if 'arn' in params:
-            form_params.append(('arn', params['arn']))
-        if 'external_id' in params:
-            form_params.append(('external_id', params['external_id']))
         if 'name' in params:
             form_params.append(('name', params['name']))
-        if 'sub_organization_id' in params:
-            form_params.append(('sub_organization_id', params['sub_organization_id']))
         if 'team_id' in params:
             form_params.append(('team_id', params['team_id']))
 

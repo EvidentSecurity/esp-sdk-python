@@ -53,8 +53,7 @@ class RolesApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param dict(str, str) filter: Filter Params for Searching.  Equality Searchable Attributes: [id, name, role_name]   Sortable Attributes: [name, role_name, updated_at]  Example: filter: {name_eq: 'Bob'}
-        :param dict(str, str) page: Page Number and Page Size.  Example: page: {number: 1, size: 20}
+        :param str page: Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page
         :return: PaginatedCollection
                  If the method is called asynchronously,
                  returns the request thread.
@@ -79,14 +78,13 @@ class RolesApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param dict(str, str) filter: Filter Params for Searching.  Equality Searchable Attributes: [id, name, role_name]   Sortable Attributes: [name, role_name, updated_at]  Example: filter: {name_eq: 'Bob'}
-        :param dict(str, str) page: Page Number and Page Size.  Example: page: {number: 1, size: 20}
+        :param str page: Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page
         :return: PaginatedCollection
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['filter', 'page']
+        all_params = ['page']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -114,8 +112,6 @@ class RolesApi(object):
 
         form_params = []
         local_var_files = {}
-        if 'filter' in params:
-            form_params.append(('filter', params['filter']))
         if 'page' in params:
             form_params.append(('page', params['page']))
 
@@ -159,7 +155,7 @@ class RolesApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param int id: Role Id (required)
+        :param int id: Role ID (required)
         :return: Role
                  If the method is called asynchronously,
                  returns the request thread.
@@ -184,7 +180,7 @@ class RolesApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param int id: Role Id (required)
+        :param int id: Role ID (required)
         :return: Role
                  If the method is called asynchronously,
                  returns the request thread.

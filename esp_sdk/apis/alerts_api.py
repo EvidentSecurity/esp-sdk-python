@@ -53,10 +53,10 @@ class AlertsApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param int report_id: Id of the Report to Return Alerts For (required)
-        :param dict(str, str) filter: Filter Params for Searching.  Equality Searchable Attribute: [id]  Limited Searchable Attributes: [signature_service_id_in, signature_risk_level_in, risk_level_in, risk_level_eq, resource_or_tag_cont, suppressed, not_suppressed, signature_name_cont, signature_identifier_cont, external_account_id_in, external_account_id_eq, external_account_team_id_in, external_account_team_id_eq, region_id_in, region_id_eq, status_in, status_eq, cloud_trail_events_present, open_as_of, signature_id_in, signature_id_eq]   Example: filter: {name_eq: 'Bob'}
-        :param str include: Objects that can be included in the response:  external_account,region,signature,custom_signature,suppression,metadata,cloud_trail_events,tags,compliance_controls  See Including Objects for more information.
-        :param dict(str, str) page: Page Number and Page Size.  Example: page: {number: 1, size: 20}
+        :param int report_id: ID of the Report to Return Alerts For (required)
+        :param dict(str, str) filter: Filter Params for Searching.  See Searching Lists for more information.
+        :param str include: Related objects that can be included in the response.  See Including Objects for more information.
+        :param str page: Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page
         :return: PaginatedCollection
                  If the method is called asynchronously,
                  returns the request thread.
@@ -81,10 +81,10 @@ class AlertsApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param int report_id: Id of the Report to Return Alerts For (required)
-        :param dict(str, str) filter: Filter Params for Searching.  Equality Searchable Attribute: [id]  Limited Searchable Attributes: [signature_service_id_in, signature_risk_level_in, risk_level_in, risk_level_eq, resource_or_tag_cont, suppressed, not_suppressed, signature_name_cont, signature_identifier_cont, external_account_id_in, external_account_id_eq, external_account_team_id_in, external_account_team_id_eq, region_id_in, region_id_eq, status_in, status_eq, cloud_trail_events_present, open_as_of, signature_id_in, signature_id_eq]   Example: filter: {name_eq: 'Bob'}
-        :param str include: Objects that can be included in the response:  external_account,region,signature,custom_signature,suppression,metadata,cloud_trail_events,tags,compliance_controls  See Including Objects for more information.
-        :param dict(str, str) page: Page Number and Page Size.  Example: page: {number: 1, size: 20}
+        :param int report_id: ID of the Report to Return Alerts For (required)
+        :param dict(str, str) filter: Filter Params for Searching.  See Searching Lists for more information.
+        :param str include: Related objects that can be included in the response.  See Including Objects for more information.
+        :param str page: Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page
         :return: PaginatedCollection
                  If the method is called asynchronously,
                  returns the request thread.
@@ -170,8 +170,8 @@ class AlertsApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param int id: Alert Id (required)
-        :param str include: Objects that can be included in the response:  external_account,region,signature,custom_signature,suppression,metadata,cloud_trail_events,tags,compliance_controls  See Including Objects for more information.
+        :param int id: Alert ID (required)
+        :param str include: Related objects that can be included in the response.  See Including Objects for more information.
         :return: Alert
                  If the method is called asynchronously,
                  returns the request thread.
@@ -196,8 +196,8 @@ class AlertsApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param int id: Alert Id (required)
-        :param str include: Objects that can be included in the response:  external_account,region,signature,custom_signature,suppression,metadata,cloud_trail_events,tags,compliance_controls  See Including Objects for more information.
+        :param int id: Alert ID (required)
+        :param str include: Related objects that can be included in the response.  See Including Objects for more information.
         :return: Alert
                  If the method is called asynchronously,
                  returns the request thread.

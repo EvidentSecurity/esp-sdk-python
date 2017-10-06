@@ -69,7 +69,7 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = esp_sdk.MetadataApi()
-id = 56 # int | Metadata Id
+id = 56 # int | Metadata ID
 
 try: 
     # Show a single Metadata
@@ -83,7 +83,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **int**| Metadata Id | 
+ **id** | **int**| Metadata ID | 
 
 ### Return type
 

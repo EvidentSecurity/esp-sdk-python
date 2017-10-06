@@ -53,9 +53,9 @@ class SignaturesApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param dict(str, str) filter: Filter Params for Searching.  Equality Searchable Attributes: [id, risk_level, service_id, disabled, supports_user_attribution, name, identifier, description, resolution] Matching Searchable Attributes: [name, identifier, description, resolution]  Sortable Attributes: [name, identifier, updated_at, created_at, id] Searchable Associations: [signature_copy, disabled_external_accounts, integrations] See the filter parameter of the association's list action to see what attributes are searchable on each association. See Searching on Relationships for more information. See Searching Lists for more information. Example: filter: {name_eq: 'Bob'}
-        :param str include: Objects that can be included in the response:  service,disabled_external_accounts  See Including Objects for more information.
-        :param dict(str, str) page: Page Number and Page Size.  Example: page: {number: 1, size: 20}
+        :param dict(str, str) filter: Filter Params for Searching.  See Searching Lists for more information.
+        :param str include: Related objects that can be included in the response.  See Including Objects for more information.
+        :param str page: Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page
         :return: PaginatedCollection
                  If the method is called asynchronously,
                  returns the request thread.
@@ -80,9 +80,9 @@ class SignaturesApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param dict(str, str) filter: Filter Params for Searching.  Equality Searchable Attributes: [id, risk_level, service_id, disabled, supports_user_attribution, name, identifier, description, resolution] Matching Searchable Attributes: [name, identifier, description, resolution]  Sortable Attributes: [name, identifier, updated_at, created_at, id] Searchable Associations: [signature_copy, disabled_external_accounts, integrations] See the filter parameter of the association's list action to see what attributes are searchable on each association. See Searching on Relationships for more information. See Searching Lists for more information. Example: filter: {name_eq: 'Bob'}
-        :param str include: Objects that can be included in the response:  service,disabled_external_accounts  See Including Objects for more information.
-        :param dict(str, str) page: Page Number and Page Size.  Example: page: {number: 1, size: 20}
+        :param dict(str, str) filter: Filter Params for Searching.  See Searching Lists for more information.
+        :param str include: Related objects that can be included in the response.  See Including Objects for more information.
+        :param str page: Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page
         :return: PaginatedCollection
                  If the method is called asynchronously,
                  returns the request thread.
@@ -150,129 +150,6 @@ class SignaturesApi(object):
                                         _request_timeout=params.get('_request_timeout'),
                                         collection_formats=collection_formats)
 
-    def run(self, id, external_account_id, region, **kwargs):
-        """
-        Run a Signature
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.run(id, external_account_id, region, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param int id: The ID of the signature to run (required)
-        :param int external_account_id: The ID of the external account to run the signature against (required)
-        :param str region: A single region name to run this signature against (required)
-        :param dict(str, str) filter: Filter Params for Searching.  Equality Searchable Attributes: [id, risk_level, service_id, disabled, supports_user_attribution, name, identifier, description, resolution] Matching Searchable Attributes: [name, identifier, description, resolution]  Sortable Attributes: [name, identifier, updated_at, created_at, id] Searchable Associations: [signature_copy, disabled_external_accounts, integrations] See the filter parameter of the association's list action to see what attributes are searchable on each association. See Searching on Relationships for more information. See Searching Lists for more information. Example: filter: {name_eq: 'Bob'}
-        :return: list[Alert]
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('callback'):
-            return self.run_with_http_info(id, external_account_id, region, **kwargs)
-        else:
-            (data) = self.run_with_http_info(id, external_account_id, region, **kwargs)
-            return data
-
-    def run_with_http_info(self, id, external_account_id, region, **kwargs):
-        """
-        Run a Signature
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.run_with_http_info(id, external_account_id, region, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param int id: The ID of the signature to run (required)
-        :param int external_account_id: The ID of the external account to run the signature against (required)
-        :param str region: A single region name to run this signature against (required)
-        :param dict(str, str) filter: Filter Params for Searching.  Equality Searchable Attributes: [id, risk_level, service_id, disabled, supports_user_attribution, name, identifier, description, resolution] Matching Searchable Attributes: [name, identifier, description, resolution]  Sortable Attributes: [name, identifier, updated_at, created_at, id] Searchable Associations: [signature_copy, disabled_external_accounts, integrations] See the filter parameter of the association's list action to see what attributes are searchable on each association. See Searching on Relationships for more information. See Searching Lists for more information. Example: filter: {name_eq: 'Bob'}
-        :return: list[Alert]
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = ['id', 'external_account_id', 'region', 'filter']
-        all_params.append('callback')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
-
-        params = locals()
-        for key, val in iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method run" % key
-                )
-            params[key] = val
-        del params['kwargs']
-        # verify the required parameter 'id' is set
-        if ('id' not in params) or (params['id'] is None):
-            raise ValueError("Missing the required parameter `id` when calling `run`")
-        # verify the required parameter 'external_account_id' is set
-        if ('external_account_id' not in params) or (params['external_account_id'] is None):
-            raise ValueError("Missing the required parameter `external_account_id` when calling `run`")
-        # verify the required parameter 'region' is set
-        if ('region' not in params) or (params['region'] is None):
-            raise ValueError("Missing the required parameter `region` when calling `run`")
-
-
-        collection_formats = {}
-
-        resource_path = '/api/v2/signatures/{id}/run.json_api'.replace('{format}', 'json_api')
-        path_params = {}
-        if 'id' in params:
-            path_params['id'] = params['id']
-
-        query_params = {}
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-        if 'filter' in params:
-            form_params.append(('filter', params['filter']))
-        if 'external_account_id' in params:
-            form_params.append(('external_account_id', params['external_account_id']))
-        if 'region' in params:
-            form_params.append(('region', params['region']))
-
-        body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.\
-            select_header_accept(['application/vnd.api+json'])
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.\
-            select_header_content_type(['application/vnd.api+json'])
-
-        # Authentication setting
-        auth_settings = []
-
-        return self.api_client.call_api(resource_path, 'POST',
-                                        path_params,
-                                        query_params,
-                                        header_params,
-                                        body=body_params,
-                                        post_params=form_params,
-                                        files=local_var_files,
-                                        response_type='list[Alert]',
-                                        auth_settings=auth_settings,
-                                        callback=params.get('callback'),
-                                        _return_http_data_only=params.get('_return_http_data_only'),
-                                        _preload_content=params.get('_preload_content', True),
-                                        _request_timeout=params.get('_request_timeout'),
-                                        collection_formats=collection_formats)
-
     def show(self, id, **kwargs):
         """
         Show a single Signature
@@ -286,8 +163,8 @@ class SignaturesApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param int id: Signature Id (required)
-        :param str include: Objects that can be included in the response:  service,disabled_external_accounts  See Including Objects for more information.
+        :param int id: Signature ID (required)
+        :param str include: Related objects that can be included in the response.  See Including Objects for more information.
         :return: Signature
                  If the method is called asynchronously,
                  returns the request thread.
@@ -312,8 +189,8 @@ class SignaturesApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param int id: Signature Id (required)
-        :param str include: Objects that can be included in the response:  service,disabled_external_accounts  See Including Objects for more information.
+        :param int id: Signature ID (required)
+        :param str include: Related objects that can be included in the response.  See Including Objects for more information.
         :return: Signature
                  If the method is called asynchronously,
                  returns the request thread.

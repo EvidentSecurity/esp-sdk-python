@@ -139,7 +139,7 @@ class AuditLogFileExportApi(object):
 
     def show(self, id, **kwargs):
         """
-        Show a single Audit Log File
+        Show a single AuditLogFile
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -150,8 +150,8 @@ class AuditLogFileExportApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param int id: Audit Log File Id (required)
-        :param str include: Objects that can be included in the response:  organization,user  See Including Objects for more information.
+        :param int id: AuditLogFile ID (required)
+        :param str include: Related objects that can be included in the response.  See Including Objects for more information.
         :return: AuditLogFile
                  If the method is called asynchronously,
                  returns the request thread.
@@ -165,7 +165,7 @@ class AuditLogFileExportApi(object):
 
     def show_with_http_info(self, id, **kwargs):
         """
-        Show a single Audit Log File
+        Show a single AuditLogFile
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -176,8 +176,8 @@ class AuditLogFileExportApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param int id: Audit Log File Id (required)
-        :param str include: Objects that can be included in the response:  organization,user  See Including Objects for more information.
+        :param int id: AuditLogFile ID (required)
+        :param str include: Related objects that can be included in the response.  See Including Objects for more information.
         :return: AuditLogFile
                  If the method is called asynchronously,
                  returns the request thread.

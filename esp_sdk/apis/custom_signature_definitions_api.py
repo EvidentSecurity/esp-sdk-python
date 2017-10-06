@@ -42,7 +42,7 @@ class CustomSignatureDefinitionsApi(object):
 
     def activate(self, custom_signature_definition_id, **kwargs):
         """
-        A successful call to this API activates and returns a specific custom signature definition identified by the id parameter. The definition must have a status of editable to be activated.
+        A successful call to this API marks the definition for activation.  The definition will go into the 'validating' state and will be tested before activating. The definition must have a status of editable to be activated.
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -53,7 +53,7 @@ class CustomSignatureDefinitionsApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param int custom_signature_definition_id: Custom Signature Definition Id (required)
+        :param int custom_signature_definition_id: ID of Custom Signature Definition (required)
         :return: CustomSignatureDefinition
                  If the method is called asynchronously,
                  returns the request thread.
@@ -67,7 +67,7 @@ class CustomSignatureDefinitionsApi(object):
 
     def activate_with_http_info(self, custom_signature_definition_id, **kwargs):
         """
-        A successful call to this API activates and returns a specific custom signature definition identified by the id parameter. The definition must have a status of editable to be activated.
+        A successful call to this API marks the definition for activation.  The definition will go into the 'validating' state and will be tested before activating. The definition must have a status of editable to be activated.
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -78,7 +78,7 @@ class CustomSignatureDefinitionsApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param int custom_signature_definition_id: Custom Signature Definition Id (required)
+        :param int custom_signature_definition_id: ID of Custom Signature Definition (required)
         :return: CustomSignatureDefinition
                  If the method is called asynchronously,
                  returns the request thread.
@@ -158,7 +158,7 @@ class CustomSignatureDefinitionsApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param int custom_signature_definition_id: Custom Signature Definition Id (required)
+        :param int custom_signature_definition_id: ID of Custom Signature Definition (required)
         :return: CustomSignatureDefinition
                  If the method is called asynchronously,
                  returns the request thread.
@@ -183,7 +183,7 @@ class CustomSignatureDefinitionsApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param int custom_signature_definition_id: Custom Signature Definition Id (required)
+        :param int custom_signature_definition_id: ID of Custom Signature Definition (required)
         :return: CustomSignatureDefinition
                  If the method is called asynchronously,
                  returns the request thread.
@@ -252,7 +252,7 @@ class CustomSignatureDefinitionsApi(object):
 
     def create(self, custom_signature_id, **kwargs):
         """
-        Create a(n) Custom Signature/Definition
+        Create a(n) CustomSignatureDefinition
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -263,7 +263,7 @@ class CustomSignatureDefinitionsApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param int custom_signature_id: ID of the custom signature this definition should belong to. (required)
+        :param int custom_signature_id: ID of the custom signature this definition belongs to (required)
         :return: CustomSignatureDefinition
                  If the method is called asynchronously,
                  returns the request thread.
@@ -277,7 +277,7 @@ class CustomSignatureDefinitionsApi(object):
 
     def create_with_http_info(self, custom_signature_id, **kwargs):
         """
-        Create a(n) Custom Signature/Definition
+        Create a(n) CustomSignatureDefinition
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -288,7 +288,7 @@ class CustomSignatureDefinitionsApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param int custom_signature_id: ID of the custom signature this definition should belong to. (required)
+        :param int custom_signature_id: ID of the custom signature this definition belongs to (required)
         :return: CustomSignatureDefinition
                  If the method is called asynchronously,
                  returns the request thread.
@@ -357,7 +357,7 @@ class CustomSignatureDefinitionsApi(object):
 
     def destroy(self, id, **kwargs):
         """
-        Remove a(n) CustomSignature::Definition
+        Remove a(n) CustomSignatureDefinition
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -368,8 +368,8 @@ class CustomSignatureDefinitionsApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param int id: CustomSignature::Definition Id (required)
-        :return: CustomSignatureDefinition
+        :param int id: CustomSignatureDefinition ID (required)
+        :return: Meta
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -382,7 +382,7 @@ class CustomSignatureDefinitionsApi(object):
 
     def destroy_with_http_info(self, id, **kwargs):
         """
-        Remove a(n) CustomSignature::Definition
+        Remove a(n) CustomSignatureDefinition
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -393,8 +393,8 @@ class CustomSignatureDefinitionsApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param int id: CustomSignature::Definition Id (required)
-        :return: CustomSignatureDefinition
+        :param int id: CustomSignatureDefinition ID (required)
+        :return: Meta
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -452,7 +452,7 @@ class CustomSignatureDefinitionsApi(object):
                                         body=body_params,
                                         post_params=form_params,
                                         files=local_var_files,
-                                        response_type='CustomSignatureDefinition',
+                                        response_type='Meta',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -462,7 +462,7 @@ class CustomSignatureDefinitionsApi(object):
 
     def list(self, **kwargs):
         """
-        Get a list of Custom Signature/Definitions
+        Get a list of CustomSignatureDefinitions
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -473,9 +473,9 @@ class CustomSignatureDefinitionsApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param dict(str, str) filter: Filter Params for Searching.  Equality Searchable Attributes: [id, language, status, version_number]    Searchable Association: [custom_signature] See the filter parameter of the association's list action to see what attributes are searchable on each association. See Searching on Relationships for more information. See Searching Lists for more information. Example: filter: {name_eq: 'Bob'}
-        :param str include: Objects that can be included in the response:  custom_signature,results  See Including Objects for more information.
-        :param dict(str, str) page: Page Number and Page Size.  Example: page: {number: 1, size: 20}
+        :param dict(str, str) filter: Filter Params for Searching.  See Searching Lists for more information.
+        :param str include: Related objects that can be included in the response.  See Including Objects for more information.
+        :param str page: Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page
         :return: PaginatedCollection
                  If the method is called asynchronously,
                  returns the request thread.
@@ -489,7 +489,7 @@ class CustomSignatureDefinitionsApi(object):
 
     def list_with_http_info(self, **kwargs):
         """
-        Get a list of Custom Signature/Definitions
+        Get a list of CustomSignatureDefinitions
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -500,9 +500,9 @@ class CustomSignatureDefinitionsApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param dict(str, str) filter: Filter Params for Searching.  Equality Searchable Attributes: [id, language, status, version_number]    Searchable Association: [custom_signature] See the filter parameter of the association's list action to see what attributes are searchable on each association. See Searching on Relationships for more information. See Searching Lists for more information. Example: filter: {name_eq: 'Bob'}
-        :param str include: Objects that can be included in the response:  custom_signature,results  See Including Objects for more information.
-        :param dict(str, str) page: Page Number and Page Size.  Example: page: {number: 1, size: 20}
+        :param dict(str, str) filter: Filter Params for Searching.  See Searching Lists for more information.
+        :param str include: Related objects that can be included in the response.  See Including Objects for more information.
+        :param str page: Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page
         :return: PaginatedCollection
                  If the method is called asynchronously,
                  returns the request thread.
@@ -572,7 +572,7 @@ class CustomSignatureDefinitionsApi(object):
 
     def show(self, id, **kwargs):
         """
-        Show a single Custom Signature/Definition
+        Show a single CustomSignatureDefinition
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -583,8 +583,8 @@ class CustomSignatureDefinitionsApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param int id: Custom Signature/Definition Id (required)
-        :param str include: Objects that can be included in the response:  custom_signature,results  See Including Objects for more information.
+        :param int id: CustomSignatureDefinition ID (required)
+        :param str include: Related objects that can be included in the response.  See Including Objects for more information.
         :return: CustomSignatureDefinition
                  If the method is called asynchronously,
                  returns the request thread.
@@ -598,7 +598,7 @@ class CustomSignatureDefinitionsApi(object):
 
     def show_with_http_info(self, id, **kwargs):
         """
-        Show a single Custom Signature/Definition
+        Show a single CustomSignatureDefinition
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -609,8 +609,8 @@ class CustomSignatureDefinitionsApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param int id: Custom Signature/Definition Id (required)
-        :param str include: Objects that can be included in the response:  custom_signature,results  See Including Objects for more information.
+        :param int id: CustomSignatureDefinition ID (required)
+        :param str include: Related objects that can be included in the response.  See Including Objects for more information.
         :return: CustomSignatureDefinition
                  If the method is called asynchronously,
                  returns the request thread.
@@ -681,7 +681,7 @@ class CustomSignatureDefinitionsApi(object):
 
     def update(self, id, code, language, **kwargs):
         """
-        Update a(n) Custom Signature/Definition
+        Update a(n) CustomSignatureDefinition
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -692,9 +692,9 @@ class CustomSignatureDefinitionsApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param int id: Custom Signature/Definition Id (required)
-        :param str code: The code for the definition (required)
-        :param str language: The language of the code (required)
+        :param int id: CustomSignatureDefinition ID (required)
+        :param str code: The code for this definition (required)
+        :param str language: The language of the definition. Valid values are ruby, javascript (required)
         :return: CustomSignatureDefinition
                  If the method is called asynchronously,
                  returns the request thread.
@@ -708,7 +708,7 @@ class CustomSignatureDefinitionsApi(object):
 
     def update_with_http_info(self, id, code, language, **kwargs):
         """
-        Update a(n) Custom Signature/Definition
+        Update a(n) CustomSignatureDefinition
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -719,9 +719,9 @@ class CustomSignatureDefinitionsApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param int id: Custom Signature/Definition Id (required)
-        :param str code: The code for the definition (required)
-        :param str language: The language of the code (required)
+        :param int id: CustomSignatureDefinition ID (required)
+        :param str code: The code for this definition (required)
+        :param str language: The language of the definition. Valid values are ruby, javascript (required)
         :return: CustomSignatureDefinition
                  If the method is called asynchronously,
                  returns the request thread.

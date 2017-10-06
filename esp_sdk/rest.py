@@ -220,15 +220,7 @@ class RESTClientObject(object):
 
         if r.status not in range(200, 206):
             error = ApiException(http_resp=r)
-            if r.status == 422:
-                try:
-                    body = json.loads(error.body)
-                except TypeError as e:
-                    body = {}
-                if not body.get('errors', None):
-                    raise error
-            else:
-                raise error
+            raise error
 
         return r
 

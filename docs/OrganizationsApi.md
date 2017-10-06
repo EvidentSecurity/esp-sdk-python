@@ -24,9 +24,9 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = esp_sdk.OrganizationsApi()
-filter = {'key': 'filter_example'} # dict(str, str) | Filter Params for Searching.  Equality Searchable Attributes: [id, name] Matching Searchable Attribute: [name]  Sortable Attributes: [name, updated_at, created_at, id]  Example: filter: {name_eq: 'Bob'} (optional)
-include = 'include_example' # str | Objects that can be included in the response:  subscription,custom_signatures,external_accounts,sub_organizations,teams,users,compliance_standards,integrations  See Including Objects for more information. (optional)
-page = {'key': 'page_example'} # dict(str, str) | Page Number and Page Size.  Example: page: {number: 1, size: 20} (optional)
+filter = {'key': 'filter_example'} # dict(str, str) | Filter Params for Searching.  See Searching Lists for more information. (optional)
+include = 'include_example' # str | Related objects that can be included in the response.  See Including Objects for more information. (optional)
+page = '{:number=>1,+:size=>20}' # str | Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page (optional) (default to {:number=>1,+:size=>20})
 
 try: 
     # Get a list of Organizations
@@ -40,9 +40,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **filter** | [**dict(str, str)**](str.md)| Filter Params for Searching.  Equality Searchable Attributes: [id, name] Matching Searchable Attribute: [name]  Sortable Attributes: [name, updated_at, created_at, id]  Example: filter: {name_eq: &#39;Bob&#39;} | [optional] 
- **include** | **str**| Objects that can be included in the response:  subscription,custom_signatures,external_accounts,sub_organizations,teams,users,compliance_standards,integrations  See Including Objects for more information. | [optional] 
- **page** | [**dict(str, str)**](str.md)| Page Number and Page Size.  Example: page: {number: 1, size: 20} | [optional] 
+ **filter** | [**dict(str, str)**](str.md)| Filter Params for Searching.  See Searching Lists for more information. | [optional] 
+ **include** | **str**| Related objects that can be included in the response.  See Including Objects for more information. | [optional] 
+ **page** | **str**| Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page | [optional] [default to {:number&#x3D;&gt;1,+:size&#x3D;&gt;20}]
 
 ### Return type
 
@@ -74,8 +74,8 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = esp_sdk.OrganizationsApi()
-id = 56 # int | Organization Id
-include = 'include_example' # str | Objects that can be included in the response:  subscription,custom_signatures,external_accounts,sub_organizations,teams,users,compliance_standards,integrations  See Including Objects for more information. (optional)
+id = 56 # int | Organization ID
+include = 'include_example' # str | Related objects that can be included in the response.  See Including Objects for more information. (optional)
 
 try: 
     # Show a single Organization
@@ -89,8 +89,8 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **int**| Organization Id | 
- **include** | **str**| Objects that can be included in the response:  subscription,custom_signatures,external_accounts,sub_organizations,teams,users,compliance_standards,integrations  See Including Objects for more information. | [optional] 
+ **id** | **int**| Organization ID | 
+ **include** | **str**| Related objects that can be included in the response.  See Including Objects for more information. | [optional] 
 
 ### Return type
 
@@ -122,8 +122,8 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = esp_sdk.OrganizationsApi()
-id = 56 # int | Organization Id
-name = 'name_example' # str | Name
+id = 56 # int | Organization ID
+name = 'name_example' # str | Name of the organization
 
 try: 
     # Update a(n) Organization
@@ -137,8 +137,8 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **int**| Organization Id | 
- **name** | **str**| Name | 
+ **id** | **int**| Organization ID | 
+ **name** | **str**| Name of the organization | 
 
 ### Return type
 

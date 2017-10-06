@@ -158,7 +158,7 @@ class MetadataApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param int id: Metadata Id (required)
+        :param int id: Metadata ID (required)
         :return: Metadata
                  If the method is called asynchronously,
                  returns the request thread.
@@ -183,7 +183,7 @@ class MetadataApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param int id: Metadata Id (required)
+        :param int id: Metadata ID (required)
         :return: Metadata
                  If the method is called asynchronously,
                  returns the request thread.

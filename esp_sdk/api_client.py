@@ -640,10 +640,6 @@ class ApiClient(object):
             return data
 
         data = JsonApi(data).convert()
-        if klass.__name__ != 'PaginatedCollection' \
-           and data.get('meta', {}).get('message', None) is not None:
-            klass = getattr(models, 'MetaMessageObject')
-            instance = klass()
 
         for attr, attr_type in iteritems(instance.swagger_types):
             if data is not None \

@@ -4,17 +4,17 @@ All URIs are relative to https://api.evident.io
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create**](ScanIntervalsApi.md#create) | **POST** /api/v2/scan_intervals.json_api | Create a(n) Scan Interval
+[**create**](ScanIntervalsApi.md#create) | **POST** /api/v2/scan_intervals.json_api | Create a(n) ScanInterval
 [**destroy**](ScanIntervalsApi.md#destroy) | **DELETE** /api/v2/scan_intervals/{id}.json_api | Remove a(n) ScanInterval
-[**list**](ScanIntervalsApi.md#list) | **GET** /api/v2/external_accounts/{external_account_id}/scan_intervals.json_api | Get a list of Scan Intervals
-[**show**](ScanIntervalsApi.md#show) | **GET** /api/v2/scan_intervals/{id}.json_api | Show a single Scan Interval
-[**update**](ScanIntervalsApi.md#update) | **PATCH** /api/v2/scan_intervals/{id}.json_api | Update a(n) Scan Interval
+[**list**](ScanIntervalsApi.md#list) | **GET** /api/v2/external_accounts/{external_account_id}/scan_intervals.json_api | Get a list of ScanIntervals
+[**show**](ScanIntervalsApi.md#show) | **GET** /api/v2/scan_intervals/{id}.json_api | Show a single ScanInterval
+[**update**](ScanIntervalsApi.md#update) | **PATCH** /api/v2/scan_intervals/{id}.json_api | Update a(n) ScanInterval
 
 
 # **create**
 > ScanInterval create(external_account_id, interval, service_id)
 
-Create a(n) Scan Interval
+Create a(n) ScanInterval
 
 ### Example 
 ```python
@@ -28,10 +28,10 @@ from pprint import pprint
 api_instance = esp_sdk.ScanIntervalsApi()
 external_account_id = 56 # int | The ID of the external account this scan interval is for
 interval = 56 # int | The interval, in minutes, this service will be scanned
-service_id = 56 # int | The service ID this scan interval is for
+service_id = 56 # int | The service ID for the scan interval
 
 try: 
-    # Create a(n) Scan Interval
+    # Create a(n) ScanInterval
     api_response = api_instance.create(external_account_id, interval, service_id)
     pprint(api_response)
 except ApiException as e:
@@ -44,7 +44,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **external_account_id** | **int**| The ID of the external account this scan interval is for | 
  **interval** | **int**| The interval, in minutes, this service will be scanned | 
- **service_id** | **int**| The service ID this scan interval is for | 
+ **service_id** | **int**| The service ID for the scan interval | 
 
 ### Return type
 
@@ -62,7 +62,7 @@ See https://github.com/EvidentSecurity/esp-sdk-python2#set-your-hmac-security-ke
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **destroy**
-> ScanInterval destroy(id)
+> Meta destroy(id)
 
 Remove a(n) ScanInterval
 
@@ -76,7 +76,7 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = esp_sdk.ScanIntervalsApi()
-id = 56 # int | ScanInterval Id
+id = 56 # int | ScanInterval ID
 
 try: 
     # Remove a(n) ScanInterval
@@ -90,11 +90,11 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **int**| ScanInterval Id | 
+ **id** | **int**| ScanInterval ID | 
 
 ### Return type
 
-[**ScanInterval**](ScanInterval.md)
+[**Meta**](Meta.md)
 
 ### Authorization
 
@@ -110,7 +110,7 @@ See https://github.com/EvidentSecurity/esp-sdk-python2#set-your-hmac-security-ke
 # **list**
 > PaginatedCollection list(external_account_id, include=include, page=page)
 
-Get a list of Scan Intervals
+Get a list of ScanIntervals
 
 ### Example 
 ```python
@@ -122,12 +122,12 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = esp_sdk.ScanIntervalsApi()
-external_account_id = 56 # int | 
-include = 'include_example' # str | Objects that can be included in the response:  external_account,service  See Including Objects for more information. (optional)
-page = {'key': 'page_example'} # dict(str, str) | Page Number and Page Size.  Example: page: {number: 1, size: 20} (optional)
+external_account_id = 56 # int | The ID of the external account to retrieve
+include = 'include_example' # str | Related objects that can be included in the response.  See Including Objects for more information. (optional)
+page = '{:number=>1,+:size=>20}' # str | Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page (optional) (default to {:number=>1,+:size=>20})
 
 try: 
-    # Get a list of Scan Intervals
+    # Get a list of ScanIntervals
     api_response = api_instance.list(external_account_id, include=include, page=page)
     pprint(api_response)
 except ApiException as e:
@@ -138,9 +138,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **external_account_id** | **int**|  | 
- **include** | **str**| Objects that can be included in the response:  external_account,service  See Including Objects for more information. | [optional] 
- **page** | [**dict(str, str)**](str.md)| Page Number and Page Size.  Example: page: {number: 1, size: 20} | [optional] 
+ **external_account_id** | **int**| The ID of the external account to retrieve | 
+ **include** | **str**| Related objects that can be included in the response.  See Including Objects for more information. | [optional] 
+ **page** | **str**| Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page | [optional] [default to {:number&#x3D;&gt;1,+:size&#x3D;&gt;20}]
 
 ### Return type
 
@@ -160,7 +160,7 @@ See https://github.com/EvidentSecurity/esp-sdk-python2#set-your-hmac-security-ke
 # **show**
 > ScanInterval show(id, include=include)
 
-Show a single Scan Interval
+Show a single ScanInterval
 
 ### Example 
 ```python
@@ -172,11 +172,11 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = esp_sdk.ScanIntervalsApi()
-id = 56 # int | Scan Interval Id
-include = 'include_example' # str | Objects that can be included in the response:  external_account,service  See Including Objects for more information. (optional)
+id = 56 # int | ScanInterval ID
+include = 'include_example' # str | Related objects that can be included in the response.  See Including Objects for more information. (optional)
 
 try: 
-    # Show a single Scan Interval
+    # Show a single ScanInterval
     api_response = api_instance.show(id, include=include)
     pprint(api_response)
 except ApiException as e:
@@ -187,8 +187,8 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **int**| Scan Interval Id | 
- **include** | **str**| Objects that can be included in the response:  external_account,service  See Including Objects for more information. | [optional] 
+ **id** | **int**| ScanInterval ID | 
+ **include** | **str**| Related objects that can be included in the response.  See Including Objects for more information. | [optional] 
 
 ### Return type
 
@@ -208,7 +208,7 @@ See https://github.com/EvidentSecurity/esp-sdk-python2#set-your-hmac-security-ke
 # **update**
 > ScanInterval update(id, external_account_id, interval, service_id)
 
-Update a(n) Scan Interval
+Update a(n) ScanInterval
 
 ### Example 
 ```python
@@ -220,13 +220,13 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = esp_sdk.ScanIntervalsApi()
-id = 56 # int | Scan Interval Id
+id = 56 # int | ScanInterval ID
 external_account_id = 56 # int | The ID of the external account this scan interval is for
 interval = 56 # int | The interval, in minutes, this service will be scanned
-service_id = 56 # int | The service ID this scan interval is for
+service_id = 56 # int | The service ID for the scan interval
 
 try: 
-    # Update a(n) Scan Interval
+    # Update a(n) ScanInterval
     api_response = api_instance.update(id, external_account_id, interval, service_id)
     pprint(api_response)
 except ApiException as e:
@@ -237,10 +237,10 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **int**| Scan Interval Id | 
+ **id** | **int**| ScanInterval ID | 
  **external_account_id** | **int**| The ID of the external account this scan interval is for | 
  **interval** | **int**| The interval, in minutes, this service will be scanned | 
- **service_id** | **int**| The service ID this scan interval is for | 
+ **service_id** | **int**| The service ID for the scan interval | 
 
 ### Return type
 
