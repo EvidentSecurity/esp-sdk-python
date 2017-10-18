@@ -40,458 +40,6 @@ class StatsApi(object):
                 config.api_client = ApiClient()
             self.api_client = config.api_client
 
-    def for_compliance_controls(self, stat_id, **kwargs):
-        """
-        A successful call to this API returns all the stats of all the compliance controls for a report identified by the stat_id parameter. Said report contains all statistics for this alert triggered from signatures contained in all compliance controls for the selected hour.
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.for_compliance_controls(stat_id, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param int stat_id: The ID of the stat to retrieve compliance control stats for (required)
-        :param str include: Related objects that can be included in the response.  See Including Objects for more information.
-        :param str page: Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page
-        :return: PaginatedCollection
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('callback'):
-            return self.for_compliance_controls_with_http_info(stat_id, **kwargs)
-        else:
-            (data) = self.for_compliance_controls_with_http_info(stat_id, **kwargs)
-            return data
-
-    def for_compliance_controls_with_http_info(self, stat_id, **kwargs):
-        """
-        A successful call to this API returns all the stats of all the compliance controls for a report identified by the stat_id parameter. Said report contains all statistics for this alert triggered from signatures contained in all compliance controls for the selected hour.
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.for_compliance_controls_with_http_info(stat_id, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param int stat_id: The ID of the stat to retrieve compliance control stats for (required)
-        :param str include: Related objects that can be included in the response.  See Including Objects for more information.
-        :param str page: Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page
-        :return: PaginatedCollection
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = ['stat_id', 'include', 'page']
-        all_params.append('callback')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
-
-        params = locals()
-        for key, val in iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method for_compliance_controls" % key
-                )
-            params[key] = val
-        del params['kwargs']
-        # verify the required parameter 'stat_id' is set
-        if ('stat_id' not in params) or (params['stat_id'] is None):
-            raise ValueError("Missing the required parameter `stat_id` when calling `for_compliance_controls`")
-
-
-        collection_formats = {}
-
-        resource_path = '/api/v2/stats/{stat_id}/compliance_controls.json_api'.replace('{format}', 'json_api')
-        path_params = {}
-        if 'stat_id' in params:
-            path_params['stat_id'] = params['stat_id']
-
-        query_params = {}
-        if 'include' in params:
-            query_params['include'] = params['include']
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-        if 'page' in params:
-            form_params.append(('page', params['page']))
-
-        body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.\
-            select_header_accept(['application/vnd.api+json'])
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.\
-            select_header_content_type(['application/vnd.api+json'])
-
-        # Authentication setting
-        auth_settings = []
-
-        return self.api_client.call_api(resource_path, 'GET',
-                                        path_params,
-                                        query_params,
-                                        header_params,
-                                        body=body_params,
-                                        post_params=form_params,
-                                        files=local_var_files,
-                                        response_type='PaginatedCollection',
-                                        auth_settings=auth_settings,
-                                        callback=params.get('callback'),
-                                        _return_http_data_only=params.get('_return_http_data_only'),
-                                        _preload_content=params.get('_preload_content', True),
-                                        _request_timeout=params.get('_request_timeout'),
-                                        collection_formats=collection_formats)
-
-    def for_custom_compliance_controls(self, stat_id, **kwargs):
-        """
-        A successful call to this API returns all the stats of all the custom compliance controls for a report identified by the stat_id parameter. Said report contains all statistics for this alert triggered from signatures contained in all custom compliance controls for the selected hour.
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.for_custom_compliance_controls(stat_id, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param int stat_id: The ID of the stat to retrieve custom compliance control stats for (required)
-        :param str include: Related objects that can be included in the response.  See Including Objects for more information.
-        :param str page: Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page
-        :return: PaginatedCollection
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('callback'):
-            return self.for_custom_compliance_controls_with_http_info(stat_id, **kwargs)
-        else:
-            (data) = self.for_custom_compliance_controls_with_http_info(stat_id, **kwargs)
-            return data
-
-    def for_custom_compliance_controls_with_http_info(self, stat_id, **kwargs):
-        """
-        A successful call to this API returns all the stats of all the custom compliance controls for a report identified by the stat_id parameter. Said report contains all statistics for this alert triggered from signatures contained in all custom compliance controls for the selected hour.
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.for_custom_compliance_controls_with_http_info(stat_id, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param int stat_id: The ID of the stat to retrieve custom compliance control stats for (required)
-        :param str include: Related objects that can be included in the response.  See Including Objects for more information.
-        :param str page: Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page
-        :return: PaginatedCollection
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = ['stat_id', 'include', 'page']
-        all_params.append('callback')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
-
-        params = locals()
-        for key, val in iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method for_custom_compliance_controls" % key
-                )
-            params[key] = val
-        del params['kwargs']
-        # verify the required parameter 'stat_id' is set
-        if ('stat_id' not in params) or (params['stat_id'] is None):
-            raise ValueError("Missing the required parameter `stat_id` when calling `for_custom_compliance_controls`")
-
-
-        collection_formats = {}
-
-        resource_path = '/api/v2/stats/{stat_id}/custom_compliance_controls.json_api'.replace('{format}', 'json_api')
-        path_params = {}
-        if 'stat_id' in params:
-            path_params['stat_id'] = params['stat_id']
-
-        query_params = {}
-        if 'include' in params:
-            query_params['include'] = params['include']
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-        if 'page' in params:
-            form_params.append(('page', params['page']))
-
-        body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.\
-            select_header_accept(['application/vnd.api+json'])
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.\
-            select_header_content_type(['application/vnd.api+json'])
-
-        # Authentication setting
-        auth_settings = []
-
-        return self.api_client.call_api(resource_path, 'GET',
-                                        path_params,
-                                        query_params,
-                                        header_params,
-                                        body=body_params,
-                                        post_params=form_params,
-                                        files=local_var_files,
-                                        response_type='PaginatedCollection',
-                                        auth_settings=auth_settings,
-                                        callback=params.get('callback'),
-                                        _return_http_data_only=params.get('_return_http_data_only'),
-                                        _preload_content=params.get('_preload_content', True),
-                                        _request_timeout=params.get('_request_timeout'),
-                                        collection_formats=collection_formats)
-
-    def for_custom_signatures(self, stat_id, **kwargs):
-        """
-        A successful call to this API returns all the stats of all the custom signatures for a report identified by the stat_id parameter. Said report contains all statistics for this alert triggered from signatures contained in all custom_signatures for the selected hour.
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.for_custom_signatures(stat_id, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param int stat_id: The ID of the stat to retrieve custom signature stats for (required)
-        :param str include: Related objects that can be included in the response.  See Including Objects for more information.
-        :param str page: Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page
-        :return: PaginatedCollection
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('callback'):
-            return self.for_custom_signatures_with_http_info(stat_id, **kwargs)
-        else:
-            (data) = self.for_custom_signatures_with_http_info(stat_id, **kwargs)
-            return data
-
-    def for_custom_signatures_with_http_info(self, stat_id, **kwargs):
-        """
-        A successful call to this API returns all the stats of all the custom signatures for a report identified by the stat_id parameter. Said report contains all statistics for this alert triggered from signatures contained in all custom_signatures for the selected hour.
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.for_custom_signatures_with_http_info(stat_id, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param int stat_id: The ID of the stat to retrieve custom signature stats for (required)
-        :param str include: Related objects that can be included in the response.  See Including Objects for more information.
-        :param str page: Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page
-        :return: PaginatedCollection
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = ['stat_id', 'include', 'page']
-        all_params.append('callback')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
-
-        params = locals()
-        for key, val in iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method for_custom_signatures" % key
-                )
-            params[key] = val
-        del params['kwargs']
-        # verify the required parameter 'stat_id' is set
-        if ('stat_id' not in params) or (params['stat_id'] is None):
-            raise ValueError("Missing the required parameter `stat_id` when calling `for_custom_signatures`")
-
-
-        collection_formats = {}
-
-        resource_path = '/api/v2/stats/{stat_id}/custom_signatures.json_api'.replace('{format}', 'json_api')
-        path_params = {}
-        if 'stat_id' in params:
-            path_params['stat_id'] = params['stat_id']
-
-        query_params = {}
-        if 'include' in params:
-            query_params['include'] = params['include']
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-        if 'page' in params:
-            form_params.append(('page', params['page']))
-
-        body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.\
-            select_header_accept(['application/vnd.api+json'])
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.\
-            select_header_content_type(['application/vnd.api+json'])
-
-        # Authentication setting
-        auth_settings = []
-
-        return self.api_client.call_api(resource_path, 'GET',
-                                        path_params,
-                                        query_params,
-                                        header_params,
-                                        body=body_params,
-                                        post_params=form_params,
-                                        files=local_var_files,
-                                        response_type='PaginatedCollection',
-                                        auth_settings=auth_settings,
-                                        callback=params.get('callback'),
-                                        _return_http_data_only=params.get('_return_http_data_only'),
-                                        _preload_content=params.get('_preload_content', True),
-                                        _request_timeout=params.get('_request_timeout'),
-                                        collection_formats=collection_formats)
-
-    def for_regions(self, stat_id, **kwargs):
-        """
-        A successful call to this API returns all the stats of all the regions for a report identified by the stat_id parameter. Said report contains all statistics for this alert triggered from signatures contained in all regions for the selected hour.
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.for_regions(stat_id, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param int stat_id: The ID of the stat to retrieve region stats for (required)
-        :param str include: Related objects that can be included in the response.  See Including Objects for more information.
-        :param str page: Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page
-        :return: PaginatedCollection
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('callback'):
-            return self.for_regions_with_http_info(stat_id, **kwargs)
-        else:
-            (data) = self.for_regions_with_http_info(stat_id, **kwargs)
-            return data
-
-    def for_regions_with_http_info(self, stat_id, **kwargs):
-        """
-        A successful call to this API returns all the stats of all the regions for a report identified by the stat_id parameter. Said report contains all statistics for this alert triggered from signatures contained in all regions for the selected hour.
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.for_regions_with_http_info(stat_id, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param int stat_id: The ID of the stat to retrieve region stats for (required)
-        :param str include: Related objects that can be included in the response.  See Including Objects for more information.
-        :param str page: Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page
-        :return: PaginatedCollection
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = ['stat_id', 'include', 'page']
-        all_params.append('callback')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
-
-        params = locals()
-        for key, val in iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method for_regions" % key
-                )
-            params[key] = val
-        del params['kwargs']
-        # verify the required parameter 'stat_id' is set
-        if ('stat_id' not in params) or (params['stat_id'] is None):
-            raise ValueError("Missing the required parameter `stat_id` when calling `for_regions`")
-
-
-        collection_formats = {}
-
-        resource_path = '/api/v2/stats/{stat_id}/regions.json_api'.replace('{format}', 'json_api')
-        path_params = {}
-        if 'stat_id' in params:
-            path_params['stat_id'] = params['stat_id']
-
-        query_params = {}
-        if 'include' in params:
-            query_params['include'] = params['include']
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-        if 'page' in params:
-            form_params.append(('page', params['page']))
-
-        body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.\
-            select_header_accept(['application/vnd.api+json'])
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.\
-            select_header_content_type(['application/vnd.api+json'])
-
-        # Authentication setting
-        auth_settings = []
-
-        return self.api_client.call_api(resource_path, 'GET',
-                                        path_params,
-                                        query_params,
-                                        header_params,
-                                        body=body_params,
-                                        post_params=form_params,
-                                        files=local_var_files,
-                                        response_type='PaginatedCollection',
-                                        auth_settings=auth_settings,
-                                        callback=params.get('callback'),
-                                        _return_http_data_only=params.get('_return_http_data_only'),
-                                        _preload_content=params.get('_preload_content', True),
-                                        _request_timeout=params.get('_request_timeout'),
-                                        collection_formats=collection_formats)
-
     def for_report(self, report_id, **kwargs):
         """
         A successful call to this API returns all the stats of all the alerts for a report identified by the report_id parameter. Said report contains all statistics for this alert triggered from signatures contained in all regions for the selected hour.
@@ -594,232 +142,6 @@ class StatsApi(object):
                                         post_params=form_params,
                                         files=local_var_files,
                                         response_type='Stat',
-                                        auth_settings=auth_settings,
-                                        callback=params.get('callback'),
-                                        _return_http_data_only=params.get('_return_http_data_only'),
-                                        _preload_content=params.get('_preload_content', True),
-                                        _request_timeout=params.get('_request_timeout'),
-                                        collection_formats=collection_formats)
-
-    def for_services(self, stat_id, **kwargs):
-        """
-        A successful call to this API returns all the stats of all the services for a report identified by the stat_id parameter. Said report contains all statistics for this alert triggered from services contained in all services for the selected hour.
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.for_services(stat_id, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param int stat_id: The ID of the stat to retrieve service stats for (required)
-        :param str include: Related objects that can be included in the response.  See Including Objects for more information.
-        :param str page: Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page
-        :return: PaginatedCollection
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('callback'):
-            return self.for_services_with_http_info(stat_id, **kwargs)
-        else:
-            (data) = self.for_services_with_http_info(stat_id, **kwargs)
-            return data
-
-    def for_services_with_http_info(self, stat_id, **kwargs):
-        """
-        A successful call to this API returns all the stats of all the services for a report identified by the stat_id parameter. Said report contains all statistics for this alert triggered from services contained in all services for the selected hour.
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.for_services_with_http_info(stat_id, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param int stat_id: The ID of the stat to retrieve service stats for (required)
-        :param str include: Related objects that can be included in the response.  See Including Objects for more information.
-        :param str page: Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page
-        :return: PaginatedCollection
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = ['stat_id', 'include', 'page']
-        all_params.append('callback')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
-
-        params = locals()
-        for key, val in iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method for_services" % key
-                )
-            params[key] = val
-        del params['kwargs']
-        # verify the required parameter 'stat_id' is set
-        if ('stat_id' not in params) or (params['stat_id'] is None):
-            raise ValueError("Missing the required parameter `stat_id` when calling `for_services`")
-
-
-        collection_formats = {}
-
-        resource_path = '/api/v2/stats/{stat_id}/services.json_api'.replace('{format}', 'json_api')
-        path_params = {}
-        if 'stat_id' in params:
-            path_params['stat_id'] = params['stat_id']
-
-        query_params = {}
-        if 'include' in params:
-            query_params['include'] = params['include']
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-        if 'page' in params:
-            form_params.append(('page', params['page']))
-
-        body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.\
-            select_header_accept(['application/vnd.api+json'])
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.\
-            select_header_content_type(['application/vnd.api+json'])
-
-        # Authentication setting
-        auth_settings = []
-
-        return self.api_client.call_api(resource_path, 'GET',
-                                        path_params,
-                                        query_params,
-                                        header_params,
-                                        body=body_params,
-                                        post_params=form_params,
-                                        files=local_var_files,
-                                        response_type='PaginatedCollection',
-                                        auth_settings=auth_settings,
-                                        callback=params.get('callback'),
-                                        _return_http_data_only=params.get('_return_http_data_only'),
-                                        _preload_content=params.get('_preload_content', True),
-                                        _request_timeout=params.get('_request_timeout'),
-                                        collection_formats=collection_formats)
-
-    def for_signatures(self, stat_id, **kwargs):
-        """
-        A successful call to this API returns all the stats of all the signatures for a report identified by the stat_id parameter. Said report contains all statistics for this alert triggered from signatures contained in all signatures for the selected hour.
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.for_signatures(stat_id, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param int stat_id: The ID of the stat to retrieve signature stats for (required)
-        :param str include: Related objects that can be included in the response.  See Including Objects for more information.
-        :param str page: Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page
-        :return: PaginatedCollection
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('callback'):
-            return self.for_signatures_with_http_info(stat_id, **kwargs)
-        else:
-            (data) = self.for_signatures_with_http_info(stat_id, **kwargs)
-            return data
-
-    def for_signatures_with_http_info(self, stat_id, **kwargs):
-        """
-        A successful call to this API returns all the stats of all the signatures for a report identified by the stat_id parameter. Said report contains all statistics for this alert triggered from signatures contained in all signatures for the selected hour.
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.for_signatures_with_http_info(stat_id, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param int stat_id: The ID of the stat to retrieve signature stats for (required)
-        :param str include: Related objects that can be included in the response.  See Including Objects for more information.
-        :param str page: Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page
-        :return: PaginatedCollection
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = ['stat_id', 'include', 'page']
-        all_params.append('callback')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
-
-        params = locals()
-        for key, val in iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method for_signatures" % key
-                )
-            params[key] = val
-        del params['kwargs']
-        # verify the required parameter 'stat_id' is set
-        if ('stat_id' not in params) or (params['stat_id'] is None):
-            raise ValueError("Missing the required parameter `stat_id` when calling `for_signatures`")
-
-
-        collection_formats = {}
-
-        resource_path = '/api/v2/stats/{stat_id}/signatures.json_api'.replace('{format}', 'json_api')
-        path_params = {}
-        if 'stat_id' in params:
-            path_params['stat_id'] = params['stat_id']
-
-        query_params = {}
-        if 'include' in params:
-            query_params['include'] = params['include']
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-        if 'page' in params:
-            form_params.append(('page', params['page']))
-
-        body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.\
-            select_header_accept(['application/vnd.api+json'])
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.\
-            select_header_content_type(['application/vnd.api+json'])
-
-        # Authentication setting
-        auth_settings = []
-
-        return self.api_client.call_api(resource_path, 'GET',
-                                        path_params,
-                                        query_params,
-                                        header_params,
-                                        body=body_params,
-                                        post_params=form_params,
-                                        files=local_var_files,
-                                        response_type='PaginatedCollection',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -937,9 +259,687 @@ class StatsApi(object):
                                         _request_timeout=params.get('_request_timeout'),
                                         collection_formats=collection_formats)
 
+    def list_stat_compliance_controls_for_stat(self, stat_id, **kwargs):
+        """
+        A successful call to this API returns all the stats of all the compliance controls for a report identified by the stat_id parameter. Said report contains all statistics for this alert triggered from signatures contained in all compliance controls for the selected hour.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.list_stat_compliance_controls_for_stat(stat_id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param int stat_id: The ID of the stat to retrieve compliance control stats for (required)
+        :param str include: Related objects that can be included in the response.  See Including Objects for more information.
+        :param str page: Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page
+        :return: PaginatedCollection
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.list_stat_compliance_controls_for_stat_with_http_info(stat_id, **kwargs)
+        else:
+            (data) = self.list_stat_compliance_controls_for_stat_with_http_info(stat_id, **kwargs)
+            return data
+
+    def list_stat_compliance_controls_for_stat_with_http_info(self, stat_id, **kwargs):
+        """
+        A successful call to this API returns all the stats of all the compliance controls for a report identified by the stat_id parameter. Said report contains all statistics for this alert triggered from signatures contained in all compliance controls for the selected hour.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.list_stat_compliance_controls_for_stat_with_http_info(stat_id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param int stat_id: The ID of the stat to retrieve compliance control stats for (required)
+        :param str include: Related objects that can be included in the response.  See Including Objects for more information.
+        :param str page: Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page
+        :return: PaginatedCollection
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['stat_id', 'include', 'page']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method list_stat_compliance_controls_for_stat" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'stat_id' is set
+        if ('stat_id' not in params) or (params['stat_id'] is None):
+            raise ValueError("Missing the required parameter `stat_id` when calling `list_stat_compliance_controls_for_stat`")
+
+
+        collection_formats = {}
+
+        resource_path = '/api/v2/stats/{stat_id}/compliance_controls.json_api'.replace('{format}', 'json_api')
+        path_params = {}
+        if 'stat_id' in params:
+            path_params['stat_id'] = params['stat_id']
+
+        query_params = {}
+        if 'include' in params:
+            query_params['include'] = params['include']
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+        if 'page' in params:
+            form_params.append(('page', params['page']))
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/vnd.api+json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/vnd.api+json'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api(resource_path, 'GET',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='PaginatedCollection',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def list_stat_custom_compliance_controls_for_stat(self, stat_id, **kwargs):
+        """
+        A successful call to this API returns all the stats of all the custom compliance controls for a report identified by the stat_id parameter. Said report contains all statistics for this alert triggered from signatures contained in all custom compliance controls for the selected hour.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.list_stat_custom_compliance_controls_for_stat(stat_id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param int stat_id: The ID of the stat to retrieve custom compliance control stats for (required)
+        :param str include: Related objects that can be included in the response.  See Including Objects for more information.
+        :param str page: Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page
+        :return: PaginatedCollection
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.list_stat_custom_compliance_controls_for_stat_with_http_info(stat_id, **kwargs)
+        else:
+            (data) = self.list_stat_custom_compliance_controls_for_stat_with_http_info(stat_id, **kwargs)
+            return data
+
+    def list_stat_custom_compliance_controls_for_stat_with_http_info(self, stat_id, **kwargs):
+        """
+        A successful call to this API returns all the stats of all the custom compliance controls for a report identified by the stat_id parameter. Said report contains all statistics for this alert triggered from signatures contained in all custom compliance controls for the selected hour.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.list_stat_custom_compliance_controls_for_stat_with_http_info(stat_id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param int stat_id: The ID of the stat to retrieve custom compliance control stats for (required)
+        :param str include: Related objects that can be included in the response.  See Including Objects for more information.
+        :param str page: Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page
+        :return: PaginatedCollection
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['stat_id', 'include', 'page']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method list_stat_custom_compliance_controls_for_stat" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'stat_id' is set
+        if ('stat_id' not in params) or (params['stat_id'] is None):
+            raise ValueError("Missing the required parameter `stat_id` when calling `list_stat_custom_compliance_controls_for_stat`")
+
+
+        collection_formats = {}
+
+        resource_path = '/api/v2/stats/{stat_id}/custom_compliance_controls.json_api'.replace('{format}', 'json_api')
+        path_params = {}
+        if 'stat_id' in params:
+            path_params['stat_id'] = params['stat_id']
+
+        query_params = {}
+        if 'include' in params:
+            query_params['include'] = params['include']
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+        if 'page' in params:
+            form_params.append(('page', params['page']))
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/vnd.api+json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/vnd.api+json'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api(resource_path, 'GET',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='PaginatedCollection',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def list_stat_custom_signatures_for_stat(self, stat_id, **kwargs):
+        """
+        A successful call to this API returns all the stats of all the custom signatures for a report identified by the stat_id parameter. Said report contains all statistics for this alert triggered from signatures contained in all custom_signatures for the selected hour.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.list_stat_custom_signatures_for_stat(stat_id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param int stat_id: The ID of the stat to retrieve custom signature stats for (required)
+        :param str include: Related objects that can be included in the response.  See Including Objects for more information.
+        :param str page: Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page
+        :return: PaginatedCollection
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.list_stat_custom_signatures_for_stat_with_http_info(stat_id, **kwargs)
+        else:
+            (data) = self.list_stat_custom_signatures_for_stat_with_http_info(stat_id, **kwargs)
+            return data
+
+    def list_stat_custom_signatures_for_stat_with_http_info(self, stat_id, **kwargs):
+        """
+        A successful call to this API returns all the stats of all the custom signatures for a report identified by the stat_id parameter. Said report contains all statistics for this alert triggered from signatures contained in all custom_signatures for the selected hour.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.list_stat_custom_signatures_for_stat_with_http_info(stat_id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param int stat_id: The ID of the stat to retrieve custom signature stats for (required)
+        :param str include: Related objects that can be included in the response.  See Including Objects for more information.
+        :param str page: Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page
+        :return: PaginatedCollection
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['stat_id', 'include', 'page']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method list_stat_custom_signatures_for_stat" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'stat_id' is set
+        if ('stat_id' not in params) or (params['stat_id'] is None):
+            raise ValueError("Missing the required parameter `stat_id` when calling `list_stat_custom_signatures_for_stat`")
+
+
+        collection_formats = {}
+
+        resource_path = '/api/v2/stats/{stat_id}/custom_signatures.json_api'.replace('{format}', 'json_api')
+        path_params = {}
+        if 'stat_id' in params:
+            path_params['stat_id'] = params['stat_id']
+
+        query_params = {}
+        if 'include' in params:
+            query_params['include'] = params['include']
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+        if 'page' in params:
+            form_params.append(('page', params['page']))
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/vnd.api+json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/vnd.api+json'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api(resource_path, 'GET',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='PaginatedCollection',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def list_stat_regions_for_stat(self, stat_id, **kwargs):
+        """
+        A successful call to this API returns all the stats of all the regions for a report identified by the stat_id parameter. Said report contains all statistics for this alert triggered from signatures contained in all regions for the selected hour.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.list_stat_regions_for_stat(stat_id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param int stat_id: The ID of the stat to retrieve region stats for (required)
+        :param str include: Related objects that can be included in the response.  See Including Objects for more information.
+        :param str page: Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page
+        :return: PaginatedCollection
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.list_stat_regions_for_stat_with_http_info(stat_id, **kwargs)
+        else:
+            (data) = self.list_stat_regions_for_stat_with_http_info(stat_id, **kwargs)
+            return data
+
+    def list_stat_regions_for_stat_with_http_info(self, stat_id, **kwargs):
+        """
+        A successful call to this API returns all the stats of all the regions for a report identified by the stat_id parameter. Said report contains all statistics for this alert triggered from signatures contained in all regions for the selected hour.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.list_stat_regions_for_stat_with_http_info(stat_id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param int stat_id: The ID of the stat to retrieve region stats for (required)
+        :param str include: Related objects that can be included in the response.  See Including Objects for more information.
+        :param str page: Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page
+        :return: PaginatedCollection
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['stat_id', 'include', 'page']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method list_stat_regions_for_stat" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'stat_id' is set
+        if ('stat_id' not in params) or (params['stat_id'] is None):
+            raise ValueError("Missing the required parameter `stat_id` when calling `list_stat_regions_for_stat`")
+
+
+        collection_formats = {}
+
+        resource_path = '/api/v2/stats/{stat_id}/regions.json_api'.replace('{format}', 'json_api')
+        path_params = {}
+        if 'stat_id' in params:
+            path_params['stat_id'] = params['stat_id']
+
+        query_params = {}
+        if 'include' in params:
+            query_params['include'] = params['include']
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+        if 'page' in params:
+            form_params.append(('page', params['page']))
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/vnd.api+json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/vnd.api+json'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api(resource_path, 'GET',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='PaginatedCollection',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def list_stat_services_for_stat(self, stat_id, **kwargs):
+        """
+        A successful call to this API returns all the stats of all the services for a report identified by the stat_id parameter. Said report contains all statistics for this alert triggered from services contained in all services for the selected hour.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.list_stat_services_for_stat(stat_id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param int stat_id: The ID of the stat to retrieve service stats for (required)
+        :param str include: Related objects that can be included in the response.  See Including Objects for more information.
+        :param str page: Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page
+        :return: PaginatedCollection
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.list_stat_services_for_stat_with_http_info(stat_id, **kwargs)
+        else:
+            (data) = self.list_stat_services_for_stat_with_http_info(stat_id, **kwargs)
+            return data
+
+    def list_stat_services_for_stat_with_http_info(self, stat_id, **kwargs):
+        """
+        A successful call to this API returns all the stats of all the services for a report identified by the stat_id parameter. Said report contains all statistics for this alert triggered from services contained in all services for the selected hour.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.list_stat_services_for_stat_with_http_info(stat_id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param int stat_id: The ID of the stat to retrieve service stats for (required)
+        :param str include: Related objects that can be included in the response.  See Including Objects for more information.
+        :param str page: Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page
+        :return: PaginatedCollection
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['stat_id', 'include', 'page']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method list_stat_services_for_stat" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'stat_id' is set
+        if ('stat_id' not in params) or (params['stat_id'] is None):
+            raise ValueError("Missing the required parameter `stat_id` when calling `list_stat_services_for_stat`")
+
+
+        collection_formats = {}
+
+        resource_path = '/api/v2/stats/{stat_id}/services.json_api'.replace('{format}', 'json_api')
+        path_params = {}
+        if 'stat_id' in params:
+            path_params['stat_id'] = params['stat_id']
+
+        query_params = {}
+        if 'include' in params:
+            query_params['include'] = params['include']
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+        if 'page' in params:
+            form_params.append(('page', params['page']))
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/vnd.api+json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/vnd.api+json'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api(resource_path, 'GET',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='PaginatedCollection',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def list_stat_signatures_for_stat(self, stat_id, **kwargs):
+        """
+        A successful call to this API returns all the stats of all the signatures for a report identified by the stat_id parameter. Said report contains all statistics for this alert triggered from signatures contained in all signatures for the selected hour.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.list_stat_signatures_for_stat(stat_id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param int stat_id: The ID of the stat to retrieve signature stats for (required)
+        :param str include: Related objects that can be included in the response.  See Including Objects for more information.
+        :param str page: Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page
+        :return: PaginatedCollection
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.list_stat_signatures_for_stat_with_http_info(stat_id, **kwargs)
+        else:
+            (data) = self.list_stat_signatures_for_stat_with_http_info(stat_id, **kwargs)
+            return data
+
+    def list_stat_signatures_for_stat_with_http_info(self, stat_id, **kwargs):
+        """
+        A successful call to this API returns all the stats of all the signatures for a report identified by the stat_id parameter. Said report contains all statistics for this alert triggered from signatures contained in all signatures for the selected hour.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.list_stat_signatures_for_stat_with_http_info(stat_id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param int stat_id: The ID of the stat to retrieve signature stats for (required)
+        :param str include: Related objects that can be included in the response.  See Including Objects for more information.
+        :param str page: Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page
+        :return: PaginatedCollection
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['stat_id', 'include', 'page']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method list_stat_signatures_for_stat" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'stat_id' is set
+        if ('stat_id' not in params) or (params['stat_id'] is None):
+            raise ValueError("Missing the required parameter `stat_id` when calling `list_stat_signatures_for_stat`")
+
+
+        collection_formats = {}
+
+        resource_path = '/api/v2/stats/{stat_id}/signatures.json_api'.replace('{format}', 'json_api')
+        path_params = {}
+        if 'stat_id' in params:
+            path_params['stat_id'] = params['stat_id']
+
+        query_params = {}
+        if 'include' in params:
+            query_params['include'] = params['include']
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+        if 'page' in params:
+            form_params.append(('page', params['page']))
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/vnd.api+json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/vnd.api+json'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api(resource_path, 'GET',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='PaginatedCollection',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
     def show(self, id, **kwargs):
         """
-        Show a single StatCustomComplianceControl
+        Show a single Stat
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -950,9 +950,9 @@ class StatsApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param int id: StatCustomComplianceControl ID (required)
+        :param int id: Stat ID (required)
         :param str include: Related objects that can be included in the response.  See Including Objects for more information.
-        :return: StatCustomComplianceControl
+        :return: Stat
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -965,7 +965,7 @@ class StatsApi(object):
 
     def show_with_http_info(self, id, **kwargs):
         """
-        Show a single StatCustomComplianceControl
+        Show a single Stat
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -976,9 +976,9 @@ class StatsApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param int id: StatCustomComplianceControl ID (required)
+        :param int id: Stat ID (required)
         :param str include: Related objects that can be included in the response.  See Including Objects for more information.
-        :return: StatCustomComplianceControl
+        :return: Stat
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1001,333 +1001,6 @@ class StatsApi(object):
         # verify the required parameter 'id' is set
         if ('id' not in params) or (params['id'] is None):
             raise ValueError("Missing the required parameter `id` when calling `show`")
-
-
-        collection_formats = {}
-
-        resource_path = '/api/v2/stats/custom_compliance_controls/{id}.json_api'.replace('{format}', 'json_api')
-        path_params = {}
-        if 'id' in params:
-            path_params['id'] = params['id']
-
-        query_params = {}
-        if 'include' in params:
-            query_params['include'] = params['include']
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.\
-            select_header_accept(['application/vnd.api+json'])
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.\
-            select_header_content_type(['application/vnd.api+json'])
-
-        # Authentication setting
-        auth_settings = []
-
-        return self.api_client.call_api(resource_path, 'GET',
-                                        path_params,
-                                        query_params,
-                                        header_params,
-                                        body=body_params,
-                                        post_params=form_params,
-                                        files=local_var_files,
-                                        response_type='StatCustomComplianceControl',
-                                        auth_settings=auth_settings,
-                                        callback=params.get('callback'),
-                                        _return_http_data_only=params.get('_return_http_data_only'),
-                                        _preload_content=params.get('_preload_content', True),
-                                        _request_timeout=params.get('_request_timeout'),
-                                        collection_formats=collection_formats)
-
-    def show_0(self, id, **kwargs):
-        """
-        Show a single StatComplianceControl
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.show_0(id, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param int id: StatComplianceControl ID (required)
-        :param str include: Related objects that can be included in the response.  See Including Objects for more information.
-        :return: StatComplianceControl
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('callback'):
-            return self.show_0_with_http_info(id, **kwargs)
-        else:
-            (data) = self.show_0_with_http_info(id, **kwargs)
-            return data
-
-    def show_0_with_http_info(self, id, **kwargs):
-        """
-        Show a single StatComplianceControl
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.show_0_with_http_info(id, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param int id: StatComplianceControl ID (required)
-        :param str include: Related objects that can be included in the response.  See Including Objects for more information.
-        :return: StatComplianceControl
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = ['id', 'include']
-        all_params.append('callback')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
-
-        params = locals()
-        for key, val in iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method show_0" % key
-                )
-            params[key] = val
-        del params['kwargs']
-        # verify the required parameter 'id' is set
-        if ('id' not in params) or (params['id'] is None):
-            raise ValueError("Missing the required parameter `id` when calling `show_0`")
-
-
-        collection_formats = {}
-
-        resource_path = '/api/v2/stats/compliance_controls/{id}.json_api'.replace('{format}', 'json_api')
-        path_params = {}
-        if 'id' in params:
-            path_params['id'] = params['id']
-
-        query_params = {}
-        if 'include' in params:
-            query_params['include'] = params['include']
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.\
-            select_header_accept(['application/vnd.api+json'])
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.\
-            select_header_content_type(['application/vnd.api+json'])
-
-        # Authentication setting
-        auth_settings = []
-
-        return self.api_client.call_api(resource_path, 'GET',
-                                        path_params,
-                                        query_params,
-                                        header_params,
-                                        body=body_params,
-                                        post_params=form_params,
-                                        files=local_var_files,
-                                        response_type='StatComplianceControl',
-                                        auth_settings=auth_settings,
-                                        callback=params.get('callback'),
-                                        _return_http_data_only=params.get('_return_http_data_only'),
-                                        _preload_content=params.get('_preload_content', True),
-                                        _request_timeout=params.get('_request_timeout'),
-                                        collection_formats=collection_formats)
-
-    def show_1(self, id, **kwargs):
-        """
-        Show a single StatSignature
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.show_1(id, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param int id: StatSignature ID (required)
-        :param str include: Related objects that can be included in the response.  See Including Objects for more information.
-        :return: StatSignature
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('callback'):
-            return self.show_1_with_http_info(id, **kwargs)
-        else:
-            (data) = self.show_1_with_http_info(id, **kwargs)
-            return data
-
-    def show_1_with_http_info(self, id, **kwargs):
-        """
-        Show a single StatSignature
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.show_1_with_http_info(id, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param int id: StatSignature ID (required)
-        :param str include: Related objects that can be included in the response.  See Including Objects for more information.
-        :return: StatSignature
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = ['id', 'include']
-        all_params.append('callback')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
-
-        params = locals()
-        for key, val in iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method show_1" % key
-                )
-            params[key] = val
-        del params['kwargs']
-        # verify the required parameter 'id' is set
-        if ('id' not in params) or (params['id'] is None):
-            raise ValueError("Missing the required parameter `id` when calling `show_1`")
-
-
-        collection_formats = {}
-
-        resource_path = '/api/v2/stats/signatures/{id}.json_api'.replace('{format}', 'json_api')
-        path_params = {}
-        if 'id' in params:
-            path_params['id'] = params['id']
-
-        query_params = {}
-        if 'include' in params:
-            query_params['include'] = params['include']
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.\
-            select_header_accept(['application/vnd.api+json'])
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.\
-            select_header_content_type(['application/vnd.api+json'])
-
-        # Authentication setting
-        auth_settings = []
-
-        return self.api_client.call_api(resource_path, 'GET',
-                                        path_params,
-                                        query_params,
-                                        header_params,
-                                        body=body_params,
-                                        post_params=form_params,
-                                        files=local_var_files,
-                                        response_type='StatSignature',
-                                        auth_settings=auth_settings,
-                                        callback=params.get('callback'),
-                                        _return_http_data_only=params.get('_return_http_data_only'),
-                                        _preload_content=params.get('_preload_content', True),
-                                        _request_timeout=params.get('_request_timeout'),
-                                        collection_formats=collection_formats)
-
-    def show_2(self, id, **kwargs):
-        """
-        Show a single Stat
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.show_2(id, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param int id: Stat ID (required)
-        :param str include: Related objects that can be included in the response.  See Including Objects for more information.
-        :return: Stat
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('callback'):
-            return self.show_2_with_http_info(id, **kwargs)
-        else:
-            (data) = self.show_2_with_http_info(id, **kwargs)
-            return data
-
-    def show_2_with_http_info(self, id, **kwargs):
-        """
-        Show a single Stat
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.show_2_with_http_info(id, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param int id: Stat ID (required)
-        :param str include: Related objects that can be included in the response.  See Including Objects for more information.
-        :return: Stat
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = ['id', 'include']
-        all_params.append('callback')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
-
-        params = locals()
-        for key, val in iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method show_2" % key
-                )
-            params[key] = val
-        del params['kwargs']
-        # verify the required parameter 'id' is set
-        if ('id' not in params) or (params['id'] is None):
-            raise ValueError("Missing the required parameter `id` when calling `show_2`")
 
 
         collection_formats = {}
@@ -1373,48 +1046,48 @@ class StatsApi(object):
                                         _request_timeout=params.get('_request_timeout'),
                                         collection_formats=collection_formats)
 
-    def show_3(self, id, **kwargs):
+    def show_stat_compliance_control(self, id, **kwargs):
         """
-        Show a single StatRegion
+        Show a single StatComplianceControl
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.show_3(id, callback=callback_function)
+        >>> thread = api.show_stat_compliance_control(id, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param int id: StatRegion ID (required)
+        :param int id: StatComplianceControl ID (required)
         :param str include: Related objects that can be included in the response.  See Including Objects for more information.
-        :return: StatRegion
+        :return: StatComplianceControl
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.show_3_with_http_info(id, **kwargs)
+            return self.show_stat_compliance_control_with_http_info(id, **kwargs)
         else:
-            (data) = self.show_3_with_http_info(id, **kwargs)
+            (data) = self.show_stat_compliance_control_with_http_info(id, **kwargs)
             return data
 
-    def show_3_with_http_info(self, id, **kwargs):
+    def show_stat_compliance_control_with_http_info(self, id, **kwargs):
         """
-        Show a single StatRegion
+        Show a single StatComplianceControl
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.show_3_with_http_info(id, callback=callback_function)
+        >>> thread = api.show_stat_compliance_control_with_http_info(id, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param int id: StatRegion ID (required)
+        :param int id: StatComplianceControl ID (required)
         :param str include: Related objects that can be included in the response.  See Including Objects for more information.
-        :return: StatRegion
+        :return: StatComplianceControl
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1430,18 +1103,18 @@ class StatsApi(object):
             if key not in all_params:
                 raise TypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method show_3" % key
+                    " to method show_stat_compliance_control" % key
                 )
             params[key] = val
         del params['kwargs']
         # verify the required parameter 'id' is set
         if ('id' not in params) or (params['id'] is None):
-            raise ValueError("Missing the required parameter `id` when calling `show_3`")
+            raise ValueError("Missing the required parameter `id` when calling `show_stat_compliance_control`")
 
 
         collection_formats = {}
 
-        resource_path = '/api/v2/stats/regions/{id}.json_api'.replace('{format}', 'json_api')
+        resource_path = '/api/v2/stats/compliance_controls/{id}.json_api'.replace('{format}', 'json_api')
         path_params = {}
         if 'id' in params:
             path_params['id'] = params['id']
@@ -1474,7 +1147,7 @@ class StatsApi(object):
                                         body=body_params,
                                         post_params=form_params,
                                         files=local_var_files,
-                                        response_type='StatRegion',
+                                        response_type='StatComplianceControl',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -1482,7 +1155,116 @@ class StatsApi(object):
                                         _request_timeout=params.get('_request_timeout'),
                                         collection_formats=collection_formats)
 
-    def show_4(self, id, **kwargs):
+    def show_stat_custom_compliance_control(self, id, **kwargs):
+        """
+        Show a single StatCustomComplianceControl
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.show_stat_custom_compliance_control(id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param int id: StatCustomComplianceControl ID (required)
+        :param str include: Related objects that can be included in the response.  See Including Objects for more information.
+        :return: StatCustomComplianceControl
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.show_stat_custom_compliance_control_with_http_info(id, **kwargs)
+        else:
+            (data) = self.show_stat_custom_compliance_control_with_http_info(id, **kwargs)
+            return data
+
+    def show_stat_custom_compliance_control_with_http_info(self, id, **kwargs):
+        """
+        Show a single StatCustomComplianceControl
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.show_stat_custom_compliance_control_with_http_info(id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param int id: StatCustomComplianceControl ID (required)
+        :param str include: Related objects that can be included in the response.  See Including Objects for more information.
+        :return: StatCustomComplianceControl
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['id', 'include']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method show_stat_custom_compliance_control" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'id' is set
+        if ('id' not in params) or (params['id'] is None):
+            raise ValueError("Missing the required parameter `id` when calling `show_stat_custom_compliance_control`")
+
+
+        collection_formats = {}
+
+        resource_path = '/api/v2/stats/custom_compliance_controls/{id}.json_api'.replace('{format}', 'json_api')
+        path_params = {}
+        if 'id' in params:
+            path_params['id'] = params['id']
+
+        query_params = {}
+        if 'include' in params:
+            query_params['include'] = params['include']
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/vnd.api+json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/vnd.api+json'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api(resource_path, 'GET',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='StatCustomComplianceControl',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def show_stat_custom_signature(self, id, **kwargs):
         """
         Show a single StatCustomSignature
         This method makes a synchronous HTTP request by default. To make an
@@ -1491,7 +1273,7 @@ class StatsApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.show_4(id, callback=callback_function)
+        >>> thread = api.show_stat_custom_signature(id, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
@@ -1503,12 +1285,12 @@ class StatsApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.show_4_with_http_info(id, **kwargs)
+            return self.show_stat_custom_signature_with_http_info(id, **kwargs)
         else:
-            (data) = self.show_4_with_http_info(id, **kwargs)
+            (data) = self.show_stat_custom_signature_with_http_info(id, **kwargs)
             return data
 
-    def show_4_with_http_info(self, id, **kwargs):
+    def show_stat_custom_signature_with_http_info(self, id, **kwargs):
         """
         Show a single StatCustomSignature
         This method makes a synchronous HTTP request by default. To make an
@@ -1517,7 +1299,7 @@ class StatsApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.show_4_with_http_info(id, callback=callback_function)
+        >>> thread = api.show_stat_custom_signature_with_http_info(id, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
@@ -1539,13 +1321,13 @@ class StatsApi(object):
             if key not in all_params:
                 raise TypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method show_4" % key
+                    " to method show_stat_custom_signature" % key
                 )
             params[key] = val
         del params['kwargs']
         # verify the required parameter 'id' is set
         if ('id' not in params) or (params['id'] is None):
-            raise ValueError("Missing the required parameter `id` when calling `show_4`")
+            raise ValueError("Missing the required parameter `id` when calling `show_stat_custom_signature`")
 
 
         collection_formats = {}
@@ -1591,7 +1373,116 @@ class StatsApi(object):
                                         _request_timeout=params.get('_request_timeout'),
                                         collection_formats=collection_formats)
 
-    def show_5(self, id, **kwargs):
+    def show_stat_region(self, id, **kwargs):
+        """
+        Show a single StatRegion
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.show_stat_region(id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param int id: StatRegion ID (required)
+        :param str include: Related objects that can be included in the response.  See Including Objects for more information.
+        :return: StatRegion
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.show_stat_region_with_http_info(id, **kwargs)
+        else:
+            (data) = self.show_stat_region_with_http_info(id, **kwargs)
+            return data
+
+    def show_stat_region_with_http_info(self, id, **kwargs):
+        """
+        Show a single StatRegion
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.show_stat_region_with_http_info(id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param int id: StatRegion ID (required)
+        :param str include: Related objects that can be included in the response.  See Including Objects for more information.
+        :return: StatRegion
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['id', 'include']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method show_stat_region" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'id' is set
+        if ('id' not in params) or (params['id'] is None):
+            raise ValueError("Missing the required parameter `id` when calling `show_stat_region`")
+
+
+        collection_formats = {}
+
+        resource_path = '/api/v2/stats/regions/{id}.json_api'.replace('{format}', 'json_api')
+        path_params = {}
+        if 'id' in params:
+            path_params['id'] = params['id']
+
+        query_params = {}
+        if 'include' in params:
+            query_params['include'] = params['include']
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/vnd.api+json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/vnd.api+json'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api(resource_path, 'GET',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='StatRegion',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def show_stat_service(self, id, **kwargs):
         """
         Show a single StatService
         This method makes a synchronous HTTP request by default. To make an
@@ -1600,7 +1491,7 @@ class StatsApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.show_5(id, callback=callback_function)
+        >>> thread = api.show_stat_service(id, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
@@ -1612,12 +1503,12 @@ class StatsApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.show_5_with_http_info(id, **kwargs)
+            return self.show_stat_service_with_http_info(id, **kwargs)
         else:
-            (data) = self.show_5_with_http_info(id, **kwargs)
+            (data) = self.show_stat_service_with_http_info(id, **kwargs)
             return data
 
-    def show_5_with_http_info(self, id, **kwargs):
+    def show_stat_service_with_http_info(self, id, **kwargs):
         """
         Show a single StatService
         This method makes a synchronous HTTP request by default. To make an
@@ -1626,7 +1517,7 @@ class StatsApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.show_5_with_http_info(id, callback=callback_function)
+        >>> thread = api.show_stat_service_with_http_info(id, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
@@ -1648,13 +1539,13 @@ class StatsApi(object):
             if key not in all_params:
                 raise TypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method show_5" % key
+                    " to method show_stat_service" % key
                 )
             params[key] = val
         del params['kwargs']
         # verify the required parameter 'id' is set
         if ('id' not in params) or (params['id'] is None):
-            raise ValueError("Missing the required parameter `id` when calling `show_5`")
+            raise ValueError("Missing the required parameter `id` when calling `show_stat_service`")
 
 
         collection_formats = {}
@@ -1693,6 +1584,115 @@ class StatsApi(object):
                                         post_params=form_params,
                                         files=local_var_files,
                                         response_type='StatService',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def show_stat_signature(self, id, **kwargs):
+        """
+        Show a single StatSignature
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.show_stat_signature(id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param int id: StatSignature ID (required)
+        :param str include: Related objects that can be included in the response.  See Including Objects for more information.
+        :return: StatSignature
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.show_stat_signature_with_http_info(id, **kwargs)
+        else:
+            (data) = self.show_stat_signature_with_http_info(id, **kwargs)
+            return data
+
+    def show_stat_signature_with_http_info(self, id, **kwargs):
+        """
+        Show a single StatSignature
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.show_stat_signature_with_http_info(id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param int id: StatSignature ID (required)
+        :param str include: Related objects that can be included in the response.  See Including Objects for more information.
+        :return: StatSignature
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['id', 'include']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method show_stat_signature" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'id' is set
+        if ('id' not in params) or (params['id'] is None):
+            raise ValueError("Missing the required parameter `id` when calling `show_stat_signature`")
+
+
+        collection_formats = {}
+
+        resource_path = '/api/v2/stats/signatures/{id}.json_api'.replace('{format}', 'json_api')
+        path_params = {}
+        if 'id' in params:
+            path_params['id'] = params['id']
+
+        query_params = {}
+        if 'include' in params:
+            query_params['include'] = params['include']
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/vnd.api+json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/vnd.api+json'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api(resource_path, 'GET',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='StatSignature',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
