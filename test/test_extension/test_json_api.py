@@ -42,7 +42,7 @@ class TestJsonApi(TestBase):
         api_client.rest_client = rest_client
         api = AlertsApi(api_client)
 
-        alert = api.list(1).data[0]
+        alert = api.list_for_report(1).data[0]
 
         self.assertEqual(str(alert.external_account_id), next(obj for obj in parsed_json['included'] if obj['type'] == 'external_accounts')['id'])
         self.assertEqual(str(alert.region_id), next(obj for obj in parsed_json['included'] if obj['type'] == 'regions')['id'])
@@ -63,7 +63,7 @@ class TestJsonApi(TestBase):
         api_client.rest_client = rest_client
         api = AlertsApi(api_client)
 
-        alert = api.list(1).data[0]
+        alert = api.list_for_report(1).data[0]
 
         self.assertIsNotNone(alert.external_account_id)
         self.assertIsNotNone(alert.region_id)
