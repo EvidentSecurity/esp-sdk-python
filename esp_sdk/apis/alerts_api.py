@@ -40,7 +40,7 @@ class AlertsApi(object):
                 config.api_client = ApiClient()
             self.api_client = config.api_client
 
-    def list(self, report_id, **kwargs):
+    def list(self, **kwargs):
         """
         Get a list of Alerts
         This method makes a synchronous HTTP request by default. To make an
@@ -49,7 +49,117 @@ class AlertsApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.list(report_id, callback=callback_function)
+        >>> thread = api.list(callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param dict(str, str) filter: Filter Params for Searching.  See Searching Lists for more information.
+        :param str include: Related objects that can be included in the response.  See Including Objects for more information.
+        :param str page: Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page
+        :return: PaginatedCollection
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.list_with_http_info(**kwargs)
+        else:
+            (data) = self.list_with_http_info(**kwargs)
+            return data
+
+    def list_with_http_info(self, **kwargs):
+        """
+        Get a list of Alerts
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.list_with_http_info(callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param dict(str, str) filter: Filter Params for Searching.  See Searching Lists for more information.
+        :param str include: Related objects that can be included in the response.  See Including Objects for more information.
+        :param str page: Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page
+        :return: PaginatedCollection
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['filter', 'include', 'page']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method list" % key
+                )
+            params[key] = val
+        del params['kwargs']
+
+
+        collection_formats = {}
+
+        resource_path = '/api/v2/alerts.json_api'.replace('{format}', 'json_api')
+        path_params = {}
+
+        query_params = {}
+        if 'include' in params:
+            query_params['include'] = params['include']
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+        if 'filter' in params:
+            form_params.append(('filter', params['filter']))
+        if 'page' in params:
+            form_params.append(('page', params['page']))
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/vnd.api+json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/vnd.api+json'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api(resource_path, 'PUT',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='PaginatedCollection',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def list_for_report(self, report_id, **kwargs):
+        """
+        Get a list of Alerts
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.list_for_report(report_id, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
@@ -63,12 +173,12 @@ class AlertsApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.list_with_http_info(report_id, **kwargs)
+            return self.list_for_report_with_http_info(report_id, **kwargs)
         else:
-            (data) = self.list_with_http_info(report_id, **kwargs)
+            (data) = self.list_for_report_with_http_info(report_id, **kwargs)
             return data
 
-    def list_with_http_info(self, report_id, **kwargs):
+    def list_for_report_with_http_info(self, report_id, **kwargs):
         """
         Get a list of Alerts
         This method makes a synchronous HTTP request by default. To make an
@@ -77,7 +187,7 @@ class AlertsApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.list_with_http_info(report_id, callback=callback_function)
+        >>> thread = api.list_for_report_with_http_info(report_id, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
@@ -101,13 +211,13 @@ class AlertsApi(object):
             if key not in all_params:
                 raise TypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method list" % key
+                    " to method list_for_report" % key
                 )
             params[key] = val
         del params['kwargs']
         # verify the required parameter 'report_id' is set
         if ('report_id' not in params) or (params['report_id'] is None):
-            raise ValueError("Missing the required parameter `report_id` when calling `list`")
+            raise ValueError("Missing the required parameter `report_id` when calling `list_for_report`")
 
 
         collection_formats = {}
