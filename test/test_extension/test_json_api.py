@@ -22,15 +22,13 @@ class TestJsonApi(TestBase):
         api_client.rest_client = rest_client
         api = AlertsApi(api_client)
 
-        alert = api.show(1, include='external_account.team.organization,region,signature,cloud_trail_events')
+        alert = api.show(1, include='external_account.team.organization,region,signature')
 
         self.assertEqual(str(alert.external_account.id), next(obj for obj in parsed_json['included'] if obj['type'] == 'external_accounts')['id'])
-        self.assertEqual(str(alert.external_account.organization.id), next(obj for obj in parsed_json['included'] if obj['type'] == 'organizations')['id'])
         self.assertEqual(str(alert.external_account.team.id), next(obj for obj in parsed_json['included'] if obj['type'] == 'teams')['id'])
         self.assertEqual(str(alert.external_account.team.organization.id), next(obj for obj in parsed_json['included'] if obj['type'] == 'organizations')['id'])
         self.assertEqual(str(alert.region.id), next(obj for obj in parsed_json['included'] if obj['type'] == 'regions')['id'])
         self.assertEqual(str(alert.signature.id), next(obj for obj in parsed_json['included'] if obj['type'] == 'signatures')['id'])
-        self.assertEqual(str(alert.cloud_trail_events[0].id), next(obj for obj in parsed_json['included'] if obj['type'] == 'cloud_trail_events')['id'])
 
     def test_assigns_foreign_keys(self):
         data = self.json_list([self.alert_response()])
@@ -51,7 +49,7 @@ class TestJsonApi(TestBase):
         self.assertIn(next(obj for obj in parsed_json['included'] if obj['type'] == 'cloud_trail_events')['id'], str(alert.cloud_trail_event_ids))
 
         # nested objects too
-        self.assertEqual(str(alert.external_account.organization_id), next(obj for obj in parsed_json['included'] if obj['type'] == 'external_accounts')['relationships']['organization']['data']['id'])
+        self.assertEqual(str(alert.external_account.team_id), next(obj for obj in parsed_json['included'] if obj['type'] == 'external_accounts')['relationships']['team']['data']['id'])
 
     def test_does_not_error_with_included_nulls(self):
         data = json.loads(self.json_list([self.alert_response()]))
@@ -69,5 +67,4 @@ class TestJsonApi(TestBase):
         self.assertIsNotNone(alert.region_id)
         self.assertIsNotNone(alert.signature_id)
         self.assertIsNotNone(alert.tag_ids)
-        self.assertIsNotNone(alert.cloud_trail_event_ids)
-        self.assertIsNotNone(alert.external_account.organization_id)
+        self.assertIsNotNone(alert.external_account.team_id)

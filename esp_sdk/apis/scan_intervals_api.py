@@ -42,7 +42,8 @@ class ScanIntervalsApi(object):
 
     def create(self, external_account_id, interval, service_id, **kwargs):
         """
-        Create a(n) ScanInterval
+        Create a(n) Scan Interval
+        
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -56,6 +57,7 @@ class ScanIntervalsApi(object):
         :param int external_account_id: The ID of the external account this scan interval is for (required)
         :param int interval: The interval, in minutes, this service will be scanned (required)
         :param int service_id: The service ID for the scan interval (required)
+        :param str include: Related objects that can be included in the response:  external_account, service See Including Objects for more information.
         :return: ScanInterval
                  If the method is called asynchronously,
                  returns the request thread.
@@ -69,7 +71,8 @@ class ScanIntervalsApi(object):
 
     def create_with_http_info(self, external_account_id, interval, service_id, **kwargs):
         """
-        Create a(n) ScanInterval
+        Create a(n) Scan Interval
+        
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -83,12 +86,13 @@ class ScanIntervalsApi(object):
         :param int external_account_id: The ID of the external account this scan interval is for (required)
         :param int interval: The interval, in minutes, this service will be scanned (required)
         :param int service_id: The service ID for the scan interval (required)
+        :param str include: Related objects that can be included in the response:  external_account, service See Including Objects for more information.
         :return: ScanInterval
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['external_account_id', 'interval', 'service_id']
+        all_params = ['external_account_id', 'interval', 'service_id', 'include']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -120,6 +124,8 @@ class ScanIntervalsApi(object):
         path_params = {}
 
         query_params = {}
+        if 'include' in params:
+            query_params['include'] = params['include']
 
         header_params = {}
 
@@ -159,45 +165,47 @@ class ScanIntervalsApi(object):
                                         _request_timeout=params.get('_request_timeout'),
                                         collection_formats=collection_formats)
 
-    def destroy(self, id, **kwargs):
+    def delete(self, id, **kwargs):
         """
-        Remove a(n) ScanInterval
+        Delete a(n) Scan Interval
+        
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.destroy(id, callback=callback_function)
+        >>> thread = api.delete(id, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param int id: ScanInterval ID (required)
+        :param int id:  ID (required)
         :return: Meta
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.destroy_with_http_info(id, **kwargs)
+            return self.delete_with_http_info(id, **kwargs)
         else:
-            (data) = self.destroy_with_http_info(id, **kwargs)
+            (data) = self.delete_with_http_info(id, **kwargs)
             return data
 
-    def destroy_with_http_info(self, id, **kwargs):
+    def delete_with_http_info(self, id, **kwargs):
         """
-        Remove a(n) ScanInterval
+        Delete a(n) Scan Interval
+        
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.destroy_with_http_info(id, callback=callback_function)
+        >>> thread = api.delete_with_http_info(id, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param int id: ScanInterval ID (required)
+        :param int id:  ID (required)
         :return: Meta
                  If the method is called asynchronously,
                  returns the request thread.
@@ -214,13 +222,13 @@ class ScanIntervalsApi(object):
             if key not in all_params:
                 raise TypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method destroy" % key
+                    " to method delete" % key
                 )
             params[key] = val
         del params['kwargs']
         # verify the required parameter 'id' is set
         if ('id' not in params) or (params['id'] is None):
-            raise ValueError("Missing the required parameter `id` when calling `destroy`")
+            raise ValueError("Missing the required parameter `id` when calling `delete`")
 
 
         collection_formats = {}
@@ -264,55 +272,57 @@ class ScanIntervalsApi(object):
                                         _request_timeout=params.get('_request_timeout'),
                                         collection_formats=collection_formats)
 
-    def list(self, external_account_id, **kwargs):
+    def list_for_external_account(self, external_account_id, **kwargs):
         """
-        Get a list of ScanIntervals
+        Get a list of Scan Intervals
+        
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.list(external_account_id, callback=callback_function)
+        >>> thread = api.list_for_external_account(external_account_id, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param int external_account_id: The ID of the external account to retrieve (required)
-        :param str include: Related objects that can be included in the response.  See Including Objects for more information.
         :param str page: Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page
+        :param str include: Related objects that can be included in the response:  external_account, service See Including Objects for more information.
         :return: PaginatedCollection
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.list_with_http_info(external_account_id, **kwargs)
+            return self.list_for_external_account_with_http_info(external_account_id, **kwargs)
         else:
-            (data) = self.list_with_http_info(external_account_id, **kwargs)
+            (data) = self.list_for_external_account_with_http_info(external_account_id, **kwargs)
             return data
 
-    def list_with_http_info(self, external_account_id, **kwargs):
+    def list_for_external_account_with_http_info(self, external_account_id, **kwargs):
         """
-        Get a list of ScanIntervals
+        Get a list of Scan Intervals
+        
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.list_with_http_info(external_account_id, callback=callback_function)
+        >>> thread = api.list_for_external_account_with_http_info(external_account_id, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param int external_account_id: The ID of the external account to retrieve (required)
-        :param str include: Related objects that can be included in the response.  See Including Objects for more information.
         :param str page: Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page
+        :param str include: Related objects that can be included in the response:  external_account, service See Including Objects for more information.
         :return: PaginatedCollection
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['external_account_id', 'include', 'page']
+        all_params = ['external_account_id', 'page', 'include']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -323,13 +333,13 @@ class ScanIntervalsApi(object):
             if key not in all_params:
                 raise TypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method list" % key
+                    " to method list_for_external_account" % key
                 )
             params[key] = val
         del params['kwargs']
         # verify the required parameter 'external_account_id' is set
         if ('external_account_id' not in params) or (params['external_account_id'] is None):
-            raise ValueError("Missing the required parameter `external_account_id` when calling `list`")
+            raise ValueError("Missing the required parameter `external_account_id` when calling `list_for_external_account`")
 
 
         collection_formats = {}
@@ -379,7 +389,8 @@ class ScanIntervalsApi(object):
 
     def show(self, id, **kwargs):
         """
-        Show a single ScanInterval
+        Show a single Scan Interval
+        
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -390,8 +401,8 @@ class ScanIntervalsApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param int id: ScanInterval ID (required)
-        :param str include: Related objects that can be included in the response.  See Including Objects for more information.
+        :param int id: Scan Interval ID (required)
+        :param str include: Related objects that can be included in the response:  external_account, service See Including Objects for more information.
         :return: ScanInterval
                  If the method is called asynchronously,
                  returns the request thread.
@@ -405,7 +416,8 @@ class ScanIntervalsApi(object):
 
     def show_with_http_info(self, id, **kwargs):
         """
-        Show a single ScanInterval
+        Show a single Scan Interval
+        
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -416,8 +428,8 @@ class ScanIntervalsApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param int id: ScanInterval ID (required)
-        :param str include: Related objects that can be included in the response.  See Including Objects for more information.
+        :param int id: Scan Interval ID (required)
+        :param str include: Related objects that can be included in the response:  external_account, service See Including Objects for more information.
         :return: ScanInterval
                  If the method is called asynchronously,
                  returns the request thread.
@@ -486,57 +498,61 @@ class ScanIntervalsApi(object):
                                         _request_timeout=params.get('_request_timeout'),
                                         collection_formats=collection_formats)
 
-    def update(self, id, external_account_id, interval, service_id, **kwargs):
+    def update(self, id, **kwargs):
         """
-        Update a(n) ScanInterval
+        Update a(n) Scan Interval
+        
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.update(id, external_account_id, interval, service_id, callback=callback_function)
+        >>> thread = api.update(id, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param int id: ScanInterval ID (required)
-        :param int external_account_id: The ID of the external account this scan interval is for (required)
-        :param int interval: The interval, in minutes, this service will be scanned (required)
-        :param int service_id: The service ID for the scan interval (required)
+        :param int id: Scan Interval ID (required)
+        :param int external_account_id: The ID of the external account this scan interval is for
+        :param int interval: The interval, in minutes, this service will be scanned
+        :param int service_id: The service ID for the scan interval
+        :param str include: Related objects that can be included in the response:  external_account, service See Including Objects for more information.
         :return: ScanInterval
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.update_with_http_info(id, external_account_id, interval, service_id, **kwargs)
+            return self.update_with_http_info(id, **kwargs)
         else:
-            (data) = self.update_with_http_info(id, external_account_id, interval, service_id, **kwargs)
+            (data) = self.update_with_http_info(id, **kwargs)
             return data
 
-    def update_with_http_info(self, id, external_account_id, interval, service_id, **kwargs):
+    def update_with_http_info(self, id, **kwargs):
         """
-        Update a(n) ScanInterval
+        Update a(n) Scan Interval
+        
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.update_with_http_info(id, external_account_id, interval, service_id, callback=callback_function)
+        >>> thread = api.update_with_http_info(id, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param int id: ScanInterval ID (required)
-        :param int external_account_id: The ID of the external account this scan interval is for (required)
-        :param int interval: The interval, in minutes, this service will be scanned (required)
-        :param int service_id: The service ID for the scan interval (required)
+        :param int id: Scan Interval ID (required)
+        :param int external_account_id: The ID of the external account this scan interval is for
+        :param int interval: The interval, in minutes, this service will be scanned
+        :param int service_id: The service ID for the scan interval
+        :param str include: Related objects that can be included in the response:  external_account, service See Including Objects for more information.
         :return: ScanInterval
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['id', 'external_account_id', 'interval', 'service_id']
+        all_params = ['id', 'external_account_id', 'interval', 'service_id', 'include']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -554,15 +570,6 @@ class ScanIntervalsApi(object):
         # verify the required parameter 'id' is set
         if ('id' not in params) or (params['id'] is None):
             raise ValueError("Missing the required parameter `id` when calling `update`")
-        # verify the required parameter 'external_account_id' is set
-        if ('external_account_id' not in params) or (params['external_account_id'] is None):
-            raise ValueError("Missing the required parameter `external_account_id` when calling `update`")
-        # verify the required parameter 'interval' is set
-        if ('interval' not in params) or (params['interval'] is None):
-            raise ValueError("Missing the required parameter `interval` when calling `update`")
-        # verify the required parameter 'service_id' is set
-        if ('service_id' not in params) or (params['service_id'] is None):
-            raise ValueError("Missing the required parameter `service_id` when calling `update`")
 
 
         collection_formats = {}
@@ -573,6 +580,8 @@ class ScanIntervalsApi(object):
             path_params['id'] = params['id']
 
         query_params = {}
+        if 'include' in params:
+            query_params['include'] = params['include']
 
         header_params = {}
 

@@ -5,16 +5,18 @@ All URIs are relative to https://api.evident.io
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**create**](UsersApi.md#create) | **POST** /api/v2/users.json_api | Create a(n) User
-[**destroy**](UsersApi.md#destroy) | **DELETE** /api/v2/users/{id}.json_api | Remove a(n) User
+[**delete**](UsersApi.md#delete) | **DELETE** /api/v2/users/{id}.json_api | Delete a(n) User
 [**list**](UsersApi.md#list) | **PUT** /api/v2/users.json_api | Get a list of Users
 [**show**](UsersApi.md#show) | **GET** /api/v2/users/{id}.json_api | Show a single User
 [**update**](UsersApi.md#update) | **PATCH** /api/v2/users/{id}.json_api | Update a(n) User
 
 
 # **create**
-> User create(first_name, last_name, email, role_id=role_id, sub_organization_ids=sub_organization_ids, team_ids=team_ids, disable_daily_emails=disable_daily_emails, phone=phone, time_zone=time_zone)
+> User create(first_name, last_name, email, role_id=role_id, sub_organization_ids=sub_organization_ids, team_ids=team_ids, disable_daily_emails=disable_daily_emails, phone=phone, time_zone=time_zone, include=include)
 
 Create a(n) User
+
+
 
 ### Example 
 ```python
@@ -35,10 +37,11 @@ team_ids = [56] # list[int] | A list of team IDs that the user should have acces
 disable_daily_emails = true # bool | Specifies whether the daily emails should be turned off or not (optional)
 phone = 'phone_example' # str | The phone number of the user (optional)
 time_zone = 'time_zone_example' # str | The time zone of the user. See Time Zones for a list of valid time zones (optional)
+include = 'include_example' # str | Related objects that can be included in the response:  organization, sub_organizations, teams, role See Including Objects for more information. (optional)
 
 try: 
     # Create a(n) User
-    api_response = api_instance.create(first_name, last_name, email, role_id=role_id, sub_organization_ids=sub_organization_ids, team_ids=team_ids, disable_daily_emails=disable_daily_emails, phone=phone, time_zone=time_zone)
+    api_response = api_instance.create(first_name, last_name, email, role_id=role_id, sub_organization_ids=sub_organization_ids, team_ids=team_ids, disable_daily_emails=disable_daily_emails, phone=phone, time_zone=time_zone, include=include)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling UsersApi->create: %s\n" % e)
@@ -57,6 +60,7 @@ Name | Type | Description  | Notes
  **disable_daily_emails** | **bool**| Specifies whether the daily emails should be turned off or not | [optional] 
  **phone** | **str**| The phone number of the user | [optional] 
  **time_zone** | **str**| The time zone of the user. See Time Zones for a list of valid time zones | [optional] 
+ **include** | **str**| Related objects that can be included in the response:  organization, sub_organizations, teams, role See Including Objects for more information. | [optional] 
 
 ### Return type
 
@@ -73,10 +77,12 @@ See https://github.com/EvidentSecurity/esp-sdk-python2#set-your-hmac-security-ke
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **destroy**
-> Meta destroy(id)
+# **delete**
+> Meta delete(id, current_password=current_password)
 
-Remove a(n) User
+Delete a(n) User
+
+The users current password is required when deleting yourself.
 
 ### Example 
 ```python
@@ -88,21 +94,23 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = esp_sdk.UsersApi()
-id = 56 # int | User ID
+id = 56 # int |  ID
+current_password = 'current_password_example' # str | The user's currently stored password (optional)
 
 try: 
-    # Remove a(n) User
-    api_response = api_instance.destroy(id)
+    # Delete a(n) User
+    api_response = api_instance.delete(id, current_password=current_password)
     pprint(api_response)
 except ApiException as e:
-    print("Exception when calling UsersApi->destroy: %s\n" % e)
+    print("Exception when calling UsersApi->delete: %s\n" % e)
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **int**| User ID | 
+ **id** | **int**|  ID | 
+ **current_password** | **str**| The user&#39;s currently stored password | [optional] 
 
 ### Return type
 
@@ -120,9 +128,11 @@ See https://github.com/EvidentSecurity/esp-sdk-python2#set-your-hmac-security-ke
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list**
-> PaginatedCollection list(filter=filter, include=include, page=page)
+> PaginatedCollection list(filter=filter, page=page, include=include)
 
 Get a list of Users
+
+
 
 ### Example 
 ```python
@@ -134,13 +144,13 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = esp_sdk.UsersApi()
-filter = {'key': 'filter_example'} # dict(str, str) | Filter Params for Searching.  See Searching Lists for more information. (optional)
-include = 'include_example' # str | Related objects that can be included in the response.  See Including Objects for more information. (optional)
+filter = {'key': 'filter_example'} # dict(str, str) | Filter Params for Searching.  Equality Searchable Attributes: [id, email] Matching Searchable Attribute: [email]  Sortable Attributes: [email, current_sign_in_at, updated_at, created_at, id] Searchable Associations: [role, organization, sub_organizations, teams] See Searching Lists for more information. See the filter parameter of the association's list action to see what attributes are searchable on each association. See Conditions on Relationships in Searching Lists for more information. (optional)
 page = '{:number=>1,+:size=>20}' # str | Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page (optional) (default to {:number=>1,+:size=>20})
+include = 'include_example' # str | Related objects that can be included in the response:  organization, sub_organizations, teams, role See Including Objects for more information. (optional)
 
 try: 
     # Get a list of Users
-    api_response = api_instance.list(filter=filter, include=include, page=page)
+    api_response = api_instance.list(filter=filter, page=page, include=include)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling UsersApi->list: %s\n" % e)
@@ -150,9 +160,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **filter** | [**dict(str, str)**](str.md)| Filter Params for Searching.  See Searching Lists for more information. | [optional] 
- **include** | **str**| Related objects that can be included in the response.  See Including Objects for more information. | [optional] 
+ **filter** | [**dict(str, str)**](str.md)| Filter Params for Searching.  Equality Searchable Attributes: [id, email] Matching Searchable Attribute: [email]  Sortable Attributes: [email, current_sign_in_at, updated_at, created_at, id] Searchable Associations: [role, organization, sub_organizations, teams] See Searching Lists for more information. See the filter parameter of the association&#39;s list action to see what attributes are searchable on each association. See Conditions on Relationships in Searching Lists for more information. | [optional] 
  **page** | **str**| Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page | [optional] [default to {:number&#x3D;&gt;1,+:size&#x3D;&gt;20}]
+ **include** | **str**| Related objects that can be included in the response:  organization, sub_organizations, teams, role See Including Objects for more information. | [optional] 
 
 ### Return type
 
@@ -174,6 +184,8 @@ See https://github.com/EvidentSecurity/esp-sdk-python2#set-your-hmac-security-ke
 
 Show a single User
 
+
+
 ### Example 
 ```python
 from __future__ import print_statement
@@ -185,7 +197,7 @@ from pprint import pprint
 # create an instance of the API class
 api_instance = esp_sdk.UsersApi()
 id = 56 # int | User ID
-include = 'include_example' # str | Related objects that can be included in the response.  See Including Objects for more information. (optional)
+include = 'include_example' # str | Related objects that can be included in the response:  organization, sub_organizations, teams, role See Including Objects for more information. (optional)
 
 try: 
     # Show a single User
@@ -200,7 +212,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| User ID | 
- **include** | **str**| Related objects that can be included in the response.  See Including Objects for more information. | [optional] 
+ **include** | **str**| Related objects that can be included in the response:  organization, sub_organizations, teams, role See Including Objects for more information. | [optional] 
 
 ### Return type
 
@@ -218,9 +230,11 @@ See https://github.com/EvidentSecurity/esp-sdk-python2#set-your-hmac-security-ke
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update**
-> User update(id, first_name, last_name, email, role_id=role_id, sub_organization_ids=sub_organization_ids, team_ids=team_ids, disable_daily_emails=disable_daily_emails, phone=phone, time_zone=time_zone)
+> User update(id, first_name=first_name, last_name=last_name, email=email, role_id=role_id, sub_organization_ids=sub_organization_ids, team_ids=team_ids, disable_daily_emails=disable_daily_emails, phone=phone, time_zone=time_zone, include=include)
 
 Update a(n) User
+
+
 
 ### Example 
 ```python
@@ -233,19 +247,20 @@ from pprint import pprint
 # create an instance of the API class
 api_instance = esp_sdk.UsersApi()
 id = 56 # int | User ID
-first_name = 'first_name_example' # str | The first name of the user
-last_name = 'last_name_example' # str | The last name of the user
-email = 'email_example' # str | The email of the user
+first_name = 'first_name_example' # str | The first name of the user (optional)
+last_name = 'last_name_example' # str | The last name of the user (optional)
+email = 'email_example' # str | The email of the user (optional)
 role_id = 56 # int | The ID of the role of the user (optional)
 sub_organization_ids = [56] # list[int] | A list of sub organization IDs that the user should have access to (optional)
 team_ids = [56] # list[int] | A list of team IDs that the user should have access to (optional)
 disable_daily_emails = true # bool | Specifies whether the daily emails should be turned off or not (optional)
 phone = 'phone_example' # str | The phone number of the user (optional)
 time_zone = 'time_zone_example' # str | The time zone of the user. See Time Zones for a list of valid time zones (optional)
+include = 'include_example' # str | Related objects that can be included in the response:  organization, sub_organizations, teams, role See Including Objects for more information. (optional)
 
 try: 
     # Update a(n) User
-    api_response = api_instance.update(id, first_name, last_name, email, role_id=role_id, sub_organization_ids=sub_organization_ids, team_ids=team_ids, disable_daily_emails=disable_daily_emails, phone=phone, time_zone=time_zone)
+    api_response = api_instance.update(id, first_name=first_name, last_name=last_name, email=email, role_id=role_id, sub_organization_ids=sub_organization_ids, team_ids=team_ids, disable_daily_emails=disable_daily_emails, phone=phone, time_zone=time_zone, include=include)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling UsersApi->update: %s\n" % e)
@@ -256,15 +271,16 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| User ID | 
- **first_name** | **str**| The first name of the user | 
- **last_name** | **str**| The last name of the user | 
- **email** | **str**| The email of the user | 
+ **first_name** | **str**| The first name of the user | [optional] 
+ **last_name** | **str**| The last name of the user | [optional] 
+ **email** | **str**| The email of the user | [optional] 
  **role_id** | **int**| The ID of the role of the user | [optional] 
  **sub_organization_ids** | [**list[int]**](int.md)| A list of sub organization IDs that the user should have access to | [optional] 
  **team_ids** | [**list[int]**](int.md)| A list of team IDs that the user should have access to | [optional] 
  **disable_daily_emails** | **bool**| Specifies whether the daily emails should be turned off or not | [optional] 
  **phone** | **str**| The phone number of the user | [optional] 
  **time_zone** | **str**| The time zone of the user. See Time Zones for a list of valid time zones | [optional] 
+ **include** | **str**| Related objects that can be included in the response:  organization, sub_organizations, teams, role See Including Objects for more information. | [optional] 
 
 ### Return type
 

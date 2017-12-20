@@ -123,7 +123,7 @@ class ExternalAccountUserAttributionChannel(BaseObject):
     def url(self):
         """
         Gets the url of this ExternalAccountUserAttributionChannel.
-        The URL for the channel
+        The URL for the channel.  It is only returned when first created.
 
         :return: The url of this ExternalAccountUserAttributionChannel.
         :rtype: str
@@ -134,7 +134,7 @@ class ExternalAccountUserAttributionChannel(BaseObject):
     def url(self, url):
         """
         Sets the url of this ExternalAccountUserAttributionChannel.
-        The URL for the channel
+        The URL for the channel.  It is only returned when first created.
 
         :param url: The url of this ExternalAccountUserAttributionChannel.
         :type: str

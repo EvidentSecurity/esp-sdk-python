@@ -9,9 +9,11 @@ Method | HTTP request | Description
 
 
 # **for_alert**
-> Metadata for_alert(alert_id)
+> Metadata for_alert(alert_id, include=include)
 
 Show the metadata for an alert
+
+
 
 ### Example 
 ```python
@@ -24,10 +26,11 @@ from pprint import pprint
 # create an instance of the API class
 api_instance = esp_sdk.MetadataApi()
 alert_id = 56 # int | Alert Id
+include = 'include_example' # str | Related objects that can be included in the response:   See Including Objects for more information. (optional)
 
 try: 
     # Show the metadata for an alert
-    api_response = api_instance.for_alert(alert_id)
+    api_response = api_instance.for_alert(alert_id, include=include)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling MetadataApi->for_alert: %s\n" % e)
@@ -38,6 +41,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **alert_id** | **int**| Alert Id | 
+ **include** | **str**| Related objects that can be included in the response:   See Including Objects for more information. | [optional] 
 
 ### Return type
 
@@ -55,9 +59,11 @@ See https://github.com/EvidentSecurity/esp-sdk-python2#set-your-hmac-security-ke
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **show**
-> Metadata show(id)
+> Metadata show(id, include=include)
 
 Show a single Metadata
+
+
 
 ### Example 
 ```python
@@ -70,10 +76,11 @@ from pprint import pprint
 # create an instance of the API class
 api_instance = esp_sdk.MetadataApi()
 id = 56 # int | Metadata ID
+include = 'include_example' # str | Related objects that can be included in the response:   See Including Objects for more information. (optional)
 
 try: 
     # Show a single Metadata
-    api_response = api_instance.show(id)
+    api_response = api_instance.show(id, include=include)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling MetadataApi->show: %s\n" % e)
@@ -84,6 +91,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| Metadata ID | 
+ **include** | **str**| Related objects that can be included in the response:   See Including Objects for more information. | [optional] 
 
 ### Return type
 

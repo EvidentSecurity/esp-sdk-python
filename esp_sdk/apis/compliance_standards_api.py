@@ -42,7 +42,8 @@ class ComplianceStandardsApi(object):
 
     def list(self, **kwargs):
         """
-        Get a list of ComplianceStandards
+        Get a list of Compliance Standards
+        
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -53,9 +54,9 @@ class ComplianceStandardsApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param dict(str, str) filter: Filter Params for Searching.  See Searching Lists for more information.
-        :param str include: Related objects that can be included in the response.  See Including Objects for more information.
+        :param dict(str, str) filter: Filter Params for Searching.  Equality Searchable Attributes: [id, name] Matching Searchable Attribute: [name]  Sortable Attributes: [id, name] Searchable Associations: [compliance_controls, organizations] See Searching Lists for more information. See the filter parameter of the association's list action to see what attributes are searchable on each association. See Conditions on Relationships in Searching Lists for more information.
         :param str page: Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page
+        :param str include: Related objects that can be included in the response:  compliance_domains, compliance_controls See Including Objects for more information.
         :return: PaginatedCollection
                  If the method is called asynchronously,
                  returns the request thread.
@@ -69,7 +70,8 @@ class ComplianceStandardsApi(object):
 
     def list_with_http_info(self, **kwargs):
         """
-        Get a list of ComplianceStandards
+        Get a list of Compliance Standards
+        
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -80,15 +82,15 @@ class ComplianceStandardsApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param dict(str, str) filter: Filter Params for Searching.  See Searching Lists for more information.
-        :param str include: Related objects that can be included in the response.  See Including Objects for more information.
+        :param dict(str, str) filter: Filter Params for Searching.  Equality Searchable Attributes: [id, name] Matching Searchable Attribute: [name]  Sortable Attributes: [id, name] Searchable Associations: [compliance_controls, organizations] See Searching Lists for more information. See the filter parameter of the association's list action to see what attributes are searchable on each association. See Conditions on Relationships in Searching Lists for more information.
         :param str page: Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page
+        :param str include: Related objects that can be included in the response:  compliance_domains, compliance_controls See Including Objects for more information.
         :return: PaginatedCollection
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['filter', 'include', 'page']
+        all_params = ['filter', 'page', 'include']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -152,7 +154,8 @@ class ComplianceStandardsApi(object):
 
     def show(self, id, **kwargs):
         """
-        Show a single ComplianceStandard
+        Show a single Compliance Standard
+        
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -163,8 +166,8 @@ class ComplianceStandardsApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param int id: ComplianceStandard ID (required)
-        :param str include: Related objects that can be included in the response.  See Including Objects for more information.
+        :param int id: Compliance Standard ID (required)
+        :param str include: Related objects that can be included in the response:  compliance_domains, compliance_controls See Including Objects for more information.
         :return: ComplianceStandard
                  If the method is called asynchronously,
                  returns the request thread.
@@ -178,7 +181,8 @@ class ComplianceStandardsApi(object):
 
     def show_with_http_info(self, id, **kwargs):
         """
-        Show a single ComplianceStandard
+        Show a single Compliance Standard
+        
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -189,8 +193,8 @@ class ComplianceStandardsApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param int id: ComplianceStandard ID (required)
-        :param str include: Related objects that can be included in the response.  See Including Objects for more information.
+        :param int id: Compliance Standard ID (required)
+        :param str include: Related objects that can be included in the response:  compliance_domains, compliance_controls See Including Objects for more information.
         :return: ComplianceStandard
                  If the method is called asynchronously,
                  returns the request thread.

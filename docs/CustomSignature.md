@@ -15,6 +15,8 @@ Name | Type | Description | Notes
 **organization_id** | **int** | Associated Organization ID | [optional] 
 **teams** | [**list[Team]**](Team.md) | Associated Teams | [optional] 
 **team_ids** | **list[int]** | Associated Teams IDs | [optional] 
+**external_accounts** | [**list[ExternalAccount]**](ExternalAccount.md) | Associated External Accounts | [optional] 
+**external_account_ids** | **list[int]** | Associated External Accounts IDs | [optional] 
 **definitions** | [**list[CustomSignatureDefinition]**](CustomSignatureDefinition.md) | Associated Definitions | [optional] 
 **definition_ids** | **list[int]** | Associated Definitions IDs | [optional] 
 

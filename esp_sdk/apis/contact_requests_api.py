@@ -42,7 +42,8 @@ class ContactRequestsApi(object):
 
     def create(self, title, description, request_type, **kwargs):
         """
-        Create a(n) ContactRequest
+        Create a(n) Contact Request
+        
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -56,6 +57,7 @@ class ContactRequestsApi(object):
         :param str title: Subject of your message (required)
         :param str description: Body of your message (required)
         :param str request_type: Type of contact request. Valid values are support, feature (required)
+        :param str include: Related objects that can be included in the response:  user See Including Objects for more information.
         :return: ContactRequest
                  If the method is called asynchronously,
                  returns the request thread.
@@ -69,7 +71,8 @@ class ContactRequestsApi(object):
 
     def create_with_http_info(self, title, description, request_type, **kwargs):
         """
-        Create a(n) ContactRequest
+        Create a(n) Contact Request
+        
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -83,12 +86,13 @@ class ContactRequestsApi(object):
         :param str title: Subject of your message (required)
         :param str description: Body of your message (required)
         :param str request_type: Type of contact request. Valid values are support, feature (required)
+        :param str include: Related objects that can be included in the response:  user See Including Objects for more information.
         :return: ContactRequest
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['title', 'description', 'request_type']
+        all_params = ['title', 'description', 'request_type', 'include']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -120,6 +124,8 @@ class ContactRequestsApi(object):
         path_params = {}
 
         query_params = {}
+        if 'include' in params:
+            query_params['include'] = params['include']
 
         header_params = {}
 

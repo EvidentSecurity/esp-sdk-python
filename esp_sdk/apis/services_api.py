@@ -43,6 +43,7 @@ class ServicesApi(object):
     def list(self, **kwargs):
         """
         Get a list of Services
+        
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -53,8 +54,9 @@ class ServicesApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param dict(str, str) filter: Filter Params for Searching.  See Searching Lists for more information.
+        :param dict(str, str) filter: Filter Params for Searching.  Equality Searchable Attributes: [id, name, policy_name] Matching Searchable Attributes: [name, policy_name] Limited Searchable Attribute: [provider_eq]  
         :param str page: Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page
+        :param str include: Related objects that can be included in the response:   See Including Objects for more information.
         :return: PaginatedCollection
                  If the method is called asynchronously,
                  returns the request thread.
@@ -69,6 +71,7 @@ class ServicesApi(object):
     def list_with_http_info(self, **kwargs):
         """
         Get a list of Services
+        
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -79,14 +82,15 @@ class ServicesApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param dict(str, str) filter: Filter Params for Searching.  See Searching Lists for more information.
+        :param dict(str, str) filter: Filter Params for Searching.  Equality Searchable Attributes: [id, name, policy_name] Matching Searchable Attributes: [name, policy_name] Limited Searchable Attribute: [provider_eq]  
         :param str page: Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page
+        :param str include: Related objects that can be included in the response:   See Including Objects for more information.
         :return: PaginatedCollection
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['filter', 'page']
+        all_params = ['filter', 'page', 'include']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -109,6 +113,8 @@ class ServicesApi(object):
         path_params = {}
 
         query_params = {}
+        if 'include' in params:
+            query_params['include'] = params['include']
 
         header_params = {}
 
@@ -149,6 +155,7 @@ class ServicesApi(object):
     def show(self, id, **kwargs):
         """
         Show a single Service
+        
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -160,6 +167,7 @@ class ServicesApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param int id: Service ID (required)
+        :param str include: Related objects that can be included in the response:   See Including Objects for more information.
         :return: Service
                  If the method is called asynchronously,
                  returns the request thread.
@@ -174,6 +182,7 @@ class ServicesApi(object):
     def show_with_http_info(self, id, **kwargs):
         """
         Show a single Service
+        
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -185,12 +194,13 @@ class ServicesApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param int id: Service ID (required)
+        :param str include: Related objects that can be included in the response:   See Including Objects for more information.
         :return: Service
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['id']
+        all_params = ['id', 'include']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -218,6 +228,8 @@ class ServicesApi(object):
             path_params['id'] = params['id']
 
         query_params = {}
+        if 'include' in params:
+            query_params['include'] = params['include']
 
         header_params = {}
 

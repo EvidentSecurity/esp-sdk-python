@@ -9,9 +9,11 @@ Method | HTTP request | Description
 
 
 # **list**
-> PaginatedCollection list(page=page)
+> PaginatedCollection list(page=page, include=include)
 
 Get a list of Roles
+
+
 
 ### Example 
 ```python
@@ -24,10 +26,11 @@ from pprint import pprint
 # create an instance of the API class
 api_instance = esp_sdk.RolesApi()
 page = '{:number=>1,+:size=>20}' # str | Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page (optional) (default to {:number=>1,+:size=>20})
+include = 'include_example' # str | Related objects that can be included in the response:   See Including Objects for more information. (optional)
 
 try: 
     # Get a list of Roles
-    api_response = api_instance.list(page=page)
+    api_response = api_instance.list(page=page, include=include)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling RolesApi->list: %s\n" % e)
@@ -38,6 +41,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **str**| Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page | [optional] [default to {:number&#x3D;&gt;1,+:size&#x3D;&gt;20}]
+ **include** | **str**| Related objects that can be included in the response:   See Including Objects for more information. | [optional] 
 
 ### Return type
 
@@ -55,9 +59,11 @@ See https://github.com/EvidentSecurity/esp-sdk-python2#set-your-hmac-security-ke
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **show**
-> Role show(id)
+> Role show(id, include=include)
 
 Show a single Role
+
+
 
 ### Example 
 ```python
@@ -70,10 +76,11 @@ from pprint import pprint
 # create an instance of the API class
 api_instance = esp_sdk.RolesApi()
 id = 56 # int | Role ID
+include = 'include_example' # str | Related objects that can be included in the response:   See Including Objects for more information. (optional)
 
 try: 
     # Show a single Role
-    api_response = api_instance.show(id)
+    api_response = api_instance.show(id, include=include)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling RolesApi->show: %s\n" % e)
@@ -84,6 +91,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| Role ID | 
+ **include** | **str**| Related objects that can be included in the response:   See Including Objects for more information. | [optional] 
 
 ### Return type
 
