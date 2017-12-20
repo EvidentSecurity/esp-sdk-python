@@ -40,53 +40,57 @@ class CloudTrailEventsApi(object):
                 config.api_client = ApiClient()
             self.api_client = config.api_client
 
-    def list(self, alert_id, **kwargs):
+    def list_for_alert(self, alert_id, **kwargs):
         """
-        Get a list of CloudTrailEvents
+        Get a list of Cloud Trail Events
+        
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.list(alert_id, callback=callback_function)
+        >>> thread = api.list_for_alert(alert_id, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param int alert_id: The ID of the alert to retrieve cloud trail events for (required)
         :param str page: Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page
+        :param str include: Related objects that can be included in the response:   See Including Objects for more information.
         :return: PaginatedCollection
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.list_with_http_info(alert_id, **kwargs)
+            return self.list_for_alert_with_http_info(alert_id, **kwargs)
         else:
-            (data) = self.list_with_http_info(alert_id, **kwargs)
+            (data) = self.list_for_alert_with_http_info(alert_id, **kwargs)
             return data
 
-    def list_with_http_info(self, alert_id, **kwargs):
+    def list_for_alert_with_http_info(self, alert_id, **kwargs):
         """
-        Get a list of CloudTrailEvents
+        Get a list of Cloud Trail Events
+        
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.list_with_http_info(alert_id, callback=callback_function)
+        >>> thread = api.list_for_alert_with_http_info(alert_id, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param int alert_id: The ID of the alert to retrieve cloud trail events for (required)
         :param str page: Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page
+        :param str include: Related objects that can be included in the response:   See Including Objects for more information.
         :return: PaginatedCollection
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['alert_id', 'page']
+        all_params = ['alert_id', 'page', 'include']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -97,13 +101,13 @@ class CloudTrailEventsApi(object):
             if key not in all_params:
                 raise TypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method list" % key
+                    " to method list_for_alert" % key
                 )
             params[key] = val
         del params['kwargs']
         # verify the required parameter 'alert_id' is set
         if ('alert_id' not in params) or (params['alert_id'] is None):
-            raise ValueError("Missing the required parameter `alert_id` when calling `list`")
+            raise ValueError("Missing the required parameter `alert_id` when calling `list_for_alert`")
 
 
         collection_formats = {}
@@ -114,6 +118,8 @@ class CloudTrailEventsApi(object):
             path_params['alert_id'] = params['alert_id']
 
         query_params = {}
+        if 'include' in params:
+            query_params['include'] = params['include']
 
         header_params = {}
 
@@ -151,7 +157,8 @@ class CloudTrailEventsApi(object):
 
     def show(self, id, **kwargs):
         """
-        Show a single CloudTrailEvent
+        Show a single Cloud Trail Event
+        
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -162,7 +169,8 @@ class CloudTrailEventsApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param int id: CloudTrailEvent ID (required)
+        :param int id: Cloud Trail Event ID (required)
+        :param str include: Related objects that can be included in the response:   See Including Objects for more information.
         :return: CloudTrailEvent
                  If the method is called asynchronously,
                  returns the request thread.
@@ -176,7 +184,8 @@ class CloudTrailEventsApi(object):
 
     def show_with_http_info(self, id, **kwargs):
         """
-        Show a single CloudTrailEvent
+        Show a single Cloud Trail Event
+        
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -187,13 +196,14 @@ class CloudTrailEventsApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param int id: CloudTrailEvent ID (required)
+        :param int id: Cloud Trail Event ID (required)
+        :param str include: Related objects that can be included in the response:   See Including Objects for more information.
         :return: CloudTrailEvent
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['id']
+        all_params = ['id', 'include']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -221,6 +231,8 @@ class CloudTrailEventsApi(object):
             path_params['id'] = params['id']
 
         query_params = {}
+        if 'include' in params:
+            query_params['include'] = params['include']
 
         header_params = {}
 

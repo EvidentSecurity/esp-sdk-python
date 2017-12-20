@@ -4,14 +4,16 @@ All URIs are relative to https://api.evident.io
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**list**](ComplianceStandardsApi.md#list) | **PUT** /api/v2/compliance_standards.json_api | Get a list of ComplianceStandards
-[**show**](ComplianceStandardsApi.md#show) | **GET** /api/v2/compliance_standards/{id}.json_api | Show a single ComplianceStandard
+[**list**](ComplianceStandardsApi.md#list) | **PUT** /api/v2/compliance_standards.json_api | Get a list of Compliance Standards
+[**show**](ComplianceStandardsApi.md#show) | **GET** /api/v2/compliance_standards/{id}.json_api | Show a single Compliance Standard
 
 
 # **list**
-> PaginatedCollection list(filter=filter, include=include, page=page)
+> PaginatedCollection list(filter=filter, page=page, include=include)
 
-Get a list of ComplianceStandards
+Get a list of Compliance Standards
+
+
 
 ### Example 
 ```python
@@ -23,13 +25,13 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = esp_sdk.ComplianceStandardsApi()
-filter = {'key': 'filter_example'} # dict(str, str) | Filter Params for Searching.  See Searching Lists for more information. (optional)
-include = 'include_example' # str | Related objects that can be included in the response.  See Including Objects for more information. (optional)
+filter = {'key': 'filter_example'} # dict(str, str) | Filter Params for Searching.  Equality Searchable Attributes: [id, name] Matching Searchable Attribute: [name]  Sortable Attributes: [id, name] Searchable Associations: [compliance_controls, organizations] See Searching Lists for more information. See the filter parameter of the association's list action to see what attributes are searchable on each association. See Conditions on Relationships in Searching Lists for more information. (optional)
 page = '{:number=>1,+:size=>20}' # str | Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page (optional) (default to {:number=>1,+:size=>20})
+include = 'include_example' # str | Related objects that can be included in the response:  compliance_domains, compliance_controls See Including Objects for more information. (optional)
 
 try: 
-    # Get a list of ComplianceStandards
-    api_response = api_instance.list(filter=filter, include=include, page=page)
+    # Get a list of Compliance Standards
+    api_response = api_instance.list(filter=filter, page=page, include=include)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling ComplianceStandardsApi->list: %s\n" % e)
@@ -39,9 +41,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **filter** | [**dict(str, str)**](str.md)| Filter Params for Searching.  See Searching Lists for more information. | [optional] 
- **include** | **str**| Related objects that can be included in the response.  See Including Objects for more information. | [optional] 
+ **filter** | [**dict(str, str)**](str.md)| Filter Params for Searching.  Equality Searchable Attributes: [id, name] Matching Searchable Attribute: [name]  Sortable Attributes: [id, name] Searchable Associations: [compliance_controls, organizations] See Searching Lists for more information. See the filter parameter of the association&#39;s list action to see what attributes are searchable on each association. See Conditions on Relationships in Searching Lists for more information. | [optional] 
  **page** | **str**| Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page | [optional] [default to {:number&#x3D;&gt;1,+:size&#x3D;&gt;20}]
+ **include** | **str**| Related objects that can be included in the response:  compliance_domains, compliance_controls See Including Objects for more information. | [optional] 
 
 ### Return type
 
@@ -61,7 +63,9 @@ See https://github.com/EvidentSecurity/esp-sdk-python2#set-your-hmac-security-ke
 # **show**
 > ComplianceStandard show(id, include=include)
 
-Show a single ComplianceStandard
+Show a single Compliance Standard
+
+
 
 ### Example 
 ```python
@@ -73,11 +77,11 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = esp_sdk.ComplianceStandardsApi()
-id = 56 # int | ComplianceStandard ID
-include = 'include_example' # str | Related objects that can be included in the response.  See Including Objects for more information. (optional)
+id = 56 # int | Compliance Standard ID
+include = 'include_example' # str | Related objects that can be included in the response:  compliance_domains, compliance_controls See Including Objects for more information. (optional)
 
 try: 
-    # Show a single ComplianceStandard
+    # Show a single Compliance Standard
     api_response = api_instance.show(id, include=include)
     pprint(api_response)
 except ApiException as e:
@@ -88,8 +92,8 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **int**| ComplianceStandard ID | 
- **include** | **str**| Related objects that can be included in the response.  See Including Objects for more information. | [optional] 
+ **id** | **int**| Compliance Standard ID | 
+ **include** | **str**| Related objects that can be included in the response:  compliance_domains, compliance_controls See Including Objects for more information. | [optional] 
 
 ### Return type
 

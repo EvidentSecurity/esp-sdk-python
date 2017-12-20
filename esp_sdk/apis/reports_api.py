@@ -43,6 +43,7 @@ class ReportsApi(object):
     def create(self, team_id, **kwargs):
         """
         Create a(n) Report
+        
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -54,6 +55,7 @@ class ReportsApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param int team_id: The ID of the team to create a report for (required)
+        :param str include: Related objects that can be included in the response:  organization, sub_organization, team, external_account, stat See Including Objects for more information.
         :return: Report
                  If the method is called asynchronously,
                  returns the request thread.
@@ -68,6 +70,7 @@ class ReportsApi(object):
     def create_with_http_info(self, team_id, **kwargs):
         """
         Create a(n) Report
+        
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -79,12 +82,13 @@ class ReportsApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param int team_id: The ID of the team to create a report for (required)
+        :param str include: Related objects that can be included in the response:  organization, sub_organization, team, external_account, stat See Including Objects for more information.
         :return: Report
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['team_id']
+        all_params = ['team_id', 'include']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -110,6 +114,8 @@ class ReportsApi(object):
         path_params = {}
 
         query_params = {}
+        if 'include' in params:
+            query_params['include'] = params['include']
 
         header_params = {}
 
@@ -148,6 +154,7 @@ class ReportsApi(object):
     def list(self, **kwargs):
         """
         Get a list of Reports
+        
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -158,9 +165,9 @@ class ReportsApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param dict(str, str) filter: Filter Params for Searching.  See Searching Lists for more information.
-        :param str include: Related objects that can be included in the response.  See Including Objects for more information.
+        :param dict(str, str) filter: Filter Params for Searching.  Equality Searchable Attributes: [id, created_at]  Limited Searchable Attributes: [external_account_arn_eq, external_account_provider_eq] Sortable Attributes: [created_at, id] Searchable Associations: [organization, sub_organization, team, external_account] See Searching Lists for more information. See the filter parameter of the association's list action to see what attributes are searchable on each association. See Conditions on Relationships in Searching Lists for more information.
         :param str page: Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page
+        :param str include: Related objects that can be included in the response:  organization, sub_organization, team, external_account, stat See Including Objects for more information.
         :return: PaginatedCollection
                  If the method is called asynchronously,
                  returns the request thread.
@@ -175,6 +182,7 @@ class ReportsApi(object):
     def list_with_http_info(self, **kwargs):
         """
         Get a list of Reports
+        
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -185,15 +193,15 @@ class ReportsApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param dict(str, str) filter: Filter Params for Searching.  See Searching Lists for more information.
-        :param str include: Related objects that can be included in the response.  See Including Objects for more information.
+        :param dict(str, str) filter: Filter Params for Searching.  Equality Searchable Attributes: [id, created_at]  Limited Searchable Attributes: [external_account_arn_eq, external_account_provider_eq] Sortable Attributes: [created_at, id] Searchable Associations: [organization, sub_organization, team, external_account] See Searching Lists for more information. See the filter parameter of the association's list action to see what attributes are searchable on each association. See Conditions on Relationships in Searching Lists for more information.
         :param str page: Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page
+        :param str include: Related objects that can be included in the response:  organization, sub_organization, team, external_account, stat See Including Objects for more information.
         :return: PaginatedCollection
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['filter', 'include', 'page']
+        all_params = ['filter', 'page', 'include']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -258,6 +266,7 @@ class ReportsApi(object):
     def show(self, id, **kwargs):
         """
         Show a single Report
+        
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -269,7 +278,7 @@ class ReportsApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param int id: Report ID (required)
-        :param str include: Related objects that can be included in the response.  See Including Objects for more information.
+        :param str include: Related objects that can be included in the response:  organization, sub_organization, team, external_account, stat See Including Objects for more information.
         :return: Report
                  If the method is called asynchronously,
                  returns the request thread.
@@ -284,6 +293,7 @@ class ReportsApi(object):
     def show_with_http_info(self, id, **kwargs):
         """
         Show a single Report
+        
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -295,7 +305,7 @@ class ReportsApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param int id: Report ID (required)
-        :param str include: Related objects that can be included in the response.  See Including Objects for more information.
+        :param str include: Related objects that can be included in the response:  organization, sub_organization, team, external_account, stat See Including Objects for more information.
         :return: Report
                  If the method is called asynchronously,
                  returns the request thread.

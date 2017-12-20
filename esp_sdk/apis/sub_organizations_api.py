@@ -42,7 +42,8 @@ class SubOrganizationsApi(object):
 
     def create(self, organization_id, name, **kwargs):
         """
-        Create a(n) SubOrganization
+        Create a(n) Sub Organization
+        
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -55,6 +56,7 @@ class SubOrganizationsApi(object):
             for asynchronous request. (optional)
         :param int organization_id: The ID of the organization this sub organization should belong to (required)
         :param str name: Name of the sub organization (required)
+        :param str include: Related objects that can be included in the response:  external_accounts, organization, teams See Including Objects for more information.
         :return: SubOrganization
                  If the method is called asynchronously,
                  returns the request thread.
@@ -68,7 +70,8 @@ class SubOrganizationsApi(object):
 
     def create_with_http_info(self, organization_id, name, **kwargs):
         """
-        Create a(n) SubOrganization
+        Create a(n) Sub Organization
+        
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -81,12 +84,13 @@ class SubOrganizationsApi(object):
             for asynchronous request. (optional)
         :param int organization_id: The ID of the organization this sub organization should belong to (required)
         :param str name: Name of the sub organization (required)
+        :param str include: Related objects that can be included in the response:  external_accounts, organization, teams See Including Objects for more information.
         :return: SubOrganization
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['organization_id', 'name']
+        all_params = ['organization_id', 'name', 'include']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -115,6 +119,8 @@ class SubOrganizationsApi(object):
         path_params = {}
 
         query_params = {}
+        if 'include' in params:
+            query_params['include'] = params['include']
 
         header_params = {}
 
@@ -152,45 +158,47 @@ class SubOrganizationsApi(object):
                                         _request_timeout=params.get('_request_timeout'),
                                         collection_formats=collection_formats)
 
-    def destroy(self, id, **kwargs):
+    def delete(self, id, **kwargs):
         """
-        Remove a(n) SubOrganization
+        Delete a(n) Sub Organization
+        
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.destroy(id, callback=callback_function)
+        >>> thread = api.delete(id, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param int id: SubOrganization ID (required)
+        :param int id:  ID (required)
         :return: Meta
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.destroy_with_http_info(id, **kwargs)
+            return self.delete_with_http_info(id, **kwargs)
         else:
-            (data) = self.destroy_with_http_info(id, **kwargs)
+            (data) = self.delete_with_http_info(id, **kwargs)
             return data
 
-    def destroy_with_http_info(self, id, **kwargs):
+    def delete_with_http_info(self, id, **kwargs):
         """
-        Remove a(n) SubOrganization
+        Delete a(n) Sub Organization
+        
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.destroy_with_http_info(id, callback=callback_function)
+        >>> thread = api.delete_with_http_info(id, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param int id: SubOrganization ID (required)
+        :param int id:  ID (required)
         :return: Meta
                  If the method is called asynchronously,
                  returns the request thread.
@@ -207,13 +215,13 @@ class SubOrganizationsApi(object):
             if key not in all_params:
                 raise TypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method destroy" % key
+                    " to method delete" % key
                 )
             params[key] = val
         del params['kwargs']
         # verify the required parameter 'id' is set
         if ('id' not in params) or (params['id'] is None):
-            raise ValueError("Missing the required parameter `id` when calling `destroy`")
+            raise ValueError("Missing the required parameter `id` when calling `delete`")
 
 
         collection_formats = {}
@@ -259,7 +267,8 @@ class SubOrganizationsApi(object):
 
     def list(self, **kwargs):
         """
-        Get a list of SubOrganizations
+        Get a list of Sub Organizations
+        
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -270,9 +279,9 @@ class SubOrganizationsApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param dict(str, str) filter: Filter Params for Searching.  See Searching Lists for more information.
-        :param str include: Related objects that can be included in the response.  See Including Objects for more information.
+        :param dict(str, str) filter: Filter Params for Searching.  Equality Searchable Attributes: [id, name] Matching Searchable Attribute: [name]  Sortable Attributes: [name, updated_at, created_at, id] Searchable Association: [organization] See Searching Lists for more information. See the filter parameter of the association's list action to see what attributes are searchable on each association. See Conditions on Relationships in Searching Lists for more information.
         :param str page: Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page
+        :param str include: Related objects that can be included in the response:  external_accounts, organization, teams See Including Objects for more information.
         :return: PaginatedCollection
                  If the method is called asynchronously,
                  returns the request thread.
@@ -286,7 +295,8 @@ class SubOrganizationsApi(object):
 
     def list_with_http_info(self, **kwargs):
         """
-        Get a list of SubOrganizations
+        Get a list of Sub Organizations
+        
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -297,15 +307,15 @@ class SubOrganizationsApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param dict(str, str) filter: Filter Params for Searching.  See Searching Lists for more information.
-        :param str include: Related objects that can be included in the response.  See Including Objects for more information.
+        :param dict(str, str) filter: Filter Params for Searching.  Equality Searchable Attributes: [id, name] Matching Searchable Attribute: [name]  Sortable Attributes: [name, updated_at, created_at, id] Searchable Association: [organization] See Searching Lists for more information. See the filter parameter of the association's list action to see what attributes are searchable on each association. See Conditions on Relationships in Searching Lists for more information.
         :param str page: Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page
+        :param str include: Related objects that can be included in the response:  external_accounts, organization, teams See Including Objects for more information.
         :return: PaginatedCollection
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['filter', 'include', 'page']
+        all_params = ['filter', 'page', 'include']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -369,7 +379,8 @@ class SubOrganizationsApi(object):
 
     def show(self, id, **kwargs):
         """
-        Show a single SubOrganization
+        Show a single Sub Organization
+        
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -380,8 +391,8 @@ class SubOrganizationsApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param int id: SubOrganization ID (required)
-        :param str include: Related objects that can be included in the response.  See Including Objects for more information.
+        :param int id: Sub Organization ID (required)
+        :param str include: Related objects that can be included in the response:  external_accounts, organization, teams See Including Objects for more information.
         :return: SubOrganization
                  If the method is called asynchronously,
                  returns the request thread.
@@ -395,7 +406,8 @@ class SubOrganizationsApi(object):
 
     def show_with_http_info(self, id, **kwargs):
         """
-        Show a single SubOrganization
+        Show a single Sub Organization
+        
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -406,8 +418,8 @@ class SubOrganizationsApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param int id: SubOrganization ID (required)
-        :param str include: Related objects that can be included in the response.  See Including Objects for more information.
+        :param int id: Sub Organization ID (required)
+        :param str include: Related objects that can be included in the response:  external_accounts, organization, teams See Including Objects for more information.
         :return: SubOrganization
                  If the method is called asynchronously,
                  returns the request thread.
@@ -476,53 +488,57 @@ class SubOrganizationsApi(object):
                                         _request_timeout=params.get('_request_timeout'),
                                         collection_formats=collection_formats)
 
-    def update(self, id, name, **kwargs):
+    def update(self, id, **kwargs):
         """
-        Update a(n) SubOrganization
+        Update a(n) Sub Organization
+        
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.update(id, name, callback=callback_function)
+        >>> thread = api.update(id, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param int id: SubOrganization ID (required)
-        :param str name: Name of the sub organization (required)
+        :param int id: Sub Organization ID (required)
+        :param str name: Name of the sub organization
+        :param str include: Related objects that can be included in the response:  external_accounts, organization, teams See Including Objects for more information.
         :return: SubOrganization
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.update_with_http_info(id, name, **kwargs)
+            return self.update_with_http_info(id, **kwargs)
         else:
-            (data) = self.update_with_http_info(id, name, **kwargs)
+            (data) = self.update_with_http_info(id, **kwargs)
             return data
 
-    def update_with_http_info(self, id, name, **kwargs):
+    def update_with_http_info(self, id, **kwargs):
         """
-        Update a(n) SubOrganization
+        Update a(n) Sub Organization
+        
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.update_with_http_info(id, name, callback=callback_function)
+        >>> thread = api.update_with_http_info(id, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param int id: SubOrganization ID (required)
-        :param str name: Name of the sub organization (required)
+        :param int id: Sub Organization ID (required)
+        :param str name: Name of the sub organization
+        :param str include: Related objects that can be included in the response:  external_accounts, organization, teams See Including Objects for more information.
         :return: SubOrganization
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['id', 'name']
+        all_params = ['id', 'name', 'include']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -540,9 +556,6 @@ class SubOrganizationsApi(object):
         # verify the required parameter 'id' is set
         if ('id' not in params) or (params['id'] is None):
             raise ValueError("Missing the required parameter `id` when calling `update`")
-        # verify the required parameter 'name' is set
-        if ('name' not in params) or (params['name'] is None):
-            raise ValueError("Missing the required parameter `name` when calling `update`")
 
 
         collection_formats = {}
@@ -553,6 +566,8 @@ class SubOrganizationsApi(object):
             path_params['id'] = params['id']
 
         query_params = {}
+        if 'include' in params:
+            query_params['include'] = params['include']
 
         header_params = {}
 

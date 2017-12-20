@@ -40,61 +40,65 @@ class CustomSignaturesApi(object):
                 config.api_client = ApiClient()
             self.api_client = config.api_client
 
-    def create(self, identifier, name, risk_level, team_ids, **kwargs):
+    def create(self, identifier, name, risk_level, external_account_ids, **kwargs):
         """
-        Create a(n) CustomSignature
+        Create a(n) Custom Signature
+        
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.create(identifier, name, risk_level, team_ids, callback=callback_function)
+        >>> thread = api.create(identifier, name, risk_level, external_account_ids, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str identifier: The identifier to use for the custom signature. Common format is AWS:- such as AWS:IAM-001 (required)
         :param str name: The name of the custom signature (required)
         :param str risk_level: The risk-level of the problem identified by the custom signature. Valid values are low, medium, high (required)
-        :param list[int] team_ids: The team IDs this custom signature should run for. If no teams are selected the custom signature will not be run. (required)
+        :param list[int] external_account_ids: The external account IDs this custom signature should run for. If no accounts are selected the custom signature will not be run. (required)
         :param str description: The description of the custom signature that is displayed on alerts
         :param str resolution: Details for how to resolve this custom signature that is displayed on alerts
+        :param str include: Related objects that can be included in the response:  organization, teams, external_accounts, definitions See Including Objects for more information.
         :return: CustomSignature
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.create_with_http_info(identifier, name, risk_level, team_ids, **kwargs)
+            return self.create_with_http_info(identifier, name, risk_level, external_account_ids, **kwargs)
         else:
-            (data) = self.create_with_http_info(identifier, name, risk_level, team_ids, **kwargs)
+            (data) = self.create_with_http_info(identifier, name, risk_level, external_account_ids, **kwargs)
             return data
 
-    def create_with_http_info(self, identifier, name, risk_level, team_ids, **kwargs):
+    def create_with_http_info(self, identifier, name, risk_level, external_account_ids, **kwargs):
         """
-        Create a(n) CustomSignature
+        Create a(n) Custom Signature
+        
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.create_with_http_info(identifier, name, risk_level, team_ids, callback=callback_function)
+        >>> thread = api.create_with_http_info(identifier, name, risk_level, external_account_ids, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str identifier: The identifier to use for the custom signature. Common format is AWS:- such as AWS:IAM-001 (required)
         :param str name: The name of the custom signature (required)
         :param str risk_level: The risk-level of the problem identified by the custom signature. Valid values are low, medium, high (required)
-        :param list[int] team_ids: The team IDs this custom signature should run for. If no teams are selected the custom signature will not be run. (required)
+        :param list[int] external_account_ids: The external account IDs this custom signature should run for. If no accounts are selected the custom signature will not be run. (required)
         :param str description: The description of the custom signature that is displayed on alerts
         :param str resolution: Details for how to resolve this custom signature that is displayed on alerts
+        :param str include: Related objects that can be included in the response:  organization, teams, external_accounts, definitions See Including Objects for more information.
         :return: CustomSignature
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['identifier', 'name', 'risk_level', 'team_ids', 'description', 'resolution']
+        all_params = ['identifier', 'name', 'risk_level', 'external_account_ids', 'description', 'resolution', 'include']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -118,9 +122,9 @@ class CustomSignaturesApi(object):
         # verify the required parameter 'risk_level' is set
         if ('risk_level' not in params) or (params['risk_level'] is None):
             raise ValueError("Missing the required parameter `risk_level` when calling `create`")
-        # verify the required parameter 'team_ids' is set
-        if ('team_ids' not in params) or (params['team_ids'] is None):
-            raise ValueError("Missing the required parameter `team_ids` when calling `create`")
+        # verify the required parameter 'external_account_ids' is set
+        if ('external_account_ids' not in params) or (params['external_account_ids'] is None):
+            raise ValueError("Missing the required parameter `external_account_ids` when calling `create`")
 
 
         collection_formats = {}
@@ -129,6 +133,8 @@ class CustomSignaturesApi(object):
         path_params = {}
 
         query_params = {}
+        if 'include' in params:
+            query_params['include'] = params['include']
 
         header_params = {}
 
@@ -144,9 +150,9 @@ class CustomSignaturesApi(object):
             form_params.append(('resolution', params['resolution']))
         if 'risk_level' in params:
             form_params.append(('risk_level', params['risk_level']))
-        if 'team_ids' in params:
-            form_params.append(('team_ids', params['team_ids']))
-            collection_formats['team_ids'] = 'csv'
+        if 'external_account_ids' in params:
+            form_params.append(('external_account_ids', params['external_account_ids']))
+            collection_formats['None'] = 'csv'
 
         body_params = None
         # HTTP header `Accept`
@@ -175,45 +181,47 @@ class CustomSignaturesApi(object):
                                         _request_timeout=params.get('_request_timeout'),
                                         collection_formats=collection_formats)
 
-    def destroy(self, id, **kwargs):
+    def delete(self, id, **kwargs):
         """
-        Remove a(n) CustomSignature
+        Delete a(n) Custom Signature
+        
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.destroy(id, callback=callback_function)
+        >>> thread = api.delete(id, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param int id: CustomSignature ID (required)
+        :param int id:  ID (required)
         :return: Meta
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.destroy_with_http_info(id, **kwargs)
+            return self.delete_with_http_info(id, **kwargs)
         else:
-            (data) = self.destroy_with_http_info(id, **kwargs)
+            (data) = self.delete_with_http_info(id, **kwargs)
             return data
 
-    def destroy_with_http_info(self, id, **kwargs):
+    def delete_with_http_info(self, id, **kwargs):
         """
-        Remove a(n) CustomSignature
+        Delete a(n) Custom Signature
+        
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.destroy_with_http_info(id, callback=callback_function)
+        >>> thread = api.delete_with_http_info(id, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param int id: CustomSignature ID (required)
+        :param int id:  ID (required)
         :return: Meta
                  If the method is called asynchronously,
                  returns the request thread.
@@ -230,13 +238,13 @@ class CustomSignaturesApi(object):
             if key not in all_params:
                 raise TypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method destroy" % key
+                    " to method delete" % key
                 )
             params[key] = val
         del params['kwargs']
         # verify the required parameter 'id' is set
         if ('id' not in params) or (params['id'] is None):
-            raise ValueError("Missing the required parameter `id` when calling `destroy`")
+            raise ValueError("Missing the required parameter `id` when calling `delete`")
 
 
         collection_formats = {}
@@ -282,7 +290,8 @@ class CustomSignaturesApi(object):
 
     def list(self, **kwargs):
         """
-        Get a list of CustomSignatures
+        Get a list of Custom Signatures
+        
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -293,9 +302,9 @@ class CustomSignaturesApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param dict(str, str) filter: Filter Params for Searching.  See Searching Lists for more information.
-        :param str include: Related objects that can be included in the response.  See Including Objects for more information.
+        :param dict(str, str) filter: Filter Params for Searching.  Equality Searchable Attributes: [id, risk_level, service_id, name, identifier] Matching Searchable Attributes: [name, identifier]  Sortable Attributes: [name, updated_at, created_at, id] Searchable Associations: [organization, teams, definitions, integrations] See Searching Lists for more information. See the filter parameter of the association's list action to see what attributes are searchable on each association. See Conditions on Relationships in Searching Lists for more information.
         :param str page: Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page
+        :param str include: Related objects that can be included in the response:  organization, teams, external_accounts, definitions See Including Objects for more information.
         :return: PaginatedCollection
                  If the method is called asynchronously,
                  returns the request thread.
@@ -309,7 +318,8 @@ class CustomSignaturesApi(object):
 
     def list_with_http_info(self, **kwargs):
         """
-        Get a list of CustomSignatures
+        Get a list of Custom Signatures
+        
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -320,15 +330,15 @@ class CustomSignaturesApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param dict(str, str) filter: Filter Params for Searching.  See Searching Lists for more information.
-        :param str include: Related objects that can be included in the response.  See Including Objects for more information.
+        :param dict(str, str) filter: Filter Params for Searching.  Equality Searchable Attributes: [id, risk_level, service_id, name, identifier] Matching Searchable Attributes: [name, identifier]  Sortable Attributes: [name, updated_at, created_at, id] Searchable Associations: [organization, teams, definitions, integrations] See Searching Lists for more information. See the filter parameter of the association's list action to see what attributes are searchable on each association. See Conditions on Relationships in Searching Lists for more information.
         :param str page: Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page
+        :param str include: Related objects that can be included in the response:  organization, teams, external_accounts, definitions See Including Objects for more information.
         :return: PaginatedCollection
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['filter', 'include', 'page']
+        all_params = ['filter', 'page', 'include']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -392,7 +402,8 @@ class CustomSignaturesApi(object):
 
     def show(self, id, **kwargs):
         """
-        Show a single CustomSignature
+        Show a single Custom Signature
+        
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -403,8 +414,8 @@ class CustomSignaturesApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param int id: CustomSignature ID (required)
-        :param str include: Related objects that can be included in the response.  See Including Objects for more information.
+        :param int id: Custom Signature ID (required)
+        :param str include: Related objects that can be included in the response:  organization, teams, external_accounts, definitions See Including Objects for more information.
         :return: CustomSignature
                  If the method is called asynchronously,
                  returns the request thread.
@@ -418,7 +429,8 @@ class CustomSignaturesApi(object):
 
     def show_with_http_info(self, id, **kwargs):
         """
-        Show a single CustomSignature
+        Show a single Custom Signature
+        
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -429,8 +441,8 @@ class CustomSignaturesApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param int id: CustomSignature ID (required)
-        :param str include: Related objects that can be included in the response.  See Including Objects for more information.
+        :param int id: Custom Signature ID (required)
+        :param str include: Related objects that can be included in the response:  organization, teams, external_accounts, definitions See Including Objects for more information.
         :return: CustomSignature
                  If the method is called asynchronously,
                  returns the request thread.
@@ -501,7 +513,8 @@ class CustomSignaturesApi(object):
 
     def update(self, id, **kwargs):
         """
-        Update a(n) CustomSignature
+        Update a(n) Custom Signature
+        
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -512,13 +525,14 @@ class CustomSignaturesApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param int id: CustomSignature ID (required)
+        :param int id: Custom Signature ID (required)
         :param str description: The description of the custom signature that is displayed on alerts
         :param str identifier: The identifier to use for the custom signature. Common format is AWS:- such as AWS:IAM-001
         :param str name: The name of the custom signature
         :param str resolution: Details for how to resolve this custom signature that is displayed on alerts
         :param str risk_level: The risk-level of the problem identified by the custom signature. Valid values are low, medium, high
-        :param list[int] team_ids: The team IDs this custom signature should run for. If no teams are selected the custom signature will not be run.
+        :param list[int] external_account_ids: The external account IDs this custom signature should run for. If no accounts are selected the custom signature will not be run.
+        :param str include: Related objects that can be included in the response:  organization, teams, external_accounts, definitions See Including Objects for more information.
         :return: CustomSignature
                  If the method is called asynchronously,
                  returns the request thread.
@@ -532,7 +546,8 @@ class CustomSignaturesApi(object):
 
     def update_with_http_info(self, id, **kwargs):
         """
-        Update a(n) CustomSignature
+        Update a(n) Custom Signature
+        
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -543,19 +558,20 @@ class CustomSignaturesApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param int id: CustomSignature ID (required)
+        :param int id: Custom Signature ID (required)
         :param str description: The description of the custom signature that is displayed on alerts
         :param str identifier: The identifier to use for the custom signature. Common format is AWS:- such as AWS:IAM-001
         :param str name: The name of the custom signature
         :param str resolution: Details for how to resolve this custom signature that is displayed on alerts
         :param str risk_level: The risk-level of the problem identified by the custom signature. Valid values are low, medium, high
-        :param list[int] team_ids: The team IDs this custom signature should run for. If no teams are selected the custom signature will not be run.
+        :param list[int] external_account_ids: The external account IDs this custom signature should run for. If no accounts are selected the custom signature will not be run.
+        :param str include: Related objects that can be included in the response:  organization, teams, external_accounts, definitions See Including Objects for more information.
         :return: CustomSignature
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['id', 'description', 'identifier', 'name', 'resolution', 'risk_level', 'team_ids']
+        all_params = ['id', 'description', 'identifier', 'name', 'resolution', 'risk_level', 'external_account_ids', 'include']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -583,6 +599,8 @@ class CustomSignaturesApi(object):
             path_params['id'] = params['id']
 
         query_params = {}
+        if 'include' in params:
+            query_params['include'] = params['include']
 
         header_params = {}
 
@@ -598,9 +616,9 @@ class CustomSignaturesApi(object):
             form_params.append(('resolution', params['resolution']))
         if 'risk_level' in params:
             form_params.append(('risk_level', params['risk_level']))
-        if 'team_ids' in params:
-            form_params.append(('team_ids', params['team_ids']))
-            collection_formats['team_ids'] = 'csv'
+        if 'external_account_ids' in params:
+            form_params.append(('external_account_ids', params['external_account_ids']))
+            collection_formats['None'] = 'csv'
 
         body_params = None
         # HTTP header `Accept`

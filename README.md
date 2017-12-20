@@ -98,17 +98,16 @@ from pprint import pprint
 
     
 # create an instance of the API class
-api_instance = esp_sdk.AlertsApi()
-filter = {'key': 'filter_example'} # dict(str, str) | Filter Params for Searching.  See Searching Lists for more information. (optional)
-include = 'include_example' # str | Related objects that can be included in the response.  See Including Objects for more information. (optional)
-page = '{:number=>1,+:size=>20}' # str | Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page (optional) (default to {:number=>1,+:size=>20})
+api_instance = esp_sdk.APIKeysApi()
+name = 'name_example' # str | The name of the API Key (optional)
+include = 'include_example' # str | Related objects that can be included in the response:  user See Including Objects for more information. (optional)
 
 try:
-    # Get a list of Alerts
-    api_response = api_instance.list(filter=filter, include=include, page=page)
+    # Create a(n) API Key
+    api_response = api_instance.create(name=name, include=include)
     pprint(api_response)
 except ApiException as e:
-    print("Exception when calling AlertsApi->list: %s\n" % e)
+    print("Exception when calling APIKeysApi->create: %s\n" % e)
 
 
 ```
@@ -426,117 +425,189 @@ These attributes can be passed with the **sorts** key to sort the response.
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*AlertsApi* | [**list**](docs/AlertsApi.md#list) | **PUT** /api/v2/alerts.json_api | Get a list of Alerts
-*AlertsApi* | [**list_for_report**](docs/AlertsApi.md#list_for_report) | **PUT** /api/v2/reports/{report_id}/alerts.json_api | Get a list of Alerts
+*APIKeysApi* | [**create**](docs/APIKeysApi.md#create) | **POST** /api/v2/api_keys.json_api | Create a(n) API Key
+*APIKeysApi* | [**delete**](docs/APIKeysApi.md#delete) | **DELETE** /api/v2/api_keys/{id}.json_api | Delete a(n) API Key
+*APIKeysApi* | [**list**](docs/APIKeysApi.md#list) | **GET** /api/v2/api_keys.json_api | Get a list of API Keys
+*APIKeysApi* | [**show**](docs/APIKeysApi.md#show) | **GET** /api/v2/api_keys/{id}.json_api | Show a single API Key
+*APIKeysApi* | [**update**](docs/APIKeysApi.md#update) | **PATCH** /api/v2/api_keys/{id}.json_api | Update a(n) API Key
+*AlertsApi* | [**list_compliance_controls**](docs/AlertsApi.md#list_compliance_controls) | **GET** /api/v2/alerts/{alert_id}/compliance_controls.json_api | Get a list of Compliance Controls for an Alert
+*AlertsApi* | [**list_custom_compliance_controls**](docs/AlertsApi.md#list_custom_compliance_controls) | **GET** /api/v2/alerts/{alert_id}/custom_compliance_controls.json_api | Get a list of Custom Compliance Controls for an Alert
+*AlertsApi* | [**list_for_report**](docs/AlertsApi.md#list_for_report) | **PUT** /api/v2/reports/{report_id}/alerts.json_api | Get a list of Alerts for a Report
 *AlertsApi* | [**show**](docs/AlertsApi.md#show) | **GET** /api/v2/alerts/{id}.json_api | Show a single Alert
-*AuditLogFileExportApi* | [**create**](docs/AuditLogFileExportApi.md#create) | **POST** /api/v2/audit_logs/export/files.json_api | Export an Audit Log File
-*AuditLogFileExportApi* | [**show**](docs/AuditLogFileExportApi.md#show) | **GET** /api/v2/audit_logs/export/files/{id}.json_api | Show a single AuditLogFile
-*AuditLogsApi* | [**list**](docs/AuditLogsApi.md#list) | **PUT** /api/v2/audit_logs.json_api | Get a list of AuditLogs
-*AuditLogsApi* | [**show**](docs/AuditLogsApi.md#show) | **GET** /api/v2/audit_logs/{id}.json_api | Show a single AuditLog
-*CloudTrailEventsApi* | [**list**](docs/CloudTrailEventsApi.md#list) | **GET** /api/v2/alerts/{alert_id}/cloud_trail_events.json_api | Get a list of CloudTrailEvents
-*CloudTrailEventsApi* | [**show**](docs/CloudTrailEventsApi.md#show) | **GET** /api/v2/cloud_trail_events/{id}.json_api | Show a single CloudTrailEvent
-*ComplianceControlsApi* | [**list**](docs/ComplianceControlsApi.md#list) | **PUT** /api/v2/compliance_controls.json_api | Get a list of ComplianceControls
-*ComplianceControlsApi* | [**show**](docs/ComplianceControlsApi.md#show) | **GET** /api/v2/compliance_controls/{id}.json_api | Show a single ComplianceControl
-*ComplianceDomainsApi* | [**list**](docs/ComplianceDomainsApi.md#list) | **PUT** /api/v2/compliance_domains.json_api | Get a list of ComplianceDomains
-*ComplianceDomainsApi* | [**show**](docs/ComplianceDomainsApi.md#show) | **GET** /api/v2/compliance_domains/{id}.json_api | Show a single ComplianceDomain
-*ComplianceStandardsApi* | [**list**](docs/ComplianceStandardsApi.md#list) | **PUT** /api/v2/compliance_standards.json_api | Get a list of ComplianceStandards
-*ComplianceStandardsApi* | [**show**](docs/ComplianceStandardsApi.md#show) | **GET** /api/v2/compliance_standards/{id}.json_api | Show a single ComplianceStandard
-*ContactRequestsApi* | [**create**](docs/ContactRequestsApi.md#create) | **POST** /api/v2/contact_requests.json_api | Create a(n) ContactRequest
-*CustomSignatureDefinitionsApi* | [**activate**](docs/CustomSignatureDefinitionsApi.md#activate) | **PATCH** /api/v2/custom_signature_definitions/{custom_signature_definition_id}/activate.json_api | A successful call to this API marks the definition for activation.  The definition will go into the &#39;validating&#39; state and will be tested before activating. The definition must have a status of editable to be activated.
-*CustomSignatureDefinitionsApi* | [**archive**](docs/CustomSignatureDefinitionsApi.md#archive) | **PATCH** /api/v2/custom_signature_definitions/{custom_signature_definition_id}/archive.json_api | A successful call to this API archives and returns a specific custom signature definition identified by the id parameter. The definition must have a status of active to be archived.
-*CustomSignatureDefinitionsApi* | [**create**](docs/CustomSignatureDefinitionsApi.md#create) | **POST** /api/v2/custom_signature_definitions.json_api | Create a(n) CustomSignatureDefinition
-*CustomSignatureDefinitionsApi* | [**destroy**](docs/CustomSignatureDefinitionsApi.md#destroy) | **DELETE** /api/v2/custom_signature_definitions/{id}.json_api | Remove a(n) CustomSignatureDefinition
-*CustomSignatureDefinitionsApi* | [**list**](docs/CustomSignatureDefinitionsApi.md#list) | **PUT** /api/v2/custom_signature_definitions.json_api | Get a list of CustomSignatureDefinitions
-*CustomSignatureDefinitionsApi* | [**show**](docs/CustomSignatureDefinitionsApi.md#show) | **GET** /api/v2/custom_signature_definitions/{id}.json_api | Show a single CustomSignatureDefinition
-*CustomSignatureDefinitionsApi* | [**update**](docs/CustomSignatureDefinitionsApi.md#update) | **PATCH** /api/v2/custom_signature_definitions/{id}.json_api | Update a(n) CustomSignatureDefinition
-*CustomSignatureResultsApi* | [**alerts**](docs/CustomSignatureResultsApi.md#alerts) | **GET** /api/v2/custom_signature_results/{custom_signature_result_id}/alerts.json_api | Returns the alerts for a given result. Note that this format is slightly different than the standard alert format. A successful call to this API returns a list of alerts for the custom signature result identified by the custom_signature_result_id parameter.
-*CustomSignatureResultsApi* | [**create**](docs/CustomSignatureResultsApi.md#create) | **POST** /api/v2/custom_signature_results.json_api | Create a(n) CustomSignatureResult
-*CustomSignatureResultsApi* | [**list**](docs/CustomSignatureResultsApi.md#list) | **PUT** /api/v2/custom_signature_results.json_api | Get a list of CustomSignatureResults
-*CustomSignatureResultsApi* | [**show**](docs/CustomSignatureResultsApi.md#show) | **GET** /api/v2/custom_signature_results/{id}.json_api | Show a single CustomSignatureResult
-*CustomSignaturesApi* | [**create**](docs/CustomSignaturesApi.md#create) | **POST** /api/v2/custom_signatures.json_api | Create a(n) CustomSignature
-*CustomSignaturesApi* | [**destroy**](docs/CustomSignaturesApi.md#destroy) | **DELETE** /api/v2/custom_signatures/{id}.json_api | Remove a(n) CustomSignature
-*CustomSignaturesApi* | [**list**](docs/CustomSignaturesApi.md#list) | **PUT** /api/v2/custom_signatures.json_api | Get a list of CustomSignatures
-*CustomSignaturesApi* | [**show**](docs/CustomSignaturesApi.md#show) | **GET** /api/v2/custom_signatures/{id}.json_api | Show a single CustomSignature
-*CustomSignaturesApi* | [**update**](docs/CustomSignaturesApi.md#update) | **PATCH** /api/v2/custom_signatures/{id}.json_api | Update a(n) CustomSignature
-*ExternalAccountDisabledSignaturesApi* | [**create**](docs/ExternalAccountDisabledSignaturesApi.md#create) | **POST** /api/v2/external_accounts/{external_account_id}/disabled_signatures.json_api | A successful call to this API will disable a signature for an external account.
-*ExternalAccountDisabledSignaturesApi* | [**destroy**](docs/ExternalAccountDisabledSignaturesApi.md#destroy) | **DELETE** /api/v2/external_accounts/{external_account_id}/disabled_signatures.json_api | A successful call to this API will remove a signature from the disabled signature list on an external account.
-*ExternalAccountDisabledSignaturesApi* | [**list**](docs/ExternalAccountDisabledSignaturesApi.md#list) | **GET** /api/v2/external_accounts/{external_account_id}/disabled_signatures.json_api | A successful call to this API returns all the disabled signatures of the associated external account, identified by the external_account_id parameter.
-*ExternalAccountDisabledSignaturesApi* | [**update**](docs/ExternalAccountDisabledSignaturesApi.md#update) | **PATCH** /api/v2/external_accounts/{external_account_id}/disabled_signatures.json_api | A successful call to this API will update the disabled signatures on an external account.
-*ExternalAccountUserAttributionChannelsApi* | [**create**](docs/ExternalAccountUserAttributionChannelsApi.md#create) | **POST** /api/v2/external_accounts/{external_account_id}/user_attribution/channel.json_api | A successful call to this API will create a User Attribution Channel for an external account.
-*ExternalAccountUserAttributionChannelsApi* | [**destroy**](docs/ExternalAccountUserAttributionChannelsApi.md#destroy) | **DELETE** /api/v2/external_accounts/{external_account_id}/user_attribution/channel.json_api | A successful call to this API will remove the User Attribution Channel for an external account.
-*ExternalAccountUserAttributionChannelsApi* | [**show**](docs/ExternalAccountUserAttributionChannelsApi.md#show) | **GET** /api/v2/external_accounts/{external_account_id}/user_attribution/channel.json_api | A successful call to this API will show the User Attribution Channel of an external account.
-*ExternalAccountUserAttributionsApi* | [**update**](docs/ExternalAccountUserAttributionsApi.md#update) | **PATCH** /api/v2/external_accounts/{external_account_id}/user_attribution.json_api | A successful call to this API will update the user attributions on an external account.
-*ExternalAccountsApi* | [**create**](docs/ExternalAccountsApi.md#create) | **POST** /api/v2/external_accounts.json_api | Create a(n) ExternalAccount
-*ExternalAccountsApi* | [**destroy**](docs/ExternalAccountsApi.md#destroy) | **DELETE** /api/v2/external_accounts/{id}.json_api | Remove a(n) ExternalAccount
-*ExternalAccountsApi* | [**list**](docs/ExternalAccountsApi.md#list) | **PUT** /api/v2/external_accounts.json_api | Get a list of ExternalAccounts
-*ExternalAccountsApi* | [**show**](docs/ExternalAccountsApi.md#show) | **GET** /api/v2/external_accounts/{id}.json_api | Show a single ExternalAccount
-*ExternalAccountsApi* | [**update**](docs/ExternalAccountsApi.md#update) | **PATCH** /api/v2/external_accounts/{id}.json_api | Update a(n) ExternalAccount
+*AuditLogExportApi* | [**request_file**](docs/AuditLogExportApi.md#request_file) | **POST** /api/v2/audit_logs/export/files.json_api | Export an Audit Log File
+*AuditLogExportApi* | [**show_file_details**](docs/AuditLogExportApi.md#show_file_details) | **GET** /api/v2/audit_logs/export/files/{id}.json_api | Show a single Audit Log File
+*AuditLogsApi* | [**list**](docs/AuditLogsApi.md#list) | **PUT** /api/v2/audit_logs.json_api | Get a list of Audit Logs
+*AuditLogsApi* | [**show**](docs/AuditLogsApi.md#show) | **GET** /api/v2/audit_logs/{id}.json_api | Show a single Audit Log
+*AzureGroupsApi* | [**add_external_account**](docs/AzureGroupsApi.md#add_external_account) | **POST** /api/v2/azure_groups/{azure_group_id}/memberships.json_api | Add an External Account to an Azure Group
+*AzureGroupsApi* | [**create**](docs/AzureGroupsApi.md#create) | **POST** /api/v2/azure_groups.json_api | Create a(n) Azure Group
+*AzureGroupsApi* | [**delete**](docs/AzureGroupsApi.md#delete) | **DELETE** /api/v2/azure_groups/{id}.json_api | Delete a(n) Azure Group
+*AzureGroupsApi* | [**list**](docs/AzureGroupsApi.md#list) | **PUT** /api/v2/azure_groups.json_api | Get a list of Azure Groups
+*AzureGroupsApi* | [**remove_external_account**](docs/AzureGroupsApi.md#remove_external_account) | **DELETE** /api/v2/azure_groups/{azure_group_id}/memberships/{external_account_id}.json_api | Remove an External Account from an Azure Group
+*AzureGroupsApi* | [**show**](docs/AzureGroupsApi.md#show) | **GET** /api/v2/azure_groups/{id}.json_api | Show a single Azure Group
+*AzureGroupsApi* | [**update**](docs/AzureGroupsApi.md#update) | **PATCH** /api/v2/azure_groups/{id}.json_api | Update a(n) Azure Group
+*CloudTrailEventsApi* | [**list_for_alert**](docs/CloudTrailEventsApi.md#list_for_alert) | **GET** /api/v2/alerts/{alert_id}/cloud_trail_events.json_api | Get a list of Cloud Trail Events
+*CloudTrailEventsApi* | [**show**](docs/CloudTrailEventsApi.md#show) | **GET** /api/v2/cloud_trail_events/{id}.json_api | Show a single Cloud Trail Event
+*ComplianceControlsApi* | [**list**](docs/ComplianceControlsApi.md#list) | **PUT** /api/v2/compliance_controls.json_api | Get a list of Compliance Controls
+*ComplianceControlsApi* | [**list_signatures**](docs/ComplianceControlsApi.md#list_signatures) | **GET** /api/v2/compliance_controls/{compliance_control_id}/signatures.json_api | Get a list of Signatures for a Compliance Control
+*ComplianceControlsApi* | [**show**](docs/ComplianceControlsApi.md#show) | **GET** /api/v2/compliance_controls/{id}.json_api | Show a single Compliance Control
+*ComplianceDomainsApi* | [**list**](docs/ComplianceDomainsApi.md#list) | **PUT** /api/v2/compliance_domains.json_api | Get a list of Compliance Domains
+*ComplianceDomainsApi* | [**show**](docs/ComplianceDomainsApi.md#show) | **GET** /api/v2/compliance_domains/{id}.json_api | Show a single Compliance Domain
+*ComplianceStandardsApi* | [**list**](docs/ComplianceStandardsApi.md#list) | **PUT** /api/v2/compliance_standards.json_api | Get a list of Compliance Standards
+*ComplianceStandardsApi* | [**show**](docs/ComplianceStandardsApi.md#show) | **GET** /api/v2/compliance_standards/{id}.json_api | Show a single Compliance Standard
+*ContactRequestsApi* | [**create**](docs/ContactRequestsApi.md#create) | **POST** /api/v2/contact_requests.json_api | Create a(n) Contact Request
+*CustomComplianceControlsApi* | [**add_custom_signature**](docs/CustomComplianceControlsApi.md#add_custom_signature) | **POST** /api/v2/custom_compliance_controls/{custom_compliance_control_id}/custom_signatures.json_api | Add a Custom Signature to a Custom Compliance Control
+*CustomComplianceControlsApi* | [**add_signature**](docs/CustomComplianceControlsApi.md#add_signature) | **POST** /api/v2/custom_compliance_controls/{custom_compliance_control_id}/signatures.json_api | Add a Signature to a Custom Compliance Control
+*CustomComplianceControlsApi* | [**create**](docs/CustomComplianceControlsApi.md#create) | **POST** /api/v2/custom_compliance_controls.json_api | Create a(n) Custom Compliance Control
+*CustomComplianceControlsApi* | [**delete**](docs/CustomComplianceControlsApi.md#delete) | **DELETE** /api/v2/custom_compliance_controls/{id}.json_api | Delete a(n) Custom Compliance Control
+*CustomComplianceControlsApi* | [**list_custom_signatures**](docs/CustomComplianceControlsApi.md#list_custom_signatures) | **GET** /api/v2/custom_compliance_controls/{custom_compliance_control_id}/custom_signatures.json_api | Get a list of Custom Signatures for a Custom Compliance Control
+*CustomComplianceControlsApi* | [**list_signatures**](docs/CustomComplianceControlsApi.md#list_signatures) | **GET** /api/v2/custom_compliance_controls/{custom_compliance_control_id}/signatures.json_api | Get a list of Signatures for a Custom Compliance Control
+*CustomComplianceControlsApi* | [**remove_custom_signature**](docs/CustomComplianceControlsApi.md#remove_custom_signature) | **DELETE** /api/v2/custom_compliance_controls/{custom_compliance_control_id}/custom_signatures/{custom_signature_id}.json_api | Remove a Custom Signature from a Custom Compliance Control
+*CustomComplianceControlsApi* | [**remove_signature**](docs/CustomComplianceControlsApi.md#remove_signature) | **DELETE** /api/v2/custom_compliance_controls/{custom_compliance_control_id}/signatures/{signature_id}.json_api | Remove a Signature from a Custom Compliance Control
+*CustomComplianceControlsApi* | [**show**](docs/CustomComplianceControlsApi.md#show) | **GET** /api/v2/custom_compliance_controls/{id}.json_api | Show a single Custom Compliance Control
+*CustomComplianceControlsApi* | [**update**](docs/CustomComplianceControlsApi.md#update) | **PATCH** /api/v2/custom_compliance_controls/{id}.json_api | Update a(n) Custom Compliance Control
+*CustomComplianceDomainsApi* | [**create**](docs/CustomComplianceDomainsApi.md#create) | **POST** /api/v2/custom_compliance_domains.json_api | Create a(n) Custom Compliance Domain
+*CustomComplianceDomainsApi* | [**delete**](docs/CustomComplianceDomainsApi.md#delete) | **DELETE** /api/v2/custom_compliance_domains/{id}.json_api | Delete a(n) Custom Compliance Domain
+*CustomComplianceDomainsApi* | [**show**](docs/CustomComplianceDomainsApi.md#show) | **GET** /api/v2/custom_compliance_domains/{id}.json_api | Show a single Custom Compliance Domain
+*CustomComplianceDomainsApi* | [**update**](docs/CustomComplianceDomainsApi.md#update) | **PATCH** /api/v2/custom_compliance_domains/{id}.json_api | Update a(n) Custom Compliance Domain
+*CustomComplianceStandardsApi* | [**create**](docs/CustomComplianceStandardsApi.md#create) | **POST** /api/v2/custom_compliance_standards.json_api | Create a(n) Custom Compliance Standard
+*CustomComplianceStandardsApi* | [**delete**](docs/CustomComplianceStandardsApi.md#delete) | **DELETE** /api/v2/custom_compliance_standards/{id}.json_api | Delete a(n) Custom Compliance Standard
+*CustomComplianceStandardsApi* | [**show**](docs/CustomComplianceStandardsApi.md#show) | **GET** /api/v2/custom_compliance_standards/{id}.json_api | Show a single Custom Compliance Standard
+*CustomComplianceStandardsApi* | [**update**](docs/CustomComplianceStandardsApi.md#update) | **PATCH** /api/v2/custom_compliance_standards/{id}.json_api | Update a(n) Custom Compliance Standard
+*CustomSignatureDefinitionsApi* | [**activate**](docs/CustomSignatureDefinitionsApi.md#activate) | **PATCH** /api/v2/custom_signature_definitions/{custom_signature_definition_id}/activate.json_api | Activate a Custom Signature Definition
+*CustomSignatureDefinitionsApi* | [**archive**](docs/CustomSignatureDefinitionsApi.md#archive) | **PATCH** /api/v2/custom_signature_definitions/{custom_signature_definition_id}/archive.json_api | Archive a Custom Signature Definition
+*CustomSignatureDefinitionsApi* | [**create**](docs/CustomSignatureDefinitionsApi.md#create) | **POST** /api/v2/custom_signature_definitions.json_api | Create a(n) Custom Signature Definition
+*CustomSignatureDefinitionsApi* | [**delete**](docs/CustomSignatureDefinitionsApi.md#delete) | **DELETE** /api/v2/custom_signature_definitions/{id}.json_api | Delete a(n) Custom Signature Definition
+*CustomSignatureDefinitionsApi* | [**list**](docs/CustomSignatureDefinitionsApi.md#list) | **PUT** /api/v2/custom_signature_definitions.json_api | Get a list of Custom Signature Definitions
+*CustomSignatureDefinitionsApi* | [**show**](docs/CustomSignatureDefinitionsApi.md#show) | **GET** /api/v2/custom_signature_definitions/{id}.json_api | Show a single Custom Signature Definition
+*CustomSignatureDefinitionsApi* | [**update**](docs/CustomSignatureDefinitionsApi.md#update) | **PATCH** /api/v2/custom_signature_definitions/{id}.json_api | Update a(n) Custom Signature Definition
+*CustomSignatureResultsApi* | [**create**](docs/CustomSignatureResultsApi.md#create) | **POST** /api/v2/custom_signature_results.json_api | Create a(n) Custom Signature Result
+*CustomSignatureResultsApi* | [**list**](docs/CustomSignatureResultsApi.md#list) | **PUT** /api/v2/custom_signature_results.json_api | Get a list of Custom Signature Results
+*CustomSignatureResultsApi* | [**list_alerts**](docs/CustomSignatureResultsApi.md#list_alerts) | **GET** /api/v2/custom_signature_results/{custom_signature_result_id}/alerts.json_api | Returns the Alerts for a given Custom Signature Result
+*CustomSignatureResultsApi* | [**show**](docs/CustomSignatureResultsApi.md#show) | **GET** /api/v2/custom_signature_results/{id}.json_api | Show a single Custom Signature Result
+*CustomSignaturesApi* | [**create**](docs/CustomSignaturesApi.md#create) | **POST** /api/v2/custom_signatures.json_api | Create a(n) Custom Signature
+*CustomSignaturesApi* | [**delete**](docs/CustomSignaturesApi.md#delete) | **DELETE** /api/v2/custom_signatures/{id}.json_api | Delete a(n) Custom Signature
+*CustomSignaturesApi* | [**list**](docs/CustomSignaturesApi.md#list) | **PUT** /api/v2/custom_signatures.json_api | Get a list of Custom Signatures
+*CustomSignaturesApi* | [**show**](docs/CustomSignaturesApi.md#show) | **GET** /api/v2/custom_signatures/{id}.json_api | Show a single Custom Signature
+*CustomSignaturesApi* | [**update**](docs/CustomSignaturesApi.md#update) | **PATCH** /api/v2/custom_signatures/{id}.json_api | Update a(n) Custom Signature
+*ExternalAccountsApi* | [**add_compliance_standard**](docs/ExternalAccountsApi.md#add_compliance_standard) | **POST** /api/v2/external_accounts/{external_account_id}/compliance_standards.json_api | Add a compliance standard to an external account
+*ExternalAccountsApi* | [**add_custom_compliance_standard**](docs/ExternalAccountsApi.md#add_custom_compliance_standard) | **POST** /api/v2/external_accounts/{external_account_id}/custom_compliance_standards.json_api | Add a custom compliance standard to an external account
+*ExternalAccountsApi* | [**add_disabled_signature**](docs/ExternalAccountsApi.md#add_disabled_signature) | **POST** /api/v2/external_accounts/{external_account_id}/disabled_signatures.json_api | Disable a signature for an external account
+*ExternalAccountsApi* | [**delete**](docs/ExternalAccountsApi.md#delete) | **DELETE** /api/v2/external_accounts/{id}.json_api | Delete a(n) External Account
+*ExternalAccountsApi* | [**list**](docs/ExternalAccountsApi.md#list) | **PUT** /api/v2/external_accounts.json_api | Get a list of External Accounts
+*ExternalAccountsApi* | [**list_compliance_standards**](docs/ExternalAccountsApi.md#list_compliance_standards) | **GET** /api/v2/external_accounts/{external_account_id}/compliance_standards.json_api | Get a list of compliance standards for an external account
+*ExternalAccountsApi* | [**list_custom_compliance_standards**](docs/ExternalAccountsApi.md#list_custom_compliance_standards) | **GET** /api/v2/external_accounts/{external_account_id}/custom_compliance_standards.json_api | Get a list of custom compliance standards for an external account
+*ExternalAccountsApi* | [**list_disabled_signatures**](docs/ExternalAccountsApi.md#list_disabled_signatures) | **PUT** /api/v2/external_accounts/{external_account_id}/disabled_signatures.json_api | Get a list all the disabled signatures for an external account
+*ExternalAccountsApi* | [**remove_compliance_standard**](docs/ExternalAccountsApi.md#remove_compliance_standard) | **DELETE** /api/v2/external_accounts/{external_account_id}/compliance_standards/{compliance_standard_id}.json_api | Remove a compliance standard from an external account
+*ExternalAccountsApi* | [**remove_custom_compliance_standard**](docs/ExternalAccountsApi.md#remove_custom_compliance_standard) | **DELETE** /api/v2/external_accounts/{external_account_id}/custom_compliance_standards/{custom_compliance_standard_id}.json_api | Remove a custom compliance standard from an external account
+*ExternalAccountsApi* | [**remove_disabled_signature**](docs/ExternalAccountsApi.md#remove_disabled_signature) | **DELETE** /api/v2/external_accounts/{external_account_id}/disabled_signatures/{signature_id}.json_api | Re-enable a signature for an external account
+*ExternalAccountsApi* | [**show**](docs/ExternalAccountsApi.md#show) | **GET** /api/v2/external_accounts/{id}.json_api | Show a single External Account
+*ExternalAccountsAmazonApi* | [**create**](docs/ExternalAccountsAmazonApi.md#create) | **POST** /api/v2/external_accounts/amazon.json_api | Create an Amazon External Account
+*ExternalAccountsAmazonApi* | [**show**](docs/ExternalAccountsAmazonApi.md#show) | **GET** /api/v2/external_accounts/{external_account_id}/amazon.json_api | Show an Amazon External Account
+*ExternalAccountsAmazonApi* | [**update**](docs/ExternalAccountsAmazonApi.md#update) | **PATCH** /api/v2/external_accounts/{external_account_id}/amazon.json_api | Update an Amazon External Account
+*ExternalAccountsAzureApi* | [**create**](docs/ExternalAccountsAzureApi.md#create) | **POST** /api/v2/external_accounts/azure.json_api | Create an Azure External Account
+*ExternalAccountsAzureApi* | [**reset_url**](docs/ExternalAccountsAzureApi.md#reset_url) | **PATCH** /api/v2/external_accounts/{external_account_id}/azure/log_url.json_api | Reset Log URL for an Azure External Account
+*ExternalAccountsAzureApi* | [**show**](docs/ExternalAccountsAzureApi.md#show) | **GET** /api/v2/external_accounts/{external_account_id}/azure.json_api | Show an Azure External Account
+*ExternalAccountsAzureApi* | [**update**](docs/ExternalAccountsAzureApi.md#update) | **PATCH** /api/v2/external_accounts/{external_account_id}/azure.json_api | Update an Azure External Account
+*IntegrationsApi* | [**delete**](docs/IntegrationsApi.md#delete) | **DELETE** /api/v2/integrations/{id}.json_api | Delete a(n) Integration
+*IntegrationsApi* | [**disable**](docs/IntegrationsApi.md#disable) | **PATCH** /api/v2/integrations/{id}/disable.json_api | Disable a single Integration
+*IntegrationsApi* | [**list**](docs/IntegrationsApi.md#list) | **PUT** /api/v2/integrations.json_api | Get a list of Integrations
 *IntegrationsApi* | [**show**](docs/IntegrationsApi.md#show) | **GET** /api/v2/integrations/{id}.json_api | Show a single Integration
+*IntegrationsApi* | [**test_notify**](docs/IntegrationsApi.md#test_notify) | **POST** /api/v2/integrations/{id}/test_notify.json_api | Test an Integration
+*IntegrationsAmazonSNSApi* | [**create**](docs/IntegrationsAmazonSNSApi.md#create) | **POST** /api/v2/integrations/amazon_sns.json_api | Create an Amazon SNS Integration
+*IntegrationsAmazonSNSApi* | [**show**](docs/IntegrationsAmazonSNSApi.md#show) | **GET** /api/v2/integrations/{integration_id}/amazon_sns.json_api | Show a single Amazon SNS Integration
+*IntegrationsAmazonSNSApi* | [**update**](docs/IntegrationsAmazonSNSApi.md#update) | **PATCH** /api/v2/integrations/{integration_id}/amazon_sns.json_api | Update an Amazon SNS Integration
+*IntegrationsHipchatApi* | [**create**](docs/IntegrationsHipchatApi.md#create) | **POST** /api/v2/integrations/hipchat.json_api | Create a Hipchat Integration
+*IntegrationsHipchatApi* | [**show**](docs/IntegrationsHipchatApi.md#show) | **GET** /api/v2/integrations/{integration_id}/hipchat.json_api | Show a single Hipchat Integration
+*IntegrationsHipchatApi* | [**update**](docs/IntegrationsHipchatApi.md#update) | **PATCH** /api/v2/integrations/{integration_id}/hipchat.json_api | Update a Hipchat Integration
+*IntegrationsJiraApi* | [**create**](docs/IntegrationsJiraApi.md#create) | **POST** /api/v2/integrations/jira.json_api | Create a JIRA Integration
+*IntegrationsJiraApi* | [**show**](docs/IntegrationsJiraApi.md#show) | **GET** /api/v2/integrations/{integration_id}/jira.json_api | Show a single Jira Integration
+*IntegrationsJiraApi* | [**update**](docs/IntegrationsJiraApi.md#update) | **PATCH** /api/v2/integrations/{integration_id}/jira.json_api | Update a JIRA Integration
+*IntegrationsPagerDutyApi* | [**create**](docs/IntegrationsPagerDutyApi.md#create) | **POST** /api/v2/integrations/pager_duty.json_api | Create a Pager Duty Integration
+*IntegrationsPagerDutyApi* | [**show**](docs/IntegrationsPagerDutyApi.md#show) | **GET** /api/v2/integrations/{integration_id}/pager_duty.json_api | Show a single Pager Duty Integration
+*IntegrationsPagerDutyApi* | [**update**](docs/IntegrationsPagerDutyApi.md#update) | **PATCH** /api/v2/integrations/{integration_id}/pager_duty.json_api | Update a Pager Duty Integration
+*IntegrationsServiceNowApi* | [**create**](docs/IntegrationsServiceNowApi.md#create) | **POST** /api/v2/integrations/servicenow.json_api | Create a ServiceNow Integration
+*IntegrationsServiceNowApi* | [**show**](docs/IntegrationsServiceNowApi.md#show) | **GET** /api/v2/integrations/{integration_id}/servicenow.json_api | Show a single ServiceNow Integration
+*IntegrationsServiceNowApi* | [**update**](docs/IntegrationsServiceNowApi.md#update) | **PATCH** /api/v2/integrations/{integration_id}/servicenow.json_api | Update a ServiceNow Integration
+*IntegrationsSlackApi* | [**create**](docs/IntegrationsSlackApi.md#create) | **POST** /api/v2/integrations/slack.json_api | Create a Slack Integration
+*IntegrationsSlackApi* | [**show**](docs/IntegrationsSlackApi.md#show) | **GET** /api/v2/integrations/{integration_id}/slack.json_api | Show a single Slack Integration
+*IntegrationsSlackApi* | [**update**](docs/IntegrationsSlackApi.md#update) | **PATCH** /api/v2/integrations/{integration_id}/slack.json_api | Update a Slack Integration
+*IntegrationsWebhookApi* | [**create**](docs/IntegrationsWebhookApi.md#create) | **POST** /api/v2/integrations/webhook.json_api | Create a Webhook Integration
+*IntegrationsWebhookApi* | [**show**](docs/IntegrationsWebhookApi.md#show) | **GET** /api/v2/integrations/{integration_id}/webhook.json_api | Show a single Webhook Integration
+*IntegrationsWebhookApi* | [**update**](docs/IntegrationsWebhookApi.md#update) | **PATCH** /api/v2/integrations/{integration_id}/webhook.json_api | Update a Webhook Integration
 *MetadataApi* | [**for_alert**](docs/MetadataApi.md#for_alert) | **GET** /api/v2/alerts/{alert_id}/metadata.json_api | Show the metadata for an alert
 *MetadataApi* | [**show**](docs/MetadataApi.md#show) | **GET** /api/v2/metadata/{id}.json_api | Show a single Metadata
 *OrganizationsApi* | [**list**](docs/OrganizationsApi.md#list) | **PUT** /api/v2/organizations.json_api | Get a list of Organizations
+*OrganizationsApi* | [**list_compliance_standards**](docs/OrganizationsApi.md#list_compliance_standards) | **GET** /api/v2/organizations/{organization_id}/compliance_standards.json_api | Get a list of compliance standards for an organization
 *OrganizationsApi* | [**show**](docs/OrganizationsApi.md#show) | **GET** /api/v2/organizations/{id}.json_api | Show a single Organization
 *OrganizationsApi* | [**update**](docs/OrganizationsApi.md#update) | **PATCH** /api/v2/organizations/{id}.json_api | Update a(n) Organization
+*PlansApi* | [**list**](docs/PlansApi.md#list) | **GET** /api/v2/plans.json_api | Get a list of Plans
+*PlansApi* | [**show**](docs/PlansApi.md#show) | **GET** /api/v2/plans/{id}.json_api | Show a single Plan
 *RegionsApi* | [**list**](docs/RegionsApi.md#list) | **PUT** /api/v2/regions.json_api | Get a list of Regions
 *RegionsApi* | [**show**](docs/RegionsApi.md#show) | **GET** /api/v2/regions/{id}.json_api | Show a single Region
-*ReportIntegrationsApi* | [**create**](docs/ReportIntegrationsApi.md#create) | **POST** /api/v2/reports/export/integrations.json_api | Export all alerts on reports to an integration
+*ReportExportApi* | [**request_file**](docs/ReportExportApi.md#request_file) | **POST** /api/v2/reports/export/files.json_api | Export all alerts for a set of reports to a file
+*ReportExportApi* | [**send_to_integration**](docs/ReportExportApi.md#send_to_integration) | **POST** /api/v2/reports/export/integrations.json_api | Export all alerts on reports to an integration
+*ReportExportApi* | [**show_file_details**](docs/ReportExportApi.md#show_file_details) | **GET** /api/v2/reports/export/files/{id}.json_api | Show a single Exported Report
 *ReportsApi* | [**create**](docs/ReportsApi.md#create) | **POST** /api/v2/reports.json_api | Create a(n) Report
 *ReportsApi* | [**list**](docs/ReportsApi.md#list) | **PUT** /api/v2/reports.json_api | Get a list of Reports
 *ReportsApi* | [**show**](docs/ReportsApi.md#show) | **GET** /api/v2/reports/{id}.json_api | Show a single Report
 *RolesApi* | [**list**](docs/RolesApi.md#list) | **GET** /api/v2/roles.json_api | Get a list of Roles
 *RolesApi* | [**show**](docs/RolesApi.md#show) | **GET** /api/v2/roles/{id}.json_api | Show a single Role
-*ScanIntervalsApi* | [**create**](docs/ScanIntervalsApi.md#create) | **POST** /api/v2/scan_intervals.json_api | Create a(n) ScanInterval
-*ScanIntervalsApi* | [**destroy**](docs/ScanIntervalsApi.md#destroy) | **DELETE** /api/v2/scan_intervals/{id}.json_api | Remove a(n) ScanInterval
-*ScanIntervalsApi* | [**list**](docs/ScanIntervalsApi.md#list) | **GET** /api/v2/external_accounts/{external_account_id}/scan_intervals.json_api | Get a list of ScanIntervals
-*ScanIntervalsApi* | [**show**](docs/ScanIntervalsApi.md#show) | **GET** /api/v2/scan_intervals/{id}.json_api | Show a single ScanInterval
-*ScanIntervalsApi* | [**update**](docs/ScanIntervalsApi.md#update) | **PATCH** /api/v2/scan_intervals/{id}.json_api | Update a(n) ScanInterval
+*ScanIntervalsApi* | [**create**](docs/ScanIntervalsApi.md#create) | **POST** /api/v2/scan_intervals.json_api | Create a(n) Scan Interval
+*ScanIntervalsApi* | [**delete**](docs/ScanIntervalsApi.md#delete) | **DELETE** /api/v2/scan_intervals/{id}.json_api | Delete a(n) Scan Interval
+*ScanIntervalsApi* | [**list_for_external_account**](docs/ScanIntervalsApi.md#list_for_external_account) | **GET** /api/v2/external_accounts/{external_account_id}/scan_intervals.json_api | Get a list of Scan Intervals
+*ScanIntervalsApi* | [**show**](docs/ScanIntervalsApi.md#show) | **GET** /api/v2/scan_intervals/{id}.json_api | Show a single Scan Interval
+*ScanIntervalsApi* | [**update**](docs/ScanIntervalsApi.md#update) | **PATCH** /api/v2/scan_intervals/{id}.json_api | Update a(n) Scan Interval
 *ServicesApi* | [**list**](docs/ServicesApi.md#list) | **PUT** /api/v2/services.json_api | Get a list of Services
 *ServicesApi* | [**show**](docs/ServicesApi.md#show) | **GET** /api/v2/services/{id}.json_api | Show a single Service
-*SignatureCustomRiskLevelsApi* | [**create**](docs/SignatureCustomRiskLevelsApi.md#create) | **POST** /api/v2/signature_custom_risk_levels.json_api | Create a(n) SignatureCustomRiskLevel
-*SignatureCustomRiskLevelsApi* | [**destroy**](docs/SignatureCustomRiskLevelsApi.md#destroy) | **DELETE** /api/v2/signature_custom_risk_levels/{id}.json_api | Remove a(n) SignatureCustomRiskLevel
-*SignatureCustomRiskLevelsApi* | [**list**](docs/SignatureCustomRiskLevelsApi.md#list) | **GET** /api/v2/external_accounts/{external_account_id}/signature_custom_risk_levels.json_api | Get a list of SignatureCustomRiskLevels
-*SignatureCustomRiskLevelsApi* | [**show**](docs/SignatureCustomRiskLevelsApi.md#show) | **GET** /api/v2/signature_custom_risk_levels/{id}.json_api | Show a single SignatureCustomRiskLevel
-*SignatureCustomRiskLevelsApi* | [**update**](docs/SignatureCustomRiskLevelsApi.md#update) | **PATCH** /api/v2/signature_custom_risk_levels/{id}.json_api | Update a(n) SignatureCustomRiskLevel
 *SignaturesApi* | [**list**](docs/SignaturesApi.md#list) | **PUT** /api/v2/signatures.json_api | Get a list of Signatures
+*SignaturesApi* | [**list_disabled_external_accounts**](docs/SignaturesApi.md#list_disabled_external_accounts) | **GET** /api/v2/signatures/{signature_id}/disabled_external_accounts.json_api | Get a list of disabled External Accounts for a signature
+*SignaturesApi* | [**list_with_custom_risk_level_for_external_account**](docs/SignaturesApi.md#list_with_custom_risk_level_for_external_account) | **PUT** /api/v2/external_accounts/{external_account_id}/signature_custom_risk_levels.json_api | Get A list of Signatures with default and custom risk levels for an External Account
+*SignaturesApi* | [**remove_custom_risk_level_for_external_account**](docs/SignaturesApi.md#remove_custom_risk_level_for_external_account) | **DELETE** /api/v2/external_accounts/{external_account_id}/signature_custom_risk_levels/{signature_id}.json_api | Remove a custom risk level to a Signature for an External Account
+*SignaturesApi* | [**set_custom_risk_level_for_external_account**](docs/SignaturesApi.md#set_custom_risk_level_for_external_account) | **POST** /api/v2/external_accounts/{external_account_id}/signature_custom_risk_levels.json_api | Add a custom risk level to a Signature for an External Account
 *SignaturesApi* | [**show**](docs/SignaturesApi.md#show) | **GET** /api/v2/signatures/{id}.json_api | Show a single Signature
-*StatsApi* | [**for_report**](docs/StatsApi.md#for_report) | **GET** /api/v2/reports/{report_id}/stats.json_api | A successful call to this API returns all the stats of all the alerts for a report identified by the report_id parameter. Said report contains all statistics for this alert triggered from signatures contained in all regions for the selected hour.
-*StatsApi* | [**latest_for_teams**](docs/StatsApi.md#latest_for_teams) | **PUT** /api/v2/stats/latest_for_teams.json_api | A successful call to this API returns all the stats for the most recent report of each team accessible by the given API key
-*StatsApi* | [**list_stat_compliance_controls_for_stat**](docs/StatsApi.md#list_stat_compliance_controls_for_stat) | **GET** /api/v2/stats/{stat_id}/compliance_controls.json_api | A successful call to this API returns all the stats of all the compliance controls for a report identified by the stat_id parameter. Said report contains all statistics for this alert triggered from signatures contained in all compliance controls for the selected hour.
-*StatsApi* | [**list_stat_custom_compliance_controls_for_stat**](docs/StatsApi.md#list_stat_custom_compliance_controls_for_stat) | **GET** /api/v2/stats/{stat_id}/custom_compliance_controls.json_api | A successful call to this API returns all the stats of all the custom compliance controls for a report identified by the stat_id parameter. Said report contains all statistics for this alert triggered from signatures contained in all custom compliance controls for the selected hour.
-*StatsApi* | [**list_stat_custom_signatures_for_stat**](docs/StatsApi.md#list_stat_custom_signatures_for_stat) | **GET** /api/v2/stats/{stat_id}/custom_signatures.json_api | A successful call to this API returns all the stats of all the custom signatures for a report identified by the stat_id parameter. Said report contains all statistics for this alert triggered from signatures contained in all custom_signatures for the selected hour.
-*StatsApi* | [**list_stat_regions_for_stat**](docs/StatsApi.md#list_stat_regions_for_stat) | **GET** /api/v2/stats/{stat_id}/regions.json_api | A successful call to this API returns all the stats of all the regions for a report identified by the stat_id parameter. Said report contains all statistics for this alert triggered from signatures contained in all regions for the selected hour.
-*StatsApi* | [**list_stat_services_for_stat**](docs/StatsApi.md#list_stat_services_for_stat) | **GET** /api/v2/stats/{stat_id}/services.json_api | A successful call to this API returns all the stats of all the services for a report identified by the stat_id parameter. Said report contains all statistics for this alert triggered from services contained in all services for the selected hour.
-*StatsApi* | [**list_stat_signatures_for_stat**](docs/StatsApi.md#list_stat_signatures_for_stat) | **GET** /api/v2/stats/{stat_id}/signatures.json_api | A successful call to this API returns all the stats of all the signatures for a report identified by the stat_id parameter. Said report contains all statistics for this alert triggered from signatures contained in all signatures for the selected hour.
+*SignaturesApi* | [**update_custom_risk_level_for_external_account**](docs/SignaturesApi.md#update_custom_risk_level_for_external_account) | **PATCH** /api/v2/external_accounts/{external_account_id}/signature_custom_risk_levels/{signature_id}.json_api | Update a Signature&#39;s custom risk level for an External Account
+*StatComplianceControlsApi* | [**list_for_stat**](docs/StatComplianceControlsApi.md#list_for_stat) | **GET** /api/v2/stats/{stat_id}/compliance_controls.json_api | Stats for compliance controls
+*StatComplianceControlsApi* | [**show**](docs/StatComplianceControlsApi.md#show) | **GET** /api/v2/stats/compliance_controls/{id}.json_api | Show a single Stat Compliance Control
+*StatCustomComplianceControlsApi* | [**list_for_stat**](docs/StatCustomComplianceControlsApi.md#list_for_stat) | **GET** /api/v2/stats/{stat_id}/custom_compliance_controls.json_api | Stats for custom compliance controls
+*StatCustomComplianceControlsApi* | [**show**](docs/StatCustomComplianceControlsApi.md#show) | **GET** /api/v2/stats/custom_compliance_controls/{id}.json_api | Show a single Stat Custom Compliance Control
+*StatCustomSignaturesApi* | [**list_for_stat**](docs/StatCustomSignaturesApi.md#list_for_stat) | **GET** /api/v2/stats/{stat_id}/custom_signatures.json_api | Stats for custom signatures
+*StatCustomSignaturesApi* | [**show**](docs/StatCustomSignaturesApi.md#show) | **GET** /api/v2/stats/custom_signatures/{id}.json_api | Show a single Stat Custom Signature
+*StatRegionsApi* | [**list_for_stat**](docs/StatRegionsApi.md#list_for_stat) | **GET** /api/v2/stats/{stat_id}/regions.json_api | Get a list of stats for regions
+*StatRegionsApi* | [**show**](docs/StatRegionsApi.md#show) | **GET** /api/v2/stats/regions/{id}.json_api | Show a single Stat Region
+*StatServicesApi* | [**list_for_stat**](docs/StatServicesApi.md#list_for_stat) | **GET** /api/v2/stats/{stat_id}/services.json_api | Get a list of stats for services
+*StatServicesApi* | [**show**](docs/StatServicesApi.md#show) | **GET** /api/v2/stats/services/{id}.json_api | Show a single Stat Service
+*StatSignaturesApi* | [**list_for_stat**](docs/StatSignaturesApi.md#list_for_stat) | **GET** /api/v2/stats/{stat_id}/signatures.json_api | Get a list of stats for signatures
+*StatSignaturesApi* | [**show**](docs/StatSignaturesApi.md#show) | **GET** /api/v2/stats/signatures/{id}.json_api | Show a single Stat Signature
+*StatsApi* | [**for_report**](docs/StatsApi.md#for_report) | **GET** /api/v2/reports/{report_id}/stats.json_api | Stats for a report
+*StatsApi* | [**latest_for_teams**](docs/StatsApi.md#latest_for_teams) | **PUT** /api/v2/stats/latest_for_teams.json_api | Stats for teams
 *StatsApi* | [**show**](docs/StatsApi.md#show) | **GET** /api/v2/stats/{id}.json_api | Show a single Stat
-*StatsApi* | [**show_stat_compliance_control**](docs/StatsApi.md#show_stat_compliance_control) | **GET** /api/v2/stats/compliance_controls/{id}.json_api | Show a single StatComplianceControl
-*StatsApi* | [**show_stat_custom_compliance_control**](docs/StatsApi.md#show_stat_custom_compliance_control) | **GET** /api/v2/stats/custom_compliance_controls/{id}.json_api | Show a single StatCustomComplianceControl
-*StatsApi* | [**show_stat_custom_signature**](docs/StatsApi.md#show_stat_custom_signature) | **GET** /api/v2/stats/custom_signatures/{id}.json_api | Show a single StatCustomSignature
-*StatsApi* | [**show_stat_region**](docs/StatsApi.md#show_stat_region) | **GET** /api/v2/stats/regions/{id}.json_api | Show a single StatRegion
-*StatsApi* | [**show_stat_service**](docs/StatsApi.md#show_stat_service) | **GET** /api/v2/stats/services/{id}.json_api | Show a single StatService
-*StatsApi* | [**show_stat_signature**](docs/StatsApi.md#show_stat_signature) | **GET** /api/v2/stats/signatures/{id}.json_api | Show a single StatSignature
-*SubOrganizationsApi* | [**create**](docs/SubOrganizationsApi.md#create) | **POST** /api/v2/sub_organizations.json_api | Create a(n) SubOrganization
-*SubOrganizationsApi* | [**destroy**](docs/SubOrganizationsApi.md#destroy) | **DELETE** /api/v2/sub_organizations/{id}.json_api | Remove a(n) SubOrganization
-*SubOrganizationsApi* | [**list**](docs/SubOrganizationsApi.md#list) | **PUT** /api/v2/sub_organizations.json_api | Get a list of SubOrganizations
-*SubOrganizationsApi* | [**show**](docs/SubOrganizationsApi.md#show) | **GET** /api/v2/sub_organizations/{id}.json_api | Show a single SubOrganization
-*SubOrganizationsApi* | [**update**](docs/SubOrganizationsApi.md#update) | **PATCH** /api/v2/sub_organizations/{id}.json_api | Update a(n) SubOrganization
-*SuppressionsApi* | [**deactivate**](docs/SuppressionsApi.md#deactivate) | **PATCH** /api/v2/suppressions/{id}/deactivate.json_api | A successful call to this API will deactivate a suppression identified by the id parameter.
+*SubOrganizationsApi* | [**create**](docs/SubOrganizationsApi.md#create) | **POST** /api/v2/sub_organizations.json_api | Create a(n) Sub Organization
+*SubOrganizationsApi* | [**delete**](docs/SubOrganizationsApi.md#delete) | **DELETE** /api/v2/sub_organizations/{id}.json_api | Delete a(n) Sub Organization
+*SubOrganizationsApi* | [**list**](docs/SubOrganizationsApi.md#list) | **PUT** /api/v2/sub_organizations.json_api | Get a list of Sub Organizations
+*SubOrganizationsApi* | [**show**](docs/SubOrganizationsApi.md#show) | **GET** /api/v2/sub_organizations/{id}.json_api | Show a single Sub Organization
+*SubOrganizationsApi* | [**update**](docs/SubOrganizationsApi.md#update) | **PATCH** /api/v2/sub_organizations/{id}.json_api | Update a(n) Sub Organization
+*SubscriptionsApi* | [**show**](docs/SubscriptionsApi.md#show) | **GET** /api/v2/subscriptions/{id}.json_api | Show a single Subscription
+*SuppressionsApi* | [**deactivate**](docs/SuppressionsApi.md#deactivate) | **PATCH** /api/v2/suppressions/{id}/deactivate.json_api | Deactivate a suppression
 *SuppressionsApi* | [**list**](docs/SuppressionsApi.md#list) | **PUT** /api/v2/suppressions.json_api | Get a list of Suppressions
 *SuppressionsApi* | [**show**](docs/SuppressionsApi.md#show) | **GET** /api/v2/suppressions/{id}.json_api | Show a single Suppression
-*SuppressionsApi* | [**suppress_region**](docs/SuppressionsApi.md#suppress_region) | **POST** /api/v2/suppressions/regions.json_api | A successful call to this API creates a new region suppression for the supplied regions. The body of the request must contain a json api compliant hash of attributes with type suppression/regions.
-*SuppressionsApi* | [**suppress_region_from_alert**](docs/SuppressionsApi.md#suppress_region_from_alert) | **POST** /api/v2/suppressions/alert/{alert_id}/regions.json_api | A successful call to this API creates a new signature suppression based on the supplied alert_id. The body of the request must contain a json api compliant hash of attributes with type suppression/regions.
-*SuppressionsApi* | [**suppress_signature**](docs/SuppressionsApi.md#suppress_signature) | **POST** /api/v2/suppressions/signatures.json_api | A successful call to this API creates a new signature suppression for the supplied signature_ids or custom_signature_ids. The body of the request must contain a json API compliant hash of attributes with type suppression/signatures.
-*SuppressionsApi* | [**suppress_signature_from_alert**](docs/SuppressionsApi.md#suppress_signature_from_alert) | **POST** /api/v2/suppressions/alert/{alert_id}/signatures.json_api | A successful call to this API creates a new signature suppression based on the supplied alert_id. The body of the request must contain a json api compliant hash of attributes with type suppression/signatures.
-*SuppressionsApi* | [**suppress_unique_identifier_from_alert**](docs/SuppressionsApi.md#suppress_unique_identifier_from_alert) | **POST** /api/v2/suppressions/alert/{alert_id}/unique_identifiers.json_api | A successful call to this API creates a new unique identifier suppression based on the supplied alert_id. The body of the request must contain a json api compliant hash of attributes with type suppression/unique_identifier.
-*TagsApi* | [**list**](docs/TagsApi.md#list) | **GET** /api/v2/alerts/{alert_id}/tags.json_api | Get a list of Tags
+*SuppressionsApi* | [**suppress_region**](docs/SuppressionsApi.md#suppress_region) | **POST** /api/v2/suppressions/regions.json_api | Creates a region suppression
+*SuppressionsApi* | [**suppress_region_from_alert**](docs/SuppressionsApi.md#suppress_region_from_alert) | **POST** /api/v2/suppressions/alert/{alert_id}/regions.json_api | Creates a region suppression from an alert
+*SuppressionsApi* | [**suppress_signature**](docs/SuppressionsApi.md#suppress_signature) | **POST** /api/v2/suppressions/signatures.json_api | Creates a signature suppression
+*SuppressionsApi* | [**suppress_signature_from_alert**](docs/SuppressionsApi.md#suppress_signature_from_alert) | **POST** /api/v2/suppressions/alert/{alert_id}/signatures.json_api | Creates a signature suppression from an alert
+*SuppressionsApi* | [**suppress_unique_identifier_from_alert**](docs/SuppressionsApi.md#suppress_unique_identifier_from_alert) | **POST** /api/v2/suppressions/alert/{alert_id}/unique_identifiers.json_api | Creates a unique identifier suppression from an alert
+*TagsApi* | [**list_for_alert**](docs/TagsApi.md#list_for_alert) | **GET** /api/v2/alerts/{alert_id}/tags.json_api | Get a list of Tags
 *TagsApi* | [**show**](docs/TagsApi.md#show) | **GET** /api/v2/tags/{id}.json_api | Show a single Tag
 *TeamsApi* | [**create**](docs/TeamsApi.md#create) | **POST** /api/v2/teams.json_api | Create a(n) Team
-*TeamsApi* | [**destroy**](docs/TeamsApi.md#destroy) | **DELETE** /api/v2/teams/{id}.json_api | Remove a(n) Team
+*TeamsApi* | [**delete**](docs/TeamsApi.md#delete) | **DELETE** /api/v2/teams/{id}.json_api | Delete a(n) Team
 *TeamsApi* | [**list**](docs/TeamsApi.md#list) | **PUT** /api/v2/teams.json_api | Get a list of Teams
 *TeamsApi* | [**show**](docs/TeamsApi.md#show) | **GET** /api/v2/teams/{id}.json_api | Show a single Team
 *TeamsApi* | [**update**](docs/TeamsApi.md#update) | **PATCH** /api/v2/teams/{id}.json_api | Update a(n) Team
-*TimeZonesApi* | [**list**](docs/TimeZonesApi.md#list) | **GET** /api/v2/time_zones.json_api | A successful call to this API returns a list of time zones.
+*UserAttributionsApi* | [**add_channel**](docs/UserAttributionsApi.md#add_channel) | **POST** /api/v2/external_accounts/{external_account_id}/user_attribution/channel.json_api | Create a User Attribution Channel for an external account
+*UserAttributionsApi* | [**remove_channel**](docs/UserAttributionsApi.md#remove_channel) | **DELETE** /api/v2/external_accounts/{external_account_id}/user_attribution/channel.json_api | Remove the User Attribution Channel for an external account
+*UserAttributionsApi* | [**show_channel**](docs/UserAttributionsApi.md#show_channel) | **GET** /api/v2/external_accounts/{external_account_id}/user_attribution/channel.json_api | Show the User Attribution Channel of an external account
+*UserAttributionsApi* | [**update**](docs/UserAttributionsApi.md#update) | **PATCH** /api/v2/external_accounts/{external_account_id}/user_attribution.json_api | Update the user attributions on an external account
 *UsersApi* | [**create**](docs/UsersApi.md#create) | **POST** /api/v2/users.json_api | Create a(n) User
-*UsersApi* | [**destroy**](docs/UsersApi.md#destroy) | **DELETE** /api/v2/users/{id}.json_api | Remove a(n) User
+*UsersApi* | [**delete**](docs/UsersApi.md#delete) | **DELETE** /api/v2/users/{id}.json_api | Delete a(n) User
 *UsersApi* | [**list**](docs/UsersApi.md#list) | **PUT** /api/v2/users.json_api | Get a list of Users
 *UsersApi* | [**show**](docs/UsersApi.md#show) | **GET** /api/v2/users/{id}.json_api | Show a single User
 *UsersApi* | [**update**](docs/UsersApi.md#update) | **PATCH** /api/v2/users/{id}.json_api | Update a(n) User
@@ -544,32 +615,47 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
+ - [APIKey](docs/APIKey.md)
  - [Alert](docs/Alert.md)
  - [AuditLog](docs/AuditLog.md)
  - [AuditLogFile](docs/AuditLogFile.md)
+ - [AzureGroup](docs/AzureGroup.md)
  - [CloudTrailEvent](docs/CloudTrailEvent.md)
  - [ComplianceControl](docs/ComplianceControl.md)
  - [ComplianceDomain](docs/ComplianceDomain.md)
  - [ComplianceStandard](docs/ComplianceStandard.md)
  - [ContactRequest](docs/ContactRequest.md)
+ - [CustomComplianceControl](docs/CustomComplianceControl.md)
+ - [CustomComplianceDomain](docs/CustomComplianceDomain.md)
+ - [CustomComplianceStandard](docs/CustomComplianceStandard.md)
  - [CustomSignature](docs/CustomSignature.md)
  - [CustomSignatureDefinition](docs/CustomSignatureDefinition.md)
  - [CustomSignatureResult](docs/CustomSignatureResult.md)
  - [CustomSignatureResultAlert](docs/CustomSignatureResultAlert.md)
+ - [ExportedReport](docs/ExportedReport.md)
  - [ExternalAccount](docs/ExternalAccount.md)
+ - [ExternalAccountAmazonIAM](docs/ExternalAccountAmazonIAM.md)
+ - [ExternalAccountAzure](docs/ExternalAccountAzure.md)
  - [ExternalAccountUserAttributionChannel](docs/ExternalAccountUserAttributionChannel.md)
  - [Integration](docs/Integration.md)
+ - [IntegrationAmazonSns](docs/IntegrationAmazonSns.md)
+ - [IntegrationHipchat](docs/IntegrationHipchat.md)
+ - [IntegrationJira](docs/IntegrationJira.md)
+ - [IntegrationPagerDuty](docs/IntegrationPagerDuty.md)
+ - [IntegrationServicenow](docs/IntegrationServicenow.md)
+ - [IntegrationSlack](docs/IntegrationSlack.md)
+ - [IntegrationWebhook](docs/IntegrationWebhook.md)
  - [Meta](docs/Meta.md)
  - [Metadata](docs/Metadata.md)
  - [Organization](docs/Organization.md)
  - [PaginatedCollection](docs/PaginatedCollection.md)
+ - [Plan](docs/Plan.md)
  - [Region](docs/Region.md)
  - [Report](docs/Report.md)
  - [Role](docs/Role.md)
  - [ScanInterval](docs/ScanInterval.md)
  - [Service](docs/Service.md)
  - [Signature](docs/Signature.md)
- - [SignatureCustomRiskLevel](docs/SignatureCustomRiskLevel.md)
  - [Stat](docs/Stat.md)
  - [StatComplianceControl](docs/StatComplianceControl.md)
  - [StatCustomComplianceControl](docs/StatCustomComplianceControl.md)
@@ -578,9 +664,9 @@ Class | Method | HTTP request | Description
  - [StatService](docs/StatService.md)
  - [StatSignature](docs/StatSignature.md)
  - [SubOrganization](docs/SubOrganization.md)
+ - [Subscription](docs/Subscription.md)
  - [Suppression](docs/Suppression.md)
  - [Tag](docs/Tag.md)
  - [Team](docs/Team.md)
- - [TimeZone](docs/TimeZone.md)
  - [User](docs/User.md)
 

@@ -43,6 +43,7 @@ class OrganizationsApi(object):
     def list(self, **kwargs):
         """
         Get a list of Organizations
+        
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -53,9 +54,9 @@ class OrganizationsApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param dict(str, str) filter: Filter Params for Searching.  See Searching Lists for more information.
-        :param str include: Related objects that can be included in the response.  See Including Objects for more information.
+        :param dict(str, str) filter: Filter Params for Searching.  Equality Searchable Attributes: [id, name] Matching Searchable Attribute: [name]  Sortable Attributes: [name, updated_at, created_at, id] 
         :param str page: Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page
+        :param str include: Related objects that can be included in the response:  subscription, custom_signatures, external_accounts, sub_organizations, teams, users, compliance_standards, integrations See Including Objects for more information.
         :return: PaginatedCollection
                  If the method is called asynchronously,
                  returns the request thread.
@@ -70,6 +71,7 @@ class OrganizationsApi(object):
     def list_with_http_info(self, **kwargs):
         """
         Get a list of Organizations
+        
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -80,15 +82,15 @@ class OrganizationsApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param dict(str, str) filter: Filter Params for Searching.  See Searching Lists for more information.
-        :param str include: Related objects that can be included in the response.  See Including Objects for more information.
+        :param dict(str, str) filter: Filter Params for Searching.  Equality Searchable Attributes: [id, name] Matching Searchable Attribute: [name]  Sortable Attributes: [name, updated_at, created_at, id] 
         :param str page: Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page
+        :param str include: Related objects that can be included in the response:  subscription, custom_signatures, external_accounts, sub_organizations, teams, users, compliance_standards, integrations See Including Objects for more information.
         :return: PaginatedCollection
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['filter', 'include', 'page']
+        all_params = ['filter', 'page', 'include']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -150,9 +152,125 @@ class OrganizationsApi(object):
                                         _request_timeout=params.get('_request_timeout'),
                                         collection_formats=collection_formats)
 
+    def list_compliance_standards(self, organization_id, **kwargs):
+        """
+        Get a list of compliance standards for an organization
+        
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.list_compliance_standards(organization_id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param int organization_id: The ID of the organization this compliance standard belongs to (required)
+        :param str page: Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page
+        :param str include: Related objects that can be included in the response:  compliance_domains, compliance_controls See Including Objects for more information.
+        :return: PaginatedCollection
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.list_compliance_standards_with_http_info(organization_id, **kwargs)
+        else:
+            (data) = self.list_compliance_standards_with_http_info(organization_id, **kwargs)
+            return data
+
+    def list_compliance_standards_with_http_info(self, organization_id, **kwargs):
+        """
+        Get a list of compliance standards for an organization
+        
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.list_compliance_standards_with_http_info(organization_id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param int organization_id: The ID of the organization this compliance standard belongs to (required)
+        :param str page: Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page
+        :param str include: Related objects that can be included in the response:  compliance_domains, compliance_controls See Including Objects for more information.
+        :return: PaginatedCollection
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['organization_id', 'page', 'include']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method list_compliance_standards" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'organization_id' is set
+        if ('organization_id' not in params) or (params['organization_id'] is None):
+            raise ValueError("Missing the required parameter `organization_id` when calling `list_compliance_standards`")
+
+
+        collection_formats = {}
+
+        resource_path = '/api/v2/organizations/{organization_id}/compliance_standards.json_api'.replace('{format}', 'json_api')
+        path_params = {}
+        if 'organization_id' in params:
+            path_params['organization_id'] = params['organization_id']
+
+        query_params = {}
+        if 'include' in params:
+            query_params['include'] = params['include']
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+        if 'page' in params:
+            form_params.append(('page', params['page']))
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/vnd.api+json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/vnd.api+json'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api(resource_path, 'GET',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='PaginatedCollection',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
     def show(self, id, **kwargs):
         """
         Show a single Organization
+        
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -164,7 +282,7 @@ class OrganizationsApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param int id: Organization ID (required)
-        :param str include: Related objects that can be included in the response.  See Including Objects for more information.
+        :param str include: Related objects that can be included in the response:  subscription, custom_signatures, external_accounts, sub_organizations, teams, users, compliance_standards, integrations See Including Objects for more information.
         :return: Organization
                  If the method is called asynchronously,
                  returns the request thread.
@@ -179,6 +297,7 @@ class OrganizationsApi(object):
     def show_with_http_info(self, id, **kwargs):
         """
         Show a single Organization
+        
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -190,7 +309,7 @@ class OrganizationsApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param int id: Organization ID (required)
-        :param str include: Related objects that can be included in the response.  See Including Objects for more information.
+        :param str include: Related objects that can be included in the response:  subscription, custom_signatures, external_accounts, sub_organizations, teams, users, compliance_standards, integrations See Including Objects for more information.
         :return: Organization
                  If the method is called asynchronously,
                  returns the request thread.
@@ -259,53 +378,59 @@ class OrganizationsApi(object):
                                         _request_timeout=params.get('_request_timeout'),
                                         collection_formats=collection_formats)
 
-    def update(self, id, name, **kwargs):
+    def update(self, id, **kwargs):
         """
         Update a(n) Organization
+        
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.update(id, name, callback=callback_function)
+        >>> thread = api.update(id, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param int id: Organization ID (required)
-        :param str name: Name of the organization (required)
+        :param str name: Name of the organization
+        :param bool require_mfa: Whether or not users for this organization are required to enable Multi Factor Authentication
+        :param str include: Related objects that can be included in the response:  subscription, custom_signatures, external_accounts, sub_organizations, teams, users, compliance_standards, integrations See Including Objects for more information.
         :return: Organization
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.update_with_http_info(id, name, **kwargs)
+            return self.update_with_http_info(id, **kwargs)
         else:
-            (data) = self.update_with_http_info(id, name, **kwargs)
+            (data) = self.update_with_http_info(id, **kwargs)
             return data
 
-    def update_with_http_info(self, id, name, **kwargs):
+    def update_with_http_info(self, id, **kwargs):
         """
         Update a(n) Organization
+        
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.update_with_http_info(id, name, callback=callback_function)
+        >>> thread = api.update_with_http_info(id, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param int id: Organization ID (required)
-        :param str name: Name of the organization (required)
+        :param str name: Name of the organization
+        :param bool require_mfa: Whether or not users for this organization are required to enable Multi Factor Authentication
+        :param str include: Related objects that can be included in the response:  subscription, custom_signatures, external_accounts, sub_organizations, teams, users, compliance_standards, integrations See Including Objects for more information.
         :return: Organization
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['id', 'name']
+        all_params = ['id', 'name', 'require_mfa', 'include']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -323,9 +448,6 @@ class OrganizationsApi(object):
         # verify the required parameter 'id' is set
         if ('id' not in params) or (params['id'] is None):
             raise ValueError("Missing the required parameter `id` when calling `update`")
-        # verify the required parameter 'name' is set
-        if ('name' not in params) or (params['name'] is None):
-            raise ValueError("Missing the required parameter `name` when calling `update`")
 
 
         collection_formats = {}
@@ -336,6 +458,8 @@ class OrganizationsApi(object):
             path_params['id'] = params['id']
 
         query_params = {}
+        if 'include' in params:
+            query_params['include'] = params['include']
 
         header_params = {}
 
@@ -343,6 +467,8 @@ class OrganizationsApi(object):
         local_var_files = {}
         if 'name' in params:
             form_params.append(('name', params['name']))
+        if 'require_mfa' in params:
+            form_params.append(('require_mfa', params['require_mfa']))
 
         body_params = None
         # HTTP header `Accept`

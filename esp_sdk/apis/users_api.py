@@ -43,6 +43,7 @@ class UsersApi(object):
     def create(self, first_name, last_name, email, **kwargs):
         """
         Create a(n) User
+        
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -62,6 +63,7 @@ class UsersApi(object):
         :param bool disable_daily_emails: Specifies whether the daily emails should be turned off or not
         :param str phone: The phone number of the user
         :param str time_zone: The time zone of the user. See Time Zones for a list of valid time zones
+        :param str include: Related objects that can be included in the response:  organization, sub_organizations, teams, role See Including Objects for more information.
         :return: User
                  If the method is called asynchronously,
                  returns the request thread.
@@ -76,6 +78,7 @@ class UsersApi(object):
     def create_with_http_info(self, first_name, last_name, email, **kwargs):
         """
         Create a(n) User
+        
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -95,12 +98,13 @@ class UsersApi(object):
         :param bool disable_daily_emails: Specifies whether the daily emails should be turned off or not
         :param str phone: The phone number of the user
         :param str time_zone: The time zone of the user. See Time Zones for a list of valid time zones
+        :param str include: Related objects that can be included in the response:  organization, sub_organizations, teams, role See Including Objects for more information.
         :return: User
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['first_name', 'last_name', 'email', 'role_id', 'sub_organization_ids', 'team_ids', 'disable_daily_emails', 'phone', 'time_zone']
+        all_params = ['first_name', 'last_name', 'email', 'role_id', 'sub_organization_ids', 'team_ids', 'disable_daily_emails', 'phone', 'time_zone', 'include']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -132,6 +136,8 @@ class UsersApi(object):
         path_params = {}
 
         query_params = {}
+        if 'include' in params:
+            query_params['include'] = params['include']
 
         header_params = {}
 
@@ -147,10 +153,10 @@ class UsersApi(object):
             form_params.append(('role_id', params['role_id']))
         if 'sub_organization_ids' in params:
             form_params.append(('sub_organization_ids', params['sub_organization_ids']))
-            collection_formats['sub_organization_ids'] = 'csv'
+            collection_formats['None'] = 'csv'
         if 'team_ids' in params:
             form_params.append(('team_ids', params['team_ids']))
-            collection_formats['team_ids'] = 'csv'
+            collection_formats['None'] = 'csv'
         if 'disable_daily_emails' in params:
             form_params.append(('disable_daily_emails', params['disable_daily_emails']))
         if 'phone' in params:
@@ -185,51 +191,55 @@ class UsersApi(object):
                                         _request_timeout=params.get('_request_timeout'),
                                         collection_formats=collection_formats)
 
-    def destroy(self, id, **kwargs):
+    def delete(self, id, **kwargs):
         """
-        Remove a(n) User
+        Delete a(n) User
+        The users current password is required when deleting yourself.
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.destroy(id, callback=callback_function)
+        >>> thread = api.delete(id, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param int id: User ID (required)
+        :param int id:  ID (required)
+        :param str current_password: The user's currently stored password
         :return: Meta
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.destroy_with_http_info(id, **kwargs)
+            return self.delete_with_http_info(id, **kwargs)
         else:
-            (data) = self.destroy_with_http_info(id, **kwargs)
+            (data) = self.delete_with_http_info(id, **kwargs)
             return data
 
-    def destroy_with_http_info(self, id, **kwargs):
+    def delete_with_http_info(self, id, **kwargs):
         """
-        Remove a(n) User
+        Delete a(n) User
+        The users current password is required when deleting yourself.
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.destroy_with_http_info(id, callback=callback_function)
+        >>> thread = api.delete_with_http_info(id, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param int id: User ID (required)
+        :param int id:  ID (required)
+        :param str current_password: The user's currently stored password
         :return: Meta
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['id']
+        all_params = ['id', 'current_password']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -240,13 +250,13 @@ class UsersApi(object):
             if key not in all_params:
                 raise TypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method destroy" % key
+                    " to method delete" % key
                 )
             params[key] = val
         del params['kwargs']
         # verify the required parameter 'id' is set
         if ('id' not in params) or (params['id'] is None):
-            raise ValueError("Missing the required parameter `id` when calling `destroy`")
+            raise ValueError("Missing the required parameter `id` when calling `delete`")
 
 
         collection_formats = {}
@@ -262,6 +272,8 @@ class UsersApi(object):
 
         form_params = []
         local_var_files = {}
+        if 'current_password' in params:
+            form_params.append(('current_password', params['current_password']))
 
         body_params = None
         # HTTP header `Accept`
@@ -293,6 +305,7 @@ class UsersApi(object):
     def list(self, **kwargs):
         """
         Get a list of Users
+        
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -303,9 +316,9 @@ class UsersApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param dict(str, str) filter: Filter Params for Searching.  See Searching Lists for more information.
-        :param str include: Related objects that can be included in the response.  See Including Objects for more information.
+        :param dict(str, str) filter: Filter Params for Searching.  Equality Searchable Attributes: [id, email] Matching Searchable Attribute: [email]  Sortable Attributes: [email, current_sign_in_at, updated_at, created_at, id] Searchable Associations: [role, organization, sub_organizations, teams] See Searching Lists for more information. See the filter parameter of the association's list action to see what attributes are searchable on each association. See Conditions on Relationships in Searching Lists for more information.
         :param str page: Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page
+        :param str include: Related objects that can be included in the response:  organization, sub_organizations, teams, role See Including Objects for more information.
         :return: PaginatedCollection
                  If the method is called asynchronously,
                  returns the request thread.
@@ -320,6 +333,7 @@ class UsersApi(object):
     def list_with_http_info(self, **kwargs):
         """
         Get a list of Users
+        
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -330,15 +344,15 @@ class UsersApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param dict(str, str) filter: Filter Params for Searching.  See Searching Lists for more information.
-        :param str include: Related objects that can be included in the response.  See Including Objects for more information.
+        :param dict(str, str) filter: Filter Params for Searching.  Equality Searchable Attributes: [id, email] Matching Searchable Attribute: [email]  Sortable Attributes: [email, current_sign_in_at, updated_at, created_at, id] Searchable Associations: [role, organization, sub_organizations, teams] See Searching Lists for more information. See the filter parameter of the association's list action to see what attributes are searchable on each association. See Conditions on Relationships in Searching Lists for more information.
         :param str page: Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page
+        :param str include: Related objects that can be included in the response:  organization, sub_organizations, teams, role See Including Objects for more information.
         :return: PaginatedCollection
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['filter', 'include', 'page']
+        all_params = ['filter', 'page', 'include']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -403,6 +417,7 @@ class UsersApi(object):
     def show(self, id, **kwargs):
         """
         Show a single User
+        
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -414,7 +429,7 @@ class UsersApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param int id: User ID (required)
-        :param str include: Related objects that can be included in the response.  See Including Objects for more information.
+        :param str include: Related objects that can be included in the response:  organization, sub_organizations, teams, role See Including Objects for more information.
         :return: User
                  If the method is called asynchronously,
                  returns the request thread.
@@ -429,6 +444,7 @@ class UsersApi(object):
     def show_with_http_info(self, id, **kwargs):
         """
         Show a single User
+        
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -440,7 +456,7 @@ class UsersApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param int id: User ID (required)
-        :param str include: Related objects that can be included in the response.  See Including Objects for more information.
+        :param str include: Related objects that can be included in the response:  organization, sub_organizations, teams, role See Including Objects for more information.
         :return: User
                  If the method is called asynchronously,
                  returns the request thread.
@@ -509,69 +525,73 @@ class UsersApi(object):
                                         _request_timeout=params.get('_request_timeout'),
                                         collection_formats=collection_formats)
 
-    def update(self, id, first_name, last_name, email, **kwargs):
+    def update(self, id, **kwargs):
         """
         Update a(n) User
+        
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.update(id, first_name, last_name, email, callback=callback_function)
+        >>> thread = api.update(id, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param int id: User ID (required)
-        :param str first_name: The first name of the user (required)
-        :param str last_name: The last name of the user (required)
-        :param str email: The email of the user (required)
+        :param str first_name: The first name of the user
+        :param str last_name: The last name of the user
+        :param str email: The email of the user
         :param int role_id: The ID of the role of the user
         :param list[int] sub_organization_ids: A list of sub organization IDs that the user should have access to
         :param list[int] team_ids: A list of team IDs that the user should have access to
         :param bool disable_daily_emails: Specifies whether the daily emails should be turned off or not
         :param str phone: The phone number of the user
         :param str time_zone: The time zone of the user. See Time Zones for a list of valid time zones
+        :param str include: Related objects that can be included in the response:  organization, sub_organizations, teams, role See Including Objects for more information.
         :return: User
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.update_with_http_info(id, first_name, last_name, email, **kwargs)
+            return self.update_with_http_info(id, **kwargs)
         else:
-            (data) = self.update_with_http_info(id, first_name, last_name, email, **kwargs)
+            (data) = self.update_with_http_info(id, **kwargs)
             return data
 
-    def update_with_http_info(self, id, first_name, last_name, email, **kwargs):
+    def update_with_http_info(self, id, **kwargs):
         """
         Update a(n) User
+        
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.update_with_http_info(id, first_name, last_name, email, callback=callback_function)
+        >>> thread = api.update_with_http_info(id, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param int id: User ID (required)
-        :param str first_name: The first name of the user (required)
-        :param str last_name: The last name of the user (required)
-        :param str email: The email of the user (required)
+        :param str first_name: The first name of the user
+        :param str last_name: The last name of the user
+        :param str email: The email of the user
         :param int role_id: The ID of the role of the user
         :param list[int] sub_organization_ids: A list of sub organization IDs that the user should have access to
         :param list[int] team_ids: A list of team IDs that the user should have access to
         :param bool disable_daily_emails: Specifies whether the daily emails should be turned off or not
         :param str phone: The phone number of the user
         :param str time_zone: The time zone of the user. See Time Zones for a list of valid time zones
+        :param str include: Related objects that can be included in the response:  organization, sub_organizations, teams, role See Including Objects for more information.
         :return: User
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['id', 'first_name', 'last_name', 'email', 'role_id', 'sub_organization_ids', 'team_ids', 'disable_daily_emails', 'phone', 'time_zone']
+        all_params = ['id', 'first_name', 'last_name', 'email', 'role_id', 'sub_organization_ids', 'team_ids', 'disable_daily_emails', 'phone', 'time_zone', 'include']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -589,15 +609,6 @@ class UsersApi(object):
         # verify the required parameter 'id' is set
         if ('id' not in params) or (params['id'] is None):
             raise ValueError("Missing the required parameter `id` when calling `update`")
-        # verify the required parameter 'first_name' is set
-        if ('first_name' not in params) or (params['first_name'] is None):
-            raise ValueError("Missing the required parameter `first_name` when calling `update`")
-        # verify the required parameter 'last_name' is set
-        if ('last_name' not in params) or (params['last_name'] is None):
-            raise ValueError("Missing the required parameter `last_name` when calling `update`")
-        # verify the required parameter 'email' is set
-        if ('email' not in params) or (params['email'] is None):
-            raise ValueError("Missing the required parameter `email` when calling `update`")
 
 
         collection_formats = {}
@@ -608,6 +619,8 @@ class UsersApi(object):
             path_params['id'] = params['id']
 
         query_params = {}
+        if 'include' in params:
+            query_params['include'] = params['include']
 
         header_params = {}
 
@@ -623,10 +636,10 @@ class UsersApi(object):
             form_params.append(('role_id', params['role_id']))
         if 'sub_organization_ids' in params:
             form_params.append(('sub_organization_ids', params['sub_organization_ids']))
-            collection_formats['sub_organization_ids'] = 'csv'
+            collection_formats['None'] = 'csv'
         if 'team_ids' in params:
             form_params.append(('team_ids', params['team_ids']))
-            collection_formats['team_ids'] = 'csv'
+            collection_formats['None'] = 'csv'
         if 'disable_daily_emails' in params:
             form_params.append(('disable_daily_emails', params['disable_daily_emails']))
         if 'phone' in params:

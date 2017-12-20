@@ -4,17 +4,19 @@ All URIs are relative to https://api.evident.io
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create**](SubOrganizationsApi.md#create) | **POST** /api/v2/sub_organizations.json_api | Create a(n) SubOrganization
-[**destroy**](SubOrganizationsApi.md#destroy) | **DELETE** /api/v2/sub_organizations/{id}.json_api | Remove a(n) SubOrganization
-[**list**](SubOrganizationsApi.md#list) | **PUT** /api/v2/sub_organizations.json_api | Get a list of SubOrganizations
-[**show**](SubOrganizationsApi.md#show) | **GET** /api/v2/sub_organizations/{id}.json_api | Show a single SubOrganization
-[**update**](SubOrganizationsApi.md#update) | **PATCH** /api/v2/sub_organizations/{id}.json_api | Update a(n) SubOrganization
+[**create**](SubOrganizationsApi.md#create) | **POST** /api/v2/sub_organizations.json_api | Create a(n) Sub Organization
+[**delete**](SubOrganizationsApi.md#delete) | **DELETE** /api/v2/sub_organizations/{id}.json_api | Delete a(n) Sub Organization
+[**list**](SubOrganizationsApi.md#list) | **PUT** /api/v2/sub_organizations.json_api | Get a list of Sub Organizations
+[**show**](SubOrganizationsApi.md#show) | **GET** /api/v2/sub_organizations/{id}.json_api | Show a single Sub Organization
+[**update**](SubOrganizationsApi.md#update) | **PATCH** /api/v2/sub_organizations/{id}.json_api | Update a(n) Sub Organization
 
 
 # **create**
-> SubOrganization create(organization_id, name)
+> SubOrganization create(organization_id, name, include=include)
 
-Create a(n) SubOrganization
+Create a(n) Sub Organization
+
+
 
 ### Example 
 ```python
@@ -28,10 +30,11 @@ from pprint import pprint
 api_instance = esp_sdk.SubOrganizationsApi()
 organization_id = 56 # int | The ID of the organization this sub organization should belong to
 name = 'name_example' # str | Name of the sub organization
+include = 'include_example' # str | Related objects that can be included in the response:  external_accounts, organization, teams See Including Objects for more information. (optional)
 
 try: 
-    # Create a(n) SubOrganization
-    api_response = api_instance.create(organization_id, name)
+    # Create a(n) Sub Organization
+    api_response = api_instance.create(organization_id, name, include=include)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling SubOrganizationsApi->create: %s\n" % e)
@@ -43,6 +46,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **organization_id** | **int**| The ID of the organization this sub organization should belong to | 
  **name** | **str**| Name of the sub organization | 
+ **include** | **str**| Related objects that can be included in the response:  external_accounts, organization, teams See Including Objects for more information. | [optional] 
 
 ### Return type
 
@@ -59,10 +63,12 @@ See https://github.com/EvidentSecurity/esp-sdk-python2#set-your-hmac-security-ke
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **destroy**
-> Meta destroy(id)
+# **delete**
+> Meta delete(id)
 
-Remove a(n) SubOrganization
+Delete a(n) Sub Organization
+
+
 
 ### Example 
 ```python
@@ -74,21 +80,21 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = esp_sdk.SubOrganizationsApi()
-id = 56 # int | SubOrganization ID
+id = 56 # int |  ID
 
 try: 
-    # Remove a(n) SubOrganization
-    api_response = api_instance.destroy(id)
+    # Delete a(n) Sub Organization
+    api_response = api_instance.delete(id)
     pprint(api_response)
 except ApiException as e:
-    print("Exception when calling SubOrganizationsApi->destroy: %s\n" % e)
+    print("Exception when calling SubOrganizationsApi->delete: %s\n" % e)
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **int**| SubOrganization ID | 
+ **id** | **int**|  ID | 
 
 ### Return type
 
@@ -106,9 +112,11 @@ See https://github.com/EvidentSecurity/esp-sdk-python2#set-your-hmac-security-ke
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list**
-> PaginatedCollection list(filter=filter, include=include, page=page)
+> PaginatedCollection list(filter=filter, page=page, include=include)
 
-Get a list of SubOrganizations
+Get a list of Sub Organizations
+
+
 
 ### Example 
 ```python
@@ -120,13 +128,13 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = esp_sdk.SubOrganizationsApi()
-filter = {'key': 'filter_example'} # dict(str, str) | Filter Params for Searching.  See Searching Lists for more information. (optional)
-include = 'include_example' # str | Related objects that can be included in the response.  See Including Objects for more information. (optional)
+filter = {'key': 'filter_example'} # dict(str, str) | Filter Params for Searching.  Equality Searchable Attributes: [id, name] Matching Searchable Attribute: [name]  Sortable Attributes: [name, updated_at, created_at, id] Searchable Association: [organization] See Searching Lists for more information. See the filter parameter of the association's list action to see what attributes are searchable on each association. See Conditions on Relationships in Searching Lists for more information. (optional)
 page = '{:number=>1,+:size=>20}' # str | Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page (optional) (default to {:number=>1,+:size=>20})
+include = 'include_example' # str | Related objects that can be included in the response:  external_accounts, organization, teams See Including Objects for more information. (optional)
 
 try: 
-    # Get a list of SubOrganizations
-    api_response = api_instance.list(filter=filter, include=include, page=page)
+    # Get a list of Sub Organizations
+    api_response = api_instance.list(filter=filter, page=page, include=include)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling SubOrganizationsApi->list: %s\n" % e)
@@ -136,9 +144,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **filter** | [**dict(str, str)**](str.md)| Filter Params for Searching.  See Searching Lists for more information. | [optional] 
- **include** | **str**| Related objects that can be included in the response.  See Including Objects for more information. | [optional] 
+ **filter** | [**dict(str, str)**](str.md)| Filter Params for Searching.  Equality Searchable Attributes: [id, name] Matching Searchable Attribute: [name]  Sortable Attributes: [name, updated_at, created_at, id] Searchable Association: [organization] See Searching Lists for more information. See the filter parameter of the association&#39;s list action to see what attributes are searchable on each association. See Conditions on Relationships in Searching Lists for more information. | [optional] 
  **page** | **str**| Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page | [optional] [default to {:number&#x3D;&gt;1,+:size&#x3D;&gt;20}]
+ **include** | **str**| Related objects that can be included in the response:  external_accounts, organization, teams See Including Objects for more information. | [optional] 
 
 ### Return type
 
@@ -158,7 +166,9 @@ See https://github.com/EvidentSecurity/esp-sdk-python2#set-your-hmac-security-ke
 # **show**
 > SubOrganization show(id, include=include)
 
-Show a single SubOrganization
+Show a single Sub Organization
+
+
 
 ### Example 
 ```python
@@ -170,11 +180,11 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = esp_sdk.SubOrganizationsApi()
-id = 56 # int | SubOrganization ID
-include = 'include_example' # str | Related objects that can be included in the response.  See Including Objects for more information. (optional)
+id = 56 # int | Sub Organization ID
+include = 'include_example' # str | Related objects that can be included in the response:  external_accounts, organization, teams See Including Objects for more information. (optional)
 
 try: 
-    # Show a single SubOrganization
+    # Show a single Sub Organization
     api_response = api_instance.show(id, include=include)
     pprint(api_response)
 except ApiException as e:
@@ -185,8 +195,8 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **int**| SubOrganization ID | 
- **include** | **str**| Related objects that can be included in the response.  See Including Objects for more information. | [optional] 
+ **id** | **int**| Sub Organization ID | 
+ **include** | **str**| Related objects that can be included in the response:  external_accounts, organization, teams See Including Objects for more information. | [optional] 
 
 ### Return type
 
@@ -204,9 +214,11 @@ See https://github.com/EvidentSecurity/esp-sdk-python2#set-your-hmac-security-ke
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update**
-> SubOrganization update(id, name)
+> SubOrganization update(id, name=name, include=include)
 
-Update a(n) SubOrganization
+Update a(n) Sub Organization
+
+
 
 ### Example 
 ```python
@@ -218,12 +230,13 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = esp_sdk.SubOrganizationsApi()
-id = 56 # int | SubOrganization ID
-name = 'name_example' # str | Name of the sub organization
+id = 56 # int | Sub Organization ID
+name = 'name_example' # str | Name of the sub organization (optional)
+include = 'include_example' # str | Related objects that can be included in the response:  external_accounts, organization, teams See Including Objects for more information. (optional)
 
 try: 
-    # Update a(n) SubOrganization
-    api_response = api_instance.update(id, name)
+    # Update a(n) Sub Organization
+    api_response = api_instance.update(id, name=name, include=include)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling SubOrganizationsApi->update: %s\n" % e)
@@ -233,8 +246,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **int**| SubOrganization ID | 
- **name** | **str**| Name of the sub organization | 
+ **id** | **int**| Sub Organization ID | 
+ **name** | **str**| Name of the sub organization | [optional] 
+ **include** | **str**| Related objects that can be included in the response:  external_accounts, organization, teams See Including Objects for more information. | [optional] 
 
 ### Return type
 

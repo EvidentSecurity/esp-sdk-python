@@ -40,122 +40,10 @@ class CustomSignatureResultsApi(object):
                 config.api_client = ApiClient()
             self.api_client = config.api_client
 
-    def alerts(self, custom_signature_result_id, **kwargs):
-        """
-        Returns the alerts for a given result. Note that this format is slightly different than the standard alert format. A successful call to this API returns a list of alerts for the custom signature result identified by the custom_signature_result_id parameter.
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.alerts(custom_signature_result_id, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param int custom_signature_result_id: Custom Signature Result ID (required)
-        :param str include: Related objects that can be included in the response.  See Including Objects for more information.
-        :param str page: Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page
-        :return: PaginatedCollection
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('callback'):
-            return self.alerts_with_http_info(custom_signature_result_id, **kwargs)
-        else:
-            (data) = self.alerts_with_http_info(custom_signature_result_id, **kwargs)
-            return data
-
-    def alerts_with_http_info(self, custom_signature_result_id, **kwargs):
-        """
-        Returns the alerts for a given result. Note that this format is slightly different than the standard alert format. A successful call to this API returns a list of alerts for the custom signature result identified by the custom_signature_result_id parameter.
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.alerts_with_http_info(custom_signature_result_id, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param int custom_signature_result_id: Custom Signature Result ID (required)
-        :param str include: Related objects that can be included in the response.  See Including Objects for more information.
-        :param str page: Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page
-        :return: PaginatedCollection
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = ['custom_signature_result_id', 'include', 'page']
-        all_params.append('callback')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
-
-        params = locals()
-        for key, val in iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method alerts" % key
-                )
-            params[key] = val
-        del params['kwargs']
-        # verify the required parameter 'custom_signature_result_id' is set
-        if ('custom_signature_result_id' not in params) or (params['custom_signature_result_id'] is None):
-            raise ValueError("Missing the required parameter `custom_signature_result_id` when calling `alerts`")
-
-
-        collection_formats = {}
-
-        resource_path = '/api/v2/custom_signature_results/{custom_signature_result_id}/alerts.json_api'.replace('{format}', 'json_api')
-        path_params = {}
-        if 'custom_signature_result_id' in params:
-            path_params['custom_signature_result_id'] = params['custom_signature_result_id']
-
-        query_params = {}
-        if 'include' in params:
-            query_params['include'] = params['include']
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-        if 'page' in params:
-            form_params.append(('page', params['page']))
-
-        body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.\
-            select_header_accept(['application/vnd.api+json'])
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.\
-            select_header_content_type(['application/vnd.api+json'])
-
-        # Authentication setting
-        auth_settings = []
-
-        return self.api_client.call_api(resource_path, 'GET',
-                                        path_params,
-                                        query_params,
-                                        header_params,
-                                        body=body_params,
-                                        post_params=form_params,
-                                        files=local_var_files,
-                                        response_type='PaginatedCollection',
-                                        auth_settings=auth_settings,
-                                        callback=params.get('callback'),
-                                        _return_http_data_only=params.get('_return_http_data_only'),
-                                        _preload_content=params.get('_preload_content', True),
-                                        _request_timeout=params.get('_request_timeout'),
-                                        collection_formats=collection_formats)
-
     def create(self, code, custom_signature_definition_id, external_account_id, language, **kwargs):
         """
-        Create a(n) CustomSignatureResult
+        Create a(n) Custom Signature Result
+        
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -172,6 +60,7 @@ class CustomSignatureResultsApi(object):
         :param str language: The language of the definition. Valid values are ruby, javascript (required)
         :param int region_id: ID of the region the code should run for.  Required if region is not supplied.
         :param str region: Code of the region the result code should run for. Ex: us-east-1. This can be sent instead of region_id
+        :param str include: Related objects that can be included in the response:  external_account, region, definition See Including Objects for more information.
         :return: CustomSignatureResult
                  If the method is called asynchronously,
                  returns the request thread.
@@ -185,7 +74,8 @@ class CustomSignatureResultsApi(object):
 
     def create_with_http_info(self, code, custom_signature_definition_id, external_account_id, language, **kwargs):
         """
-        Create a(n) CustomSignatureResult
+        Create a(n) Custom Signature Result
+        
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -202,12 +92,13 @@ class CustomSignatureResultsApi(object):
         :param str language: The language of the definition. Valid values are ruby, javascript (required)
         :param int region_id: ID of the region the code should run for.  Required if region is not supplied.
         :param str region: Code of the region the result code should run for. Ex: us-east-1. This can be sent instead of region_id
+        :param str include: Related objects that can be included in the response:  external_account, region, definition See Including Objects for more information.
         :return: CustomSignatureResult
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['code', 'custom_signature_definition_id', 'external_account_id', 'language', 'region_id', 'region']
+        all_params = ['code', 'custom_signature_definition_id', 'external_account_id', 'language', 'region_id', 'region', 'include']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -242,6 +133,8 @@ class CustomSignatureResultsApi(object):
         path_params = {}
 
         query_params = {}
+        if 'include' in params:
+            query_params['include'] = params['include']
 
         header_params = {}
 
@@ -289,7 +182,8 @@ class CustomSignatureResultsApi(object):
 
     def list(self, **kwargs):
         """
-        Get a list of CustomSignatureResults
+        Get a list of Custom Signature Results
+        
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -300,9 +194,9 @@ class CustomSignatureResultsApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param dict(str, str) filter: Filter Params for Searching.  See Searching Lists for more information.
-        :param str include: Related objects that can be included in the response.  See Including Objects for more information.
+        :param dict(str, str) filter: Filter Params for Searching.  Equality Searchable Attributes: [id, language, status]   Sortable Attribute: [id] Searchable Associations: [definition, region, external_account] See Searching Lists for more information. See the filter parameter of the association's list action to see what attributes are searchable on each association. See Conditions on Relationships in Searching Lists for more information.
         :param str page: Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page
+        :param str include: Related objects that can be included in the response:  external_account, region, definition See Including Objects for more information.
         :return: PaginatedCollection
                  If the method is called asynchronously,
                  returns the request thread.
@@ -316,7 +210,8 @@ class CustomSignatureResultsApi(object):
 
     def list_with_http_info(self, **kwargs):
         """
-        Get a list of CustomSignatureResults
+        Get a list of Custom Signature Results
+        
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -327,15 +222,15 @@ class CustomSignatureResultsApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param dict(str, str) filter: Filter Params for Searching.  See Searching Lists for more information.
-        :param str include: Related objects that can be included in the response.  See Including Objects for more information.
+        :param dict(str, str) filter: Filter Params for Searching.  Equality Searchable Attributes: [id, language, status]   Sortable Attribute: [id] Searchable Associations: [definition, region, external_account] See Searching Lists for more information. See the filter parameter of the association's list action to see what attributes are searchable on each association. See Conditions on Relationships in Searching Lists for more information.
         :param str page: Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page
+        :param str include: Related objects that can be included in the response:  external_account, region, definition See Including Objects for more information.
         :return: PaginatedCollection
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['filter', 'include', 'page']
+        all_params = ['filter', 'page', 'include']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -397,9 +292,125 @@ class CustomSignatureResultsApi(object):
                                         _request_timeout=params.get('_request_timeout'),
                                         collection_formats=collection_formats)
 
+    def list_alerts(self, custom_signature_result_id, **kwargs):
+        """
+        Returns the Alerts for a given Custom Signature Result
+        This format is slightly different than the standard alert format. A successful call to this API returns a list of alerts for the custom signature result identified by the custom_signature_result_id parameter.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.list_alerts(custom_signature_result_id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param int custom_signature_result_id: Custom Signature Result ID (required)
+        :param str page: Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page
+        :param str include: Related objects that can be included in the response:  external_account, region, custom_signature See Including Objects for more information.
+        :return: PaginatedCollection
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.list_alerts_with_http_info(custom_signature_result_id, **kwargs)
+        else:
+            (data) = self.list_alerts_with_http_info(custom_signature_result_id, **kwargs)
+            return data
+
+    def list_alerts_with_http_info(self, custom_signature_result_id, **kwargs):
+        """
+        Returns the Alerts for a given Custom Signature Result
+        This format is slightly different than the standard alert format. A successful call to this API returns a list of alerts for the custom signature result identified by the custom_signature_result_id parameter.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.list_alerts_with_http_info(custom_signature_result_id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param int custom_signature_result_id: Custom Signature Result ID (required)
+        :param str page: Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page
+        :param str include: Related objects that can be included in the response:  external_account, region, custom_signature See Including Objects for more information.
+        :return: PaginatedCollection
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['custom_signature_result_id', 'page', 'include']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method list_alerts" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'custom_signature_result_id' is set
+        if ('custom_signature_result_id' not in params) or (params['custom_signature_result_id'] is None):
+            raise ValueError("Missing the required parameter `custom_signature_result_id` when calling `list_alerts`")
+
+
+        collection_formats = {}
+
+        resource_path = '/api/v2/custom_signature_results/{custom_signature_result_id}/alerts.json_api'.replace('{format}', 'json_api')
+        path_params = {}
+        if 'custom_signature_result_id' in params:
+            path_params['custom_signature_result_id'] = params['custom_signature_result_id']
+
+        query_params = {}
+        if 'include' in params:
+            query_params['include'] = params['include']
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+        if 'page' in params:
+            form_params.append(('page', params['page']))
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/vnd.api+json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/vnd.api+json'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api(resource_path, 'GET',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='PaginatedCollection',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
     def show(self, id, **kwargs):
         """
-        Show a single CustomSignatureResult
+        Show a single Custom Signature Result
+        
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -410,8 +421,8 @@ class CustomSignatureResultsApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param int id: CustomSignatureResult ID (required)
-        :param str include: Related objects that can be included in the response.  See Including Objects for more information.
+        :param int id: Custom Signature Result ID (required)
+        :param str include: Related objects that can be included in the response:  external_account, region, definition See Including Objects for more information.
         :return: CustomSignatureResult
                  If the method is called asynchronously,
                  returns the request thread.
@@ -425,7 +436,8 @@ class CustomSignatureResultsApi(object):
 
     def show_with_http_info(self, id, **kwargs):
         """
-        Show a single CustomSignatureResult
+        Show a single Custom Signature Result
+        
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -436,8 +448,8 @@ class CustomSignatureResultsApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param int id: CustomSignatureResult ID (required)
-        :param str include: Related objects that can be included in the response.  See Including Objects for more information.
+        :param int id: Custom Signature Result ID (required)
+        :param str include: Related objects that can be included in the response:  external_account, region, definition See Including Objects for more information.
         :return: CustomSignatureResult
                  If the method is called asynchronously,
                  returns the request thread.

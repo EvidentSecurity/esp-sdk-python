@@ -40,57 +40,57 @@ class ExternalAccountsApi(object):
                 config.api_client = ApiClient()
             self.api_client = config.api_client
 
-    def create(self, team_id, arn, external_id, **kwargs):
+    def add_compliance_standard(self, external_account_id, compliance_standard_id, **kwargs):
         """
-        Create a(n) ExternalAccount
+        Add a compliance standard to an external account
+        
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.create(team_id, arn, external_id, callback=callback_function)
+        >>> thread = api.add_compliance_standard(external_account_id, compliance_standard_id, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param int team_id: The ID of the team the external account will belong to (required)
-        :param str arn: Amazon Resource Name for the IAM role (required)
-        :param str external_id: External Identifier set on the role (required)
-        :param str name: Name
-        :return: ExternalAccount
+        :param int external_account_id: The ID of the external account this compliance standard belongs to (required)
+        :param int compliance_standard_id: The ID of the compliance standard that belongs to this external account (required)
+        :param str include: Related objects that can be included in the response:  compliance_domains, compliance_controls See Including Objects for more information.
+        :return: ComplianceStandard
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.create_with_http_info(team_id, arn, external_id, **kwargs)
+            return self.add_compliance_standard_with_http_info(external_account_id, compliance_standard_id, **kwargs)
         else:
-            (data) = self.create_with_http_info(team_id, arn, external_id, **kwargs)
+            (data) = self.add_compliance_standard_with_http_info(external_account_id, compliance_standard_id, **kwargs)
             return data
 
-    def create_with_http_info(self, team_id, arn, external_id, **kwargs):
+    def add_compliance_standard_with_http_info(self, external_account_id, compliance_standard_id, **kwargs):
         """
-        Create a(n) ExternalAccount
+        Add a compliance standard to an external account
+        
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.create_with_http_info(team_id, arn, external_id, callback=callback_function)
+        >>> thread = api.add_compliance_standard_with_http_info(external_account_id, compliance_standard_id, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param int team_id: The ID of the team the external account will belong to (required)
-        :param str arn: Amazon Resource Name for the IAM role (required)
-        :param str external_id: External Identifier set on the role (required)
-        :param str name: Name
-        :return: ExternalAccount
+        :param int external_account_id: The ID of the external account this compliance standard belongs to (required)
+        :param int compliance_standard_id: The ID of the compliance standard that belongs to this external account (required)
+        :param str include: Related objects that can be included in the response:  compliance_domains, compliance_controls See Including Objects for more information.
+        :return: ComplianceStandard
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['team_id', 'arn', 'external_id', 'name']
+        all_params = ['external_account_id', 'compliance_standard_id', 'include']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -101,40 +101,35 @@ class ExternalAccountsApi(object):
             if key not in all_params:
                 raise TypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method create" % key
+                    " to method add_compliance_standard" % key
                 )
             params[key] = val
         del params['kwargs']
-        # verify the required parameter 'team_id' is set
-        if ('team_id' not in params) or (params['team_id'] is None):
-            raise ValueError("Missing the required parameter `team_id` when calling `create`")
-        # verify the required parameter 'arn' is set
-        if ('arn' not in params) or (params['arn'] is None):
-            raise ValueError("Missing the required parameter `arn` when calling `create`")
-        # verify the required parameter 'external_id' is set
-        if ('external_id' not in params) or (params['external_id'] is None):
-            raise ValueError("Missing the required parameter `external_id` when calling `create`")
+        # verify the required parameter 'external_account_id' is set
+        if ('external_account_id' not in params) or (params['external_account_id'] is None):
+            raise ValueError("Missing the required parameter `external_account_id` when calling `add_compliance_standard`")
+        # verify the required parameter 'compliance_standard_id' is set
+        if ('compliance_standard_id' not in params) or (params['compliance_standard_id'] is None):
+            raise ValueError("Missing the required parameter `compliance_standard_id` when calling `add_compliance_standard`")
 
 
         collection_formats = {}
 
-        resource_path = '/api/v2/external_accounts.json_api'.replace('{format}', 'json_api')
+        resource_path = '/api/v2/external_accounts/{external_account_id}/compliance_standards.json_api'.replace('{format}', 'json_api')
         path_params = {}
+        if 'external_account_id' in params:
+            path_params['external_account_id'] = params['external_account_id']
 
         query_params = {}
+        if 'include' in params:
+            query_params['include'] = params['include']
 
         header_params = {}
 
         form_params = []
         local_var_files = {}
-        if 'name' in params:
-            form_params.append(('name', params['name']))
-        if 'team_id' in params:
-            form_params.append(('team_id', params['team_id']))
-        if 'arn' in params:
-            form_params.append(('arn', params['arn']))
-        if 'external_id' in params:
-            form_params.append(('external_id', params['external_id']))
+        if 'compliance_standard_id' in params:
+            form_params.append(('compliance_standard_id', params['compliance_standard_id']))
 
         body_params = None
         # HTTP header `Accept`
@@ -155,7 +150,7 @@ class ExternalAccountsApi(object):
                                         body=body_params,
                                         post_params=form_params,
                                         files=local_var_files,
-                                        response_type='ExternalAccount',
+                                        response_type='ComplianceStandard',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -163,45 +158,279 @@ class ExternalAccountsApi(object):
                                         _request_timeout=params.get('_request_timeout'),
                                         collection_formats=collection_formats)
 
-    def destroy(self, id, **kwargs):
+    def add_custom_compliance_standard(self, external_account_id, custom_compliance_standard_id, **kwargs):
         """
-        Remove a(n) ExternalAccount
+        Add a custom compliance standard to an external account
+        
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.destroy(id, callback=callback_function)
+        >>> thread = api.add_custom_compliance_standard(external_account_id, custom_compliance_standard_id, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param int id: ExternalAccount ID (required)
+        :param int external_account_id: The ID of the external account this custom compliance standard belongs to (required)
+        :param int custom_compliance_standard_id: The ID of the custom compliance standard that belongs to this external account (required)
         :return: Meta
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.destroy_with_http_info(id, **kwargs)
+            return self.add_custom_compliance_standard_with_http_info(external_account_id, custom_compliance_standard_id, **kwargs)
         else:
-            (data) = self.destroy_with_http_info(id, **kwargs)
+            (data) = self.add_custom_compliance_standard_with_http_info(external_account_id, custom_compliance_standard_id, **kwargs)
             return data
 
-    def destroy_with_http_info(self, id, **kwargs):
+    def add_custom_compliance_standard_with_http_info(self, external_account_id, custom_compliance_standard_id, **kwargs):
         """
-        Remove a(n) ExternalAccount
+        Add a custom compliance standard to an external account
+        
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.destroy_with_http_info(id, callback=callback_function)
+        >>> thread = api.add_custom_compliance_standard_with_http_info(external_account_id, custom_compliance_standard_id, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param int id: ExternalAccount ID (required)
+        :param int external_account_id: The ID of the external account this custom compliance standard belongs to (required)
+        :param int custom_compliance_standard_id: The ID of the custom compliance standard that belongs to this external account (required)
+        :return: Meta
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['external_account_id', 'custom_compliance_standard_id']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method add_custom_compliance_standard" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'external_account_id' is set
+        if ('external_account_id' not in params) or (params['external_account_id'] is None):
+            raise ValueError("Missing the required parameter `external_account_id` when calling `add_custom_compliance_standard`")
+        # verify the required parameter 'custom_compliance_standard_id' is set
+        if ('custom_compliance_standard_id' not in params) or (params['custom_compliance_standard_id'] is None):
+            raise ValueError("Missing the required parameter `custom_compliance_standard_id` when calling `add_custom_compliance_standard`")
+
+
+        collection_formats = {}
+
+        resource_path = '/api/v2/external_accounts/{external_account_id}/custom_compliance_standards.json_api'.replace('{format}', 'json_api')
+        path_params = {}
+        if 'external_account_id' in params:
+            path_params['external_account_id'] = params['external_account_id']
+
+        query_params = {}
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+        if 'custom_compliance_standard_id' in params:
+            form_params.append(('custom_compliance_standard_id', params['custom_compliance_standard_id']))
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/vnd.api+json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/vnd.api+json'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api(resource_path, 'POST',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='Meta',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def add_disabled_signature(self, external_account_id, signature_id, **kwargs):
+        """
+        Disable a signature for an external account
+        
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.add_disabled_signature(external_account_id, signature_id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param int external_account_id: The ID of the external account to disable a signature on (required)
+        :param int signature_id: The ID of the signature to disable (required)
+        :param str include: Related objects that can be included in the response:  service See Including Objects for more information.
+        :return: Signature
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.add_disabled_signature_with_http_info(external_account_id, signature_id, **kwargs)
+        else:
+            (data) = self.add_disabled_signature_with_http_info(external_account_id, signature_id, **kwargs)
+            return data
+
+    def add_disabled_signature_with_http_info(self, external_account_id, signature_id, **kwargs):
+        """
+        Disable a signature for an external account
+        
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.add_disabled_signature_with_http_info(external_account_id, signature_id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param int external_account_id: The ID of the external account to disable a signature on (required)
+        :param int signature_id: The ID of the signature to disable (required)
+        :param str include: Related objects that can be included in the response:  service See Including Objects for more information.
+        :return: Signature
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['external_account_id', 'signature_id', 'include']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method add_disabled_signature" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'external_account_id' is set
+        if ('external_account_id' not in params) or (params['external_account_id'] is None):
+            raise ValueError("Missing the required parameter `external_account_id` when calling `add_disabled_signature`")
+        # verify the required parameter 'signature_id' is set
+        if ('signature_id' not in params) or (params['signature_id'] is None):
+            raise ValueError("Missing the required parameter `signature_id` when calling `add_disabled_signature`")
+
+
+        collection_formats = {}
+
+        resource_path = '/api/v2/external_accounts/{external_account_id}/disabled_signatures.json_api'.replace('{format}', 'json_api')
+        path_params = {}
+        if 'external_account_id' in params:
+            path_params['external_account_id'] = params['external_account_id']
+
+        query_params = {}
+        if 'include' in params:
+            query_params['include'] = params['include']
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+        if 'signature_id' in params:
+            form_params.append(('signature_id', params['signature_id']))
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/vnd.api+json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/vnd.api+json'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api(resource_path, 'POST',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='Signature',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def delete(self, id, **kwargs):
+        """
+        Delete a(n) External Account
+        
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.delete(id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param int id:  ID (required)
+        :return: Meta
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.delete_with_http_info(id, **kwargs)
+        else:
+            (data) = self.delete_with_http_info(id, **kwargs)
+            return data
+
+    def delete_with_http_info(self, id, **kwargs):
+        """
+        Delete a(n) External Account
+        
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.delete_with_http_info(id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param int id:  ID (required)
         :return: Meta
                  If the method is called asynchronously,
                  returns the request thread.
@@ -218,13 +447,13 @@ class ExternalAccountsApi(object):
             if key not in all_params:
                 raise TypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method destroy" % key
+                    " to method delete" % key
                 )
             params[key] = val
         del params['kwargs']
         # verify the required parameter 'id' is set
         if ('id' not in params) or (params['id'] is None):
-            raise ValueError("Missing the required parameter `id` when calling `destroy`")
+            raise ValueError("Missing the required parameter `id` when calling `delete`")
 
 
         collection_formats = {}
@@ -270,7 +499,8 @@ class ExternalAccountsApi(object):
 
     def list(self, **kwargs):
         """
-        Get a list of ExternalAccounts
+        Get a list of External Accounts
+        
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -281,9 +511,9 @@ class ExternalAccountsApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param dict(str, str) filter: Filter Params for Searching.  See Searching Lists for more information.
-        :param str include: Related objects that can be included in the response.  See Including Objects for more information.
+        :param dict(str, str) filter: Filter Params for Searching.  Equality Searchable Attributes: [id, nickname, name] Matching Searchable Attributes: [nickname, name] Limited Searchable Attributes: [account_eq, arn_eq, provider_eq, subscription_id_eq] Sortable Attributes: [name, updated_at, created_at, id] Searchable Associations: [organization, sub_organization, team, compliance_standards, azure_group, disabled_signatures] See Searching Lists for more information. See the filter parameter of the association's list action to see what attributes are searchable on each association. See Conditions on Relationships in Searching Lists for more information.
         :param str page: Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page
+        :param str include: Related objects that can be included in the response:  organization, sub_organization, team, scan_intervals, disabled_signatures, azure_group, credentials See Including Objects for more information.
         :return: PaginatedCollection
                  If the method is called asynchronously,
                  returns the request thread.
@@ -297,7 +527,8 @@ class ExternalAccountsApi(object):
 
     def list_with_http_info(self, **kwargs):
         """
-        Get a list of ExternalAccounts
+        Get a list of External Accounts
+        
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -308,15 +539,15 @@ class ExternalAccountsApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param dict(str, str) filter: Filter Params for Searching.  See Searching Lists for more information.
-        :param str include: Related objects that can be included in the response.  See Including Objects for more information.
+        :param dict(str, str) filter: Filter Params for Searching.  Equality Searchable Attributes: [id, nickname, name] Matching Searchable Attributes: [nickname, name] Limited Searchable Attributes: [account_eq, arn_eq, provider_eq, subscription_id_eq] Sortable Attributes: [name, updated_at, created_at, id] Searchable Associations: [organization, sub_organization, team, compliance_standards, azure_group, disabled_signatures] See Searching Lists for more information. See the filter parameter of the association's list action to see what attributes are searchable on each association. See Conditions on Relationships in Searching Lists for more information.
         :param str page: Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page
+        :param str include: Related objects that can be included in the response:  organization, sub_organization, team, scan_intervals, disabled_signatures, azure_group, credentials See Including Objects for more information.
         :return: PaginatedCollection
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['filter', 'include', 'page']
+        all_params = ['filter', 'page', 'include']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -378,9 +609,701 @@ class ExternalAccountsApi(object):
                                         _request_timeout=params.get('_request_timeout'),
                                         collection_formats=collection_formats)
 
+    def list_compliance_standards(self, external_account_id, **kwargs):
+        """
+        Get a list of compliance standards for an external account
+        
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.list_compliance_standards(external_account_id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param int external_account_id: The ID of the external account this compliance standard belongs to (required)
+        :param str page: Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page
+        :param str include: Related objects that can be included in the response:  compliance_domains, compliance_controls See Including Objects for more information.
+        :return: PaginatedCollection
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.list_compliance_standards_with_http_info(external_account_id, **kwargs)
+        else:
+            (data) = self.list_compliance_standards_with_http_info(external_account_id, **kwargs)
+            return data
+
+    def list_compliance_standards_with_http_info(self, external_account_id, **kwargs):
+        """
+        Get a list of compliance standards for an external account
+        
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.list_compliance_standards_with_http_info(external_account_id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param int external_account_id: The ID of the external account this compliance standard belongs to (required)
+        :param str page: Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page
+        :param str include: Related objects that can be included in the response:  compliance_domains, compliance_controls See Including Objects for more information.
+        :return: PaginatedCollection
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['external_account_id', 'page', 'include']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method list_compliance_standards" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'external_account_id' is set
+        if ('external_account_id' not in params) or (params['external_account_id'] is None):
+            raise ValueError("Missing the required parameter `external_account_id` when calling `list_compliance_standards`")
+
+
+        collection_formats = {}
+
+        resource_path = '/api/v2/external_accounts/{external_account_id}/compliance_standards.json_api'.replace('{format}', 'json_api')
+        path_params = {}
+        if 'external_account_id' in params:
+            path_params['external_account_id'] = params['external_account_id']
+
+        query_params = {}
+        if 'include' in params:
+            query_params['include'] = params['include']
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+        if 'page' in params:
+            form_params.append(('page', params['page']))
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/vnd.api+json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/vnd.api+json'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api(resource_path, 'GET',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='PaginatedCollection',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def list_custom_compliance_standards(self, external_account_id, **kwargs):
+        """
+        Get a list of custom compliance standards for an external account
+        
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.list_custom_compliance_standards(external_account_id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param int external_account_id: The ID of the external account this custom compliance standard belongs to (required)
+        :param str page: Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page
+        :param str include: Related objects that can be included in the response:  custom_compliance_domains, custom_compliance_controls See Including Objects for more information.
+        :return: PaginatedCollection
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.list_custom_compliance_standards_with_http_info(external_account_id, **kwargs)
+        else:
+            (data) = self.list_custom_compliance_standards_with_http_info(external_account_id, **kwargs)
+            return data
+
+    def list_custom_compliance_standards_with_http_info(self, external_account_id, **kwargs):
+        """
+        Get a list of custom compliance standards for an external account
+        
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.list_custom_compliance_standards_with_http_info(external_account_id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param int external_account_id: The ID of the external account this custom compliance standard belongs to (required)
+        :param str page: Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page
+        :param str include: Related objects that can be included in the response:  custom_compliance_domains, custom_compliance_controls See Including Objects for more information.
+        :return: PaginatedCollection
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['external_account_id', 'page', 'include']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method list_custom_compliance_standards" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'external_account_id' is set
+        if ('external_account_id' not in params) or (params['external_account_id'] is None):
+            raise ValueError("Missing the required parameter `external_account_id` when calling `list_custom_compliance_standards`")
+
+
+        collection_formats = {}
+
+        resource_path = '/api/v2/external_accounts/{external_account_id}/custom_compliance_standards.json_api'.replace('{format}', 'json_api')
+        path_params = {}
+        if 'external_account_id' in params:
+            path_params['external_account_id'] = params['external_account_id']
+
+        query_params = {}
+        if 'include' in params:
+            query_params['include'] = params['include']
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+        if 'page' in params:
+            form_params.append(('page', params['page']))
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/vnd.api+json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/vnd.api+json'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api(resource_path, 'GET',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='PaginatedCollection',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def list_disabled_signatures(self, external_account_id, **kwargs):
+        """
+        Get a list all the disabled signatures for an external account
+        
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.list_disabled_signatures(external_account_id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param int external_account_id: The ID of the external account to retrieve the disabled signatures for (required)
+        :param dict(str, str) filter: Filter Params for Searching.  Equality Searchable Attributes: [id, risk_level, service_id, disabled, supports_user_attribution, name, identifier, description, resolution] Matching Searchable Attributes: [name, identifier, description, resolution] Limited Searchable Attribute: [service_provider_eq] Sortable Attributes: [name, identifier, updated_at, created_at, id] Searchable Associations: [signature_copy, disabled_external_accounts, integrations] See Searching Lists for more information. See the filter parameter of the association's list action to see what attributes are searchable on each association. See Conditions on Relationships in Searching Lists for more information.
+        :param str page: Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page
+        :param str include: Related objects that can be included in the response:  service See Including Objects for more information.
+        :return: PaginatedCollection
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.list_disabled_signatures_with_http_info(external_account_id, **kwargs)
+        else:
+            (data) = self.list_disabled_signatures_with_http_info(external_account_id, **kwargs)
+            return data
+
+    def list_disabled_signatures_with_http_info(self, external_account_id, **kwargs):
+        """
+        Get a list all the disabled signatures for an external account
+        
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.list_disabled_signatures_with_http_info(external_account_id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param int external_account_id: The ID of the external account to retrieve the disabled signatures for (required)
+        :param dict(str, str) filter: Filter Params for Searching.  Equality Searchable Attributes: [id, risk_level, service_id, disabled, supports_user_attribution, name, identifier, description, resolution] Matching Searchable Attributes: [name, identifier, description, resolution] Limited Searchable Attribute: [service_provider_eq] Sortable Attributes: [name, identifier, updated_at, created_at, id] Searchable Associations: [signature_copy, disabled_external_accounts, integrations] See Searching Lists for more information. See the filter parameter of the association's list action to see what attributes are searchable on each association. See Conditions on Relationships in Searching Lists for more information.
+        :param str page: Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page
+        :param str include: Related objects that can be included in the response:  service See Including Objects for more information.
+        :return: PaginatedCollection
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['external_account_id', 'filter', 'page', 'include']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method list_disabled_signatures" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'external_account_id' is set
+        if ('external_account_id' not in params) or (params['external_account_id'] is None):
+            raise ValueError("Missing the required parameter `external_account_id` when calling `list_disabled_signatures`")
+
+
+        collection_formats = {}
+
+        resource_path = '/api/v2/external_accounts/{external_account_id}/disabled_signatures.json_api'.replace('{format}', 'json_api')
+        path_params = {}
+        if 'external_account_id' in params:
+            path_params['external_account_id'] = params['external_account_id']
+
+        query_params = {}
+        if 'include' in params:
+            query_params['include'] = params['include']
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+        if 'filter' in params:
+            form_params.append(('filter', params['filter']))
+        if 'page' in params:
+            form_params.append(('page', params['page']))
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/vnd.api+json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/vnd.api+json'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api(resource_path, 'PUT',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='PaginatedCollection',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def remove_compliance_standard(self, external_account_id, compliance_standard_id, **kwargs):
+        """
+        Remove a compliance standard from an external account
+        
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.remove_compliance_standard(external_account_id, compliance_standard_id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param int external_account_id: The ID of the external account this compliance standard belongs to (required)
+        :param int compliance_standard_id: The ID of the compliance standard that belongs to this external account (required)
+        :return: Meta
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.remove_compliance_standard_with_http_info(external_account_id, compliance_standard_id, **kwargs)
+        else:
+            (data) = self.remove_compliance_standard_with_http_info(external_account_id, compliance_standard_id, **kwargs)
+            return data
+
+    def remove_compliance_standard_with_http_info(self, external_account_id, compliance_standard_id, **kwargs):
+        """
+        Remove a compliance standard from an external account
+        
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.remove_compliance_standard_with_http_info(external_account_id, compliance_standard_id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param int external_account_id: The ID of the external account this compliance standard belongs to (required)
+        :param int compliance_standard_id: The ID of the compliance standard that belongs to this external account (required)
+        :return: Meta
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['external_account_id', 'compliance_standard_id']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method remove_compliance_standard" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'external_account_id' is set
+        if ('external_account_id' not in params) or (params['external_account_id'] is None):
+            raise ValueError("Missing the required parameter `external_account_id` when calling `remove_compliance_standard`")
+        # verify the required parameter 'compliance_standard_id' is set
+        if ('compliance_standard_id' not in params) or (params['compliance_standard_id'] is None):
+            raise ValueError("Missing the required parameter `compliance_standard_id` when calling `remove_compliance_standard`")
+
+
+        collection_formats = {}
+
+        resource_path = '/api/v2/external_accounts/{external_account_id}/compliance_standards/{compliance_standard_id}.json_api'.replace('{format}', 'json_api')
+        path_params = {}
+        if 'external_account_id' in params:
+            path_params['external_account_id'] = params['external_account_id']
+        if 'compliance_standard_id' in params:
+            path_params['compliance_standard_id'] = params['compliance_standard_id']
+
+        query_params = {}
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/vnd.api+json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/vnd.api+json'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api(resource_path, 'DELETE',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='Meta',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def remove_custom_compliance_standard(self, external_account_id, custom_compliance_standard_id, **kwargs):
+        """
+        Remove a custom compliance standard from an external account
+        
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.remove_custom_compliance_standard(external_account_id, custom_compliance_standard_id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param int external_account_id: The ID of the external account this custom compliance standard belongs to (required)
+        :param int custom_compliance_standard_id: The ID of the custom compliance standard that belongs to this external account (required)
+        :return: Meta
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.remove_custom_compliance_standard_with_http_info(external_account_id, custom_compliance_standard_id, **kwargs)
+        else:
+            (data) = self.remove_custom_compliance_standard_with_http_info(external_account_id, custom_compliance_standard_id, **kwargs)
+            return data
+
+    def remove_custom_compliance_standard_with_http_info(self, external_account_id, custom_compliance_standard_id, **kwargs):
+        """
+        Remove a custom compliance standard from an external account
+        
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.remove_custom_compliance_standard_with_http_info(external_account_id, custom_compliance_standard_id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param int external_account_id: The ID of the external account this custom compliance standard belongs to (required)
+        :param int custom_compliance_standard_id: The ID of the custom compliance standard that belongs to this external account (required)
+        :return: Meta
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['external_account_id', 'custom_compliance_standard_id']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method remove_custom_compliance_standard" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'external_account_id' is set
+        if ('external_account_id' not in params) or (params['external_account_id'] is None):
+            raise ValueError("Missing the required parameter `external_account_id` when calling `remove_custom_compliance_standard`")
+        # verify the required parameter 'custom_compliance_standard_id' is set
+        if ('custom_compliance_standard_id' not in params) or (params['custom_compliance_standard_id'] is None):
+            raise ValueError("Missing the required parameter `custom_compliance_standard_id` when calling `remove_custom_compliance_standard`")
+
+
+        collection_formats = {}
+
+        resource_path = '/api/v2/external_accounts/{external_account_id}/custom_compliance_standards/{custom_compliance_standard_id}.json_api'.replace('{format}', 'json_api')
+        path_params = {}
+        if 'external_account_id' in params:
+            path_params['external_account_id'] = params['external_account_id']
+        if 'custom_compliance_standard_id' in params:
+            path_params['custom_compliance_standard_id'] = params['custom_compliance_standard_id']
+
+        query_params = {}
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/vnd.api+json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/vnd.api+json'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api(resource_path, 'DELETE',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='Meta',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def remove_disabled_signature(self, external_account_id, signature_id, **kwargs):
+        """
+        Re-enable a signature for an external account
+        
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.remove_disabled_signature(external_account_id, signature_id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param int external_account_id: The ID of the external account to enable a signature on (required)
+        :param int signature_id: The ID of the signature to enable (required)
+        :return: Meta
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.remove_disabled_signature_with_http_info(external_account_id, signature_id, **kwargs)
+        else:
+            (data) = self.remove_disabled_signature_with_http_info(external_account_id, signature_id, **kwargs)
+            return data
+
+    def remove_disabled_signature_with_http_info(self, external_account_id, signature_id, **kwargs):
+        """
+        Re-enable a signature for an external account
+        
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.remove_disabled_signature_with_http_info(external_account_id, signature_id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param int external_account_id: The ID of the external account to enable a signature on (required)
+        :param int signature_id: The ID of the signature to enable (required)
+        :return: Meta
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['external_account_id', 'signature_id']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method remove_disabled_signature" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'external_account_id' is set
+        if ('external_account_id' not in params) or (params['external_account_id'] is None):
+            raise ValueError("Missing the required parameter `external_account_id` when calling `remove_disabled_signature`")
+        # verify the required parameter 'signature_id' is set
+        if ('signature_id' not in params) or (params['signature_id'] is None):
+            raise ValueError("Missing the required parameter `signature_id` when calling `remove_disabled_signature`")
+
+
+        collection_formats = {}
+
+        resource_path = '/api/v2/external_accounts/{external_account_id}/disabled_signatures/{signature_id}.json_api'.replace('{format}', 'json_api')
+        path_params = {}
+        if 'external_account_id' in params:
+            path_params['external_account_id'] = params['external_account_id']
+        if 'signature_id' in params:
+            path_params['signature_id'] = params['signature_id']
+
+        query_params = {}
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/vnd.api+json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/vnd.api+json'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api(resource_path, 'DELETE',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='Meta',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
     def show(self, id, **kwargs):
         """
-        Show a single ExternalAccount
+        Show a single External Account
+        
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -391,8 +1314,8 @@ class ExternalAccountsApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param int id: ExternalAccount ID (required)
-        :param str include: Related objects that can be included in the response.  See Including Objects for more information.
+        :param int id: External Account ID (required)
+        :param str include: Related objects that can be included in the response:  organization, sub_organization, team, scan_intervals, disabled_signatures, azure_group, credentials See Including Objects for more information.
         :return: ExternalAccount
                  If the method is called asynchronously,
                  returns the request thread.
@@ -406,7 +1329,8 @@ class ExternalAccountsApi(object):
 
     def show_with_http_info(self, id, **kwargs):
         """
-        Show a single ExternalAccount
+        Show a single External Account
+        
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -417,8 +1341,8 @@ class ExternalAccountsApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param int id: ExternalAccount ID (required)
-        :param str include: Related objects that can be included in the response.  See Including Objects for more information.
+        :param int id: External Account ID (required)
+        :param str include: Related objects that can be included in the response:  organization, sub_organization, team, scan_intervals, disabled_signatures, azure_group, credentials See Including Objects for more information.
         :return: ExternalAccount
                  If the method is called asynchronously,
                  returns the request thread.
@@ -473,122 +1397,6 @@ class ExternalAccountsApi(object):
         auth_settings = []
 
         return self.api_client.call_api(resource_path, 'GET',
-                                        path_params,
-                                        query_params,
-                                        header_params,
-                                        body=body_params,
-                                        post_params=form_params,
-                                        files=local_var_files,
-                                        response_type='ExternalAccount',
-                                        auth_settings=auth_settings,
-                                        callback=params.get('callback'),
-                                        _return_http_data_only=params.get('_return_http_data_only'),
-                                        _preload_content=params.get('_preload_content', True),
-                                        _request_timeout=params.get('_request_timeout'),
-                                        collection_formats=collection_formats)
-
-    def update(self, id, team_id, **kwargs):
-        """
-        Update a(n) ExternalAccount
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.update(id, team_id, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param int id: ExternalAccount ID (required)
-        :param int team_id: The ID of the team the external account will belong to (required)
-        :param str name: Name
-        :return: ExternalAccount
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('callback'):
-            return self.update_with_http_info(id, team_id, **kwargs)
-        else:
-            (data) = self.update_with_http_info(id, team_id, **kwargs)
-            return data
-
-    def update_with_http_info(self, id, team_id, **kwargs):
-        """
-        Update a(n) ExternalAccount
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.update_with_http_info(id, team_id, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param int id: ExternalAccount ID (required)
-        :param int team_id: The ID of the team the external account will belong to (required)
-        :param str name: Name
-        :return: ExternalAccount
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = ['id', 'team_id', 'name']
-        all_params.append('callback')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
-
-        params = locals()
-        for key, val in iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method update" % key
-                )
-            params[key] = val
-        del params['kwargs']
-        # verify the required parameter 'id' is set
-        if ('id' not in params) or (params['id'] is None):
-            raise ValueError("Missing the required parameter `id` when calling `update`")
-        # verify the required parameter 'team_id' is set
-        if ('team_id' not in params) or (params['team_id'] is None):
-            raise ValueError("Missing the required parameter `team_id` when calling `update`")
-
-
-        collection_formats = {}
-
-        resource_path = '/api/v2/external_accounts/{id}.json_api'.replace('{format}', 'json_api')
-        path_params = {}
-        if 'id' in params:
-            path_params['id'] = params['id']
-
-        query_params = {}
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-        if 'name' in params:
-            form_params.append(('name', params['name']))
-        if 'team_id' in params:
-            form_params.append(('team_id', params['team_id']))
-
-        body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.\
-            select_header_accept(['application/vnd.api+json'])
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.\
-            select_header_content_type(['application/vnd.api+json'])
-
-        # Authentication setting
-        auth_settings = []
-
-        return self.api_client.call_api(resource_path, 'PATCH',
                                         path_params,
                                         query_params,
                                         header_params,

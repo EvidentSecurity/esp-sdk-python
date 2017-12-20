@@ -42,7 +42,8 @@ class AuditLogsApi(object):
 
     def list(self, **kwargs):
         """
-        Get a list of AuditLogs
+        Get a list of Audit Logs
+        
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -53,9 +54,9 @@ class AuditLogsApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param dict(str, str) filter: Filter Params for Searching.  See Searching Lists for more information.
-        :param str include: Related objects that can be included in the response.  See Including Objects for more information.
+        :param dict(str, str) filter: Filter Params for Searching.  Equality Searchable Attributes: [id, item_id, item_type] Matching Searchable Attribute: [item_type]  Sortable Attribute: [id] Searchable Associations: [user, organization] See Searching Lists for more information. See the filter parameter of the association's list action to see what attributes are searchable on each association. See Conditions on Relationships in Searching Lists for more information.
         :param str page: Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page
+        :param str include: Related objects that can be included in the response:  organization, user See Including Objects for more information.
         :return: PaginatedCollection
                  If the method is called asynchronously,
                  returns the request thread.
@@ -69,7 +70,8 @@ class AuditLogsApi(object):
 
     def list_with_http_info(self, **kwargs):
         """
-        Get a list of AuditLogs
+        Get a list of Audit Logs
+        
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -80,15 +82,15 @@ class AuditLogsApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param dict(str, str) filter: Filter Params for Searching.  See Searching Lists for more information.
-        :param str include: Related objects that can be included in the response.  See Including Objects for more information.
+        :param dict(str, str) filter: Filter Params for Searching.  Equality Searchable Attributes: [id, item_id, item_type] Matching Searchable Attribute: [item_type]  Sortable Attribute: [id] Searchable Associations: [user, organization] See Searching Lists for more information. See the filter parameter of the association's list action to see what attributes are searchable on each association. See Conditions on Relationships in Searching Lists for more information.
         :param str page: Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page
+        :param str include: Related objects that can be included in the response:  organization, user See Including Objects for more information.
         :return: PaginatedCollection
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['filter', 'include', 'page']
+        all_params = ['filter', 'page', 'include']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -152,7 +154,8 @@ class AuditLogsApi(object):
 
     def show(self, id, **kwargs):
         """
-        Show a single AuditLog
+        Show a single Audit Log
+        
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -163,8 +166,8 @@ class AuditLogsApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param int id: AuditLog ID (required)
-        :param str include: Related objects that can be included in the response.  See Including Objects for more information.
+        :param int id: Audit Log ID (required)
+        :param str include: Related objects that can be included in the response:  organization, user See Including Objects for more information.
         :return: AuditLog
                  If the method is called asynchronously,
                  returns the request thread.
@@ -178,7 +181,8 @@ class AuditLogsApi(object):
 
     def show_with_http_info(self, id, **kwargs):
         """
-        Show a single AuditLog
+        Show a single Audit Log
+        
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -189,8 +193,8 @@ class AuditLogsApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param int id: AuditLog ID (required)
-        :param str include: Related objects that can be included in the response.  See Including Objects for more information.
+        :param int id: Audit Log ID (required)
+        :param str include: Related objects that can be included in the response:  organization, user See Including Objects for more information.
         :return: AuditLog
                  If the method is called asynchronously,
                  returns the request thread.

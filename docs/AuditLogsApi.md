@@ -4,14 +4,16 @@ All URIs are relative to https://api.evident.io
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**list**](AuditLogsApi.md#list) | **PUT** /api/v2/audit_logs.json_api | Get a list of AuditLogs
-[**show**](AuditLogsApi.md#show) | **GET** /api/v2/audit_logs/{id}.json_api | Show a single AuditLog
+[**list**](AuditLogsApi.md#list) | **PUT** /api/v2/audit_logs.json_api | Get a list of Audit Logs
+[**show**](AuditLogsApi.md#show) | **GET** /api/v2/audit_logs/{id}.json_api | Show a single Audit Log
 
 
 # **list**
-> PaginatedCollection list(filter=filter, include=include, page=page)
+> PaginatedCollection list(filter=filter, page=page, include=include)
 
-Get a list of AuditLogs
+Get a list of Audit Logs
+
+
 
 ### Example 
 ```python
@@ -23,13 +25,13 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = esp_sdk.AuditLogsApi()
-filter = {'key': 'filter_example'} # dict(str, str) | Filter Params for Searching.  See Searching Lists for more information. (optional)
-include = 'include_example' # str | Related objects that can be included in the response.  See Including Objects for more information. (optional)
+filter = {'key': 'filter_example'} # dict(str, str) | Filter Params for Searching.  Equality Searchable Attributes: [id, item_id, item_type] Matching Searchable Attribute: [item_type]  Sortable Attribute: [id] Searchable Associations: [user, organization] See Searching Lists for more information. See the filter parameter of the association's list action to see what attributes are searchable on each association. See Conditions on Relationships in Searching Lists for more information. (optional)
 page = '{:number=>1,+:size=>20}' # str | Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page (optional) (default to {:number=>1,+:size=>20})
+include = 'include_example' # str | Related objects that can be included in the response:  organization, user See Including Objects for more information. (optional)
 
 try: 
-    # Get a list of AuditLogs
-    api_response = api_instance.list(filter=filter, include=include, page=page)
+    # Get a list of Audit Logs
+    api_response = api_instance.list(filter=filter, page=page, include=include)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling AuditLogsApi->list: %s\n" % e)
@@ -39,9 +41,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **filter** | [**dict(str, str)**](str.md)| Filter Params for Searching.  See Searching Lists for more information. | [optional] 
- **include** | **str**| Related objects that can be included in the response.  See Including Objects for more information. | [optional] 
+ **filter** | [**dict(str, str)**](str.md)| Filter Params for Searching.  Equality Searchable Attributes: [id, item_id, item_type] Matching Searchable Attribute: [item_type]  Sortable Attribute: [id] Searchable Associations: [user, organization] See Searching Lists for more information. See the filter parameter of the association&#39;s list action to see what attributes are searchable on each association. See Conditions on Relationships in Searching Lists for more information. | [optional] 
  **page** | **str**| Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page | [optional] [default to {:number&#x3D;&gt;1,+:size&#x3D;&gt;20}]
+ **include** | **str**| Related objects that can be included in the response:  organization, user See Including Objects for more information. | [optional] 
 
 ### Return type
 
@@ -61,7 +63,9 @@ See https://github.com/EvidentSecurity/esp-sdk-python2#set-your-hmac-security-ke
 # **show**
 > AuditLog show(id, include=include)
 
-Show a single AuditLog
+Show a single Audit Log
+
+
 
 ### Example 
 ```python
@@ -73,11 +77,11 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = esp_sdk.AuditLogsApi()
-id = 56 # int | AuditLog ID
-include = 'include_example' # str | Related objects that can be included in the response.  See Including Objects for more information. (optional)
+id = 56 # int | Audit Log ID
+include = 'include_example' # str | Related objects that can be included in the response:  organization, user See Including Objects for more information. (optional)
 
 try: 
-    # Show a single AuditLog
+    # Show a single Audit Log
     api_response = api_instance.show(id, include=include)
     pprint(api_response)
 except ApiException as e:
@@ -88,8 +92,8 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **int**| AuditLog ID | 
- **include** | **str**| Related objects that can be included in the response.  See Including Objects for more information. | [optional] 
+ **id** | **int**| Audit Log ID | 
+ **include** | **str**| Related objects that can be included in the response:  organization, user See Including Objects for more information. | [optional] 
 
 ### Return type
 
