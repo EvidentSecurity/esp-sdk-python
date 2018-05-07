@@ -25,15 +25,10 @@ Name | Type | Description | Notes
 **suppression** | [**Suppression**](Suppression.md) | Associated Suppression | [optional] 
 **suppression_id** | **int** | Associated Suppression ID | [optional] 
 **metadata** | [**Metadata**](Metadata.md) | Associated Metadata | [optional] 
-**metadata_id** | **int** | Associated Metadata ID | [optional] 
-**cloud_trail_events** | [**list[CloudTrailEvent]**](CloudTrailEvent.md) | Associated Cloud Trail Events | [optional] 
-**cloud_trail_event_ids** | **list[int]** | Associated Cloud Trail Events IDs | [optional] 
+**attribution** | [**Attribution**](Attribution.md) | Associated Attribution | [optional] 
 **tags** | [**list[Tag]**](Tag.md) | Associated Tags | [optional] 
-**tag_ids** | **list[int]** | Associated Tags IDs | [optional] 
 **compliance_controls** | [**list[ComplianceControl]**](ComplianceControl.md) | Associated Compliance Controls | [optional] 
-**compliance_control_ids** | **list[int]** | Associated Compliance Controls IDs | [optional] 
 **custom_compliance_controls** | [**list[CustomComplianceControl]**](CustomComplianceControl.md) | Associated Custom Compliance Controls | [optional] 
-**custom_compliance_control_ids** | **list[int]** | Associated Custom Compliance Controls IDs | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

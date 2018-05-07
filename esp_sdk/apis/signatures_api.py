@@ -54,9 +54,9 @@ class SignaturesApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param dict(str, str) filter: Filter Params for Searching.  Equality Searchable Attributes: [id, risk_level, service_id, disabled, supports_user_attribution, name, identifier, description, resolution] Matching Searchable Attributes: [name, identifier, description, resolution] Limited Searchable Attribute: [service_provider_eq] Sortable Attributes: [name, identifier, updated_at, created_at, id] Searchable Associations: [signature_copy, disabled_external_accounts, integrations] See Searching Lists for more information. See the filter parameter of the association's list action to see what attributes are searchable on each association. See Conditions on Relationships in Searching Lists for more information.
-        :param str page: Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page
-        :param str include: Related objects that can be included in the response:  service See Including Objects for more information.
+        :param str include: Related objects that can be included in the response:  service, suppressions See Including Objects for more information.
+        :param dict(str, str) filter: Filter Params for Searching.  Equality Searchable Attributes: [id, risk_level, service_id, disabled, supports_user_attribution, name, identifier, description, resolution] Matching Searchable Attributes: [name, identifier, description, resolution] Limited Searchable Attribute: [service_provider_eq] Sortable Attributes: [name, identifier, updated_at, created_at, id] Searchable Associations: [signature_copy, disabled_external_accounts, integrations, suppressions] See Searching Lists for more information. See the filter parameter of the association's list action to see what attributes are searchable on each association. See Conditions on Relationships in Searching Lists for more information.
+        :param str page: Page Number and Page Size.  Number is the page number of the collection to return, size is the number of items to return per page.
         :return: PaginatedCollection
                  If the method is called asynchronously,
                  returns the request thread.
@@ -82,15 +82,15 @@ class SignaturesApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param dict(str, str) filter: Filter Params for Searching.  Equality Searchable Attributes: [id, risk_level, service_id, disabled, supports_user_attribution, name, identifier, description, resolution] Matching Searchable Attributes: [name, identifier, description, resolution] Limited Searchable Attribute: [service_provider_eq] Sortable Attributes: [name, identifier, updated_at, created_at, id] Searchable Associations: [signature_copy, disabled_external_accounts, integrations] See Searching Lists for more information. See the filter parameter of the association's list action to see what attributes are searchable on each association. See Conditions on Relationships in Searching Lists for more information.
-        :param str page: Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page
-        :param str include: Related objects that can be included in the response:  service See Including Objects for more information.
+        :param str include: Related objects that can be included in the response:  service, suppressions See Including Objects for more information.
+        :param dict(str, str) filter: Filter Params for Searching.  Equality Searchable Attributes: [id, risk_level, service_id, disabled, supports_user_attribution, name, identifier, description, resolution] Matching Searchable Attributes: [name, identifier, description, resolution] Limited Searchable Attribute: [service_provider_eq] Sortable Attributes: [name, identifier, updated_at, created_at, id] Searchable Associations: [signature_copy, disabled_external_accounts, integrations, suppressions] See Searching Lists for more information. See the filter parameter of the association's list action to see what attributes are searchable on each association. See Conditions on Relationships in Searching Lists for more information.
+        :param str page: Page Number and Page Size.  Number is the page number of the collection to return, size is the number of items to return per page.
         :return: PaginatedCollection
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['filter', 'page', 'include']
+        all_params = ['include', 'filter', 'page']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -152,7 +152,7 @@ class SignaturesApi(object):
                                         _request_timeout=params.get('_request_timeout'),
                                         collection_formats=collection_formats)
 
-    def list_disabled_external_accounts(self, **kwargs):
+    def list_disabled_external_accounts(self, signature_id, **kwargs):
         """
         Get a list of disabled External Accounts for a signature
         
@@ -162,25 +162,26 @@ class SignaturesApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.list_disabled_external_accounts(callback=callback_function)
+        >>> thread = api.list_disabled_external_accounts(signature_id, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param dict(str, str) filter: Filter Params for Searching.  Equality Searchable Attributes: [id, nickname, name] Matching Searchable Attributes: [nickname, name] Limited Searchable Attributes: [account_eq, arn_eq, provider_eq, subscription_id_eq] Sortable Attributes: [name, updated_at, created_at, id] Searchable Associations: [organization, sub_organization, team, compliance_standards, azure_group, disabled_signatures] See Searching Lists for more information. See the filter parameter of the association's list action to see what attributes are searchable on each association. See Conditions on Relationships in Searching Lists for more information.
-        :param str page: Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page
-        :param str include: Related objects that can be included in the response:  organization, sub_organization, team, scan_intervals, disabled_signatures, azure_group, credentials See Including Objects for more information.
+        :param int signature_id: The ID of the signature to get the list of disabled external accounts for (required)
+        :param str include: Related objects that can be included in the response:  organization, sub_organization, team, scan_intervals, disabled_signatures, suppressions, azure_group, credentials See Including Objects for more information.
+        :param dict(str, str) filter: Filter Params for Searching.  Equality Searchable Attributes: [id, nickname, name] Matching Searchable Attributes: [nickname, name] Limited Searchable Attributes: [account_eq, arn_eq, provider_eq, subscription_id_eq] Sortable Attributes: [name, updated_at, created_at, id] Searchable Associations: [organization, sub_organization, team, compliance_standards, azure_group, disabled_signatures, suppressions] See Searching Lists for more information. See the filter parameter of the association's list action to see what attributes are searchable on each association. See Conditions on Relationships in Searching Lists for more information.
+        :param str page: Page Number and Page Size.  Number is the page number of the collection to return, size is the number of items to return per page.
         :return: PaginatedCollection
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.list_disabled_external_accounts_with_http_info(**kwargs)
+            return self.list_disabled_external_accounts_with_http_info(signature_id, **kwargs)
         else:
-            (data) = self.list_disabled_external_accounts_with_http_info(**kwargs)
+            (data) = self.list_disabled_external_accounts_with_http_info(signature_id, **kwargs)
             return data
 
-    def list_disabled_external_accounts_with_http_info(self, **kwargs):
+    def list_disabled_external_accounts_with_http_info(self, signature_id, **kwargs):
         """
         Get a list of disabled External Accounts for a signature
         
@@ -190,19 +191,20 @@ class SignaturesApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.list_disabled_external_accounts_with_http_info(callback=callback_function)
+        >>> thread = api.list_disabled_external_accounts_with_http_info(signature_id, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param dict(str, str) filter: Filter Params for Searching.  Equality Searchable Attributes: [id, nickname, name] Matching Searchable Attributes: [nickname, name] Limited Searchable Attributes: [account_eq, arn_eq, provider_eq, subscription_id_eq] Sortable Attributes: [name, updated_at, created_at, id] Searchable Associations: [organization, sub_organization, team, compliance_standards, azure_group, disabled_signatures] See Searching Lists for more information. See the filter parameter of the association's list action to see what attributes are searchable on each association. See Conditions on Relationships in Searching Lists for more information.
-        :param str page: Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page
-        :param str include: Related objects that can be included in the response:  organization, sub_organization, team, scan_intervals, disabled_signatures, azure_group, credentials See Including Objects for more information.
+        :param int signature_id: The ID of the signature to get the list of disabled external accounts for (required)
+        :param str include: Related objects that can be included in the response:  organization, sub_organization, team, scan_intervals, disabled_signatures, suppressions, azure_group, credentials See Including Objects for more information.
+        :param dict(str, str) filter: Filter Params for Searching.  Equality Searchable Attributes: [id, nickname, name] Matching Searchable Attributes: [nickname, name] Limited Searchable Attributes: [account_eq, arn_eq, provider_eq, subscription_id_eq] Sortable Attributes: [name, updated_at, created_at, id] Searchable Associations: [organization, sub_organization, team, compliance_standards, azure_group, disabled_signatures, suppressions] See Searching Lists for more information. See the filter parameter of the association's list action to see what attributes are searchable on each association. See Conditions on Relationships in Searching Lists for more information.
+        :param str page: Page Number and Page Size.  Number is the page number of the collection to return, size is the number of items to return per page.
         :return: PaginatedCollection
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['filter', 'page', 'include']
+        all_params = ['signature_id', 'include', 'filter', 'page']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -217,12 +219,17 @@ class SignaturesApi(object):
                 )
             params[key] = val
         del params['kwargs']
+        # verify the required parameter 'signature_id' is set
+        if ('signature_id' not in params) or (params['signature_id'] is None):
+            raise ValueError("Missing the required parameter `signature_id` when calling `list_disabled_external_accounts`")
 
 
         collection_formats = {}
 
         resource_path = '/api/v2/signatures/{signature_id}/disabled_external_accounts.json_api'.replace('{format}', 'json_api')
         path_params = {}
+        if 'signature_id' in params:
+            path_params['signature_id'] = params['signature_id']
 
         query_params = {}
         if 'include' in params:
@@ -279,9 +286,9 @@ class SignaturesApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param int external_account_id: The ID of the external account to retrieve (required)
-        :param str page: Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page
-        :param str include: Related objects that can be included in the response:  service See Including Objects for more information.
-        :param dict(str, str) filter: Filter Params for Searching.  Equality Searchable Attributes: [id, risk_level, service_id, disabled, supports_user_attribution, name, identifier, description, resolution] Matching Searchable Attributes: [name, identifier, description, resolution] Limited Searchable Attributes: [custom_risk_level_present, service_provider_eq] Sortable Attributes: [name, identifier, updated_at, created_at, id] Searchable Associations: [signature_copy, disabled_external_accounts, integrations] See Searching Lists for more information. See the filter parameter of the association's list action to see what attributes are searchable on each association. See Conditions on Relationships in Searching Lists for more information.
+        :param str include: Related objects that can be included in the response:  service, suppressions See Including Objects for more information.
+        :param dict(str, str) filter: Filter Params for Searching.  Equality Searchable Attributes: [id, risk_level, service_id, disabled, supports_user_attribution, name, identifier, description, resolution] Matching Searchable Attributes: [name, identifier, description, resolution] Limited Searchable Attributes: [custom_risk_level_present, service_provider_eq] Sortable Attributes: [name, identifier, updated_at, created_at, id] Searchable Associations: [signature_copy, disabled_external_accounts, integrations, suppressions] See Searching Lists for more information. See the filter parameter of the association's list action to see what attributes are searchable on each association. See Conditions on Relationships in Searching Lists for more information.
+        :param str page: Page Number and Page Size.  Number is the page number of the collection to return, size is the number of items to return per page.
         :return: PaginatedCollection
                  If the method is called asynchronously,
                  returns the request thread.
@@ -308,15 +315,15 @@ class SignaturesApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param int external_account_id: The ID of the external account to retrieve (required)
-        :param str page: Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page
-        :param str include: Related objects that can be included in the response:  service See Including Objects for more information.
-        :param dict(str, str) filter: Filter Params for Searching.  Equality Searchable Attributes: [id, risk_level, service_id, disabled, supports_user_attribution, name, identifier, description, resolution] Matching Searchable Attributes: [name, identifier, description, resolution] Limited Searchable Attributes: [custom_risk_level_present, service_provider_eq] Sortable Attributes: [name, identifier, updated_at, created_at, id] Searchable Associations: [signature_copy, disabled_external_accounts, integrations] See Searching Lists for more information. See the filter parameter of the association's list action to see what attributes are searchable on each association. See Conditions on Relationships in Searching Lists for more information.
+        :param str include: Related objects that can be included in the response:  service, suppressions See Including Objects for more information.
+        :param dict(str, str) filter: Filter Params for Searching.  Equality Searchable Attributes: [id, risk_level, service_id, disabled, supports_user_attribution, name, identifier, description, resolution] Matching Searchable Attributes: [name, identifier, description, resolution] Limited Searchable Attributes: [custom_risk_level_present, service_provider_eq] Sortable Attributes: [name, identifier, updated_at, created_at, id] Searchable Associations: [signature_copy, disabled_external_accounts, integrations, suppressions] See Searching Lists for more information. See the filter parameter of the association's list action to see what attributes are searchable on each association. See Conditions on Relationships in Searching Lists for more information.
+        :param str page: Page Number and Page Size.  Number is the page number of the collection to return, size is the number of items to return per page.
         :return: PaginatedCollection
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['external_account_id', 'page', 'include', 'filter']
+        all_params = ['external_account_id', 'include', 'filter', 'page']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -351,10 +358,10 @@ class SignaturesApi(object):
 
         form_params = []
         local_var_files = {}
-        if 'page' in params:
-            form_params.append(('page', params['page']))
         if 'filter' in params:
             form_params.append(('filter', params['filter']))
+        if 'page' in params:
+            form_params.append(('page', params['page']))
 
         body_params = None
         # HTTP header `Accept`
@@ -497,7 +504,7 @@ class SignaturesApi(object):
                                         _request_timeout=params.get('_request_timeout'),
                                         collection_formats=collection_formats)
 
-    def set_custom_risk_level_for_external_account(self, external_account_id, signature_id, risk_level, **kwargs):
+    def set_custom_risk_level_for_external_account(self, external_account_id, risk_level, signature_id, **kwargs):
         """
         Add a custom risk level to a Signature for an External Account
         
@@ -507,26 +514,26 @@ class SignaturesApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.set_custom_risk_level_for_external_account(external_account_id, signature_id, risk_level, callback=callback_function)
+        >>> thread = api.set_custom_risk_level_for_external_account(external_account_id, risk_level, signature_id, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param int external_account_id: The ID of the external account this signature custom risk level is for (required)
-        :param int signature_id: The signature ID this signature custom risk level is for (required)
         :param str risk_level: The custom risk-level of the problem identified by the signature for this external_account. Valid values are low, medium, high (required)
-        :param str include: Related objects that can be included in the response:  service See Including Objects for more information.
+        :param int signature_id: The signature ID this signature custom risk level is for (required)
+        :param str include: Related objects that can be included in the response:  service, suppressions See Including Objects for more information.
         :return: Signature
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.set_custom_risk_level_for_external_account_with_http_info(external_account_id, signature_id, risk_level, **kwargs)
+            return self.set_custom_risk_level_for_external_account_with_http_info(external_account_id, risk_level, signature_id, **kwargs)
         else:
-            (data) = self.set_custom_risk_level_for_external_account_with_http_info(external_account_id, signature_id, risk_level, **kwargs)
+            (data) = self.set_custom_risk_level_for_external_account_with_http_info(external_account_id, risk_level, signature_id, **kwargs)
             return data
 
-    def set_custom_risk_level_for_external_account_with_http_info(self, external_account_id, signature_id, risk_level, **kwargs):
+    def set_custom_risk_level_for_external_account_with_http_info(self, external_account_id, risk_level, signature_id, **kwargs):
         """
         Add a custom risk level to a Signature for an External Account
         
@@ -536,20 +543,20 @@ class SignaturesApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.set_custom_risk_level_for_external_account_with_http_info(external_account_id, signature_id, risk_level, callback=callback_function)
+        >>> thread = api.set_custom_risk_level_for_external_account_with_http_info(external_account_id, risk_level, signature_id, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param int external_account_id: The ID of the external account this signature custom risk level is for (required)
-        :param int signature_id: The signature ID this signature custom risk level is for (required)
         :param str risk_level: The custom risk-level of the problem identified by the signature for this external_account. Valid values are low, medium, high (required)
-        :param str include: Related objects that can be included in the response:  service See Including Objects for more information.
+        :param int signature_id: The signature ID this signature custom risk level is for (required)
+        :param str include: Related objects that can be included in the response:  service, suppressions See Including Objects for more information.
         :return: Signature
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['external_account_id', 'signature_id', 'risk_level', 'include']
+        all_params = ['external_account_id', 'risk_level', 'signature_id', 'include']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -567,12 +574,12 @@ class SignaturesApi(object):
         # verify the required parameter 'external_account_id' is set
         if ('external_account_id' not in params) or (params['external_account_id'] is None):
             raise ValueError("Missing the required parameter `external_account_id` when calling `set_custom_risk_level_for_external_account`")
-        # verify the required parameter 'signature_id' is set
-        if ('signature_id' not in params) or (params['signature_id'] is None):
-            raise ValueError("Missing the required parameter `signature_id` when calling `set_custom_risk_level_for_external_account`")
         # verify the required parameter 'risk_level' is set
         if ('risk_level' not in params) or (params['risk_level'] is None):
             raise ValueError("Missing the required parameter `risk_level` when calling `set_custom_risk_level_for_external_account`")
+        # verify the required parameter 'signature_id' is set
+        if ('signature_id' not in params) or (params['signature_id'] is None):
+            raise ValueError("Missing the required parameter `signature_id` when calling `set_custom_risk_level_for_external_account`")
 
 
         collection_formats = {}
@@ -590,10 +597,10 @@ class SignaturesApi(object):
 
         form_params = []
         local_var_files = {}
-        if 'signature_id' in params:
-            form_params.append(('signature_id', params['signature_id']))
         if 'risk_level' in params:
             form_params.append(('risk_level', params['risk_level']))
+        if 'signature_id' in params:
+            form_params.append(('signature_id', params['signature_id']))
 
         body_params = None
         # HTTP header `Accept`
@@ -637,7 +644,7 @@ class SignaturesApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param int id: Signature ID (required)
-        :param str include: Related objects that can be included in the response:  service See Including Objects for more information.
+        :param str include: Related objects that can be included in the response:  service, suppressions See Including Objects for more information.
         :return: Signature
                  If the method is called asynchronously,
                  returns the request thread.
@@ -664,7 +671,7 @@ class SignaturesApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param int id: Signature ID (required)
-        :param str include: Related objects that can be included in the response:  service See Including Objects for more information.
+        :param str include: Related objects that can be included in the response:  service, suppressions See Including Objects for more information.
         :return: Signature
                  If the method is called asynchronously,
                  returns the request thread.
@@ -749,8 +756,8 @@ class SignaturesApi(object):
             for asynchronous request. (optional)
         :param int external_account_id: The ID of the external account this signature custom risk level is for (required)
         :param int signature_id: The signature ID this signature custom risk level is for (required)
+        :param str include: Related objects that can be included in the response:  service, suppressions See Including Objects for more information.
         :param str risk_level: The custom risk-level of the problem identified by the signature for this external_account. Valid values are low, medium, high
-        :param str include: Related objects that can be included in the response:  service See Including Objects for more information.
         :return: Signature
                  If the method is called asynchronously,
                  returns the request thread.
@@ -778,14 +785,14 @@ class SignaturesApi(object):
             for asynchronous request. (optional)
         :param int external_account_id: The ID of the external account this signature custom risk level is for (required)
         :param int signature_id: The signature ID this signature custom risk level is for (required)
+        :param str include: Related objects that can be included in the response:  service, suppressions See Including Objects for more information.
         :param str risk_level: The custom risk-level of the problem identified by the signature for this external_account. Valid values are low, medium, high
-        :param str include: Related objects that can be included in the response:  service See Including Objects for more information.
         :return: Signature
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['external_account_id', 'signature_id', 'risk_level', 'include']
+        all_params = ['external_account_id', 'signature_id', 'include', 'risk_level']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')

@@ -35,7 +35,7 @@ from pprint import pprint
 api_instance = esp_sdk.CustomComplianceControlsApi()
 custom_compliance_control_id = 56 # int | The ID of the Custom Compliance Control this custom signature belongs to
 custom_signature_id = 56 # int | The ID of the custom signature that belongs to this custom control
-include = 'include_example' # str | Related objects that can be included in the response:  organization, teams, external_accounts, definitions See Including Objects for more information. (optional)
+include = 'include_example' # str | Related objects that can be included in the response:  organization, teams, external_accounts, definitions, suppressions See Including Objects for more information. (optional)
 
 try: 
     # Add a Custom Signature to a Custom Compliance Control
@@ -51,7 +51,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **custom_compliance_control_id** | **int**| The ID of the Custom Compliance Control this custom signature belongs to | 
  **custom_signature_id** | **int**| The ID of the custom signature that belongs to this custom control | 
- **include** | **str**| Related objects that can be included in the response:  organization, teams, external_accounts, definitions See Including Objects for more information. | [optional] 
+ **include** | **str**| Related objects that can be included in the response:  organization, teams, external_accounts, definitions, suppressions See Including Objects for more information. | [optional] 
 
 ### Return type
 
@@ -59,7 +59,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-See https://github.com/EvidentSecurity/esp-sdk-python2#set-your-hmac-security-keys
+See https://github.com/EvidentSecurity/esp-sdk-python#set-your-hmac-security-keys
 
 ### HTTP request headers
 
@@ -87,7 +87,7 @@ from pprint import pprint
 api_instance = esp_sdk.CustomComplianceControlsApi()
 custom_compliance_control_id = 56 # int | The ID of the Custom Compliance Control this signature belongs to
 signature_id = 56 # int | The ID of the signature that belongs to this custom control
-include = 'include_example' # str | Related objects that can be included in the response:  service See Including Objects for more information. (optional)
+include = 'include_example' # str | Related objects that can be included in the response:  service, suppressions See Including Objects for more information. (optional)
 
 try: 
     # Add a Signature to a Custom Compliance Control
@@ -103,7 +103,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **custom_compliance_control_id** | **int**| The ID of the Custom Compliance Control this signature belongs to | 
  **signature_id** | **int**| The ID of the signature that belongs to this custom control | 
- **include** | **str**| Related objects that can be included in the response:  service See Including Objects for more information. | [optional] 
+ **include** | **str**| Related objects that can be included in the response:  service, suppressions See Including Objects for more information. | [optional] 
 
 ### Return type
 
@@ -111,7 +111,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-See https://github.com/EvidentSecurity/esp-sdk-python2#set-your-hmac-security-keys
+See https://github.com/EvidentSecurity/esp-sdk-python#set-your-hmac-security-keys
 
 ### HTTP request headers
 
@@ -121,7 +121,7 @@ See https://github.com/EvidentSecurity/esp-sdk-python2#set-your-hmac-security-ke
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create**
-> CustomComplianceControl create(identifier, custom_compliance_domain_id, name, description=description, position=position, signature_ids=signature_ids, custom_signature_ids=custom_signature_ids, include=include)
+> CustomComplianceControl create(custom_compliance_domain_id, identifier, name, include=include, custom_signature_ids=custom_signature_ids, description=description, position=position, signature_ids=signature_ids)
 
 Create a(n) Custom Compliance Control
 
@@ -137,18 +137,18 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = esp_sdk.CustomComplianceControlsApi()
-identifier = 'identifier_example' # str | The identifier of this custom control
 custom_compliance_domain_id = 56 # int | The ID of the Custom Compliance Domain this custom control belongs to
+identifier = 'identifier_example' # str | The identifier of this custom control
 name = 'name_example' # str | Name
+include = 'include_example' # str | Related objects that can be included in the response:  custom_compliance_standard, custom_compliance_domain, signatures, custom_signatures See Including Objects for more information. (optional)
+custom_signature_ids = [56] # list[int] | An array of custom signatures identified by custom_signature_id that belong to this custom control (optional)
 description = 'description_example' # str | The description for this custom control (optional)
 position = 56 # int | The position of this custom control within the custom domain (optional)
 signature_ids = [56] # list[int] | An array of signatures identified by signature_id that belong to this custom control (optional)
-custom_signature_ids = [56] # list[int] | An array of custom signatures identified by custom_signature_id that belong to this custom control (optional)
-include = 'include_example' # str | Related objects that can be included in the response:  custom_compliance_standard, custom_compliance_domain, signatures, custom_signatures See Including Objects for more information. (optional)
 
 try: 
     # Create a(n) Custom Compliance Control
-    api_response = api_instance.create(identifier, custom_compliance_domain_id, name, description=description, position=position, signature_ids=signature_ids, custom_signature_ids=custom_signature_ids, include=include)
+    api_response = api_instance.create(custom_compliance_domain_id, identifier, name, include=include, custom_signature_ids=custom_signature_ids, description=description, position=position, signature_ids=signature_ids)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling CustomComplianceControlsApi->create: %s\n" % e)
@@ -158,14 +158,14 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **identifier** | **str**| The identifier of this custom control | 
  **custom_compliance_domain_id** | **int**| The ID of the Custom Compliance Domain this custom control belongs to | 
+ **identifier** | **str**| The identifier of this custom control | 
  **name** | **str**| Name | 
+ **include** | **str**| Related objects that can be included in the response:  custom_compliance_standard, custom_compliance_domain, signatures, custom_signatures See Including Objects for more information. | [optional] 
+ **custom_signature_ids** | [**list[int]**](int.md)| An array of custom signatures identified by custom_signature_id that belong to this custom control | [optional] 
  **description** | **str**| The description for this custom control | [optional] 
  **position** | **int**| The position of this custom control within the custom domain | [optional] 
  **signature_ids** | [**list[int]**](int.md)| An array of signatures identified by signature_id that belong to this custom control | [optional] 
- **custom_signature_ids** | [**list[int]**](int.md)| An array of custom signatures identified by custom_signature_id that belong to this custom control | [optional] 
- **include** | **str**| Related objects that can be included in the response:  custom_compliance_standard, custom_compliance_domain, signatures, custom_signatures See Including Objects for more information. | [optional] 
 
 ### Return type
 
@@ -173,7 +173,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-See https://github.com/EvidentSecurity/esp-sdk-python2#set-your-hmac-security-keys
+See https://github.com/EvidentSecurity/esp-sdk-python#set-your-hmac-security-keys
 
 ### HTTP request headers
 
@@ -199,7 +199,7 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = esp_sdk.CustomComplianceControlsApi()
-id = 56 # int |  ID
+id = 56 # int | Custom Compliance Control ID
 
 try: 
     # Delete a(n) Custom Compliance Control
@@ -213,7 +213,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **int**|  ID | 
+ **id** | **int**| Custom Compliance Control ID | 
 
 ### Return type
 
@@ -221,7 +221,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-See https://github.com/EvidentSecurity/esp-sdk-python2#set-your-hmac-security-keys
+See https://github.com/EvidentSecurity/esp-sdk-python#set-your-hmac-security-keys
 
 ### HTTP request headers
 
@@ -231,7 +231,7 @@ See https://github.com/EvidentSecurity/esp-sdk-python2#set-your-hmac-security-ke
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_custom_signatures**
-> PaginatedCollection list_custom_signatures(custom_compliance_control_id, page=page, include=include)
+> PaginatedCollection list_custom_signatures(custom_compliance_control_id, include=include, page=page)
 
 Get a list of Custom Signatures for a Custom Compliance Control
 
@@ -248,12 +248,12 @@ from pprint import pprint
 # create an instance of the API class
 api_instance = esp_sdk.CustomComplianceControlsApi()
 custom_compliance_control_id = 56 # int | The ID of the Custom Compliance Control this custom signature belongs to
-page = '{:number=>1,+:size=>20}' # str | Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page (optional) (default to {:number=>1,+:size=>20})
-include = 'include_example' # str | Related objects that can be included in the response:  organization, teams, external_accounts, definitions See Including Objects for more information. (optional)
+include = 'include_example' # str | Related objects that can be included in the response:  organization, teams, external_accounts, definitions, suppressions See Including Objects for more information. (optional)
+page = '{:number=>1,+:size=>20}' # str | Page Number and Page Size.  Number is the page number of the collection to return, size is the number of items to return per page. (optional) (default to {:number=>1,+:size=>20})
 
 try: 
     # Get a list of Custom Signatures for a Custom Compliance Control
-    api_response = api_instance.list_custom_signatures(custom_compliance_control_id, page=page, include=include)
+    api_response = api_instance.list_custom_signatures(custom_compliance_control_id, include=include, page=page)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling CustomComplianceControlsApi->list_custom_signatures: %s\n" % e)
@@ -264,8 +264,8 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **custom_compliance_control_id** | **int**| The ID of the Custom Compliance Control this custom signature belongs to | 
- **page** | **str**| Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page | [optional] [default to {:number&#x3D;&gt;1,+:size&#x3D;&gt;20}]
- **include** | **str**| Related objects that can be included in the response:  organization, teams, external_accounts, definitions See Including Objects for more information. | [optional] 
+ **include** | **str**| Related objects that can be included in the response:  organization, teams, external_accounts, definitions, suppressions See Including Objects for more information. | [optional] 
+ **page** | **str**| Page Number and Page Size.  Number is the page number of the collection to return, size is the number of items to return per page. | [optional] [default to {:number&#x3D;&gt;1,+:size&#x3D;&gt;20}]
 
 ### Return type
 
@@ -273,7 +273,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-See https://github.com/EvidentSecurity/esp-sdk-python2#set-your-hmac-security-keys
+See https://github.com/EvidentSecurity/esp-sdk-python#set-your-hmac-security-keys
 
 ### HTTP request headers
 
@@ -283,7 +283,7 @@ See https://github.com/EvidentSecurity/esp-sdk-python2#set-your-hmac-security-ke
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_signatures**
-> PaginatedCollection list_signatures(custom_compliance_control_id, page=page, include=include)
+> PaginatedCollection list_signatures(custom_compliance_control_id, include=include, page=page)
 
 Get a list of Signatures for a Custom Compliance Control
 
@@ -300,12 +300,12 @@ from pprint import pprint
 # create an instance of the API class
 api_instance = esp_sdk.CustomComplianceControlsApi()
 custom_compliance_control_id = 56 # int | The ID of the Custom Compliance Control this signature belongs to
-page = '{:number=>1,+:size=>20}' # str | Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page (optional) (default to {:number=>1,+:size=>20})
-include = 'include_example' # str | Related objects that can be included in the response:  service See Including Objects for more information. (optional)
+include = 'include_example' # str | Related objects that can be included in the response:  service, suppressions See Including Objects for more information. (optional)
+page = '{:number=>1,+:size=>20}' # str | Page Number and Page Size.  Number is the page number of the collection to return, size is the number of items to return per page. (optional) (default to {:number=>1,+:size=>20})
 
 try: 
     # Get a list of Signatures for a Custom Compliance Control
-    api_response = api_instance.list_signatures(custom_compliance_control_id, page=page, include=include)
+    api_response = api_instance.list_signatures(custom_compliance_control_id, include=include, page=page)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling CustomComplianceControlsApi->list_signatures: %s\n" % e)
@@ -316,8 +316,8 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **custom_compliance_control_id** | **int**| The ID of the Custom Compliance Control this signature belongs to | 
- **page** | **str**| Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page | [optional] [default to {:number&#x3D;&gt;1,+:size&#x3D;&gt;20}]
- **include** | **str**| Related objects that can be included in the response:  service See Including Objects for more information. | [optional] 
+ **include** | **str**| Related objects that can be included in the response:  service, suppressions See Including Objects for more information. | [optional] 
+ **page** | **str**| Page Number and Page Size.  Number is the page number of the collection to return, size is the number of items to return per page. | [optional] [default to {:number&#x3D;&gt;1,+:size&#x3D;&gt;20}]
 
 ### Return type
 
@@ -325,7 +325,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-See https://github.com/EvidentSecurity/esp-sdk-python2#set-your-hmac-security-keys
+See https://github.com/EvidentSecurity/esp-sdk-python#set-your-hmac-security-keys
 
 ### HTTP request headers
 
@@ -375,7 +375,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-See https://github.com/EvidentSecurity/esp-sdk-python2#set-your-hmac-security-keys
+See https://github.com/EvidentSecurity/esp-sdk-python#set-your-hmac-security-keys
 
 ### HTTP request headers
 
@@ -425,7 +425,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-See https://github.com/EvidentSecurity/esp-sdk-python2#set-your-hmac-security-keys
+See https://github.com/EvidentSecurity/esp-sdk-python#set-your-hmac-security-keys
 
 ### HTTP request headers
 
@@ -475,7 +475,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-See https://github.com/EvidentSecurity/esp-sdk-python2#set-your-hmac-security-keys
+See https://github.com/EvidentSecurity/esp-sdk-python#set-your-hmac-security-keys
 
 ### HTTP request headers
 
@@ -485,7 +485,7 @@ See https://github.com/EvidentSecurity/esp-sdk-python2#set-your-hmac-security-ke
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update**
-> CustomComplianceControl update(id, identifier=identifier, custom_compliance_domain_id=custom_compliance_domain_id, description=description, name=name, position=position, signature_ids=signature_ids, custom_signature_ids=custom_signature_ids, include=include)
+> CustomComplianceControl update(id, include=include, custom_compliance_domain_id=custom_compliance_domain_id, custom_signature_ids=custom_signature_ids, description=description, identifier=identifier, name=name, position=position, signature_ids=signature_ids)
 
 Update a(n) Custom Compliance Control
 
@@ -502,18 +502,18 @@ from pprint import pprint
 # create an instance of the API class
 api_instance = esp_sdk.CustomComplianceControlsApi()
 id = 56 # int | Custom Compliance Control ID
-identifier = 'identifier_example' # str | The identifier of this custom control (optional)
+include = 'include_example' # str | Related objects that can be included in the response:  custom_compliance_standard, custom_compliance_domain, signatures, custom_signatures See Including Objects for more information. (optional)
 custom_compliance_domain_id = 56 # int | The ID of the Custom Compliance Domain this custom control belongs to (optional)
+custom_signature_ids = [56] # list[int] | An array of custom signatures identified by custom_signature_id that belong to this custom control (optional)
 description = 'description_example' # str | The description for this custom control (optional)
+identifier = 'identifier_example' # str | The identifier of this custom control (optional)
 name = 'name_example' # str | Name (optional)
 position = 56 # int | The position of this custom control within the custom domain (optional)
 signature_ids = [56] # list[int] | An array of signatures identified by signature_id that belong to this custom control (optional)
-custom_signature_ids = [56] # list[int] | An array of custom signatures identified by custom_signature_id that belong to this custom control (optional)
-include = 'include_example' # str | Related objects that can be included in the response:  custom_compliance_standard, custom_compliance_domain, signatures, custom_signatures See Including Objects for more information. (optional)
 
 try: 
     # Update a(n) Custom Compliance Control
-    api_response = api_instance.update(id, identifier=identifier, custom_compliance_domain_id=custom_compliance_domain_id, description=description, name=name, position=position, signature_ids=signature_ids, custom_signature_ids=custom_signature_ids, include=include)
+    api_response = api_instance.update(id, include=include, custom_compliance_domain_id=custom_compliance_domain_id, custom_signature_ids=custom_signature_ids, description=description, identifier=identifier, name=name, position=position, signature_ids=signature_ids)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling CustomComplianceControlsApi->update: %s\n" % e)
@@ -524,14 +524,14 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| Custom Compliance Control ID | 
- **identifier** | **str**| The identifier of this custom control | [optional] 
+ **include** | **str**| Related objects that can be included in the response:  custom_compliance_standard, custom_compliance_domain, signatures, custom_signatures See Including Objects for more information. | [optional] 
  **custom_compliance_domain_id** | **int**| The ID of the Custom Compliance Domain this custom control belongs to | [optional] 
+ **custom_signature_ids** | [**list[int]**](int.md)| An array of custom signatures identified by custom_signature_id that belong to this custom control | [optional] 
  **description** | **str**| The description for this custom control | [optional] 
+ **identifier** | **str**| The identifier of this custom control | [optional] 
  **name** | **str**| Name | [optional] 
  **position** | **int**| The position of this custom control within the custom domain | [optional] 
  **signature_ids** | [**list[int]**](int.md)| An array of signatures identified by signature_id that belong to this custom control | [optional] 
- **custom_signature_ids** | [**list[int]**](int.md)| An array of custom signatures identified by custom_signature_id that belong to this custom control | [optional] 
- **include** | **str**| Related objects that can be included in the response:  custom_compliance_standard, custom_compliance_domain, signatures, custom_signatures See Including Objects for more information. | [optional] 
 
 ### Return type
 
@@ -539,7 +539,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-See https://github.com/EvidentSecurity/esp-sdk-python2#set-your-hmac-security-keys
+See https://github.com/EvidentSecurity/esp-sdk-python#set-your-hmac-security-keys
 
 ### HTTP request headers
 

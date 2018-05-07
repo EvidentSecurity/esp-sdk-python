@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 
 # **create**
-> CustomComplianceStandard create(name, description, include=include)
+> CustomComplianceStandard create(description, name, include=include)
 
 Create a(n) Custom Compliance Standard
 
@@ -27,13 +27,13 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = esp_sdk.CustomComplianceStandardsApi()
-name = 'name_example' # str | Name
 description = 'description_example' # str | The description for this Compliance Standard
+name = 'name_example' # str | Name
 include = 'include_example' # str | Related objects that can be included in the response:  custom_compliance_domains, custom_compliance_controls See Including Objects for more information. (optional)
 
 try: 
     # Create a(n) Custom Compliance Standard
-    api_response = api_instance.create(name, description, include=include)
+    api_response = api_instance.create(description, name, include=include)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling CustomComplianceStandardsApi->create: %s\n" % e)
@@ -43,8 +43,8 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **name** | **str**| Name | 
  **description** | **str**| The description for this Compliance Standard | 
+ **name** | **str**| Name | 
  **include** | **str**| Related objects that can be included in the response:  custom_compliance_domains, custom_compliance_controls See Including Objects for more information. | [optional] 
 
 ### Return type
@@ -53,7 +53,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-See https://github.com/EvidentSecurity/esp-sdk-python2#set-your-hmac-security-keys
+See https://github.com/EvidentSecurity/esp-sdk-python#set-your-hmac-security-keys
 
 ### HTTP request headers
 
@@ -79,7 +79,7 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = esp_sdk.CustomComplianceStandardsApi()
-id = 56 # int |  ID
+id = 56 # int | Custom Compliance Standard ID
 
 try: 
     # Delete a(n) Custom Compliance Standard
@@ -93,7 +93,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **int**|  ID | 
+ **id** | **int**| Custom Compliance Standard ID | 
 
 ### Return type
 
@@ -101,7 +101,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-See https://github.com/EvidentSecurity/esp-sdk-python2#set-your-hmac-security-keys
+See https://github.com/EvidentSecurity/esp-sdk-python#set-your-hmac-security-keys
 
 ### HTTP request headers
 
@@ -151,7 +151,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-See https://github.com/EvidentSecurity/esp-sdk-python2#set-your-hmac-security-keys
+See https://github.com/EvidentSecurity/esp-sdk-python#set-your-hmac-security-keys
 
 ### HTTP request headers
 
@@ -161,7 +161,7 @@ See https://github.com/EvidentSecurity/esp-sdk-python2#set-your-hmac-security-ke
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update**
-> CustomComplianceStandard update(id, name=name, description=description, include=include)
+> CustomComplianceStandard update(id, include=include, description=description, name=name)
 
 Update a(n) Custom Compliance Standard
 
@@ -178,13 +178,13 @@ from pprint import pprint
 # create an instance of the API class
 api_instance = esp_sdk.CustomComplianceStandardsApi()
 id = 56 # int | Custom Compliance Standard ID
-name = 'name_example' # str | Name (optional)
-description = 'description_example' # str | The description for this Compliance Standard (optional)
 include = 'include_example' # str | Related objects that can be included in the response:  custom_compliance_domains, custom_compliance_controls See Including Objects for more information. (optional)
+description = 'description_example' # str | The description for this Compliance Standard (optional)
+name = 'name_example' # str | Name (optional)
 
 try: 
     # Update a(n) Custom Compliance Standard
-    api_response = api_instance.update(id, name=name, description=description, include=include)
+    api_response = api_instance.update(id, include=include, description=description, name=name)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling CustomComplianceStandardsApi->update: %s\n" % e)
@@ -195,9 +195,9 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| Custom Compliance Standard ID | 
- **name** | **str**| Name | [optional] 
- **description** | **str**| The description for this Compliance Standard | [optional] 
  **include** | **str**| Related objects that can be included in the response:  custom_compliance_domains, custom_compliance_controls See Including Objects for more information. | [optional] 
+ **description** | **str**| The description for this Compliance Standard | [optional] 
+ **name** | **str**| Name | [optional] 
 
 ### Return type
 
@@ -205,7 +205,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-See https://github.com/EvidentSecurity/esp-sdk-python2#set-your-hmac-security-keys
+See https://github.com/EvidentSecurity/esp-sdk-python#set-your-hmac-security-keys
 
 ### HTTP request headers
 

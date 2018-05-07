@@ -40,7 +40,7 @@ class UsersApi(object):
                 config.api_client = ApiClient()
             self.api_client = config.api_client
 
-    def create(self, first_name, last_name, email, **kwargs):
+    def create(self, email, first_name, last_name, **kwargs):
         """
         Create a(n) User
         
@@ -50,32 +50,32 @@ class UsersApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.create(first_name, last_name, email, callback=callback_function)
+        >>> thread = api.create(email, first_name, last_name, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
+        :param str email: The email of the user (required)
         :param str first_name: The first name of the user (required)
         :param str last_name: The last name of the user (required)
-        :param str email: The email of the user (required)
-        :param int role_id: The ID of the role of the user
-        :param list[int] sub_organization_ids: A list of sub organization IDs that the user should have access to
-        :param list[int] team_ids: A list of team IDs that the user should have access to
+        :param str include: Related objects that can be included in the response:  organization, sub_organizations, teams, role See Including Objects for more information.
         :param bool disable_daily_emails: Specifies whether the daily emails should be turned off or not
         :param str phone: The phone number of the user
+        :param int role_id: The ID of the role of the user. Only a manager can set or modify the role id.
+        :param list[int] sub_organization_ids: A list of sub organization IDs that the user should have access to. Only a manager can set or modify the sub organization ids.
+        :param list[int] team_ids: A list of team IDs that the user should have access to. Only a manager can set or modify the team ids.
         :param str time_zone: The time zone of the user. See Time Zones for a list of valid time zones
-        :param str include: Related objects that can be included in the response:  organization, sub_organizations, teams, role See Including Objects for more information.
         :return: User
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.create_with_http_info(first_name, last_name, email, **kwargs)
+            return self.create_with_http_info(email, first_name, last_name, **kwargs)
         else:
-            (data) = self.create_with_http_info(first_name, last_name, email, **kwargs)
+            (data) = self.create_with_http_info(email, first_name, last_name, **kwargs)
             return data
 
-    def create_with_http_info(self, first_name, last_name, email, **kwargs):
+    def create_with_http_info(self, email, first_name, last_name, **kwargs):
         """
         Create a(n) User
         
@@ -85,26 +85,26 @@ class UsersApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.create_with_http_info(first_name, last_name, email, callback=callback_function)
+        >>> thread = api.create_with_http_info(email, first_name, last_name, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
+        :param str email: The email of the user (required)
         :param str first_name: The first name of the user (required)
         :param str last_name: The last name of the user (required)
-        :param str email: The email of the user (required)
-        :param int role_id: The ID of the role of the user
-        :param list[int] sub_organization_ids: A list of sub organization IDs that the user should have access to
-        :param list[int] team_ids: A list of team IDs that the user should have access to
+        :param str include: Related objects that can be included in the response:  organization, sub_organizations, teams, role See Including Objects for more information.
         :param bool disable_daily_emails: Specifies whether the daily emails should be turned off or not
         :param str phone: The phone number of the user
+        :param int role_id: The ID of the role of the user. Only a manager can set or modify the role id.
+        :param list[int] sub_organization_ids: A list of sub organization IDs that the user should have access to. Only a manager can set or modify the sub organization ids.
+        :param list[int] team_ids: A list of team IDs that the user should have access to. Only a manager can set or modify the team ids.
         :param str time_zone: The time zone of the user. See Time Zones for a list of valid time zones
-        :param str include: Related objects that can be included in the response:  organization, sub_organizations, teams, role See Including Objects for more information.
         :return: User
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['first_name', 'last_name', 'email', 'role_id', 'sub_organization_ids', 'team_ids', 'disable_daily_emails', 'phone', 'time_zone', 'include']
+        all_params = ['email', 'first_name', 'last_name', 'include', 'disable_daily_emails', 'phone', 'role_id', 'sub_organization_ids', 'team_ids', 'time_zone']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -119,15 +119,15 @@ class UsersApi(object):
                 )
             params[key] = val
         del params['kwargs']
+        # verify the required parameter 'email' is set
+        if ('email' not in params) or (params['email'] is None):
+            raise ValueError("Missing the required parameter `email` when calling `create`")
         # verify the required parameter 'first_name' is set
         if ('first_name' not in params) or (params['first_name'] is None):
             raise ValueError("Missing the required parameter `first_name` when calling `create`")
         # verify the required parameter 'last_name' is set
         if ('last_name' not in params) or (params['last_name'] is None):
             raise ValueError("Missing the required parameter `last_name` when calling `create`")
-        # verify the required parameter 'email' is set
-        if ('email' not in params) or (params['email'] is None):
-            raise ValueError("Missing the required parameter `email` when calling `create`")
 
 
         collection_formats = {}
@@ -143,12 +143,16 @@ class UsersApi(object):
 
         form_params = []
         local_var_files = {}
+        if 'disable_daily_emails' in params:
+            form_params.append(('disable_daily_emails', params['disable_daily_emails']))
+        if 'email' in params:
+            form_params.append(('email', params['email']))
         if 'first_name' in params:
             form_params.append(('first_name', params['first_name']))
         if 'last_name' in params:
             form_params.append(('last_name', params['last_name']))
-        if 'email' in params:
-            form_params.append(('email', params['email']))
+        if 'phone' in params:
+            form_params.append(('phone', params['phone']))
         if 'role_id' in params:
             form_params.append(('role_id', params['role_id']))
         if 'sub_organization_ids' in params:
@@ -157,10 +161,6 @@ class UsersApi(object):
         if 'team_ids' in params:
             form_params.append(('team_ids', params['team_ids']))
             collection_formats['None'] = 'csv'
-        if 'disable_daily_emails' in params:
-            form_params.append(('disable_daily_emails', params['disable_daily_emails']))
-        if 'phone' in params:
-            form_params.append(('phone', params['phone']))
         if 'time_zone' in params:
             form_params.append(('time_zone', params['time_zone']))
 
@@ -205,7 +205,7 @@ class UsersApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param int id:  ID (required)
+        :param int id: User ID (required)
         :param str current_password: The user's currently stored password
         :return: Meta
                  If the method is called asynchronously,
@@ -232,7 +232,7 @@ class UsersApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param int id:  ID (required)
+        :param int id: User ID (required)
         :param str current_password: The user's currently stored password
         :return: Meta
                  If the method is called asynchronously,
@@ -316,9 +316,9 @@ class UsersApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param dict(str, str) filter: Filter Params for Searching.  Equality Searchable Attributes: [id, email] Matching Searchable Attribute: [email]  Sortable Attributes: [email, current_sign_in_at, updated_at, created_at, id] Searchable Associations: [role, organization, sub_organizations, teams] See Searching Lists for more information. See the filter parameter of the association's list action to see what attributes are searchable on each association. See Conditions on Relationships in Searching Lists for more information.
-        :param str page: Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page
         :param str include: Related objects that can be included in the response:  organization, sub_organizations, teams, role See Including Objects for more information.
+        :param dict(str, str) filter: Filter Params for Searching.  Equality Searchable Attributes: [id, email] Matching Searchable Attribute: [email]  Sortable Attributes: [email, current_sign_in_at, updated_at, created_at, id] Searchable Associations: [role, organization, sub_organizations, teams] See Searching Lists for more information. See the filter parameter of the association's list action to see what attributes are searchable on each association. See Conditions on Relationships in Searching Lists for more information.
+        :param str page: Page Number and Page Size.  Number is the page number of the collection to return, size is the number of items to return per page.
         :return: PaginatedCollection
                  If the method is called asynchronously,
                  returns the request thread.
@@ -344,15 +344,15 @@ class UsersApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param dict(str, str) filter: Filter Params for Searching.  Equality Searchable Attributes: [id, email] Matching Searchable Attribute: [email]  Sortable Attributes: [email, current_sign_in_at, updated_at, created_at, id] Searchable Associations: [role, organization, sub_organizations, teams] See Searching Lists for more information. See the filter parameter of the association's list action to see what attributes are searchable on each association. See Conditions on Relationships in Searching Lists for more information.
-        :param str page: Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page
         :param str include: Related objects that can be included in the response:  organization, sub_organizations, teams, role See Including Objects for more information.
+        :param dict(str, str) filter: Filter Params for Searching.  Equality Searchable Attributes: [id, email] Matching Searchable Attribute: [email]  Sortable Attributes: [email, current_sign_in_at, updated_at, created_at, id] Searchable Associations: [role, organization, sub_organizations, teams] See Searching Lists for more information. See the filter parameter of the association's list action to see what attributes are searchable on each association. See Conditions on Relationships in Searching Lists for more information.
+        :param str page: Page Number and Page Size.  Number is the page number of the collection to return, size is the number of items to return per page.
         :return: PaginatedCollection
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['filter', 'page', 'include']
+        all_params = ['include', 'filter', 'page']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -540,16 +540,15 @@ class UsersApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param int id: User ID (required)
+        :param str include: Related objects that can be included in the response:  organization, sub_organizations, teams, role See Including Objects for more information.
+        :param bool disable_daily_emails: Specifies whether the daily emails should be turned off or not
         :param str first_name: The first name of the user
         :param str last_name: The last name of the user
-        :param str email: The email of the user
-        :param int role_id: The ID of the role of the user
-        :param list[int] sub_organization_ids: A list of sub organization IDs that the user should have access to
-        :param list[int] team_ids: A list of team IDs that the user should have access to
-        :param bool disable_daily_emails: Specifies whether the daily emails should be turned off or not
         :param str phone: The phone number of the user
+        :param int role_id: The ID of the role of the user. Only a manager can set or modify the role id.
+        :param list[int] sub_organization_ids: A list of sub organization IDs that the user should have access to. Only a manager can set or modify the sub organization ids.
+        :param list[int] team_ids: A list of team IDs that the user should have access to. Only a manager can set or modify the team ids.
         :param str time_zone: The time zone of the user. See Time Zones for a list of valid time zones
-        :param str include: Related objects that can be included in the response:  organization, sub_organizations, teams, role See Including Objects for more information.
         :return: User
                  If the method is called asynchronously,
                  returns the request thread.
@@ -576,22 +575,21 @@ class UsersApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param int id: User ID (required)
+        :param str include: Related objects that can be included in the response:  organization, sub_organizations, teams, role See Including Objects for more information.
+        :param bool disable_daily_emails: Specifies whether the daily emails should be turned off or not
         :param str first_name: The first name of the user
         :param str last_name: The last name of the user
-        :param str email: The email of the user
-        :param int role_id: The ID of the role of the user
-        :param list[int] sub_organization_ids: A list of sub organization IDs that the user should have access to
-        :param list[int] team_ids: A list of team IDs that the user should have access to
-        :param bool disable_daily_emails: Specifies whether the daily emails should be turned off or not
         :param str phone: The phone number of the user
+        :param int role_id: The ID of the role of the user. Only a manager can set or modify the role id.
+        :param list[int] sub_organization_ids: A list of sub organization IDs that the user should have access to. Only a manager can set or modify the sub organization ids.
+        :param list[int] team_ids: A list of team IDs that the user should have access to. Only a manager can set or modify the team ids.
         :param str time_zone: The time zone of the user. See Time Zones for a list of valid time zones
-        :param str include: Related objects that can be included in the response:  organization, sub_organizations, teams, role See Including Objects for more information.
         :return: User
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['id', 'first_name', 'last_name', 'email', 'role_id', 'sub_organization_ids', 'team_ids', 'disable_daily_emails', 'phone', 'time_zone', 'include']
+        all_params = ['id', 'include', 'disable_daily_emails', 'first_name', 'last_name', 'phone', 'role_id', 'sub_organization_ids', 'team_ids', 'time_zone']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -626,12 +624,14 @@ class UsersApi(object):
 
         form_params = []
         local_var_files = {}
+        if 'disable_daily_emails' in params:
+            form_params.append(('disable_daily_emails', params['disable_daily_emails']))
         if 'first_name' in params:
             form_params.append(('first_name', params['first_name']))
         if 'last_name' in params:
             form_params.append(('last_name', params['last_name']))
-        if 'email' in params:
-            form_params.append(('email', params['email']))
+        if 'phone' in params:
+            form_params.append(('phone', params['phone']))
         if 'role_id' in params:
             form_params.append(('role_id', params['role_id']))
         if 'sub_organization_ids' in params:
@@ -640,10 +640,6 @@ class UsersApi(object):
         if 'team_ids' in params:
             form_params.append(('team_ids', params['team_ids']))
             collection_formats['None'] = 'csv'
-        if 'disable_daily_emails' in params:
-            form_params.append(('disable_daily_emails', params['disable_daily_emails']))
-        if 'phone' in params:
-            form_params.append(('phone', params['phone']))
         if 'time_zone' in params:
             form_params.append(('time_zone', params['time_zone']))
 

@@ -15,7 +15,6 @@ Name | Type | Description | Notes
 **compliance_domain** | [**ComplianceDomain**](ComplianceDomain.md) | Associated Compliance Domain | [optional] 
 **compliance_domain_id** | **int** | Associated Compliance Domain ID | [optional] 
 **signatures** | [**list[Signature]**](Signature.md) | Associated Signatures | [optional] 
-**signature_ids** | **list[int]** | Associated Signatures IDs | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

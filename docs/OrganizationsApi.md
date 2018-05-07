@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 
 # **list**
-> PaginatedCollection list(filter=filter, page=page, include=include)
+> PaginatedCollection list(include=include, filter=filter, page=page)
 
 Get a list of Organizations
 
@@ -27,13 +27,13 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = esp_sdk.OrganizationsApi()
-filter = {'key': 'filter_example'} # dict(str, str) | Filter Params for Searching.  Equality Searchable Attributes: [id, name] Matching Searchable Attribute: [name]  Sortable Attributes: [name, updated_at, created_at, id]  (optional)
-page = '{:number=>1,+:size=>20}' # str | Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page (optional) (default to {:number=>1,+:size=>20})
 include = 'include_example' # str | Related objects that can be included in the response:  subscription, custom_signatures, external_accounts, sub_organizations, teams, users, compliance_standards, integrations See Including Objects for more information. (optional)
+filter = {'key': 'filter_example'} # dict(str, str) | Filter Params for Searching.  Equality Searchable Attributes: [id, name] Matching Searchable Attribute: [name]  Sortable Attributes: [name, updated_at, created_at, id]  (optional)
+page = '{:number=>1,+:size=>20}' # str | Page Number and Page Size.  Number is the page number of the collection to return, size is the number of items to return per page. (optional) (default to {:number=>1,+:size=>20})
 
 try: 
     # Get a list of Organizations
-    api_response = api_instance.list(filter=filter, page=page, include=include)
+    api_response = api_instance.list(include=include, filter=filter, page=page)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling OrganizationsApi->list: %s\n" % e)
@@ -43,9 +43,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **filter** | [**dict(str, str)**](str.md)| Filter Params for Searching.  Equality Searchable Attributes: [id, name] Matching Searchable Attribute: [name]  Sortable Attributes: [name, updated_at, created_at, id]  | [optional] 
- **page** | **str**| Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page | [optional] [default to {:number&#x3D;&gt;1,+:size&#x3D;&gt;20}]
  **include** | **str**| Related objects that can be included in the response:  subscription, custom_signatures, external_accounts, sub_organizations, teams, users, compliance_standards, integrations See Including Objects for more information. | [optional] 
+ **filter** | [**dict(str, str)**](str.md)| Filter Params for Searching.  Equality Searchable Attributes: [id, name] Matching Searchable Attribute: [name]  Sortable Attributes: [name, updated_at, created_at, id]  | [optional] 
+ **page** | **str**| Page Number and Page Size.  Number is the page number of the collection to return, size is the number of items to return per page. | [optional] [default to {:number&#x3D;&gt;1,+:size&#x3D;&gt;20}]
 
 ### Return type
 
@@ -53,7 +53,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-See https://github.com/EvidentSecurity/esp-sdk-python2#set-your-hmac-security-keys
+See https://github.com/EvidentSecurity/esp-sdk-python#set-your-hmac-security-keys
 
 ### HTTP request headers
 
@@ -63,7 +63,7 @@ See https://github.com/EvidentSecurity/esp-sdk-python2#set-your-hmac-security-ke
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_compliance_standards**
-> PaginatedCollection list_compliance_standards(organization_id, page=page, include=include)
+> PaginatedCollection list_compliance_standards(organization_id, include=include, page=page)
 
 Get a list of compliance standards for an organization
 
@@ -80,12 +80,12 @@ from pprint import pprint
 # create an instance of the API class
 api_instance = esp_sdk.OrganizationsApi()
 organization_id = 56 # int | The ID of the organization this compliance standard belongs to
-page = '{:number=>1,+:size=>20}' # str | Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page (optional) (default to {:number=>1,+:size=>20})
 include = 'include_example' # str | Related objects that can be included in the response:  compliance_domains, compliance_controls See Including Objects for more information. (optional)
+page = '{:number=>1,+:size=>20}' # str | Page Number and Page Size.  Number is the page number of the collection to return, size is the number of items to return per page. (optional) (default to {:number=>1,+:size=>20})
 
 try: 
     # Get a list of compliance standards for an organization
-    api_response = api_instance.list_compliance_standards(organization_id, page=page, include=include)
+    api_response = api_instance.list_compliance_standards(organization_id, include=include, page=page)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling OrganizationsApi->list_compliance_standards: %s\n" % e)
@@ -96,8 +96,8 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **organization_id** | **int**| The ID of the organization this compliance standard belongs to | 
- **page** | **str**| Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page | [optional] [default to {:number&#x3D;&gt;1,+:size&#x3D;&gt;20}]
  **include** | **str**| Related objects that can be included in the response:  compliance_domains, compliance_controls See Including Objects for more information. | [optional] 
+ **page** | **str**| Page Number and Page Size.  Number is the page number of the collection to return, size is the number of items to return per page. | [optional] [default to {:number&#x3D;&gt;1,+:size&#x3D;&gt;20}]
 
 ### Return type
 
@@ -105,7 +105,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-See https://github.com/EvidentSecurity/esp-sdk-python2#set-your-hmac-security-keys
+See https://github.com/EvidentSecurity/esp-sdk-python#set-your-hmac-security-keys
 
 ### HTTP request headers
 
@@ -155,7 +155,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-See https://github.com/EvidentSecurity/esp-sdk-python2#set-your-hmac-security-keys
+See https://github.com/EvidentSecurity/esp-sdk-python#set-your-hmac-security-keys
 
 ### HTTP request headers
 
@@ -165,7 +165,7 @@ See https://github.com/EvidentSecurity/esp-sdk-python2#set-your-hmac-security-ke
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update**
-> Organization update(id, name=name, require_mfa=require_mfa, include=include)
+> Organization update(id, include=include, name=name, require_mfa=require_mfa)
 
 Update a(n) Organization
 
@@ -182,13 +182,13 @@ from pprint import pprint
 # create an instance of the API class
 api_instance = esp_sdk.OrganizationsApi()
 id = 56 # int | Organization ID
+include = 'include_example' # str | Related objects that can be included in the response:  subscription, custom_signatures, external_accounts, sub_organizations, teams, users, compliance_standards, integrations See Including Objects for more information. (optional)
 name = 'name_example' # str | Name of the organization (optional)
 require_mfa = true # bool | Whether or not users for this organization are required to enable Multi Factor Authentication (optional)
-include = 'include_example' # str | Related objects that can be included in the response:  subscription, custom_signatures, external_accounts, sub_organizations, teams, users, compliance_standards, integrations See Including Objects for more information. (optional)
 
 try: 
     # Update a(n) Organization
-    api_response = api_instance.update(id, name=name, require_mfa=require_mfa, include=include)
+    api_response = api_instance.update(id, include=include, name=name, require_mfa=require_mfa)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling OrganizationsApi->update: %s\n" % e)
@@ -199,9 +199,9 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| Organization ID | 
+ **include** | **str**| Related objects that can be included in the response:  subscription, custom_signatures, external_accounts, sub_organizations, teams, users, compliance_standards, integrations See Including Objects for more information. | [optional] 
  **name** | **str**| Name of the organization | [optional] 
  **require_mfa** | **bool**| Whether or not users for this organization are required to enable Multi Factor Authentication | [optional] 
- **include** | **str**| Related objects that can be included in the response:  subscription, custom_signatures, external_accounts, sub_organizations, teams, users, compliance_standards, integrations See Including Objects for more information. | [optional] 
 
 ### Return type
 
@@ -209,7 +209,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-See https://github.com/EvidentSecurity/esp-sdk-python2#set-your-hmac-security-keys
+See https://github.com/EvidentSecurity/esp-sdk-python#set-your-hmac-security-keys
 
 ### HTTP request headers
 

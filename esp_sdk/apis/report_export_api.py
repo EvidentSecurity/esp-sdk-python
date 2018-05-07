@@ -40,7 +40,7 @@ class ReportExportApi(object):
                 config.api_client = ApiClient()
             self.api_client = config.api_client
 
-    def request_file(self, requested_format, report_ids, **kwargs):
+    def request_file(self, report_ids, requested_format, **kwargs):
         """
         Export all alerts for a set of reports to a file
         <p>An email will be sent to the calling user once the file is ready for download.</p> <p>The URL and filename attributes will be blank on create. When exporting is complete these attributes will be filled in and can be viewed using the show action.</p>
@@ -50,26 +50,26 @@ class ReportExportApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.request_file(requested_format, report_ids, callback=callback_function)
+        >>> thread = api.request_file(report_ids, requested_format, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param str requested_format: The file format of the export. Valid values are csv, json, pdf (required)
         :param list[int] report_ids: An array of report IDs to export alerts for (required)
-        :param dict(str, str) filter: Params used to filter the alerts that will be exported
+        :param str requested_format: The file format of the export. Valid values are csv, json, pdf (required)
         :param str include: Related objects that can be included in the response:  user See Including Objects for more information.
+        :param dict(str, str) filter: Params used to filter the alerts that will be exported
         :return: ExportedReport
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.request_file_with_http_info(requested_format, report_ids, **kwargs)
+            return self.request_file_with_http_info(report_ids, requested_format, **kwargs)
         else:
-            (data) = self.request_file_with_http_info(requested_format, report_ids, **kwargs)
+            (data) = self.request_file_with_http_info(report_ids, requested_format, **kwargs)
             return data
 
-    def request_file_with_http_info(self, requested_format, report_ids, **kwargs):
+    def request_file_with_http_info(self, report_ids, requested_format, **kwargs):
         """
         Export all alerts for a set of reports to a file
         <p>An email will be sent to the calling user once the file is ready for download.</p> <p>The URL and filename attributes will be blank on create. When exporting is complete these attributes will be filled in and can be viewed using the show action.</p>
@@ -79,20 +79,20 @@ class ReportExportApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.request_file_with_http_info(requested_format, report_ids, callback=callback_function)
+        >>> thread = api.request_file_with_http_info(report_ids, requested_format, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param str requested_format: The file format of the export. Valid values are csv, json, pdf (required)
         :param list[int] report_ids: An array of report IDs to export alerts for (required)
-        :param dict(str, str) filter: Params used to filter the alerts that will be exported
+        :param str requested_format: The file format of the export. Valid values are csv, json, pdf (required)
         :param str include: Related objects that can be included in the response:  user See Including Objects for more information.
+        :param dict(str, str) filter: Params used to filter the alerts that will be exported
         :return: ExportedReport
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['requested_format', 'report_ids', 'filter', 'include']
+        all_params = ['report_ids', 'requested_format', 'include', 'filter']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -107,12 +107,12 @@ class ReportExportApi(object):
                 )
             params[key] = val
         del params['kwargs']
-        # verify the required parameter 'requested_format' is set
-        if ('requested_format' not in params) or (params['requested_format'] is None):
-            raise ValueError("Missing the required parameter `requested_format` when calling `request_file`")
         # verify the required parameter 'report_ids' is set
         if ('report_ids' not in params) or (params['report_ids'] is None):
             raise ValueError("Missing the required parameter `report_ids` when calling `request_file`")
+        # verify the required parameter 'requested_format' is set
+        if ('requested_format' not in params) or (params['requested_format'] is None):
+            raise ValueError("Missing the required parameter `requested_format` when calling `request_file`")
 
 
         collection_formats = {}
@@ -128,13 +128,13 @@ class ReportExportApi(object):
 
         form_params = []
         local_var_files = {}
-        if 'requested_format' in params:
-            form_params.append(('requested_format', params['requested_format']))
+        if 'filter' in params:
+            form_params.append(('filter', params['filter']))
         if 'report_ids' in params:
             form_params.append(('report_ids', params['report_ids']))
             collection_formats['None'] = 'csv'
-        if 'filter' in params:
-            form_params.append(('filter', params['filter']))
+        if 'requested_format' in params:
+            form_params.append(('requested_format', params['requested_format']))
 
         body_params = None
         # HTTP header `Accept`
@@ -163,7 +163,7 @@ class ReportExportApi(object):
                                         _request_timeout=params.get('_request_timeout'),
                                         collection_formats=collection_formats)
 
-    def send_to_integration(self, report_ids, integration_id, **kwargs):
+    def send_to_integration(self, integration_id, report_ids, **kwargs):
         """
         Export all alerts on reports to an integration
         
@@ -173,12 +173,12 @@ class ReportExportApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.send_to_integration(report_ids, integration_id, callback=callback_function)
+        >>> thread = api.send_to_integration(integration_id, report_ids, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param list[int] report_ids: An array of report IDs (required)
         :param int integration_id: The ID of the integration to send the alerts to (required)
+        :param list[int] report_ids: An array of report IDs (required)
         :param dict(str, str) filter: Params used to filter the alerts that will be exported
         :return: Meta
                  If the method is called asynchronously,
@@ -186,12 +186,12 @@ class ReportExportApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.send_to_integration_with_http_info(report_ids, integration_id, **kwargs)
+            return self.send_to_integration_with_http_info(integration_id, report_ids, **kwargs)
         else:
-            (data) = self.send_to_integration_with_http_info(report_ids, integration_id, **kwargs)
+            (data) = self.send_to_integration_with_http_info(integration_id, report_ids, **kwargs)
             return data
 
-    def send_to_integration_with_http_info(self, report_ids, integration_id, **kwargs):
+    def send_to_integration_with_http_info(self, integration_id, report_ids, **kwargs):
         """
         Export all alerts on reports to an integration
         
@@ -201,19 +201,19 @@ class ReportExportApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.send_to_integration_with_http_info(report_ids, integration_id, callback=callback_function)
+        >>> thread = api.send_to_integration_with_http_info(integration_id, report_ids, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param list[int] report_ids: An array of report IDs (required)
         :param int integration_id: The ID of the integration to send the alerts to (required)
+        :param list[int] report_ids: An array of report IDs (required)
         :param dict(str, str) filter: Params used to filter the alerts that will be exported
         :return: Meta
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['report_ids', 'integration_id', 'filter']
+        all_params = ['integration_id', 'report_ids', 'filter']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -228,12 +228,12 @@ class ReportExportApi(object):
                 )
             params[key] = val
         del params['kwargs']
-        # verify the required parameter 'report_ids' is set
-        if ('report_ids' not in params) or (params['report_ids'] is None):
-            raise ValueError("Missing the required parameter `report_ids` when calling `send_to_integration`")
         # verify the required parameter 'integration_id' is set
         if ('integration_id' not in params) or (params['integration_id'] is None):
             raise ValueError("Missing the required parameter `integration_id` when calling `send_to_integration`")
+        # verify the required parameter 'report_ids' is set
+        if ('report_ids' not in params) or (params['report_ids'] is None):
+            raise ValueError("Missing the required parameter `report_ids` when calling `send_to_integration`")
 
 
         collection_formats = {}
@@ -247,13 +247,13 @@ class ReportExportApi(object):
 
         form_params = []
         local_var_files = {}
+        if 'filter' in params:
+            form_params.append(('filter', params['filter']))
+        if 'integration_id' in params:
+            form_params.append(('integration_id', params['integration_id']))
         if 'report_ids' in params:
             form_params.append(('report_ids', params['report_ids']))
             collection_formats['None'] = 'csv'
-        if 'integration_id' in params:
-            form_params.append(('integration_id', params['integration_id']))
-        if 'filter' in params:
-            form_params.append(('filter', params['filter']))
 
         body_params = None
         # HTTP header `Accept`

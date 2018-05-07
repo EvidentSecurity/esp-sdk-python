@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 
 # **add_channel**
-> ExternalAccountUserAttributionChannel add_channel(external_account_id, include=include)
+> ExternalAccountUserAttributionChannel add_channel(external_account_id)
 
 Create a User Attribution Channel for an external account
 
@@ -28,11 +28,10 @@ from pprint import pprint
 # create an instance of the API class
 api_instance = esp_sdk.UserAttributionsApi()
 external_account_id = 56 # int | The ID of the external account to create a User Attribution Channel for
-include = 'include_example' # str | Related objects that can be included in the response:   See Including Objects for more information. (optional)
 
 try: 
     # Create a User Attribution Channel for an external account
-    api_response = api_instance.add_channel(external_account_id, include=include)
+    api_response = api_instance.add_channel(external_account_id)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling UserAttributionsApi->add_channel: %s\n" % e)
@@ -43,7 +42,6 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **external_account_id** | **int**| The ID of the external account to create a User Attribution Channel for | 
- **include** | **str**| Related objects that can be included in the response:   See Including Objects for more information. | [optional] 
 
 ### Return type
 
@@ -51,7 +49,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-See https://github.com/EvidentSecurity/esp-sdk-python2#set-your-hmac-security-keys
+See https://github.com/EvidentSecurity/esp-sdk-python#set-your-hmac-security-keys
 
 ### HTTP request headers
 
@@ -99,7 +97,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-See https://github.com/EvidentSecurity/esp-sdk-python2#set-your-hmac-security-keys
+See https://github.com/EvidentSecurity/esp-sdk-python#set-your-hmac-security-keys
 
 ### HTTP request headers
 
@@ -109,7 +107,7 @@ See https://github.com/EvidentSecurity/esp-sdk-python2#set-your-hmac-security-ke
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **show_channel**
-> ExternalAccountUserAttributionChannel show_channel(external_account_id, include=include)
+> ExternalAccountUserAttributionChannel show_channel(external_account_id)
 
 Show the User Attribution Channel of an external account
 
@@ -126,11 +124,10 @@ from pprint import pprint
 # create an instance of the API class
 api_instance = esp_sdk.UserAttributionsApi()
 external_account_id = 56 # int | The ID of the external account to show the user attribution channel for
-include = 'include_example' # str | Related objects that can be included in the response:   See Including Objects for more information. (optional)
 
 try: 
     # Show the User Attribution Channel of an external account
-    api_response = api_instance.show_channel(external_account_id, include=include)
+    api_response = api_instance.show_channel(external_account_id)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling UserAttributionsApi->show_channel: %s\n" % e)
@@ -141,7 +138,6 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **external_account_id** | **int**| The ID of the external account to show the user attribution channel for | 
- **include** | **str**| Related objects that can be included in the response:   See Including Objects for more information. | [optional] 
 
 ### Return type
 
@@ -149,7 +145,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-See https://github.com/EvidentSecurity/esp-sdk-python2#set-your-hmac-security-keys
+See https://github.com/EvidentSecurity/esp-sdk-python#set-your-hmac-security-keys
 
 ### HTTP request headers
 
@@ -159,7 +155,7 @@ See https://github.com/EvidentSecurity/esp-sdk-python2#set-your-hmac-security-ke
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update**
-> ExternalAccount update(external_account_id, cloudtrail_name=cloudtrail_name, include=include)
+> ExternalAccount update(external_account_id, include=include, cloudtrail_name=cloudtrail_name)
 
 Update the user attributions on an external account
 
@@ -176,12 +172,12 @@ from pprint import pprint
 # create an instance of the API class
 api_instance = esp_sdk.UserAttributionsApi()
 external_account_id = 56 # int | The ID of the external account to update the user attributions of
+include = 'include_example' # str | Related objects that can be included in the response:  organization, sub_organization, team, scan_intervals, disabled_signatures, suppressions, azure_group, credentials See Including Objects for more information. (optional)
 cloudtrail_name = 'cloudtrail_name_example' # str | The name of the cloudetrail associated with the user attribution. (optional)
-include = 'include_example' # str | Related objects that can be included in the response:  organization, sub_organization, team, scan_intervals, disabled_signatures, azure_group, credentials See Including Objects for more information. (optional)
 
 try: 
     # Update the user attributions on an external account
-    api_response = api_instance.update(external_account_id, cloudtrail_name=cloudtrail_name, include=include)
+    api_response = api_instance.update(external_account_id, include=include, cloudtrail_name=cloudtrail_name)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling UserAttributionsApi->update: %s\n" % e)
@@ -192,8 +188,8 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **external_account_id** | **int**| The ID of the external account to update the user attributions of | 
+ **include** | **str**| Related objects that can be included in the response:  organization, sub_organization, team, scan_intervals, disabled_signatures, suppressions, azure_group, credentials See Including Objects for more information. | [optional] 
  **cloudtrail_name** | **str**| The name of the cloudetrail associated with the user attribution. | [optional] 
- **include** | **str**| Related objects that can be included in the response:  organization, sub_organization, team, scan_intervals, disabled_signatures, azure_group, credentials See Including Objects for more information. | [optional] 
 
 ### Return type
 
@@ -201,7 +197,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-See https://github.com/EvidentSecurity/esp-sdk-python2#set-your-hmac-security-keys
+See https://github.com/EvidentSecurity/esp-sdk-python#set-your-hmac-security-keys
 
 ### HTTP request headers
 

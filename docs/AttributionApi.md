@@ -1,16 +1,16 @@
-# esp_sdk.SubscriptionsApi
+# esp_sdk.AttributionApi
 
 All URIs are relative to https://api.evident.io
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**show**](SubscriptionsApi.md#show) | **GET** /api/v2/subscriptions/{id}.json_api | Show a single Subscription
+[**show**](AttributionApi.md#show) | **GET** /api/v2/alerts/{alert_id}/attribution.json_api | Show the attribution for an alert
 
 
 # **show**
-> Subscription show(id, include=include)
+> Attribution show(alert_id, include=include)
 
-Show a single Subscription
+Show the attribution for an alert
 
 
 
@@ -23,28 +23,28 @@ from esp_sdk.rest import ApiException
 from pprint import pprint
 
 # create an instance of the API class
-api_instance = esp_sdk.SubscriptionsApi()
-id = 56 # int | Subscription ID
-include = 'include_example' # str | Related objects that can be included in the response:  organization, plan See Including Objects for more information. (optional)
+api_instance = esp_sdk.AttributionApi()
+alert_id = 56 # int | The ID of the alert to retrieve user attribution for
+include = 'include_example' # str | Related objects that can be included in the response:  alert See Including Objects for more information. (optional)
 
 try: 
-    # Show a single Subscription
-    api_response = api_instance.show(id, include=include)
+    # Show the attribution for an alert
+    api_response = api_instance.show(alert_id, include=include)
     pprint(api_response)
 except ApiException as e:
-    print("Exception when calling SubscriptionsApi->show: %s\n" % e)
+    print("Exception when calling AttributionApi->show: %s\n" % e)
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **int**| Subscription ID | 
- **include** | **str**| Related objects that can be included in the response:  organization, plan See Including Objects for more information. | [optional] 
+ **alert_id** | **int**| The ID of the alert to retrieve user attribution for | 
+ **include** | **str**| Related objects that can be included in the response:  alert See Including Objects for more information. | [optional] 
 
 ### Return type
 
-[**Subscription**](Subscription.md)
+[**Attribution**](Attribution.md)
 
 ### Authorization
 

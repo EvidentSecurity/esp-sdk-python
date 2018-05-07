@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 
 # **create**
-> CustomComplianceDomain create(identifier, custom_compliance_standard_id, name, position=position, include=include)
+> CustomComplianceDomain create(custom_compliance_standard_id, identifier, name, include=include, position=position)
 
 Create a(n) Custom Compliance Domain
 
@@ -27,15 +27,15 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = esp_sdk.CustomComplianceDomainsApi()
-identifier = 'identifier_example' # str | The identifier of this custom domain
 custom_compliance_standard_id = 56 # int | The ID of the Custom Compliance Standard this custom domain belongs to
+identifier = 'identifier_example' # str | The identifier of this custom domain
 name = 'name_example' # str | Name
-position = 56 # int | The position of this custom domain within the custom standard (optional)
 include = 'include_example' # str | Related objects that can be included in the response:  custom_compliance_standard, custom_compliance_controls See Including Objects for more information. (optional)
+position = 56 # int | The position of this custom domain within the custom standard (optional)
 
 try: 
     # Create a(n) Custom Compliance Domain
-    api_response = api_instance.create(identifier, custom_compliance_standard_id, name, position=position, include=include)
+    api_response = api_instance.create(custom_compliance_standard_id, identifier, name, include=include, position=position)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling CustomComplianceDomainsApi->create: %s\n" % e)
@@ -45,11 +45,11 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **identifier** | **str**| The identifier of this custom domain | 
  **custom_compliance_standard_id** | **int**| The ID of the Custom Compliance Standard this custom domain belongs to | 
+ **identifier** | **str**| The identifier of this custom domain | 
  **name** | **str**| Name | 
- **position** | **int**| The position of this custom domain within the custom standard | [optional] 
  **include** | **str**| Related objects that can be included in the response:  custom_compliance_standard, custom_compliance_controls See Including Objects for more information. | [optional] 
+ **position** | **int**| The position of this custom domain within the custom standard | [optional] 
 
 ### Return type
 
@@ -57,7 +57,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-See https://github.com/EvidentSecurity/esp-sdk-python2#set-your-hmac-security-keys
+See https://github.com/EvidentSecurity/esp-sdk-python#set-your-hmac-security-keys
 
 ### HTTP request headers
 
@@ -83,7 +83,7 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = esp_sdk.CustomComplianceDomainsApi()
-id = 56 # int |  ID
+id = 56 # int | Custom Compliance Domain ID
 
 try: 
     # Delete a(n) Custom Compliance Domain
@@ -97,7 +97,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **int**|  ID | 
+ **id** | **int**| Custom Compliance Domain ID | 
 
 ### Return type
 
@@ -105,7 +105,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-See https://github.com/EvidentSecurity/esp-sdk-python2#set-your-hmac-security-keys
+See https://github.com/EvidentSecurity/esp-sdk-python#set-your-hmac-security-keys
 
 ### HTTP request headers
 
@@ -155,7 +155,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-See https://github.com/EvidentSecurity/esp-sdk-python2#set-your-hmac-security-keys
+See https://github.com/EvidentSecurity/esp-sdk-python#set-your-hmac-security-keys
 
 ### HTTP request headers
 
@@ -165,7 +165,7 @@ See https://github.com/EvidentSecurity/esp-sdk-python2#set-your-hmac-security-ke
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update**
-> CustomComplianceDomain update(id, identifier=identifier, custom_compliance_standard_id=custom_compliance_standard_id, name=name, position=position, include=include)
+> CustomComplianceDomain update(id, include=include, custom_compliance_standard_id=custom_compliance_standard_id, identifier=identifier, name=name, position=position)
 
 Update a(n) Custom Compliance Domain
 
@@ -182,15 +182,15 @@ from pprint import pprint
 # create an instance of the API class
 api_instance = esp_sdk.CustomComplianceDomainsApi()
 id = 56 # int | Custom Compliance Domain ID
-identifier = 'identifier_example' # str | The identifier of this custom domain (optional)
+include = 'include_example' # str | Related objects that can be included in the response:  custom_compliance_standard, custom_compliance_controls See Including Objects for more information. (optional)
 custom_compliance_standard_id = 56 # int | The ID of the Custom Compliance Standard this custom domain belongs to (optional)
+identifier = 'identifier_example' # str | The identifier of this custom domain (optional)
 name = 'name_example' # str | Name (optional)
 position = 56 # int | The position of this custom domain within the custom standard (optional)
-include = 'include_example' # str | Related objects that can be included in the response:  custom_compliance_standard, custom_compliance_controls See Including Objects for more information. (optional)
 
 try: 
     # Update a(n) Custom Compliance Domain
-    api_response = api_instance.update(id, identifier=identifier, custom_compliance_standard_id=custom_compliance_standard_id, name=name, position=position, include=include)
+    api_response = api_instance.update(id, include=include, custom_compliance_standard_id=custom_compliance_standard_id, identifier=identifier, name=name, position=position)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling CustomComplianceDomainsApi->update: %s\n" % e)
@@ -201,11 +201,11 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| Custom Compliance Domain ID | 
- **identifier** | **str**| The identifier of this custom domain | [optional] 
+ **include** | **str**| Related objects that can be included in the response:  custom_compliance_standard, custom_compliance_controls See Including Objects for more information. | [optional] 
  **custom_compliance_standard_id** | **int**| The ID of the Custom Compliance Standard this custom domain belongs to | [optional] 
+ **identifier** | **str**| The identifier of this custom domain | [optional] 
  **name** | **str**| Name | [optional] 
  **position** | **int**| The position of this custom domain within the custom standard | [optional] 
- **include** | **str**| Related objects that can be included in the response:  custom_compliance_standard, custom_compliance_controls See Including Objects for more information. | [optional] 
 
 ### Return type
 
@@ -213,7 +213,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-See https://github.com/EvidentSecurity/esp-sdk-python2#set-your-hmac-security-keys
+See https://github.com/EvidentSecurity/esp-sdk-python#set-your-hmac-security-keys
 
 ### HTTP request headers
 

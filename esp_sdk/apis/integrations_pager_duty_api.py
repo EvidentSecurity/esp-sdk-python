@@ -40,7 +40,7 @@ class IntegrationsPagerDutyApi(object):
                 config.api_client = ApiClient()
             self.api_client = config.api_client
 
-    def create(self, api_key, name, external_account_ids, **kwargs):
+    def create(self, api_key, external_account_ids, name, **kwargs):
         """
         Create a Pager Duty Integration
         
@@ -50,34 +50,34 @@ class IntegrationsPagerDutyApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.create(api_key, name, external_account_ids, callback=callback_function)
+        >>> thread = api.create(api_key, external_account_ids, name, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str api_key: The API Key for the PagerDuty Integration (required)
-        :param str name: Name of the integration (required)
         :param list[int] external_account_ids: External accounts for integration (required)
+        :param str name: Name of the integration (required)
+        :param str include: Related objects that can be included in the response:  integration See Including Objects for more information.
         :param bool all_high_risk: Send all high risk alerts
-        :param bool all_medium_risk: Send all medium risk alerts
         :param bool all_low_risk: Send all low risk alerts
+        :param bool all_medium_risk: Send all medium risk alerts
+        :param list[int] custom_signature_ids: Custom signatures for integration
         :param bool send_updates: This feature enables the integration to send alerts when they are updated. When disabled, alerts will only be sent when they are initially created. When enabled, alerts will additionally be sent when a change is made such as the alert ending. An alert may end for multiple reasons.
         :param bool send_when_suppressed: Send notifications for suppressed alerts
         :param list[int] signature_ids: Signatures for integration
         :param list[str] statuses: Only send alerts that have the status in this list. Valid values are fail, warn, error, pass, info
-        :param list[int] custom_signature_ids: Custom signatures for integration
-        :param str include: Related objects that can be included in the response:  integration See Including Objects for more information.
         :return: IntegrationPagerDuty
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.create_with_http_info(api_key, name, external_account_ids, **kwargs)
+            return self.create_with_http_info(api_key, external_account_ids, name, **kwargs)
         else:
-            (data) = self.create_with_http_info(api_key, name, external_account_ids, **kwargs)
+            (data) = self.create_with_http_info(api_key, external_account_ids, name, **kwargs)
             return data
 
-    def create_with_http_info(self, api_key, name, external_account_ids, **kwargs):
+    def create_with_http_info(self, api_key, external_account_ids, name, **kwargs):
         """
         Create a Pager Duty Integration
         
@@ -87,28 +87,28 @@ class IntegrationsPagerDutyApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.create_with_http_info(api_key, name, external_account_ids, callback=callback_function)
+        >>> thread = api.create_with_http_info(api_key, external_account_ids, name, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str api_key: The API Key for the PagerDuty Integration (required)
-        :param str name: Name of the integration (required)
         :param list[int] external_account_ids: External accounts for integration (required)
+        :param str name: Name of the integration (required)
+        :param str include: Related objects that can be included in the response:  integration See Including Objects for more information.
         :param bool all_high_risk: Send all high risk alerts
-        :param bool all_medium_risk: Send all medium risk alerts
         :param bool all_low_risk: Send all low risk alerts
+        :param bool all_medium_risk: Send all medium risk alerts
+        :param list[int] custom_signature_ids: Custom signatures for integration
         :param bool send_updates: This feature enables the integration to send alerts when they are updated. When disabled, alerts will only be sent when they are initially created. When enabled, alerts will additionally be sent when a change is made such as the alert ending. An alert may end for multiple reasons.
         :param bool send_when_suppressed: Send notifications for suppressed alerts
         :param list[int] signature_ids: Signatures for integration
         :param list[str] statuses: Only send alerts that have the status in this list. Valid values are fail, warn, error, pass, info
-        :param list[int] custom_signature_ids: Custom signatures for integration
-        :param str include: Related objects that can be included in the response:  integration See Including Objects for more information.
         :return: IntegrationPagerDuty
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['api_key', 'name', 'external_account_ids', 'all_high_risk', 'all_medium_risk', 'all_low_risk', 'send_updates', 'send_when_suppressed', 'signature_ids', 'statuses', 'custom_signature_ids', 'include']
+        all_params = ['api_key', 'external_account_ids', 'name', 'include', 'all_high_risk', 'all_low_risk', 'all_medium_risk', 'custom_signature_ids', 'send_updates', 'send_when_suppressed', 'signature_ids', 'statuses']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -126,12 +126,12 @@ class IntegrationsPagerDutyApi(object):
         # verify the required parameter 'api_key' is set
         if ('api_key' not in params) or (params['api_key'] is None):
             raise ValueError("Missing the required parameter `api_key` when calling `create`")
-        # verify the required parameter 'name' is set
-        if ('name' not in params) or (params['name'] is None):
-            raise ValueError("Missing the required parameter `name` when calling `create`")
         # verify the required parameter 'external_account_ids' is set
         if ('external_account_ids' not in params) or (params['external_account_ids'] is None):
             raise ValueError("Missing the required parameter `external_account_ids` when calling `create`")
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `create`")
 
 
         collection_formats = {}
@@ -147,16 +147,22 @@ class IntegrationsPagerDutyApi(object):
 
         form_params = []
         local_var_files = {}
-        if 'api_key' in params:
-            form_params.append(('api_key', params['api_key']))
-        if 'name' in params:
-            form_params.append(('name', params['name']))
         if 'all_high_risk' in params:
             form_params.append(('all_high_risk', params['all_high_risk']))
-        if 'all_medium_risk' in params:
-            form_params.append(('all_medium_risk', params['all_medium_risk']))
         if 'all_low_risk' in params:
             form_params.append(('all_low_risk', params['all_low_risk']))
+        if 'all_medium_risk' in params:
+            form_params.append(('all_medium_risk', params['all_medium_risk']))
+        if 'api_key' in params:
+            form_params.append(('api_key', params['api_key']))
+        if 'custom_signature_ids' in params:
+            form_params.append(('custom_signature_ids', params['custom_signature_ids']))
+            collection_formats['None'] = 'csv'
+        if 'external_account_ids' in params:
+            form_params.append(('external_account_ids', params['external_account_ids']))
+            collection_formats['None'] = 'csv'
+        if 'name' in params:
+            form_params.append(('name', params['name']))
         if 'send_updates' in params:
             form_params.append(('send_updates', params['send_updates']))
         if 'send_when_suppressed' in params:
@@ -166,12 +172,6 @@ class IntegrationsPagerDutyApi(object):
             collection_formats['None'] = 'csv'
         if 'statuses' in params:
             form_params.append(('statuses', params['statuses']))
-            collection_formats['None'] = 'csv'
-        if 'external_account_ids' in params:
-            form_params.append(('external_account_ids', params['external_account_ids']))
-            collection_formats['None'] = 'csv'
-        if 'custom_signature_ids' in params:
-            form_params.append(('custom_signature_ids', params['custom_signature_ids']))
             collection_formats['None'] = 'csv'
 
         body_params = None
@@ -327,18 +327,18 @@ class IntegrationsPagerDutyApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param int integration_id: The ID of the integration (required)
-        :param str api_key: The API Key for the PagerDuty Integration
-        :param str name: Name of the integration
+        :param str include: Related objects that can be included in the response:  integration See Including Objects for more information.
         :param bool all_high_risk: Send all high risk alerts
-        :param bool all_medium_risk: Send all medium risk alerts
         :param bool all_low_risk: Send all low risk alerts
+        :param bool all_medium_risk: Send all medium risk alerts
+        :param str api_key: The API Key for the PagerDuty Integration
+        :param list[int] custom_signature_ids: Custom signatures for integration
+        :param list[int] external_account_ids: External accounts for integration
+        :param str name: Name of the integration
         :param bool send_updates: This feature enables the integration to send alerts when they are updated. When disabled, alerts will only be sent when they are initially created. When enabled, alerts will additionally be sent when a change is made such as the alert ending. An alert may end for multiple reasons.
         :param bool send_when_suppressed: Send notifications for suppressed alerts
         :param list[int] signature_ids: Signatures for integration
         :param list[str] statuses: Only send alerts that have the status in this list. Valid values are fail, warn, error, pass, info
-        :param list[int] external_account_ids: External accounts for integration
-        :param list[int] custom_signature_ids: Custom signatures for integration
-        :param str include: Related objects that can be included in the response:  integration See Including Objects for more information.
         :return: IntegrationPagerDuty
                  If the method is called asynchronously,
                  returns the request thread.
@@ -365,24 +365,24 @@ class IntegrationsPagerDutyApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param int integration_id: The ID of the integration (required)
-        :param str api_key: The API Key for the PagerDuty Integration
-        :param str name: Name of the integration
+        :param str include: Related objects that can be included in the response:  integration See Including Objects for more information.
         :param bool all_high_risk: Send all high risk alerts
-        :param bool all_medium_risk: Send all medium risk alerts
         :param bool all_low_risk: Send all low risk alerts
+        :param bool all_medium_risk: Send all medium risk alerts
+        :param str api_key: The API Key for the PagerDuty Integration
+        :param list[int] custom_signature_ids: Custom signatures for integration
+        :param list[int] external_account_ids: External accounts for integration
+        :param str name: Name of the integration
         :param bool send_updates: This feature enables the integration to send alerts when they are updated. When disabled, alerts will only be sent when they are initially created. When enabled, alerts will additionally be sent when a change is made such as the alert ending. An alert may end for multiple reasons.
         :param bool send_when_suppressed: Send notifications for suppressed alerts
         :param list[int] signature_ids: Signatures for integration
         :param list[str] statuses: Only send alerts that have the status in this list. Valid values are fail, warn, error, pass, info
-        :param list[int] external_account_ids: External accounts for integration
-        :param list[int] custom_signature_ids: Custom signatures for integration
-        :param str include: Related objects that can be included in the response:  integration See Including Objects for more information.
         :return: IntegrationPagerDuty
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['integration_id', 'api_key', 'name', 'all_high_risk', 'all_medium_risk', 'all_low_risk', 'send_updates', 'send_when_suppressed', 'signature_ids', 'statuses', 'external_account_ids', 'custom_signature_ids', 'include']
+        all_params = ['integration_id', 'include', 'all_high_risk', 'all_low_risk', 'all_medium_risk', 'api_key', 'custom_signature_ids', 'external_account_ids', 'name', 'send_updates', 'send_when_suppressed', 'signature_ids', 'statuses']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -417,16 +417,22 @@ class IntegrationsPagerDutyApi(object):
 
         form_params = []
         local_var_files = {}
-        if 'api_key' in params:
-            form_params.append(('api_key', params['api_key']))
-        if 'name' in params:
-            form_params.append(('name', params['name']))
         if 'all_high_risk' in params:
             form_params.append(('all_high_risk', params['all_high_risk']))
-        if 'all_medium_risk' in params:
-            form_params.append(('all_medium_risk', params['all_medium_risk']))
         if 'all_low_risk' in params:
             form_params.append(('all_low_risk', params['all_low_risk']))
+        if 'all_medium_risk' in params:
+            form_params.append(('all_medium_risk', params['all_medium_risk']))
+        if 'api_key' in params:
+            form_params.append(('api_key', params['api_key']))
+        if 'custom_signature_ids' in params:
+            form_params.append(('custom_signature_ids', params['custom_signature_ids']))
+            collection_formats['None'] = 'csv'
+        if 'external_account_ids' in params:
+            form_params.append(('external_account_ids', params['external_account_ids']))
+            collection_formats['None'] = 'csv'
+        if 'name' in params:
+            form_params.append(('name', params['name']))
         if 'send_updates' in params:
             form_params.append(('send_updates', params['send_updates']))
         if 'send_when_suppressed' in params:
@@ -436,12 +442,6 @@ class IntegrationsPagerDutyApi(object):
             collection_formats['None'] = 'csv'
         if 'statuses' in params:
             form_params.append(('statuses', params['statuses']))
-            collection_formats['None'] = 'csv'
-        if 'external_account_ids' in params:
-            form_params.append(('external_account_ids', params['external_account_ids']))
-            collection_formats['None'] = 'csv'
-        if 'custom_signature_ids' in params:
-            form_params.append(('custom_signature_ids', params['custom_signature_ids']))
             collection_formats['None'] = 'csv'
 
         body_params = None

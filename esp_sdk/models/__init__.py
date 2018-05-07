@@ -16,10 +16,10 @@ from __future__ import absolute_import
 # import models into model package
 from .api_key import APIKey
 from .alert import Alert
+from .attribution import Attribution
 from .audit_log import AuditLog
 from .audit_log_file import AuditLogFile
 from .azure_group import AzureGroup
-from .cloud_trail_event import CloudTrailEvent
 from .compliance_control import ComplianceControl
 from .compliance_domain import ComplianceDomain
 from .compliance_standard import ComplianceStandard

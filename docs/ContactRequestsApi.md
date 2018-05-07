@@ -8,7 +8,7 @@ Method | HTTP request | Description
 
 
 # **create**
-> ContactRequest create(title, description, request_type, include=include)
+> ContactRequest create(description, request_type, title, include=include)
 
 Create a(n) Contact Request
 
@@ -24,14 +24,14 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = esp_sdk.ContactRequestsApi()
-title = 'title_example' # str | Subject of your message
 description = 'description_example' # str | Body of your message
 request_type = 'request_type_example' # str | Type of contact request. Valid values are support, feature
+title = 'title_example' # str | Subject of your message
 include = 'include_example' # str | Related objects that can be included in the response:  user See Including Objects for more information. (optional)
 
 try: 
     # Create a(n) Contact Request
-    api_response = api_instance.create(title, description, request_type, include=include)
+    api_response = api_instance.create(description, request_type, title, include=include)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling ContactRequestsApi->create: %s\n" % e)
@@ -41,9 +41,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **title** | **str**| Subject of your message | 
  **description** | **str**| Body of your message | 
  **request_type** | **str**| Type of contact request. Valid values are support, feature | 
+ **title** | **str**| Subject of your message | 
  **include** | **str**| Related objects that can be included in the response:  user See Including Objects for more information. | [optional] 
 
 ### Return type
@@ -52,7 +52,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-See https://github.com/EvidentSecurity/esp-sdk-python2#set-your-hmac-security-keys
+See https://github.com/EvidentSecurity/esp-sdk-python#set-your-hmac-security-keys
 
 ### HTTP request headers
 

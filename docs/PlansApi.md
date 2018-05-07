@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 
 # **list**
-> PaginatedCollection list(page=page, include=include)
+> PaginatedCollection list(page=page)
 
 Get a list of Plans
 
@@ -25,12 +25,11 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = esp_sdk.PlansApi()
-page = '{:number=>1,+:size=>20}' # str | Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page (optional) (default to {:number=>1,+:size=>20})
-include = 'include_example' # str | Related objects that can be included in the response:   See Including Objects for more information. (optional)
+page = '{:number=>1,+:size=>20}' # str | Page Number and Page Size.  Number is the page number of the collection to return, size is the number of items to return per page. (optional) (default to {:number=>1,+:size=>20})
 
 try: 
     # Get a list of Plans
-    api_response = api_instance.list(page=page, include=include)
+    api_response = api_instance.list(page=page)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling PlansApi->list: %s\n" % e)
@@ -40,8 +39,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **page** | **str**| Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page | [optional] [default to {:number&#x3D;&gt;1,+:size&#x3D;&gt;20}]
- **include** | **str**| Related objects that can be included in the response:   See Including Objects for more information. | [optional] 
+ **page** | **str**| Page Number and Page Size.  Number is the page number of the collection to return, size is the number of items to return per page. | [optional] [default to {:number&#x3D;&gt;1,+:size&#x3D;&gt;20}]
 
 ### Return type
 
@@ -49,7 +47,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-See https://github.com/EvidentSecurity/esp-sdk-python2#set-your-hmac-security-keys
+See https://github.com/EvidentSecurity/esp-sdk-python#set-your-hmac-security-keys
 
 ### HTTP request headers
 
@@ -59,7 +57,7 @@ See https://github.com/EvidentSecurity/esp-sdk-python2#set-your-hmac-security-ke
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **show**
-> Plan show(id, include=include)
+> Plan show(id)
 
 Show a single Plan
 
@@ -76,11 +74,10 @@ from pprint import pprint
 # create an instance of the API class
 api_instance = esp_sdk.PlansApi()
 id = 56 # int | Plan ID
-include = 'include_example' # str | Related objects that can be included in the response:   See Including Objects for more information. (optional)
 
 try: 
     # Show a single Plan
-    api_response = api_instance.show(id, include=include)
+    api_response = api_instance.show(id)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling PlansApi->show: %s\n" % e)
@@ -91,7 +88,6 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| Plan ID | 
- **include** | **str**| Related objects that can be included in the response:   See Including Objects for more information. | [optional] 
 
 ### Return type
 
@@ -99,7 +95,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-See https://github.com/EvidentSecurity/esp-sdk-python2#set-your-hmac-security-keys
+See https://github.com/EvidentSecurity/esp-sdk-python#set-your-hmac-security-keys
 
 ### HTTP request headers
 

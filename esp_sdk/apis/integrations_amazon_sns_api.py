@@ -40,7 +40,7 @@ class IntegrationsAmazonSNSApi(object):
                 config.api_client = ApiClient()
             self.api_client = config.api_client
 
-    def create(self, arn, external_id, topic, name, external_account_ids, **kwargs):
+    def create(self, arn, external_account_ids, external_id, name, topic, **kwargs):
         """
         Create an Amazon SNS Integration
         
@@ -50,36 +50,36 @@ class IntegrationsAmazonSNSApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.create(arn, external_id, topic, name, external_account_ids, callback=callback_function)
+        >>> thread = api.create(arn, external_account_ids, external_id, name, topic, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str arn: The role arn for accessing the SNS topic (required)
-        :param str external_id: The external ID for the IAM role (required)
-        :param str topic: The SNS topic arn (required)
-        :param str name: Name of the integration (required)
         :param list[int] external_account_ids: External accounts for integration (required)
+        :param str external_id: The external ID for the IAM role (required)
+        :param str name: Name of the integration (required)
+        :param str topic: The SNS topic arn (required)
+        :param str include: Related objects that can be included in the response:  region, integration See Including Objects for more information.
         :param bool all_high_risk: Send all high risk alerts
-        :param bool all_medium_risk: Send all medium risk alerts
         :param bool all_low_risk: Send all low risk alerts
+        :param bool all_medium_risk: Send all medium risk alerts
+        :param list[int] custom_signature_ids: Custom signatures for integration
         :param bool send_updates: This feature enables the integration to send alerts when they are updated. When disabled, alerts will only be sent when they are initially created. When enabled, alerts will additionally be sent when a change is made such as the alert ending. An alert may end for multiple reasons.
         :param bool send_when_suppressed: Send notifications for suppressed alerts
         :param list[int] signature_ids: Signatures for integration
         :param list[str] statuses: Only send alerts that have the status in this list. Valid values are fail, warn, error, pass, info
-        :param list[int] custom_signature_ids: Custom signatures for integration
-        :param str include: Related objects that can be included in the response:  region, integration See Including Objects for more information.
         :return: IntegrationAmazonSns
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.create_with_http_info(arn, external_id, topic, name, external_account_ids, **kwargs)
+            return self.create_with_http_info(arn, external_account_ids, external_id, name, topic, **kwargs)
         else:
-            (data) = self.create_with_http_info(arn, external_id, topic, name, external_account_ids, **kwargs)
+            (data) = self.create_with_http_info(arn, external_account_ids, external_id, name, topic, **kwargs)
             return data
 
-    def create_with_http_info(self, arn, external_id, topic, name, external_account_ids, **kwargs):
+    def create_with_http_info(self, arn, external_account_ids, external_id, name, topic, **kwargs):
         """
         Create an Amazon SNS Integration
         
@@ -89,30 +89,30 @@ class IntegrationsAmazonSNSApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.create_with_http_info(arn, external_id, topic, name, external_account_ids, callback=callback_function)
+        >>> thread = api.create_with_http_info(arn, external_account_ids, external_id, name, topic, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str arn: The role arn for accessing the SNS topic (required)
-        :param str external_id: The external ID for the IAM role (required)
-        :param str topic: The SNS topic arn (required)
-        :param str name: Name of the integration (required)
         :param list[int] external_account_ids: External accounts for integration (required)
+        :param str external_id: The external ID for the IAM role (required)
+        :param str name: Name of the integration (required)
+        :param str topic: The SNS topic arn (required)
+        :param str include: Related objects that can be included in the response:  region, integration See Including Objects for more information.
         :param bool all_high_risk: Send all high risk alerts
-        :param bool all_medium_risk: Send all medium risk alerts
         :param bool all_low_risk: Send all low risk alerts
+        :param bool all_medium_risk: Send all medium risk alerts
+        :param list[int] custom_signature_ids: Custom signatures for integration
         :param bool send_updates: This feature enables the integration to send alerts when they are updated. When disabled, alerts will only be sent when they are initially created. When enabled, alerts will additionally be sent when a change is made such as the alert ending. An alert may end for multiple reasons.
         :param bool send_when_suppressed: Send notifications for suppressed alerts
         :param list[int] signature_ids: Signatures for integration
         :param list[str] statuses: Only send alerts that have the status in this list. Valid values are fail, warn, error, pass, info
-        :param list[int] custom_signature_ids: Custom signatures for integration
-        :param str include: Related objects that can be included in the response:  region, integration See Including Objects for more information.
         :return: IntegrationAmazonSns
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['arn', 'external_id', 'topic', 'name', 'external_account_ids', 'all_high_risk', 'all_medium_risk', 'all_low_risk', 'send_updates', 'send_when_suppressed', 'signature_ids', 'statuses', 'custom_signature_ids', 'include']
+        all_params = ['arn', 'external_account_ids', 'external_id', 'name', 'topic', 'include', 'all_high_risk', 'all_low_risk', 'all_medium_risk', 'custom_signature_ids', 'send_updates', 'send_when_suppressed', 'signature_ids', 'statuses']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -130,18 +130,18 @@ class IntegrationsAmazonSNSApi(object):
         # verify the required parameter 'arn' is set
         if ('arn' not in params) or (params['arn'] is None):
             raise ValueError("Missing the required parameter `arn` when calling `create`")
-        # verify the required parameter 'external_id' is set
-        if ('external_id' not in params) or (params['external_id'] is None):
-            raise ValueError("Missing the required parameter `external_id` when calling `create`")
-        # verify the required parameter 'topic' is set
-        if ('topic' not in params) or (params['topic'] is None):
-            raise ValueError("Missing the required parameter `topic` when calling `create`")
-        # verify the required parameter 'name' is set
-        if ('name' not in params) or (params['name'] is None):
-            raise ValueError("Missing the required parameter `name` when calling `create`")
         # verify the required parameter 'external_account_ids' is set
         if ('external_account_ids' not in params) or (params['external_account_ids'] is None):
             raise ValueError("Missing the required parameter `external_account_ids` when calling `create`")
+        # verify the required parameter 'external_id' is set
+        if ('external_id' not in params) or (params['external_id'] is None):
+            raise ValueError("Missing the required parameter `external_id` when calling `create`")
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `create`")
+        # verify the required parameter 'topic' is set
+        if ('topic' not in params) or (params['topic'] is None):
+            raise ValueError("Missing the required parameter `topic` when calling `create`")
 
 
         collection_formats = {}
@@ -157,20 +157,24 @@ class IntegrationsAmazonSNSApi(object):
 
         form_params = []
         local_var_files = {}
-        if 'arn' in params:
-            form_params.append(('arn', params['arn']))
-        if 'external_id' in params:
-            form_params.append(('external_id', params['external_id']))
-        if 'topic' in params:
-            form_params.append(('topic', params['topic']))
-        if 'name' in params:
-            form_params.append(('name', params['name']))
         if 'all_high_risk' in params:
             form_params.append(('all_high_risk', params['all_high_risk']))
-        if 'all_medium_risk' in params:
-            form_params.append(('all_medium_risk', params['all_medium_risk']))
         if 'all_low_risk' in params:
             form_params.append(('all_low_risk', params['all_low_risk']))
+        if 'all_medium_risk' in params:
+            form_params.append(('all_medium_risk', params['all_medium_risk']))
+        if 'arn' in params:
+            form_params.append(('arn', params['arn']))
+        if 'custom_signature_ids' in params:
+            form_params.append(('custom_signature_ids', params['custom_signature_ids']))
+            collection_formats['None'] = 'csv'
+        if 'external_account_ids' in params:
+            form_params.append(('external_account_ids', params['external_account_ids']))
+            collection_formats['None'] = 'csv'
+        if 'external_id' in params:
+            form_params.append(('external_id', params['external_id']))
+        if 'name' in params:
+            form_params.append(('name', params['name']))
         if 'send_updates' in params:
             form_params.append(('send_updates', params['send_updates']))
         if 'send_when_suppressed' in params:
@@ -181,12 +185,8 @@ class IntegrationsAmazonSNSApi(object):
         if 'statuses' in params:
             form_params.append(('statuses', params['statuses']))
             collection_formats['None'] = 'csv'
-        if 'external_account_ids' in params:
-            form_params.append(('external_account_ids', params['external_account_ids']))
-            collection_formats['None'] = 'csv'
-        if 'custom_signature_ids' in params:
-            form_params.append(('custom_signature_ids', params['custom_signature_ids']))
-            collection_formats['None'] = 'csv'
+        if 'topic' in params:
+            form_params.append(('topic', params['topic']))
 
         body_params = None
         # HTTP header `Accept`
@@ -341,20 +341,20 @@ class IntegrationsAmazonSNSApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param int integration_id: The ID of the integration (required)
-        :param str arn: The role arn for accessing the SNS topic
-        :param str external_id: The external ID for the IAM role
-        :param str topic: The SNS topic arn
-        :param str name: Name of the integration
+        :param str include: Related objects that can be included in the response:  region, integration See Including Objects for more information.
         :param bool all_high_risk: Send all high risk alerts
-        :param bool all_medium_risk: Send all medium risk alerts
         :param bool all_low_risk: Send all low risk alerts
+        :param bool all_medium_risk: Send all medium risk alerts
+        :param str arn: The role arn for accessing the SNS topic
+        :param list[int] custom_signature_ids: Custom signatures for integration
+        :param list[int] external_account_ids: External accounts for integration
+        :param str external_id: The external ID for the IAM role
+        :param str name: Name of the integration
         :param bool send_updates: This feature enables the integration to send alerts when they are updated. When disabled, alerts will only be sent when they are initially created. When enabled, alerts will additionally be sent when a change is made such as the alert ending. An alert may end for multiple reasons.
         :param bool send_when_suppressed: Send notifications for suppressed alerts
         :param list[int] signature_ids: Signatures for integration
         :param list[str] statuses: Only send alerts that have the status in this list. Valid values are fail, warn, error, pass, info
-        :param list[int] external_account_ids: External accounts for integration
-        :param list[int] custom_signature_ids: Custom signatures for integration
-        :param str include: Related objects that can be included in the response:  region, integration See Including Objects for more information.
+        :param str topic: The SNS topic arn
         :return: IntegrationAmazonSns
                  If the method is called asynchronously,
                  returns the request thread.
@@ -381,26 +381,26 @@ class IntegrationsAmazonSNSApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param int integration_id: The ID of the integration (required)
-        :param str arn: The role arn for accessing the SNS topic
-        :param str external_id: The external ID for the IAM role
-        :param str topic: The SNS topic arn
-        :param str name: Name of the integration
+        :param str include: Related objects that can be included in the response:  region, integration See Including Objects for more information.
         :param bool all_high_risk: Send all high risk alerts
-        :param bool all_medium_risk: Send all medium risk alerts
         :param bool all_low_risk: Send all low risk alerts
+        :param bool all_medium_risk: Send all medium risk alerts
+        :param str arn: The role arn for accessing the SNS topic
+        :param list[int] custom_signature_ids: Custom signatures for integration
+        :param list[int] external_account_ids: External accounts for integration
+        :param str external_id: The external ID for the IAM role
+        :param str name: Name of the integration
         :param bool send_updates: This feature enables the integration to send alerts when they are updated. When disabled, alerts will only be sent when they are initially created. When enabled, alerts will additionally be sent when a change is made such as the alert ending. An alert may end for multiple reasons.
         :param bool send_when_suppressed: Send notifications for suppressed alerts
         :param list[int] signature_ids: Signatures for integration
         :param list[str] statuses: Only send alerts that have the status in this list. Valid values are fail, warn, error, pass, info
-        :param list[int] external_account_ids: External accounts for integration
-        :param list[int] custom_signature_ids: Custom signatures for integration
-        :param str include: Related objects that can be included in the response:  region, integration See Including Objects for more information.
+        :param str topic: The SNS topic arn
         :return: IntegrationAmazonSns
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['integration_id', 'arn', 'external_id', 'topic', 'name', 'all_high_risk', 'all_medium_risk', 'all_low_risk', 'send_updates', 'send_when_suppressed', 'signature_ids', 'statuses', 'external_account_ids', 'custom_signature_ids', 'include']
+        all_params = ['integration_id', 'include', 'all_high_risk', 'all_low_risk', 'all_medium_risk', 'arn', 'custom_signature_ids', 'external_account_ids', 'external_id', 'name', 'send_updates', 'send_when_suppressed', 'signature_ids', 'statuses', 'topic']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -435,20 +435,24 @@ class IntegrationsAmazonSNSApi(object):
 
         form_params = []
         local_var_files = {}
-        if 'arn' in params:
-            form_params.append(('arn', params['arn']))
-        if 'external_id' in params:
-            form_params.append(('external_id', params['external_id']))
-        if 'topic' in params:
-            form_params.append(('topic', params['topic']))
-        if 'name' in params:
-            form_params.append(('name', params['name']))
         if 'all_high_risk' in params:
             form_params.append(('all_high_risk', params['all_high_risk']))
-        if 'all_medium_risk' in params:
-            form_params.append(('all_medium_risk', params['all_medium_risk']))
         if 'all_low_risk' in params:
             form_params.append(('all_low_risk', params['all_low_risk']))
+        if 'all_medium_risk' in params:
+            form_params.append(('all_medium_risk', params['all_medium_risk']))
+        if 'arn' in params:
+            form_params.append(('arn', params['arn']))
+        if 'custom_signature_ids' in params:
+            form_params.append(('custom_signature_ids', params['custom_signature_ids']))
+            collection_formats['None'] = 'csv'
+        if 'external_account_ids' in params:
+            form_params.append(('external_account_ids', params['external_account_ids']))
+            collection_formats['None'] = 'csv'
+        if 'external_id' in params:
+            form_params.append(('external_id', params['external_id']))
+        if 'name' in params:
+            form_params.append(('name', params['name']))
         if 'send_updates' in params:
             form_params.append(('send_updates', params['send_updates']))
         if 'send_when_suppressed' in params:
@@ -459,12 +463,8 @@ class IntegrationsAmazonSNSApi(object):
         if 'statuses' in params:
             form_params.append(('statuses', params['statuses']))
             collection_formats['None'] = 'csv'
-        if 'external_account_ids' in params:
-            form_params.append(('external_account_ids', params['external_account_ids']))
-            collection_formats['None'] = 'csv'
-        if 'custom_signature_ids' in params:
-            form_params.append(('custom_signature_ids', params['custom_signature_ids']))
-            collection_formats['None'] = 'csv'
+        if 'topic' in params:
+            form_params.append(('topic', params['topic']))
 
         body_params = None
         # HTTP header `Accept`

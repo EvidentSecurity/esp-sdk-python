@@ -55,7 +55,6 @@ class UserAttributionsApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param int external_account_id: The ID of the external account to create a User Attribution Channel for (required)
-        :param str include: Related objects that can be included in the response:   See Including Objects for more information.
         :return: ExternalAccountUserAttributionChannel
                  If the method is called asynchronously,
                  returns the request thread.
@@ -82,13 +81,12 @@ class UserAttributionsApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param int external_account_id: The ID of the external account to create a User Attribution Channel for (required)
-        :param str include: Related objects that can be included in the response:   See Including Objects for more information.
         :return: ExternalAccountUserAttributionChannel
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['external_account_id', 'include']
+        all_params = ['external_account_id']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -116,8 +114,6 @@ class UserAttributionsApi(object):
             path_params['external_account_id'] = params['external_account_id']
 
         query_params = {}
-        if 'include' in params:
-            query_params['include'] = params['include']
 
         header_params = {}
 
@@ -273,7 +269,6 @@ class UserAttributionsApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param int external_account_id: The ID of the external account to show the user attribution channel for (required)
-        :param str include: Related objects that can be included in the response:   See Including Objects for more information.
         :return: ExternalAccountUserAttributionChannel
                  If the method is called asynchronously,
                  returns the request thread.
@@ -300,13 +295,12 @@ class UserAttributionsApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param int external_account_id: The ID of the external account to show the user attribution channel for (required)
-        :param str include: Related objects that can be included in the response:   See Including Objects for more information.
         :return: ExternalAccountUserAttributionChannel
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['external_account_id', 'include']
+        all_params = ['external_account_id']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -334,8 +328,6 @@ class UserAttributionsApi(object):
             path_params['external_account_id'] = params['external_account_id']
 
         query_params = {}
-        if 'include' in params:
-            query_params['include'] = params['include']
 
         header_params = {}
 
@@ -384,8 +376,8 @@ class UserAttributionsApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param int external_account_id: The ID of the external account to update the user attributions of (required)
+        :param str include: Related objects that can be included in the response:  organization, sub_organization, team, scan_intervals, disabled_signatures, suppressions, azure_group, credentials See Including Objects for more information.
         :param str cloudtrail_name: The name of the cloudetrail associated with the user attribution.
-        :param str include: Related objects that can be included in the response:  organization, sub_organization, team, scan_intervals, disabled_signatures, azure_group, credentials See Including Objects for more information.
         :return: ExternalAccount
                  If the method is called asynchronously,
                  returns the request thread.
@@ -412,14 +404,14 @@ class UserAttributionsApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param int external_account_id: The ID of the external account to update the user attributions of (required)
+        :param str include: Related objects that can be included in the response:  organization, sub_organization, team, scan_intervals, disabled_signatures, suppressions, azure_group, credentials See Including Objects for more information.
         :param str cloudtrail_name: The name of the cloudetrail associated with the user attribution.
-        :param str include: Related objects that can be included in the response:  organization, sub_organization, team, scan_intervals, disabled_signatures, azure_group, credentials See Including Objects for more information.
         :return: ExternalAccount
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['external_account_id', 'cloudtrail_name', 'include']
+        all_params = ['external_account_id', 'include', 'cloudtrail_name']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')

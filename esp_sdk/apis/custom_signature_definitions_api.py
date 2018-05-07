@@ -387,7 +387,7 @@ class CustomSignatureDefinitionsApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param int id:  ID (required)
+        :param int id: Custom Signature Definition ID (required)
         :return: Meta
                  If the method is called asynchronously,
                  returns the request thread.
@@ -413,7 +413,7 @@ class CustomSignatureDefinitionsApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param int id:  ID (required)
+        :param int id: Custom Signature Definition ID (required)
         :return: Meta
                  If the method is called asynchronously,
                  returns the request thread.
@@ -494,9 +494,9 @@ class CustomSignatureDefinitionsApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param dict(str, str) filter: Filter Params for Searching.  Equality Searchable Attributes: [id, language, status, version_number]    Searchable Association: [custom_signature] See Searching Lists for more information. See the filter parameter of the association's list action to see what attributes are searchable on each association. See Conditions on Relationships in Searching Lists for more information.
-        :param str page: Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page
         :param str include: Related objects that can be included in the response:  custom_signature, results See Including Objects for more information.
+        :param dict(str, str) filter: Filter Params for Searching.  Equality Searchable Attributes: [id, language, status, version_number]    Searchable Association: [custom_signature] See Searching Lists for more information. See the filter parameter of the association's list action to see what attributes are searchable on each association. See Conditions on Relationships in Searching Lists for more information.
+        :param str page: Page Number and Page Size.  Number is the page number of the collection to return, size is the number of items to return per page.
         :return: PaginatedCollection
                  If the method is called asynchronously,
                  returns the request thread.
@@ -522,15 +522,15 @@ class CustomSignatureDefinitionsApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param dict(str, str) filter: Filter Params for Searching.  Equality Searchable Attributes: [id, language, status, version_number]    Searchable Association: [custom_signature] See Searching Lists for more information. See the filter parameter of the association's list action to see what attributes are searchable on each association. See Conditions on Relationships in Searching Lists for more information.
-        :param str page: Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page
         :param str include: Related objects that can be included in the response:  custom_signature, results See Including Objects for more information.
+        :param dict(str, str) filter: Filter Params for Searching.  Equality Searchable Attributes: [id, language, status, version_number]    Searchable Association: [custom_signature] See Searching Lists for more information. See the filter parameter of the association's list action to see what attributes are searchable on each association. See Conditions on Relationships in Searching Lists for more information.
+        :param str page: Page Number and Page Size.  Number is the page number of the collection to return, size is the number of items to return per page.
         :return: PaginatedCollection
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['filter', 'page', 'include']
+        all_params = ['include', 'filter', 'page']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -718,9 +718,9 @@ class CustomSignatureDefinitionsApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param int id: Custom Signature Definition ID (required)
+        :param str include: Related objects that can be included in the response:  custom_signature, results See Including Objects for more information.
         :param str code: The code for this definition
         :param str language: The language of the definition. Valid values are ruby, javascript
-        :param str include: Related objects that can be included in the response:  custom_signature, results See Including Objects for more information.
         :return: CustomSignatureDefinition
                  If the method is called asynchronously,
                  returns the request thread.
@@ -747,15 +747,15 @@ class CustomSignatureDefinitionsApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param int id: Custom Signature Definition ID (required)
+        :param str include: Related objects that can be included in the response:  custom_signature, results See Including Objects for more information.
         :param str code: The code for this definition
         :param str language: The language of the definition. Valid values are ruby, javascript
-        :param str include: Related objects that can be included in the response:  custom_signature, results See Including Objects for more information.
         :return: CustomSignatureDefinition
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['id', 'code', 'language', 'include']
+        all_params = ['id', 'include', 'code', 'language']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')

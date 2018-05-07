@@ -58,9 +58,9 @@ class CustomSignatureResultsApi(object):
         :param int custom_signature_definition_id: ID of the custom signature definition this result belongs to (required)
         :param int external_account_id: ID of the external account the code should run for (required)
         :param str language: The language of the definition. Valid values are ruby, javascript (required)
-        :param int region_id: ID of the region the code should run for.  Required if region is not supplied.
-        :param str region: Code of the region the result code should run for. Ex: us-east-1. This can be sent instead of region_id
         :param str include: Related objects that can be included in the response:  external_account, region, definition See Including Objects for more information.
+        :param str region: Code of the region the result code should run for. Ex: us-east-1. This can be sent instead of region_id
+        :param int region_id: ID of the region the code should run for.  Required if region is not supplied.
         :return: CustomSignatureResult
                  If the method is called asynchronously,
                  returns the request thread.
@@ -90,15 +90,15 @@ class CustomSignatureResultsApi(object):
         :param int custom_signature_definition_id: ID of the custom signature definition this result belongs to (required)
         :param int external_account_id: ID of the external account the code should run for (required)
         :param str language: The language of the definition. Valid values are ruby, javascript (required)
-        :param int region_id: ID of the region the code should run for.  Required if region is not supplied.
-        :param str region: Code of the region the result code should run for. Ex: us-east-1. This can be sent instead of region_id
         :param str include: Related objects that can be included in the response:  external_account, region, definition See Including Objects for more information.
+        :param str region: Code of the region the result code should run for. Ex: us-east-1. This can be sent instead of region_id
+        :param int region_id: ID of the region the code should run for.  Required if region is not supplied.
         :return: CustomSignatureResult
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['code', 'custom_signature_definition_id', 'external_account_id', 'language', 'region_id', 'region', 'include']
+        all_params = ['code', 'custom_signature_definition_id', 'external_account_id', 'language', 'include', 'region', 'region_id']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -148,10 +148,10 @@ class CustomSignatureResultsApi(object):
             form_params.append(('external_account_id', params['external_account_id']))
         if 'language' in params:
             form_params.append(('language', params['language']))
-        if 'region_id' in params:
-            form_params.append(('region_id', params['region_id']))
         if 'region' in params:
             form_params.append(('region', params['region']))
+        if 'region_id' in params:
+            form_params.append(('region_id', params['region_id']))
 
         body_params = None
         # HTTP header `Accept`
@@ -194,9 +194,9 @@ class CustomSignatureResultsApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param dict(str, str) filter: Filter Params for Searching.  Equality Searchable Attributes: [id, language, status]   Sortable Attribute: [id] Searchable Associations: [definition, region, external_account] See Searching Lists for more information. See the filter parameter of the association's list action to see what attributes are searchable on each association. See Conditions on Relationships in Searching Lists for more information.
-        :param str page: Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page
         :param str include: Related objects that can be included in the response:  external_account, region, definition See Including Objects for more information.
+        :param dict(str, str) filter: Filter Params for Searching.  Equality Searchable Attributes: [id, language, status]   Sortable Attribute: [id] Searchable Associations: [definition, region, external_account] See Searching Lists for more information. See the filter parameter of the association's list action to see what attributes are searchable on each association. See Conditions on Relationships in Searching Lists for more information.
+        :param str page: Page Number and Page Size.  Number is the page number of the collection to return, size is the number of items to return per page.
         :return: PaginatedCollection
                  If the method is called asynchronously,
                  returns the request thread.
@@ -222,15 +222,15 @@ class CustomSignatureResultsApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param dict(str, str) filter: Filter Params for Searching.  Equality Searchable Attributes: [id, language, status]   Sortable Attribute: [id] Searchable Associations: [definition, region, external_account] See Searching Lists for more information. See the filter parameter of the association's list action to see what attributes are searchable on each association. See Conditions on Relationships in Searching Lists for more information.
-        :param str page: Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page
         :param str include: Related objects that can be included in the response:  external_account, region, definition See Including Objects for more information.
+        :param dict(str, str) filter: Filter Params for Searching.  Equality Searchable Attributes: [id, language, status]   Sortable Attribute: [id] Searchable Associations: [definition, region, external_account] See Searching Lists for more information. See the filter parameter of the association's list action to see what attributes are searchable on each association. See Conditions on Relationships in Searching Lists for more information.
+        :param str page: Page Number and Page Size.  Number is the page number of the collection to return, size is the number of items to return per page.
         :return: PaginatedCollection
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['filter', 'page', 'include']
+        all_params = ['include', 'filter', 'page']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -307,8 +307,8 @@ class CustomSignatureResultsApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param int custom_signature_result_id: Custom Signature Result ID (required)
-        :param str page: Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page
         :param str include: Related objects that can be included in the response:  external_account, region, custom_signature See Including Objects for more information.
+        :param str page: Page Number and Page Size.  Number is the page number of the collection to return, size is the number of items to return per page.
         :return: PaginatedCollection
                  If the method is called asynchronously,
                  returns the request thread.
@@ -335,14 +335,14 @@ class CustomSignatureResultsApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param int custom_signature_result_id: Custom Signature Result ID (required)
-        :param str page: Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page
         :param str include: Related objects that can be included in the response:  external_account, region, custom_signature See Including Objects for more information.
+        :param str page: Page Number and Page Size.  Number is the page number of the collection to return, size is the number of items to return per page.
         :return: PaginatedCollection
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['custom_signature_result_id', 'page', 'include']
+        all_params = ['custom_signature_result_id', 'include', 'page']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')

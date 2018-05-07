@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 
 # **create**
-> ExternalAccountAzure create(subscription_id, client_id, tenant_id, app_key, name, team_id)
+> ExternalAccountAzure create(app_key, client_id, name, subscription_id, team_id, tenant_id)
 
 Create an Azure External Account
 
@@ -27,16 +27,16 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = esp_sdk.ExternalAccountsAzureApi()
-subscription_id = 'subscription_id_example' # str | Azure subscription ID
-client_id = 'client_id_example' # str | Azure client ID
-tenant_id = 'tenant_id_example' # str | Azure tenant ID
 app_key = 'app_key_example' # str | Azure app key
+client_id = 'client_id_example' # str | Azure client ID
 name = 'name_example' # str | Name
+subscription_id = 'subscription_id_example' # str | Azure subscription ID
 team_id = 56 # int | The ID of the team the external account belongs to
+tenant_id = 'tenant_id_example' # str | Azure tenant ID
 
 try: 
     # Create an Azure External Account
-    api_response = api_instance.create(subscription_id, client_id, tenant_id, app_key, name, team_id)
+    api_response = api_instance.create(app_key, client_id, name, subscription_id, team_id, tenant_id)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling ExternalAccountsAzureApi->create: %s\n" % e)
@@ -46,12 +46,12 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **subscription_id** | **str**| Azure subscription ID | 
- **client_id** | **str**| Azure client ID | 
- **tenant_id** | **str**| Azure tenant ID | 
  **app_key** | **str**| Azure app key | 
+ **client_id** | **str**| Azure client ID | 
  **name** | **str**| Name | 
+ **subscription_id** | **str**| Azure subscription ID | 
  **team_id** | **int**| The ID of the team the external account belongs to | 
+ **tenant_id** | **str**| Azure tenant ID | 
 
 ### Return type
 
@@ -59,7 +59,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-See https://github.com/EvidentSecurity/esp-sdk-python2#set-your-hmac-security-keys
+See https://github.com/EvidentSecurity/esp-sdk-python#set-your-hmac-security-keys
 
 ### HTTP request headers
 
@@ -107,7 +107,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-See https://github.com/EvidentSecurity/esp-sdk-python2#set-your-hmac-security-keys
+See https://github.com/EvidentSecurity/esp-sdk-python#set-your-hmac-security-keys
 
 ### HTTP request headers
 
@@ -157,7 +157,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-See https://github.com/EvidentSecurity/esp-sdk-python2#set-your-hmac-security-keys
+See https://github.com/EvidentSecurity/esp-sdk-python#set-your-hmac-security-keys
 
 ### HTTP request headers
 
@@ -167,7 +167,7 @@ See https://github.com/EvidentSecurity/esp-sdk-python2#set-your-hmac-security-ke
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update**
-> ExternalAccountAzure update(external_account_id, subscription_id=subscription_id, client_id=client_id, tenant_id=tenant_id, app_key=app_key, name=name, team_id=team_id)
+> ExternalAccountAzure update(external_account_id, app_key=app_key, client_id=client_id, name=name, subscription_id=subscription_id, team_id=team_id, tenant_id=tenant_id)
 
 Update an Azure External Account
 
@@ -184,16 +184,16 @@ from pprint import pprint
 # create an instance of the API class
 api_instance = esp_sdk.ExternalAccountsAzureApi()
 external_account_id = 56 # int | The ID of the external account to update an Azure credential for
-subscription_id = 'subscription_id_example' # str | Azure subscription ID (optional)
-client_id = 'client_id_example' # str | Azure client ID (optional)
-tenant_id = 'tenant_id_example' # str | Azure tenant ID (optional)
 app_key = 'app_key_example' # str | Azure app key (optional)
+client_id = 'client_id_example' # str | Azure client ID (optional)
 name = 'name_example' # str | Name (optional)
+subscription_id = 'subscription_id_example' # str | Azure subscription ID (optional)
 team_id = 56 # int | The ID of the team the external account belongs to (optional)
+tenant_id = 'tenant_id_example' # str | Azure tenant ID (optional)
 
 try: 
     # Update an Azure External Account
-    api_response = api_instance.update(external_account_id, subscription_id=subscription_id, client_id=client_id, tenant_id=tenant_id, app_key=app_key, name=name, team_id=team_id)
+    api_response = api_instance.update(external_account_id, app_key=app_key, client_id=client_id, name=name, subscription_id=subscription_id, team_id=team_id, tenant_id=tenant_id)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling ExternalAccountsAzureApi->update: %s\n" % e)
@@ -204,12 +204,12 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **external_account_id** | **int**| The ID of the external account to update an Azure credential for | 
- **subscription_id** | **str**| Azure subscription ID | [optional] 
- **client_id** | **str**| Azure client ID | [optional] 
- **tenant_id** | **str**| Azure tenant ID | [optional] 
  **app_key** | **str**| Azure app key | [optional] 
+ **client_id** | **str**| Azure client ID | [optional] 
  **name** | **str**| Name | [optional] 
+ **subscription_id** | **str**| Azure subscription ID | [optional] 
  **team_id** | **int**| The ID of the team the external account belongs to | [optional] 
+ **tenant_id** | **str**| Azure tenant ID | [optional] 
 
 ### Return type
 
@@ -217,7 +217,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-See https://github.com/EvidentSecurity/esp-sdk-python2#set-your-hmac-security-keys
+See https://github.com/EvidentSecurity/esp-sdk-python#set-your-hmac-security-keys
 
 ### HTTP request headers
 
