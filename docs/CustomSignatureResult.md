@@ -17,7 +17,6 @@ Name | Type | Description | Notes
 **definition** | [**CustomSignatureDefinition**](CustomSignatureDefinition.md) | Associated Definition | [optional] 
 **definition_id** | **int** | Associated Definition ID | [optional] 
 **alerts** | [**list[Alert]**](Alert.md) | Associated Alerts | [optional] 
-**alert_ids** | **list[int]** | Associated Alerts IDs | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

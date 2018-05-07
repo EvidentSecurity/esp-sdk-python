@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 
 # **create**
-> CustomSignature create(identifier, name, risk_level, external_account_ids, description=description, resolution=resolution, include=include)
+> CustomSignature create(external_account_ids, identifier, name, risk_level, include=include, description=description, resolution=resolution)
 
 Create a(n) Custom Signature
 
@@ -28,17 +28,17 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = esp_sdk.CustomSignaturesApi()
+external_account_ids = [56] # list[int] | The external account IDs this custom signature should run for. If no accounts are selected the custom signature will not be run.
 identifier = 'identifier_example' # str | The identifier to use for the custom signature. Common format is AWS:- such as AWS:IAM-001
 name = 'name_example' # str | The name of the custom signature
 risk_level = 'risk_level_example' # str | The risk-level of the problem identified by the custom signature. Valid values are low, medium, high
-external_account_ids = [56] # list[int] | The external account IDs this custom signature should run for. If no accounts are selected the custom signature will not be run.
+include = 'include_example' # str | Related objects that can be included in the response:  organization, teams, external_accounts, definitions, suppressions See Including Objects for more information. (optional)
 description = 'description_example' # str | The description of the custom signature that is displayed on alerts (optional)
 resolution = 'resolution_example' # str | Details for how to resolve this custom signature that is displayed on alerts (optional)
-include = 'include_example' # str | Related objects that can be included in the response:  organization, teams, external_accounts, definitions See Including Objects for more information. (optional)
 
 try: 
     # Create a(n) Custom Signature
-    api_response = api_instance.create(identifier, name, risk_level, external_account_ids, description=description, resolution=resolution, include=include)
+    api_response = api_instance.create(external_account_ids, identifier, name, risk_level, include=include, description=description, resolution=resolution)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling CustomSignaturesApi->create: %s\n" % e)
@@ -48,13 +48,13 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **external_account_ids** | [**list[int]**](int.md)| The external account IDs this custom signature should run for. If no accounts are selected the custom signature will not be run. | 
  **identifier** | **str**| The identifier to use for the custom signature. Common format is AWS:- such as AWS:IAM-001 | 
  **name** | **str**| The name of the custom signature | 
  **risk_level** | **str**| The risk-level of the problem identified by the custom signature. Valid values are low, medium, high | 
- **external_account_ids** | [**list[int]**](int.md)| The external account IDs this custom signature should run for. If no accounts are selected the custom signature will not be run. | 
+ **include** | **str**| Related objects that can be included in the response:  organization, teams, external_accounts, definitions, suppressions See Including Objects for more information. | [optional] 
  **description** | **str**| The description of the custom signature that is displayed on alerts | [optional] 
  **resolution** | **str**| Details for how to resolve this custom signature that is displayed on alerts | [optional] 
- **include** | **str**| Related objects that can be included in the response:  organization, teams, external_accounts, definitions See Including Objects for more information. | [optional] 
 
 ### Return type
 
@@ -62,7 +62,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-See https://github.com/EvidentSecurity/esp-sdk-python2#set-your-hmac-security-keys
+See https://github.com/EvidentSecurity/esp-sdk-python#set-your-hmac-security-keys
 
 ### HTTP request headers
 
@@ -88,7 +88,7 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = esp_sdk.CustomSignaturesApi()
-id = 56 # int |  ID
+id = 56 # int | Custom Signature ID
 
 try: 
     # Delete a(n) Custom Signature
@@ -102,7 +102,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **int**|  ID | 
+ **id** | **int**| Custom Signature ID | 
 
 ### Return type
 
@@ -110,7 +110,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-See https://github.com/EvidentSecurity/esp-sdk-python2#set-your-hmac-security-keys
+See https://github.com/EvidentSecurity/esp-sdk-python#set-your-hmac-security-keys
 
 ### HTTP request headers
 
@@ -120,7 +120,7 @@ See https://github.com/EvidentSecurity/esp-sdk-python2#set-your-hmac-security-ke
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list**
-> PaginatedCollection list(filter=filter, page=page, include=include)
+> PaginatedCollection list(include=include, filter=filter, page=page)
 
 Get a list of Custom Signatures
 
@@ -136,13 +136,13 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = esp_sdk.CustomSignaturesApi()
-filter = {'key': 'filter_example'} # dict(str, str) | Filter Params for Searching.  Equality Searchable Attributes: [id, risk_level, service_id, name, identifier] Matching Searchable Attributes: [name, identifier]  Sortable Attributes: [name, updated_at, created_at, id] Searchable Associations: [organization, teams, definitions, integrations] See Searching Lists for more information. See the filter parameter of the association's list action to see what attributes are searchable on each association. See Conditions on Relationships in Searching Lists for more information. (optional)
-page = '{:number=>1,+:size=>20}' # str | Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page (optional) (default to {:number=>1,+:size=>20})
-include = 'include_example' # str | Related objects that can be included in the response:  organization, teams, external_accounts, definitions See Including Objects for more information. (optional)
+include = 'include_example' # str | Related objects that can be included in the response:  organization, teams, external_accounts, definitions, suppressions See Including Objects for more information. (optional)
+filter = {'key': 'filter_example'} # dict(str, str) | Filter Params for Searching.  Equality Searchable Attributes: [id, risk_level, service_id, name, identifier] Matching Searchable Attributes: [name, identifier]  Sortable Attributes: [name, updated_at, created_at, id] Searchable Associations: [organization, teams, definitions, integrations, suppressions] See Searching Lists for more information. See the filter parameter of the association's list action to see what attributes are searchable on each association. See Conditions on Relationships in Searching Lists for more information. (optional)
+page = '{:number=>1,+:size=>20}' # str | Page Number and Page Size.  Number is the page number of the collection to return, size is the number of items to return per page. (optional) (default to {:number=>1,+:size=>20})
 
 try: 
     # Get a list of Custom Signatures
-    api_response = api_instance.list(filter=filter, page=page, include=include)
+    api_response = api_instance.list(include=include, filter=filter, page=page)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling CustomSignaturesApi->list: %s\n" % e)
@@ -152,9 +152,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **filter** | [**dict(str, str)**](str.md)| Filter Params for Searching.  Equality Searchable Attributes: [id, risk_level, service_id, name, identifier] Matching Searchable Attributes: [name, identifier]  Sortable Attributes: [name, updated_at, created_at, id] Searchable Associations: [organization, teams, definitions, integrations] See Searching Lists for more information. See the filter parameter of the association&#39;s list action to see what attributes are searchable on each association. See Conditions on Relationships in Searching Lists for more information. | [optional] 
- **page** | **str**| Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page | [optional] [default to {:number&#x3D;&gt;1,+:size&#x3D;&gt;20}]
- **include** | **str**| Related objects that can be included in the response:  organization, teams, external_accounts, definitions See Including Objects for more information. | [optional] 
+ **include** | **str**| Related objects that can be included in the response:  organization, teams, external_accounts, definitions, suppressions See Including Objects for more information. | [optional] 
+ **filter** | [**dict(str, str)**](str.md)| Filter Params for Searching.  Equality Searchable Attributes: [id, risk_level, service_id, name, identifier] Matching Searchable Attributes: [name, identifier]  Sortable Attributes: [name, updated_at, created_at, id] Searchable Associations: [organization, teams, definitions, integrations, suppressions] See Searching Lists for more information. See the filter parameter of the association&#39;s list action to see what attributes are searchable on each association. See Conditions on Relationships in Searching Lists for more information. | [optional] 
+ **page** | **str**| Page Number and Page Size.  Number is the page number of the collection to return, size is the number of items to return per page. | [optional] [default to {:number&#x3D;&gt;1,+:size&#x3D;&gt;20}]
 
 ### Return type
 
@@ -162,7 +162,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-See https://github.com/EvidentSecurity/esp-sdk-python2#set-your-hmac-security-keys
+See https://github.com/EvidentSecurity/esp-sdk-python#set-your-hmac-security-keys
 
 ### HTTP request headers
 
@@ -189,7 +189,7 @@ from pprint import pprint
 # create an instance of the API class
 api_instance = esp_sdk.CustomSignaturesApi()
 id = 56 # int | Custom Signature ID
-include = 'include_example' # str | Related objects that can be included in the response:  organization, teams, external_accounts, definitions See Including Objects for more information. (optional)
+include = 'include_example' # str | Related objects that can be included in the response:  organization, teams, external_accounts, definitions, suppressions See Including Objects for more information. (optional)
 
 try: 
     # Show a single Custom Signature
@@ -204,7 +204,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| Custom Signature ID | 
- **include** | **str**| Related objects that can be included in the response:  organization, teams, external_accounts, definitions See Including Objects for more information. | [optional] 
+ **include** | **str**| Related objects that can be included in the response:  organization, teams, external_accounts, definitions, suppressions See Including Objects for more information. | [optional] 
 
 ### Return type
 
@@ -212,7 +212,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-See https://github.com/EvidentSecurity/esp-sdk-python2#set-your-hmac-security-keys
+See https://github.com/EvidentSecurity/esp-sdk-python#set-your-hmac-security-keys
 
 ### HTTP request headers
 
@@ -222,7 +222,7 @@ See https://github.com/EvidentSecurity/esp-sdk-python2#set-your-hmac-security-ke
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update**
-> CustomSignature update(id, description=description, identifier=identifier, name=name, resolution=resolution, risk_level=risk_level, external_account_ids=external_account_ids, include=include)
+> CustomSignature update(id, include=include, description=description, external_account_ids=external_account_ids, identifier=identifier, name=name, resolution=resolution, risk_level=risk_level)
 
 Update a(n) Custom Signature
 
@@ -239,17 +239,17 @@ from pprint import pprint
 # create an instance of the API class
 api_instance = esp_sdk.CustomSignaturesApi()
 id = 56 # int | Custom Signature ID
+include = 'include_example' # str | Related objects that can be included in the response:  organization, teams, external_accounts, definitions, suppressions See Including Objects for more information. (optional)
 description = 'description_example' # str | The description of the custom signature that is displayed on alerts (optional)
+external_account_ids = [56] # list[int] | The external account IDs this custom signature should run for. If no accounts are selected the custom signature will not be run. (optional)
 identifier = 'identifier_example' # str | The identifier to use for the custom signature. Common format is AWS:- such as AWS:IAM-001 (optional)
 name = 'name_example' # str | The name of the custom signature (optional)
 resolution = 'resolution_example' # str | Details for how to resolve this custom signature that is displayed on alerts (optional)
 risk_level = 'risk_level_example' # str | The risk-level of the problem identified by the custom signature. Valid values are low, medium, high (optional)
-external_account_ids = [56] # list[int] | The external account IDs this custom signature should run for. If no accounts are selected the custom signature will not be run. (optional)
-include = 'include_example' # str | Related objects that can be included in the response:  organization, teams, external_accounts, definitions See Including Objects for more information. (optional)
 
 try: 
     # Update a(n) Custom Signature
-    api_response = api_instance.update(id, description=description, identifier=identifier, name=name, resolution=resolution, risk_level=risk_level, external_account_ids=external_account_ids, include=include)
+    api_response = api_instance.update(id, include=include, description=description, external_account_ids=external_account_ids, identifier=identifier, name=name, resolution=resolution, risk_level=risk_level)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling CustomSignaturesApi->update: %s\n" % e)
@@ -260,13 +260,13 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| Custom Signature ID | 
+ **include** | **str**| Related objects that can be included in the response:  organization, teams, external_accounts, definitions, suppressions See Including Objects for more information. | [optional] 
  **description** | **str**| The description of the custom signature that is displayed on alerts | [optional] 
+ **external_account_ids** | [**list[int]**](int.md)| The external account IDs this custom signature should run for. If no accounts are selected the custom signature will not be run. | [optional] 
  **identifier** | **str**| The identifier to use for the custom signature. Common format is AWS:- such as AWS:IAM-001 | [optional] 
  **name** | **str**| The name of the custom signature | [optional] 
  **resolution** | **str**| Details for how to resolve this custom signature that is displayed on alerts | [optional] 
  **risk_level** | **str**| The risk-level of the problem identified by the custom signature. Valid values are low, medium, high | [optional] 
- **external_account_ids** | [**list[int]**](int.md)| The external account IDs this custom signature should run for. If no accounts are selected the custom signature will not be run. | [optional] 
- **include** | **str**| Related objects that can be included in the response:  organization, teams, external_accounts, definitions See Including Objects for more information. | [optional] 
 
 ### Return type
 
@@ -274,7 +274,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-See https://github.com/EvidentSecurity/esp-sdk-python2#set-your-hmac-security-keys
+See https://github.com/EvidentSecurity/esp-sdk-python#set-your-hmac-security-keys
 
 ### HTTP request headers
 

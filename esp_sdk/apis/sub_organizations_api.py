@@ -40,7 +40,7 @@ class SubOrganizationsApi(object):
                 config.api_client = ApiClient()
             self.api_client = config.api_client
 
-    def create(self, organization_id, name, **kwargs):
+    def create(self, name, organization_id, **kwargs):
         """
         Create a(n) Sub Organization
         
@@ -50,12 +50,12 @@ class SubOrganizationsApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.create(organization_id, name, callback=callback_function)
+        >>> thread = api.create(name, organization_id, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param int organization_id: The ID of the organization this sub organization should belong to (required)
         :param str name: Name of the sub organization (required)
+        :param int organization_id: The ID of the organization this sub organization should belong to (required)
         :param str include: Related objects that can be included in the response:  external_accounts, organization, teams See Including Objects for more information.
         :return: SubOrganization
                  If the method is called asynchronously,
@@ -63,12 +63,12 @@ class SubOrganizationsApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.create_with_http_info(organization_id, name, **kwargs)
+            return self.create_with_http_info(name, organization_id, **kwargs)
         else:
-            (data) = self.create_with_http_info(organization_id, name, **kwargs)
+            (data) = self.create_with_http_info(name, organization_id, **kwargs)
             return data
 
-    def create_with_http_info(self, organization_id, name, **kwargs):
+    def create_with_http_info(self, name, organization_id, **kwargs):
         """
         Create a(n) Sub Organization
         
@@ -78,19 +78,19 @@ class SubOrganizationsApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.create_with_http_info(organization_id, name, callback=callback_function)
+        >>> thread = api.create_with_http_info(name, organization_id, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param int organization_id: The ID of the organization this sub organization should belong to (required)
         :param str name: Name of the sub organization (required)
+        :param int organization_id: The ID of the organization this sub organization should belong to (required)
         :param str include: Related objects that can be included in the response:  external_accounts, organization, teams See Including Objects for more information.
         :return: SubOrganization
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['organization_id', 'name', 'include']
+        all_params = ['name', 'organization_id', 'include']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -105,12 +105,12 @@ class SubOrganizationsApi(object):
                 )
             params[key] = val
         del params['kwargs']
-        # verify the required parameter 'organization_id' is set
-        if ('organization_id' not in params) or (params['organization_id'] is None):
-            raise ValueError("Missing the required parameter `organization_id` when calling `create`")
         # verify the required parameter 'name' is set
         if ('name' not in params) or (params['name'] is None):
             raise ValueError("Missing the required parameter `name` when calling `create`")
+        # verify the required parameter 'organization_id' is set
+        if ('organization_id' not in params) or (params['organization_id'] is None):
+            raise ValueError("Missing the required parameter `organization_id` when calling `create`")
 
 
         collection_formats = {}
@@ -126,10 +126,10 @@ class SubOrganizationsApi(object):
 
         form_params = []
         local_var_files = {}
-        if 'organization_id' in params:
-            form_params.append(('organization_id', params['organization_id']))
         if 'name' in params:
             form_params.append(('name', params['name']))
+        if 'organization_id' in params:
+            form_params.append(('organization_id', params['organization_id']))
 
         body_params = None
         # HTTP header `Accept`
@@ -172,7 +172,7 @@ class SubOrganizationsApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param int id:  ID (required)
+        :param int id: Sub Organization ID (required)
         :return: Meta
                  If the method is called asynchronously,
                  returns the request thread.
@@ -198,7 +198,7 @@ class SubOrganizationsApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param int id:  ID (required)
+        :param int id: Sub Organization ID (required)
         :return: Meta
                  If the method is called asynchronously,
                  returns the request thread.
@@ -279,9 +279,9 @@ class SubOrganizationsApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param dict(str, str) filter: Filter Params for Searching.  Equality Searchable Attributes: [id, name] Matching Searchable Attribute: [name]  Sortable Attributes: [name, updated_at, created_at, id] Searchable Association: [organization] See Searching Lists for more information. See the filter parameter of the association's list action to see what attributes are searchable on each association. See Conditions on Relationships in Searching Lists for more information.
-        :param str page: Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page
         :param str include: Related objects that can be included in the response:  external_accounts, organization, teams See Including Objects for more information.
+        :param dict(str, str) filter: Filter Params for Searching.  Equality Searchable Attributes: [id, name] Matching Searchable Attribute: [name]  Sortable Attributes: [name, updated_at, created_at, id] Searchable Association: [organization] See Searching Lists for more information. See the filter parameter of the association's list action to see what attributes are searchable on each association. See Conditions on Relationships in Searching Lists for more information.
+        :param str page: Page Number and Page Size.  Number is the page number of the collection to return, size is the number of items to return per page.
         :return: PaginatedCollection
                  If the method is called asynchronously,
                  returns the request thread.
@@ -307,15 +307,15 @@ class SubOrganizationsApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param dict(str, str) filter: Filter Params for Searching.  Equality Searchable Attributes: [id, name] Matching Searchable Attribute: [name]  Sortable Attributes: [name, updated_at, created_at, id] Searchable Association: [organization] See Searching Lists for more information. See the filter parameter of the association's list action to see what attributes are searchable on each association. See Conditions on Relationships in Searching Lists for more information.
-        :param str page: Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page
         :param str include: Related objects that can be included in the response:  external_accounts, organization, teams See Including Objects for more information.
+        :param dict(str, str) filter: Filter Params for Searching.  Equality Searchable Attributes: [id, name] Matching Searchable Attribute: [name]  Sortable Attributes: [name, updated_at, created_at, id] Searchable Association: [organization] See Searching Lists for more information. See the filter parameter of the association's list action to see what attributes are searchable on each association. See Conditions on Relationships in Searching Lists for more information.
+        :param str page: Page Number and Page Size.  Number is the page number of the collection to return, size is the number of items to return per page.
         :return: PaginatedCollection
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['filter', 'page', 'include']
+        all_params = ['include', 'filter', 'page']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -503,8 +503,8 @@ class SubOrganizationsApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param int id: Sub Organization ID (required)
-        :param str name: Name of the sub organization
         :param str include: Related objects that can be included in the response:  external_accounts, organization, teams See Including Objects for more information.
+        :param str name: Name of the sub organization
         :return: SubOrganization
                  If the method is called asynchronously,
                  returns the request thread.
@@ -531,14 +531,14 @@ class SubOrganizationsApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param int id: Sub Organization ID (required)
-        :param str name: Name of the sub organization
         :param str include: Related objects that can be included in the response:  external_accounts, organization, teams See Including Objects for more information.
+        :param str name: Name of the sub organization
         :return: SubOrganization
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['id', 'name', 'include']
+        all_params = ['id', 'include', 'name']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')

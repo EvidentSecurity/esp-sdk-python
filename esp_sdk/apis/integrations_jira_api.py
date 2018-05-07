@@ -40,7 +40,7 @@ class IntegrationsJiraApi(object):
                 config.api_client = ApiClient()
             self.api_client = config.api_client
 
-    def create(self, url, project_key, issue_type, username, password, name, external_account_ids, **kwargs):
+    def create(self, external_account_ids, issue_type, name, password, project_key, url, username, **kwargs):
         """
         Create a JIRA Integration
         
@@ -50,38 +50,38 @@ class IntegrationsJiraApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.create(url, project_key, issue_type, username, password, name, external_account_ids, callback=callback_function)
+        >>> thread = api.create(external_account_ids, issue_type, name, password, project_key, url, username, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param str url: The host and port portion of the Jira REST API URL (required)
-        :param str project_key: The designated Key for your Jira project (required)
-        :param str issue_type: The Issue Type for ESP Alerts (required)
-        :param str username: A username to access the Jira project (required)
-        :param str password: A password to access the JIRA project (required)
-        :param str name: Name of the integration (required)
         :param list[int] external_account_ids: External accounts for integration (required)
+        :param str issue_type: The Issue Type for ESP Alerts (required)
+        :param str name: Name of the integration (required)
+        :param str password: A password to access the JIRA project (required)
+        :param str project_key: The designated Key for your Jira project (required)
+        :param str url: The host and port portion of the Jira REST API URL (required)
+        :param str username: A username to access the Jira project (required)
+        :param str include: Related objects that can be included in the response:  integration See Including Objects for more information.
         :param bool all_high_risk: Send all high risk alerts
-        :param bool all_medium_risk: Send all medium risk alerts
         :param bool all_low_risk: Send all low risk alerts
+        :param bool all_medium_risk: Send all medium risk alerts
+        :param list[int] custom_signature_ids: Custom signatures for integration
         :param bool send_updates: This feature enables the integration to send alerts when they are updated. When disabled, alerts will only be sent when they are initially created. When enabled, alerts will additionally be sent when a change is made such as the alert ending. An alert may end for multiple reasons.
         :param bool send_when_suppressed: Send notifications for suppressed alerts
         :param list[int] signature_ids: Signatures for integration
         :param list[str] statuses: Only send alerts that have the status in this list. Valid values are fail, warn, error, pass, info
-        :param list[int] custom_signature_ids: Custom signatures for integration
-        :param str include: Related objects that can be included in the response:  integration See Including Objects for more information.
         :return: IntegrationJira
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.create_with_http_info(url, project_key, issue_type, username, password, name, external_account_ids, **kwargs)
+            return self.create_with_http_info(external_account_ids, issue_type, name, password, project_key, url, username, **kwargs)
         else:
-            (data) = self.create_with_http_info(url, project_key, issue_type, username, password, name, external_account_ids, **kwargs)
+            (data) = self.create_with_http_info(external_account_ids, issue_type, name, password, project_key, url, username, **kwargs)
             return data
 
-    def create_with_http_info(self, url, project_key, issue_type, username, password, name, external_account_ids, **kwargs):
+    def create_with_http_info(self, external_account_ids, issue_type, name, password, project_key, url, username, **kwargs):
         """
         Create a JIRA Integration
         
@@ -91,32 +91,32 @@ class IntegrationsJiraApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.create_with_http_info(url, project_key, issue_type, username, password, name, external_account_ids, callback=callback_function)
+        >>> thread = api.create_with_http_info(external_account_ids, issue_type, name, password, project_key, url, username, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param str url: The host and port portion of the Jira REST API URL (required)
-        :param str project_key: The designated Key for your Jira project (required)
-        :param str issue_type: The Issue Type for ESP Alerts (required)
-        :param str username: A username to access the Jira project (required)
-        :param str password: A password to access the JIRA project (required)
-        :param str name: Name of the integration (required)
         :param list[int] external_account_ids: External accounts for integration (required)
+        :param str issue_type: The Issue Type for ESP Alerts (required)
+        :param str name: Name of the integration (required)
+        :param str password: A password to access the JIRA project (required)
+        :param str project_key: The designated Key for your Jira project (required)
+        :param str url: The host and port portion of the Jira REST API URL (required)
+        :param str username: A username to access the Jira project (required)
+        :param str include: Related objects that can be included in the response:  integration See Including Objects for more information.
         :param bool all_high_risk: Send all high risk alerts
-        :param bool all_medium_risk: Send all medium risk alerts
         :param bool all_low_risk: Send all low risk alerts
+        :param bool all_medium_risk: Send all medium risk alerts
+        :param list[int] custom_signature_ids: Custom signatures for integration
         :param bool send_updates: This feature enables the integration to send alerts when they are updated. When disabled, alerts will only be sent when they are initially created. When enabled, alerts will additionally be sent when a change is made such as the alert ending. An alert may end for multiple reasons.
         :param bool send_when_suppressed: Send notifications for suppressed alerts
         :param list[int] signature_ids: Signatures for integration
         :param list[str] statuses: Only send alerts that have the status in this list. Valid values are fail, warn, error, pass, info
-        :param list[int] custom_signature_ids: Custom signatures for integration
-        :param str include: Related objects that can be included in the response:  integration See Including Objects for more information.
         :return: IntegrationJira
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['url', 'project_key', 'issue_type', 'username', 'password', 'name', 'external_account_ids', 'all_high_risk', 'all_medium_risk', 'all_low_risk', 'send_updates', 'send_when_suppressed', 'signature_ids', 'statuses', 'custom_signature_ids', 'include']
+        all_params = ['external_account_ids', 'issue_type', 'name', 'password', 'project_key', 'url', 'username', 'include', 'all_high_risk', 'all_low_risk', 'all_medium_risk', 'custom_signature_ids', 'send_updates', 'send_when_suppressed', 'signature_ids', 'statuses']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -131,27 +131,27 @@ class IntegrationsJiraApi(object):
                 )
             params[key] = val
         del params['kwargs']
-        # verify the required parameter 'url' is set
-        if ('url' not in params) or (params['url'] is None):
-            raise ValueError("Missing the required parameter `url` when calling `create`")
-        # verify the required parameter 'project_key' is set
-        if ('project_key' not in params) or (params['project_key'] is None):
-            raise ValueError("Missing the required parameter `project_key` when calling `create`")
-        # verify the required parameter 'issue_type' is set
-        if ('issue_type' not in params) or (params['issue_type'] is None):
-            raise ValueError("Missing the required parameter `issue_type` when calling `create`")
-        # verify the required parameter 'username' is set
-        if ('username' not in params) or (params['username'] is None):
-            raise ValueError("Missing the required parameter `username` when calling `create`")
-        # verify the required parameter 'password' is set
-        if ('password' not in params) or (params['password'] is None):
-            raise ValueError("Missing the required parameter `password` when calling `create`")
-        # verify the required parameter 'name' is set
-        if ('name' not in params) or (params['name'] is None):
-            raise ValueError("Missing the required parameter `name` when calling `create`")
         # verify the required parameter 'external_account_ids' is set
         if ('external_account_ids' not in params) or (params['external_account_ids'] is None):
             raise ValueError("Missing the required parameter `external_account_ids` when calling `create`")
+        # verify the required parameter 'issue_type' is set
+        if ('issue_type' not in params) or (params['issue_type'] is None):
+            raise ValueError("Missing the required parameter `issue_type` when calling `create`")
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `create`")
+        # verify the required parameter 'password' is set
+        if ('password' not in params) or (params['password'] is None):
+            raise ValueError("Missing the required parameter `password` when calling `create`")
+        # verify the required parameter 'project_key' is set
+        if ('project_key' not in params) or (params['project_key'] is None):
+            raise ValueError("Missing the required parameter `project_key` when calling `create`")
+        # verify the required parameter 'url' is set
+        if ('url' not in params) or (params['url'] is None):
+            raise ValueError("Missing the required parameter `url` when calling `create`")
+        # verify the required parameter 'username' is set
+        if ('username' not in params) or (params['username'] is None):
+            raise ValueError("Missing the required parameter `username` when calling `create`")
 
 
         collection_formats = {}
@@ -167,24 +167,26 @@ class IntegrationsJiraApi(object):
 
         form_params = []
         local_var_files = {}
-        if 'url' in params:
-            form_params.append(('url', params['url']))
-        if 'project_key' in params:
-            form_params.append(('project_key', params['project_key']))
-        if 'issue_type' in params:
-            form_params.append(('issue_type', params['issue_type']))
-        if 'username' in params:
-            form_params.append(('username', params['username']))
-        if 'password' in params:
-            form_params.append(('password', params['password']))
-        if 'name' in params:
-            form_params.append(('name', params['name']))
         if 'all_high_risk' in params:
             form_params.append(('all_high_risk', params['all_high_risk']))
-        if 'all_medium_risk' in params:
-            form_params.append(('all_medium_risk', params['all_medium_risk']))
         if 'all_low_risk' in params:
             form_params.append(('all_low_risk', params['all_low_risk']))
+        if 'all_medium_risk' in params:
+            form_params.append(('all_medium_risk', params['all_medium_risk']))
+        if 'custom_signature_ids' in params:
+            form_params.append(('custom_signature_ids', params['custom_signature_ids']))
+            collection_formats['None'] = 'csv'
+        if 'external_account_ids' in params:
+            form_params.append(('external_account_ids', params['external_account_ids']))
+            collection_formats['None'] = 'csv'
+        if 'issue_type' in params:
+            form_params.append(('issue_type', params['issue_type']))
+        if 'name' in params:
+            form_params.append(('name', params['name']))
+        if 'password' in params:
+            form_params.append(('password', params['password']))
+        if 'project_key' in params:
+            form_params.append(('project_key', params['project_key']))
         if 'send_updates' in params:
             form_params.append(('send_updates', params['send_updates']))
         if 'send_when_suppressed' in params:
@@ -195,12 +197,10 @@ class IntegrationsJiraApi(object):
         if 'statuses' in params:
             form_params.append(('statuses', params['statuses']))
             collection_formats['None'] = 'csv'
-        if 'external_account_ids' in params:
-            form_params.append(('external_account_ids', params['external_account_ids']))
-            collection_formats['None'] = 'csv'
-        if 'custom_signature_ids' in params:
-            form_params.append(('custom_signature_ids', params['custom_signature_ids']))
-            collection_formats['None'] = 'csv'
+        if 'url' in params:
+            form_params.append(('url', params['url']))
+        if 'username' in params:
+            form_params.append(('username', params['username']))
 
         body_params = None
         # HTTP header `Accept`
@@ -355,22 +355,22 @@ class IntegrationsJiraApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param int integration_id: The ID of the integration (required)
-        :param str url: The host and port portion of the Jira REST API URL
-        :param str project_key: The designated Key for your Jira project
-        :param str issue_type: The Issue Type for ESP Alerts
-        :param str username: A username to access the Jira project
-        :param str password: A password to access the JIRA project
-        :param str name: Name of the integration
+        :param str include: Related objects that can be included in the response:  integration See Including Objects for more information.
         :param bool all_high_risk: Send all high risk alerts
-        :param bool all_medium_risk: Send all medium risk alerts
         :param bool all_low_risk: Send all low risk alerts
+        :param bool all_medium_risk: Send all medium risk alerts
+        :param list[int] custom_signature_ids: Custom signatures for integration
+        :param list[int] external_account_ids: External accounts for integration
+        :param str issue_type: The Issue Type for ESP Alerts
+        :param str name: Name of the integration
+        :param str password: A password to access the JIRA project
+        :param str project_key: The designated Key for your Jira project
         :param bool send_updates: This feature enables the integration to send alerts when they are updated. When disabled, alerts will only be sent when they are initially created. When enabled, alerts will additionally be sent when a change is made such as the alert ending. An alert may end for multiple reasons.
         :param bool send_when_suppressed: Send notifications for suppressed alerts
         :param list[int] signature_ids: Signatures for integration
         :param list[str] statuses: Only send alerts that have the status in this list. Valid values are fail, warn, error, pass, info
-        :param list[int] external_account_ids: External accounts for integration
-        :param list[int] custom_signature_ids: Custom signatures for integration
-        :param str include: Related objects that can be included in the response:  integration See Including Objects for more information.
+        :param str url: The host and port portion of the Jira REST API URL
+        :param str username: A username to access the Jira project
         :return: IntegrationJira
                  If the method is called asynchronously,
                  returns the request thread.
@@ -397,28 +397,28 @@ class IntegrationsJiraApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param int integration_id: The ID of the integration (required)
-        :param str url: The host and port portion of the Jira REST API URL
-        :param str project_key: The designated Key for your Jira project
-        :param str issue_type: The Issue Type for ESP Alerts
-        :param str username: A username to access the Jira project
-        :param str password: A password to access the JIRA project
-        :param str name: Name of the integration
+        :param str include: Related objects that can be included in the response:  integration See Including Objects for more information.
         :param bool all_high_risk: Send all high risk alerts
-        :param bool all_medium_risk: Send all medium risk alerts
         :param bool all_low_risk: Send all low risk alerts
+        :param bool all_medium_risk: Send all medium risk alerts
+        :param list[int] custom_signature_ids: Custom signatures for integration
+        :param list[int] external_account_ids: External accounts for integration
+        :param str issue_type: The Issue Type for ESP Alerts
+        :param str name: Name of the integration
+        :param str password: A password to access the JIRA project
+        :param str project_key: The designated Key for your Jira project
         :param bool send_updates: This feature enables the integration to send alerts when they are updated. When disabled, alerts will only be sent when they are initially created. When enabled, alerts will additionally be sent when a change is made such as the alert ending. An alert may end for multiple reasons.
         :param bool send_when_suppressed: Send notifications for suppressed alerts
         :param list[int] signature_ids: Signatures for integration
         :param list[str] statuses: Only send alerts that have the status in this list. Valid values are fail, warn, error, pass, info
-        :param list[int] external_account_ids: External accounts for integration
-        :param list[int] custom_signature_ids: Custom signatures for integration
-        :param str include: Related objects that can be included in the response:  integration See Including Objects for more information.
+        :param str url: The host and port portion of the Jira REST API URL
+        :param str username: A username to access the Jira project
         :return: IntegrationJira
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['integration_id', 'url', 'project_key', 'issue_type', 'username', 'password', 'name', 'all_high_risk', 'all_medium_risk', 'all_low_risk', 'send_updates', 'send_when_suppressed', 'signature_ids', 'statuses', 'external_account_ids', 'custom_signature_ids', 'include']
+        all_params = ['integration_id', 'include', 'all_high_risk', 'all_low_risk', 'all_medium_risk', 'custom_signature_ids', 'external_account_ids', 'issue_type', 'name', 'password', 'project_key', 'send_updates', 'send_when_suppressed', 'signature_ids', 'statuses', 'url', 'username']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -453,24 +453,26 @@ class IntegrationsJiraApi(object):
 
         form_params = []
         local_var_files = {}
-        if 'url' in params:
-            form_params.append(('url', params['url']))
-        if 'project_key' in params:
-            form_params.append(('project_key', params['project_key']))
-        if 'issue_type' in params:
-            form_params.append(('issue_type', params['issue_type']))
-        if 'username' in params:
-            form_params.append(('username', params['username']))
-        if 'password' in params:
-            form_params.append(('password', params['password']))
-        if 'name' in params:
-            form_params.append(('name', params['name']))
         if 'all_high_risk' in params:
             form_params.append(('all_high_risk', params['all_high_risk']))
-        if 'all_medium_risk' in params:
-            form_params.append(('all_medium_risk', params['all_medium_risk']))
         if 'all_low_risk' in params:
             form_params.append(('all_low_risk', params['all_low_risk']))
+        if 'all_medium_risk' in params:
+            form_params.append(('all_medium_risk', params['all_medium_risk']))
+        if 'custom_signature_ids' in params:
+            form_params.append(('custom_signature_ids', params['custom_signature_ids']))
+            collection_formats['None'] = 'csv'
+        if 'external_account_ids' in params:
+            form_params.append(('external_account_ids', params['external_account_ids']))
+            collection_formats['None'] = 'csv'
+        if 'issue_type' in params:
+            form_params.append(('issue_type', params['issue_type']))
+        if 'name' in params:
+            form_params.append(('name', params['name']))
+        if 'password' in params:
+            form_params.append(('password', params['password']))
+        if 'project_key' in params:
+            form_params.append(('project_key', params['project_key']))
         if 'send_updates' in params:
             form_params.append(('send_updates', params['send_updates']))
         if 'send_when_suppressed' in params:
@@ -481,12 +483,10 @@ class IntegrationsJiraApi(object):
         if 'statuses' in params:
             form_params.append(('statuses', params['statuses']))
             collection_formats['None'] = 'csv'
-        if 'external_account_ids' in params:
-            form_params.append(('external_account_ids', params['external_account_ids']))
-            collection_formats['None'] = 'csv'
-        if 'custom_signature_ids' in params:
-            form_params.append(('custom_signature_ids', params['custom_signature_ids']))
-            collection_formats['None'] = 'csv'
+        if 'url' in params:
+            form_params.append(('url', params['url']))
+        if 'username' in params:
+            form_params.append(('username', params['username']))
 
         body_params = None
         # HTTP header `Accept`

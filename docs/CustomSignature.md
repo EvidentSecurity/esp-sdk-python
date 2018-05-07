@@ -13,12 +13,12 @@ Name | Type | Description | Notes
 **updated_at** | [**datetime**](DateTime.md) | ISO 8601 timestamp when the resource was updated | [optional] 
 **organization** | [**Organization**](Organization.md) | Associated Organization | [optional] 
 **organization_id** | **int** | Associated Organization ID | [optional] 
-**teams** | [**list[Team]**](Team.md) | Associated Teams | [optional] 
-**team_ids** | **list[int]** | Associated Teams IDs | [optional] 
 **external_accounts** | [**list[ExternalAccount]**](ExternalAccount.md) | Associated External Accounts | [optional] 
 **external_account_ids** | **list[int]** | Associated External Accounts IDs | [optional] 
 **definitions** | [**list[CustomSignatureDefinition]**](CustomSignatureDefinition.md) | Associated Definitions | [optional] 
 **definition_ids** | **list[int]** | Associated Definitions IDs | [optional] 
+**suppressions** | [**list[Suppression]**](Suppression.md) | Associated Suppressions | [optional] 
+**suppression_ids** | **list[int]** | Associated Suppressions IDs | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

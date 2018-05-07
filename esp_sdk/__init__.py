@@ -16,10 +16,10 @@ from __future__ import absolute_import
 # import models into sdk package
 from .models.api_key import APIKey
 from .models.alert import Alert
+from .models.attribution import Attribution
 from .models.audit_log import AuditLog
 from .models.audit_log_file import AuditLogFile
 from .models.azure_group import AzureGroup
-from .models.cloud_trail_event import CloudTrailEvent
 from .models.compliance_control import ComplianceControl
 from .models.compliance_domain import ComplianceDomain
 from .models.compliance_standard import ComplianceStandard
@@ -72,10 +72,10 @@ from .models.user import User
 # import apis into sdk package
 from .apis.api_keys_api import APIKeysApi
 from .apis.alerts_api import AlertsApi
+from .apis.attribution_api import AttributionApi
 from .apis.audit_log_export_api import AuditLogExportApi
 from .apis.audit_logs_api import AuditLogsApi
 from .apis.azure_groups_api import AzureGroupsApi
-from .apis.cloud_trail_events_api import CloudTrailEventsApi
 from .apis.compliance_controls_api import ComplianceControlsApi
 from .apis.compliance_domains_api import ComplianceDomainsApi
 from .apis.compliance_standards_api import ComplianceStandardsApi

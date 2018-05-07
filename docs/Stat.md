@@ -91,17 +91,11 @@ Name | Type | Description | Notes
 **report** | [**Report**](Report.md) | Associated Report | [optional] 
 **report_id** | **int** | Associated Report ID | [optional] 
 **regions** | [**list[StatRegion]**](StatRegion.md) | Associated Regions | [optional] 
-**region_ids** | **list[int]** | Associated Regions IDs | [optional] 
 **services** | [**list[StatService]**](StatService.md) | Associated Services | [optional] 
-**service_ids** | **list[int]** | Associated Services IDs | [optional] 
 **signatures** | [**list[StatSignature]**](StatSignature.md) | Associated Signatures | [optional] 
-**signature_ids** | **list[int]** | Associated Signatures IDs | [optional] 
 **custom_signatures** | [**list[StatCustomSignature]**](StatCustomSignature.md) | Associated Custom Signatures | [optional] 
-**custom_signature_ids** | **list[int]** | Associated Custom Signatures IDs | [optional] 
 **custom_compliance_controls** | [**list[StatCustomComplianceControl]**](StatCustomComplianceControl.md) | Associated Custom Compliance Controls | [optional] 
-**custom_compliance_control_ids** | **list[int]** | Associated Custom Compliance Controls IDs | [optional] 
 **compliance_controls** | [**list[StatComplianceControl]**](StatComplianceControl.md) | Associated Compliance Controls | [optional] 
-**compliance_control_ids** | **list[int]** | Associated Compliance Controls IDs | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -40,7 +40,7 @@ class CustomComplianceDomainsApi(object):
                 config.api_client = ApiClient()
             self.api_client = config.api_client
 
-    def create(self, identifier, custom_compliance_standard_id, name, **kwargs):
+    def create(self, custom_compliance_standard_id, identifier, name, **kwargs):
         """
         Create a(n) Custom Compliance Domain
         
@@ -50,27 +50,27 @@ class CustomComplianceDomainsApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.create(identifier, custom_compliance_standard_id, name, callback=callback_function)
+        >>> thread = api.create(custom_compliance_standard_id, identifier, name, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param str identifier: The identifier of this custom domain (required)
         :param int custom_compliance_standard_id: The ID of the Custom Compliance Standard this custom domain belongs to (required)
+        :param str identifier: The identifier of this custom domain (required)
         :param str name: Name (required)
-        :param int position: The position of this custom domain within the custom standard
         :param str include: Related objects that can be included in the response:  custom_compliance_standard, custom_compliance_controls See Including Objects for more information.
+        :param int position: The position of this custom domain within the custom standard
         :return: CustomComplianceDomain
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.create_with_http_info(identifier, custom_compliance_standard_id, name, **kwargs)
+            return self.create_with_http_info(custom_compliance_standard_id, identifier, name, **kwargs)
         else:
-            (data) = self.create_with_http_info(identifier, custom_compliance_standard_id, name, **kwargs)
+            (data) = self.create_with_http_info(custom_compliance_standard_id, identifier, name, **kwargs)
             return data
 
-    def create_with_http_info(self, identifier, custom_compliance_standard_id, name, **kwargs):
+    def create_with_http_info(self, custom_compliance_standard_id, identifier, name, **kwargs):
         """
         Create a(n) Custom Compliance Domain
         
@@ -80,21 +80,21 @@ class CustomComplianceDomainsApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.create_with_http_info(identifier, custom_compliance_standard_id, name, callback=callback_function)
+        >>> thread = api.create_with_http_info(custom_compliance_standard_id, identifier, name, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param str identifier: The identifier of this custom domain (required)
         :param int custom_compliance_standard_id: The ID of the Custom Compliance Standard this custom domain belongs to (required)
+        :param str identifier: The identifier of this custom domain (required)
         :param str name: Name (required)
-        :param int position: The position of this custom domain within the custom standard
         :param str include: Related objects that can be included in the response:  custom_compliance_standard, custom_compliance_controls See Including Objects for more information.
+        :param int position: The position of this custom domain within the custom standard
         :return: CustomComplianceDomain
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['identifier', 'custom_compliance_standard_id', 'name', 'position', 'include']
+        all_params = ['custom_compliance_standard_id', 'identifier', 'name', 'include', 'position']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -109,12 +109,12 @@ class CustomComplianceDomainsApi(object):
                 )
             params[key] = val
         del params['kwargs']
-        # verify the required parameter 'identifier' is set
-        if ('identifier' not in params) or (params['identifier'] is None):
-            raise ValueError("Missing the required parameter `identifier` when calling `create`")
         # verify the required parameter 'custom_compliance_standard_id' is set
         if ('custom_compliance_standard_id' not in params) or (params['custom_compliance_standard_id'] is None):
             raise ValueError("Missing the required parameter `custom_compliance_standard_id` when calling `create`")
+        # verify the required parameter 'identifier' is set
+        if ('identifier' not in params) or (params['identifier'] is None):
+            raise ValueError("Missing the required parameter `identifier` when calling `create`")
         # verify the required parameter 'name' is set
         if ('name' not in params) or (params['name'] is None):
             raise ValueError("Missing the required parameter `name` when calling `create`")
@@ -133,10 +133,10 @@ class CustomComplianceDomainsApi(object):
 
         form_params = []
         local_var_files = {}
-        if 'identifier' in params:
-            form_params.append(('identifier', params['identifier']))
         if 'custom_compliance_standard_id' in params:
             form_params.append(('custom_compliance_standard_id', params['custom_compliance_standard_id']))
+        if 'identifier' in params:
+            form_params.append(('identifier', params['identifier']))
         if 'name' in params:
             form_params.append(('name', params['name']))
         if 'position' in params:
@@ -183,7 +183,7 @@ class CustomComplianceDomainsApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param int id:  ID (required)
+        :param int id: Custom Compliance Domain ID (required)
         :return: Meta
                  If the method is called asynchronously,
                  returns the request thread.
@@ -209,7 +209,7 @@ class CustomComplianceDomainsApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param int id:  ID (required)
+        :param int id: Custom Compliance Domain ID (required)
         :return: Meta
                  If the method is called asynchronously,
                  returns the request thread.
@@ -402,11 +402,11 @@ class CustomComplianceDomainsApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param int id: Custom Compliance Domain ID (required)
-        :param str identifier: The identifier of this custom domain
+        :param str include: Related objects that can be included in the response:  custom_compliance_standard, custom_compliance_controls See Including Objects for more information.
         :param int custom_compliance_standard_id: The ID of the Custom Compliance Standard this custom domain belongs to
+        :param str identifier: The identifier of this custom domain
         :param str name: Name
         :param int position: The position of this custom domain within the custom standard
-        :param str include: Related objects that can be included in the response:  custom_compliance_standard, custom_compliance_controls See Including Objects for more information.
         :return: CustomComplianceDomain
                  If the method is called asynchronously,
                  returns the request thread.
@@ -433,17 +433,17 @@ class CustomComplianceDomainsApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param int id: Custom Compliance Domain ID (required)
-        :param str identifier: The identifier of this custom domain
+        :param str include: Related objects that can be included in the response:  custom_compliance_standard, custom_compliance_controls See Including Objects for more information.
         :param int custom_compliance_standard_id: The ID of the Custom Compliance Standard this custom domain belongs to
+        :param str identifier: The identifier of this custom domain
         :param str name: Name
         :param int position: The position of this custom domain within the custom standard
-        :param str include: Related objects that can be included in the response:  custom_compliance_standard, custom_compliance_controls See Including Objects for more information.
         :return: CustomComplianceDomain
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['id', 'identifier', 'custom_compliance_standard_id', 'name', 'position', 'include']
+        all_params = ['id', 'include', 'custom_compliance_standard_id', 'identifier', 'name', 'position']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -478,10 +478,10 @@ class CustomComplianceDomainsApi(object):
 
         form_params = []
         local_var_files = {}
-        if 'identifier' in params:
-            form_params.append(('identifier', params['identifier']))
         if 'custom_compliance_standard_id' in params:
             form_params.append(('custom_compliance_standard_id', params['custom_compliance_standard_id']))
+        if 'identifier' in params:
+            form_params.append(('identifier', params['identifier']))
         if 'name' in params:
             form_params.append(('name', params['name']))
         if 'position' in params:

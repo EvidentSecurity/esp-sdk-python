@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 
 # **list_for_alert**
-> PaginatedCollection list_for_alert(alert_id, page=page, include=include)
+> PaginatedCollection list_for_alert(alert_id, page=page)
 
 Get a list of Tags
 
@@ -26,12 +26,11 @@ from pprint import pprint
 # create an instance of the API class
 api_instance = esp_sdk.TagsApi()
 alert_id = 56 # int | The ID of the alert to list tags for
-page = '{:number=>1,+:size=>20}' # str | Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page (optional) (default to {:number=>1,+:size=>20})
-include = 'include_example' # str | Related objects that can be included in the response:   See Including Objects for more information. (optional)
+page = '{:number=>1,+:size=>20}' # str | Page Number and Page Size.  Number is the page number of the collection to return, size is the number of items to return per page. (optional) (default to {:number=>1,+:size=>20})
 
 try: 
     # Get a list of Tags
-    api_response = api_instance.list_for_alert(alert_id, page=page, include=include)
+    api_response = api_instance.list_for_alert(alert_id, page=page)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling TagsApi->list_for_alert: %s\n" % e)
@@ -42,8 +41,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **alert_id** | **int**| The ID of the alert to list tags for | 
- **page** | **str**| Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page | [optional] [default to {:number&#x3D;&gt;1,+:size&#x3D;&gt;20}]
- **include** | **str**| Related objects that can be included in the response:   See Including Objects for more information. | [optional] 
+ **page** | **str**| Page Number and Page Size.  Number is the page number of the collection to return, size is the number of items to return per page. | [optional] [default to {:number&#x3D;&gt;1,+:size&#x3D;&gt;20}]
 
 ### Return type
 
@@ -51,7 +49,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-See https://github.com/EvidentSecurity/esp-sdk-python2#set-your-hmac-security-keys
+See https://github.com/EvidentSecurity/esp-sdk-python#set-your-hmac-security-keys
 
 ### HTTP request headers
 
@@ -61,7 +59,7 @@ See https://github.com/EvidentSecurity/esp-sdk-python2#set-your-hmac-security-ke
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **show**
-> Tag show(id, include=include)
+> Tag show(id)
 
 Show a single Tag
 
@@ -78,11 +76,10 @@ from pprint import pprint
 # create an instance of the API class
 api_instance = esp_sdk.TagsApi()
 id = 56 # int | Tag ID
-include = 'include_example' # str | Related objects that can be included in the response:   See Including Objects for more information. (optional)
 
 try: 
     # Show a single Tag
-    api_response = api_instance.show(id, include=include)
+    api_response = api_instance.show(id)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling TagsApi->show: %s\n" % e)
@@ -93,7 +90,6 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| Tag ID | 
- **include** | **str**| Related objects that can be included in the response:   See Including Objects for more information. | [optional] 
 
 ### Return type
 
@@ -101,7 +97,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-See https://github.com/EvidentSecurity/esp-sdk-python2#set-your-hmac-security-keys
+See https://github.com/EvidentSecurity/esp-sdk-python#set-your-hmac-security-keys
 
 ### HTTP request headers
 

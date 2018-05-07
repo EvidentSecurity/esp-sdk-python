@@ -56,7 +56,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-See https://github.com/EvidentSecurity/esp-sdk-python2#set-your-hmac-security-keys
+See https://github.com/EvidentSecurity/esp-sdk-python#set-your-hmac-security-keys
 
 ### HTTP request headers
 
@@ -82,7 +82,7 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = esp_sdk.ScanIntervalsApi()
-id = 56 # int |  ID
+id = 56 # int | Scan Interval ID
 
 try: 
     # Delete a(n) Scan Interval
@@ -96,7 +96,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **int**|  ID | 
+ **id** | **int**| Scan Interval ID | 
 
 ### Return type
 
@@ -104,7 +104,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-See https://github.com/EvidentSecurity/esp-sdk-python2#set-your-hmac-security-keys
+See https://github.com/EvidentSecurity/esp-sdk-python#set-your-hmac-security-keys
 
 ### HTTP request headers
 
@@ -114,7 +114,7 @@ See https://github.com/EvidentSecurity/esp-sdk-python2#set-your-hmac-security-ke
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_for_external_account**
-> PaginatedCollection list_for_external_account(external_account_id, page=page, include=include)
+> PaginatedCollection list_for_external_account(external_account_id, include=include, page=page)
 
 Get a list of Scan Intervals
 
@@ -131,12 +131,12 @@ from pprint import pprint
 # create an instance of the API class
 api_instance = esp_sdk.ScanIntervalsApi()
 external_account_id = 56 # int | The ID of the external account to retrieve
-page = '{:number=>1,+:size=>20}' # str | Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page (optional) (default to {:number=>1,+:size=>20})
 include = 'include_example' # str | Related objects that can be included in the response:  external_account, service See Including Objects for more information. (optional)
+page = '{:number=>1,+:size=>20}' # str | Page Number and Page Size.  Number is the page number of the collection to return, size is the number of items to return per page. (optional) (default to {:number=>1,+:size=>20})
 
 try: 
     # Get a list of Scan Intervals
-    api_response = api_instance.list_for_external_account(external_account_id, page=page, include=include)
+    api_response = api_instance.list_for_external_account(external_account_id, include=include, page=page)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling ScanIntervalsApi->list_for_external_account: %s\n" % e)
@@ -147,8 +147,8 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **external_account_id** | **int**| The ID of the external account to retrieve | 
- **page** | **str**| Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page | [optional] [default to {:number&#x3D;&gt;1,+:size&#x3D;&gt;20}]
  **include** | **str**| Related objects that can be included in the response:  external_account, service See Including Objects for more information. | [optional] 
+ **page** | **str**| Page Number and Page Size.  Number is the page number of the collection to return, size is the number of items to return per page. | [optional] [default to {:number&#x3D;&gt;1,+:size&#x3D;&gt;20}]
 
 ### Return type
 
@@ -156,7 +156,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-See https://github.com/EvidentSecurity/esp-sdk-python2#set-your-hmac-security-keys
+See https://github.com/EvidentSecurity/esp-sdk-python#set-your-hmac-security-keys
 
 ### HTTP request headers
 
@@ -206,7 +206,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-See https://github.com/EvidentSecurity/esp-sdk-python2#set-your-hmac-security-keys
+See https://github.com/EvidentSecurity/esp-sdk-python#set-your-hmac-security-keys
 
 ### HTTP request headers
 
@@ -216,7 +216,7 @@ See https://github.com/EvidentSecurity/esp-sdk-python2#set-your-hmac-security-ke
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update**
-> ScanInterval update(id, external_account_id=external_account_id, interval=interval, service_id=service_id, include=include)
+> ScanInterval update(id, include=include, external_account_id=external_account_id, interval=interval, service_id=service_id)
 
 Update a(n) Scan Interval
 
@@ -233,14 +233,14 @@ from pprint import pprint
 # create an instance of the API class
 api_instance = esp_sdk.ScanIntervalsApi()
 id = 56 # int | Scan Interval ID
+include = 'include_example' # str | Related objects that can be included in the response:  external_account, service See Including Objects for more information. (optional)
 external_account_id = 56 # int | The ID of the external account this scan interval is for (optional)
 interval = 56 # int | The interval, in minutes, this service will be scanned (optional)
 service_id = 56 # int | The service ID for the scan interval (optional)
-include = 'include_example' # str | Related objects that can be included in the response:  external_account, service See Including Objects for more information. (optional)
 
 try: 
     # Update a(n) Scan Interval
-    api_response = api_instance.update(id, external_account_id=external_account_id, interval=interval, service_id=service_id, include=include)
+    api_response = api_instance.update(id, include=include, external_account_id=external_account_id, interval=interval, service_id=service_id)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling ScanIntervalsApi->update: %s\n" % e)
@@ -251,10 +251,10 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| Scan Interval ID | 
+ **include** | **str**| Related objects that can be included in the response:  external_account, service See Including Objects for more information. | [optional] 
  **external_account_id** | **int**| The ID of the external account this scan interval is for | [optional] 
  **interval** | **int**| The interval, in minutes, this service will be scanned | [optional] 
  **service_id** | **int**| The service ID for the scan interval | [optional] 
- **include** | **str**| Related objects that can be included in the response:  external_account, service See Including Objects for more information. | [optional] 
 
 ### Return type
 
@@ -262,7 +262,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-See https://github.com/EvidentSecurity/esp-sdk-python2#set-your-hmac-security-keys
+See https://github.com/EvidentSecurity/esp-sdk-python#set-your-hmac-security-keys
 
 ### HTTP request headers
 

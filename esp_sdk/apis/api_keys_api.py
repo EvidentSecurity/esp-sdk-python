@@ -54,8 +54,8 @@ class APIKeysApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param str name: The name of the API Key
         :param str include: Related objects that can be included in the response:  user See Including Objects for more information.
+        :param str name: The name of the API Key
         :return: APIKey
                  If the method is called asynchronously,
                  returns the request thread.
@@ -81,14 +81,14 @@ class APIKeysApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param str name: The name of the API Key
         :param str include: Related objects that can be included in the response:  user See Including Objects for more information.
+        :param str name: The name of the API Key
         :return: APIKey
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'include']
+        all_params = ['include', 'name']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -162,7 +162,7 @@ class APIKeysApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param int id:  ID (required)
+        :param int id: API Key ID (required)
         :return: Meta
                  If the method is called asynchronously,
                  returns the request thread.
@@ -188,7 +188,7 @@ class APIKeysApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param int id:  ID (required)
+        :param int id: API Key ID (required)
         :return: Meta
                  If the method is called asynchronously,
                  returns the request thread.
@@ -269,8 +269,8 @@ class APIKeysApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param str page: Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page
         :param str include: Related objects that can be included in the response:  user See Including Objects for more information.
+        :param str page: Page Number and Page Size.  Number is the page number of the collection to return, size is the number of items to return per page.
         :return: PaginatedCollection
                  If the method is called asynchronously,
                  returns the request thread.
@@ -296,14 +296,14 @@ class APIKeysApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param str page: Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page
         :param str include: Related objects that can be included in the response:  user See Including Objects for more information.
+        :param str page: Page Number and Page Size.  Number is the page number of the collection to return, size is the number of items to return per page.
         :return: PaginatedCollection
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['page', 'include']
+        all_params = ['include', 'page']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -489,8 +489,8 @@ class APIKeysApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param int id: API Key ID (required)
-        :param str name: The name of the API Key
         :param str include: Related objects that can be included in the response:  user See Including Objects for more information.
+        :param str name: The name of the API Key
         :return: APIKey
                  If the method is called asynchronously,
                  returns the request thread.
@@ -517,14 +517,14 @@ class APIKeysApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param int id: API Key ID (required)
-        :param str name: The name of the API Key
         :param str include: Related objects that can be included in the response:  user See Including Objects for more information.
+        :param str name: The name of the API Key
         :return: APIKey
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['id', 'name', 'include']
+        all_params = ['id', 'include', 'name']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')

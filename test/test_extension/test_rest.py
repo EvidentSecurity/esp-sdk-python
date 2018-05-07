@@ -57,7 +57,7 @@ class TestRESTClientObject(TestBase):
         api_client.rest_client = rest_client
         api = SubOrganizationsApi(api_client)
 
-        api.create(1, 'Evident')
+        api.create('Evident', 1)
 
         args, kwargs = rest_client.pool_manager.request.call_args
         self.assertEqual(args[0], 'POST')

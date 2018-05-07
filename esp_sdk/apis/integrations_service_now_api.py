@@ -40,7 +40,7 @@ class IntegrationsServiceNowApi(object):
                 config.api_client = ApiClient()
             self.api_client = config.api_client
 
-    def create(self, instance_url, username, password, incident_type, name, external_account_ids, **kwargs):
+    def create(self, external_account_ids, incident_type, instance_url, name, password, username, **kwargs):
         """
         Create a ServiceNow Integration
         
@@ -50,37 +50,37 @@ class IntegrationsServiceNowApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.create(instance_url, username, password, incident_type, name, external_account_ids, callback=callback_function)
+        >>> thread = api.create(external_account_ids, incident_type, instance_url, name, password, username, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param str instance_url: The URL for the ServiceNow instance (required)
-        :param str username: The username for accessing the ServiceNow instance (required)
-        :param str password: A password to access the JIRA project (required)
-        :param str incident_type: The password for accessing the ServiceNow instance. Valid values are incident, sn_si_incident (required)
-        :param str name: Name of the integration (required)
         :param list[int] external_account_ids: External accounts for integration (required)
+        :param str incident_type: The password for accessing the ServiceNow instance. Valid values are incident, sn_si_incident (required)
+        :param str instance_url: The URL for the ServiceNow instance (required)
+        :param str name: Name of the integration (required)
+        :param str password: A password to access the JIRA project (required)
+        :param str username: The username for accessing the ServiceNow instance (required)
+        :param str include: Related objects that can be included in the response:  integration See Including Objects for more information.
         :param bool all_high_risk: Send all high risk alerts
-        :param bool all_medium_risk: Send all medium risk alerts
         :param bool all_low_risk: Send all low risk alerts
+        :param bool all_medium_risk: Send all medium risk alerts
+        :param list[int] custom_signature_ids: Custom signatures for integration
         :param bool send_updates: This feature enables the integration to send alerts when they are updated. When disabled, alerts will only be sent when they are initially created. When enabled, alerts will additionally be sent when a change is made such as the alert ending. An alert may end for multiple reasons.
         :param bool send_when_suppressed: Send notifications for suppressed alerts
         :param list[int] signature_ids: Signatures for integration
         :param list[str] statuses: Only send alerts that have the status in this list. Valid values are fail, warn, error, pass, info
-        :param list[int] custom_signature_ids: Custom signatures for integration
-        :param str include: Related objects that can be included in the response:  integration See Including Objects for more information.
         :return: IntegrationServicenow
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.create_with_http_info(instance_url, username, password, incident_type, name, external_account_ids, **kwargs)
+            return self.create_with_http_info(external_account_ids, incident_type, instance_url, name, password, username, **kwargs)
         else:
-            (data) = self.create_with_http_info(instance_url, username, password, incident_type, name, external_account_ids, **kwargs)
+            (data) = self.create_with_http_info(external_account_ids, incident_type, instance_url, name, password, username, **kwargs)
             return data
 
-    def create_with_http_info(self, instance_url, username, password, incident_type, name, external_account_ids, **kwargs):
+    def create_with_http_info(self, external_account_ids, incident_type, instance_url, name, password, username, **kwargs):
         """
         Create a ServiceNow Integration
         
@@ -90,31 +90,31 @@ class IntegrationsServiceNowApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.create_with_http_info(instance_url, username, password, incident_type, name, external_account_ids, callback=callback_function)
+        >>> thread = api.create_with_http_info(external_account_ids, incident_type, instance_url, name, password, username, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param str instance_url: The URL for the ServiceNow instance (required)
-        :param str username: The username for accessing the ServiceNow instance (required)
-        :param str password: A password to access the JIRA project (required)
-        :param str incident_type: The password for accessing the ServiceNow instance. Valid values are incident, sn_si_incident (required)
-        :param str name: Name of the integration (required)
         :param list[int] external_account_ids: External accounts for integration (required)
+        :param str incident_type: The password for accessing the ServiceNow instance. Valid values are incident, sn_si_incident (required)
+        :param str instance_url: The URL for the ServiceNow instance (required)
+        :param str name: Name of the integration (required)
+        :param str password: A password to access the JIRA project (required)
+        :param str username: The username for accessing the ServiceNow instance (required)
+        :param str include: Related objects that can be included in the response:  integration See Including Objects for more information.
         :param bool all_high_risk: Send all high risk alerts
-        :param bool all_medium_risk: Send all medium risk alerts
         :param bool all_low_risk: Send all low risk alerts
+        :param bool all_medium_risk: Send all medium risk alerts
+        :param list[int] custom_signature_ids: Custom signatures for integration
         :param bool send_updates: This feature enables the integration to send alerts when they are updated. When disabled, alerts will only be sent when they are initially created. When enabled, alerts will additionally be sent when a change is made such as the alert ending. An alert may end for multiple reasons.
         :param bool send_when_suppressed: Send notifications for suppressed alerts
         :param list[int] signature_ids: Signatures for integration
         :param list[str] statuses: Only send alerts that have the status in this list. Valid values are fail, warn, error, pass, info
-        :param list[int] custom_signature_ids: Custom signatures for integration
-        :param str include: Related objects that can be included in the response:  integration See Including Objects for more information.
         :return: IntegrationServicenow
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['instance_url', 'username', 'password', 'incident_type', 'name', 'external_account_ids', 'all_high_risk', 'all_medium_risk', 'all_low_risk', 'send_updates', 'send_when_suppressed', 'signature_ids', 'statuses', 'custom_signature_ids', 'include']
+        all_params = ['external_account_ids', 'incident_type', 'instance_url', 'name', 'password', 'username', 'include', 'all_high_risk', 'all_low_risk', 'all_medium_risk', 'custom_signature_ids', 'send_updates', 'send_when_suppressed', 'signature_ids', 'statuses']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -129,24 +129,24 @@ class IntegrationsServiceNowApi(object):
                 )
             params[key] = val
         del params['kwargs']
-        # verify the required parameter 'instance_url' is set
-        if ('instance_url' not in params) or (params['instance_url'] is None):
-            raise ValueError("Missing the required parameter `instance_url` when calling `create`")
-        # verify the required parameter 'username' is set
-        if ('username' not in params) or (params['username'] is None):
-            raise ValueError("Missing the required parameter `username` when calling `create`")
-        # verify the required parameter 'password' is set
-        if ('password' not in params) or (params['password'] is None):
-            raise ValueError("Missing the required parameter `password` when calling `create`")
-        # verify the required parameter 'incident_type' is set
-        if ('incident_type' not in params) or (params['incident_type'] is None):
-            raise ValueError("Missing the required parameter `incident_type` when calling `create`")
-        # verify the required parameter 'name' is set
-        if ('name' not in params) or (params['name'] is None):
-            raise ValueError("Missing the required parameter `name` when calling `create`")
         # verify the required parameter 'external_account_ids' is set
         if ('external_account_ids' not in params) or (params['external_account_ids'] is None):
             raise ValueError("Missing the required parameter `external_account_ids` when calling `create`")
+        # verify the required parameter 'incident_type' is set
+        if ('incident_type' not in params) or (params['incident_type'] is None):
+            raise ValueError("Missing the required parameter `incident_type` when calling `create`")
+        # verify the required parameter 'instance_url' is set
+        if ('instance_url' not in params) or (params['instance_url'] is None):
+            raise ValueError("Missing the required parameter `instance_url` when calling `create`")
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `create`")
+        # verify the required parameter 'password' is set
+        if ('password' not in params) or (params['password'] is None):
+            raise ValueError("Missing the required parameter `password` when calling `create`")
+        # verify the required parameter 'username' is set
+        if ('username' not in params) or (params['username'] is None):
+            raise ValueError("Missing the required parameter `username` when calling `create`")
 
 
         collection_formats = {}
@@ -162,22 +162,26 @@ class IntegrationsServiceNowApi(object):
 
         form_params = []
         local_var_files = {}
-        if 'instance_url' in params:
-            form_params.append(('instance_url', params['instance_url']))
-        if 'username' in params:
-            form_params.append(('username', params['username']))
-        if 'password' in params:
-            form_params.append(('password', params['password']))
-        if 'incident_type' in params:
-            form_params.append(('incident_type', params['incident_type']))
-        if 'name' in params:
-            form_params.append(('name', params['name']))
         if 'all_high_risk' in params:
             form_params.append(('all_high_risk', params['all_high_risk']))
-        if 'all_medium_risk' in params:
-            form_params.append(('all_medium_risk', params['all_medium_risk']))
         if 'all_low_risk' in params:
             form_params.append(('all_low_risk', params['all_low_risk']))
+        if 'all_medium_risk' in params:
+            form_params.append(('all_medium_risk', params['all_medium_risk']))
+        if 'custom_signature_ids' in params:
+            form_params.append(('custom_signature_ids', params['custom_signature_ids']))
+            collection_formats['None'] = 'csv'
+        if 'external_account_ids' in params:
+            form_params.append(('external_account_ids', params['external_account_ids']))
+            collection_formats['None'] = 'csv'
+        if 'incident_type' in params:
+            form_params.append(('incident_type', params['incident_type']))
+        if 'instance_url' in params:
+            form_params.append(('instance_url', params['instance_url']))
+        if 'name' in params:
+            form_params.append(('name', params['name']))
+        if 'password' in params:
+            form_params.append(('password', params['password']))
         if 'send_updates' in params:
             form_params.append(('send_updates', params['send_updates']))
         if 'send_when_suppressed' in params:
@@ -188,12 +192,8 @@ class IntegrationsServiceNowApi(object):
         if 'statuses' in params:
             form_params.append(('statuses', params['statuses']))
             collection_formats['None'] = 'csv'
-        if 'external_account_ids' in params:
-            form_params.append(('external_account_ids', params['external_account_ids']))
-            collection_formats['None'] = 'csv'
-        if 'custom_signature_ids' in params:
-            form_params.append(('custom_signature_ids', params['custom_signature_ids']))
-            collection_formats['None'] = 'csv'
+        if 'username' in params:
+            form_params.append(('username', params['username']))
 
         body_params = None
         # HTTP header `Accept`
@@ -348,21 +348,21 @@ class IntegrationsServiceNowApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param int integration_id: The ID of the integration (required)
-        :param str instance_url: The URL for the ServiceNow instance
-        :param str username: The username for accessing the ServiceNow instance
-        :param str password: A password to access the JIRA project
-        :param str incident_type: The password for accessing the ServiceNow instance. Valid values are incident, sn_si_incident
-        :param str name: Name of the integration
+        :param str include: Related objects that can be included in the response:  integration See Including Objects for more information.
         :param bool all_high_risk: Send all high risk alerts
-        :param bool all_medium_risk: Send all medium risk alerts
         :param bool all_low_risk: Send all low risk alerts
+        :param bool all_medium_risk: Send all medium risk alerts
+        :param list[int] custom_signature_ids: Custom signatures for integration
+        :param list[int] external_account_ids: External accounts for integration
+        :param str incident_type: The password for accessing the ServiceNow instance. Valid values are incident, sn_si_incident
+        :param str instance_url: The URL for the ServiceNow instance
+        :param str name: Name of the integration
+        :param str password: A password to access the JIRA project
         :param bool send_updates: This feature enables the integration to send alerts when they are updated. When disabled, alerts will only be sent when they are initially created. When enabled, alerts will additionally be sent when a change is made such as the alert ending. An alert may end for multiple reasons.
         :param bool send_when_suppressed: Send notifications for suppressed alerts
         :param list[int] signature_ids: Signatures for integration
         :param list[str] statuses: Only send alerts that have the status in this list. Valid values are fail, warn, error, pass, info
-        :param list[int] external_account_ids: External accounts for integration
-        :param list[int] custom_signature_ids: Custom signatures for integration
-        :param str include: Related objects that can be included in the response:  integration See Including Objects for more information.
+        :param str username: The username for accessing the ServiceNow instance
         :return: IntegrationServicenow
                  If the method is called asynchronously,
                  returns the request thread.
@@ -389,27 +389,27 @@ class IntegrationsServiceNowApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param int integration_id: The ID of the integration (required)
-        :param str instance_url: The URL for the ServiceNow instance
-        :param str username: The username for accessing the ServiceNow instance
-        :param str password: A password to access the JIRA project
-        :param str incident_type: The password for accessing the ServiceNow instance. Valid values are incident, sn_si_incident
-        :param str name: Name of the integration
+        :param str include: Related objects that can be included in the response:  integration See Including Objects for more information.
         :param bool all_high_risk: Send all high risk alerts
-        :param bool all_medium_risk: Send all medium risk alerts
         :param bool all_low_risk: Send all low risk alerts
+        :param bool all_medium_risk: Send all medium risk alerts
+        :param list[int] custom_signature_ids: Custom signatures for integration
+        :param list[int] external_account_ids: External accounts for integration
+        :param str incident_type: The password for accessing the ServiceNow instance. Valid values are incident, sn_si_incident
+        :param str instance_url: The URL for the ServiceNow instance
+        :param str name: Name of the integration
+        :param str password: A password to access the JIRA project
         :param bool send_updates: This feature enables the integration to send alerts when they are updated. When disabled, alerts will only be sent when they are initially created. When enabled, alerts will additionally be sent when a change is made such as the alert ending. An alert may end for multiple reasons.
         :param bool send_when_suppressed: Send notifications for suppressed alerts
         :param list[int] signature_ids: Signatures for integration
         :param list[str] statuses: Only send alerts that have the status in this list. Valid values are fail, warn, error, pass, info
-        :param list[int] external_account_ids: External accounts for integration
-        :param list[int] custom_signature_ids: Custom signatures for integration
-        :param str include: Related objects that can be included in the response:  integration See Including Objects for more information.
+        :param str username: The username for accessing the ServiceNow instance
         :return: IntegrationServicenow
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['integration_id', 'instance_url', 'username', 'password', 'incident_type', 'name', 'all_high_risk', 'all_medium_risk', 'all_low_risk', 'send_updates', 'send_when_suppressed', 'signature_ids', 'statuses', 'external_account_ids', 'custom_signature_ids', 'include']
+        all_params = ['integration_id', 'include', 'all_high_risk', 'all_low_risk', 'all_medium_risk', 'custom_signature_ids', 'external_account_ids', 'incident_type', 'instance_url', 'name', 'password', 'send_updates', 'send_when_suppressed', 'signature_ids', 'statuses', 'username']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -444,22 +444,26 @@ class IntegrationsServiceNowApi(object):
 
         form_params = []
         local_var_files = {}
-        if 'instance_url' in params:
-            form_params.append(('instance_url', params['instance_url']))
-        if 'username' in params:
-            form_params.append(('username', params['username']))
-        if 'password' in params:
-            form_params.append(('password', params['password']))
-        if 'incident_type' in params:
-            form_params.append(('incident_type', params['incident_type']))
-        if 'name' in params:
-            form_params.append(('name', params['name']))
         if 'all_high_risk' in params:
             form_params.append(('all_high_risk', params['all_high_risk']))
-        if 'all_medium_risk' in params:
-            form_params.append(('all_medium_risk', params['all_medium_risk']))
         if 'all_low_risk' in params:
             form_params.append(('all_low_risk', params['all_low_risk']))
+        if 'all_medium_risk' in params:
+            form_params.append(('all_medium_risk', params['all_medium_risk']))
+        if 'custom_signature_ids' in params:
+            form_params.append(('custom_signature_ids', params['custom_signature_ids']))
+            collection_formats['None'] = 'csv'
+        if 'external_account_ids' in params:
+            form_params.append(('external_account_ids', params['external_account_ids']))
+            collection_formats['None'] = 'csv'
+        if 'incident_type' in params:
+            form_params.append(('incident_type', params['incident_type']))
+        if 'instance_url' in params:
+            form_params.append(('instance_url', params['instance_url']))
+        if 'name' in params:
+            form_params.append(('name', params['name']))
+        if 'password' in params:
+            form_params.append(('password', params['password']))
         if 'send_updates' in params:
             form_params.append(('send_updates', params['send_updates']))
         if 'send_when_suppressed' in params:
@@ -470,12 +474,8 @@ class IntegrationsServiceNowApi(object):
         if 'statuses' in params:
             form_params.append(('statuses', params['statuses']))
             collection_formats['None'] = 'csv'
-        if 'external_account_ids' in params:
-            form_params.append(('external_account_ids', params['external_account_ids']))
-            collection_formats['None'] = 'csv'
-        if 'custom_signature_ids' in params:
-            form_params.append(('custom_signature_ids', params['custom_signature_ids']))
-            collection_formats['None'] = 'csv'
+        if 'username' in params:
+            form_params.append(('username', params['username']))
 
         body_params = None
         # HTTP header `Accept`

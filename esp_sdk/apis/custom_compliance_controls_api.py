@@ -56,7 +56,7 @@ class CustomComplianceControlsApi(object):
             for asynchronous request. (optional)
         :param int custom_compliance_control_id: The ID of the Custom Compliance Control this custom signature belongs to (required)
         :param int custom_signature_id: The ID of the custom signature that belongs to this custom control (required)
-        :param str include: Related objects that can be included in the response:  organization, teams, external_accounts, definitions See Including Objects for more information.
+        :param str include: Related objects that can be included in the response:  organization, teams, external_accounts, definitions, suppressions See Including Objects for more information.
         :return: CustomSignature
                  If the method is called asynchronously,
                  returns the request thread.
@@ -84,7 +84,7 @@ class CustomComplianceControlsApi(object):
             for asynchronous request. (optional)
         :param int custom_compliance_control_id: The ID of the Custom Compliance Control this custom signature belongs to (required)
         :param int custom_signature_id: The ID of the custom signature that belongs to this custom control (required)
-        :param str include: Related objects that can be included in the response:  organization, teams, external_accounts, definitions See Including Objects for more information.
+        :param str include: Related objects that can be included in the response:  organization, teams, external_accounts, definitions, suppressions See Including Objects for more information.
         :return: CustomSignature
                  If the method is called asynchronously,
                  returns the request thread.
@@ -174,7 +174,7 @@ class CustomComplianceControlsApi(object):
             for asynchronous request. (optional)
         :param int custom_compliance_control_id: The ID of the Custom Compliance Control this signature belongs to (required)
         :param int signature_id: The ID of the signature that belongs to this custom control (required)
-        :param str include: Related objects that can be included in the response:  service See Including Objects for more information.
+        :param str include: Related objects that can be included in the response:  service, suppressions See Including Objects for more information.
         :return: Signature
                  If the method is called asynchronously,
                  returns the request thread.
@@ -202,7 +202,7 @@ class CustomComplianceControlsApi(object):
             for asynchronous request. (optional)
         :param int custom_compliance_control_id: The ID of the Custom Compliance Control this signature belongs to (required)
         :param int signature_id: The ID of the signature that belongs to this custom control (required)
-        :param str include: Related objects that can be included in the response:  service See Including Objects for more information.
+        :param str include: Related objects that can be included in the response:  service, suppressions See Including Objects for more information.
         :return: Signature
                  If the method is called asynchronously,
                  returns the request thread.
@@ -276,7 +276,7 @@ class CustomComplianceControlsApi(object):
                                         _request_timeout=params.get('_request_timeout'),
                                         collection_formats=collection_formats)
 
-    def create(self, identifier, custom_compliance_domain_id, name, **kwargs):
+    def create(self, custom_compliance_domain_id, identifier, name, **kwargs):
         """
         Create a(n) Custom Compliance Control
         
@@ -286,30 +286,30 @@ class CustomComplianceControlsApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.create(identifier, custom_compliance_domain_id, name, callback=callback_function)
+        >>> thread = api.create(custom_compliance_domain_id, identifier, name, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param str identifier: The identifier of this custom control (required)
         :param int custom_compliance_domain_id: The ID of the Custom Compliance Domain this custom control belongs to (required)
+        :param str identifier: The identifier of this custom control (required)
         :param str name: Name (required)
+        :param str include: Related objects that can be included in the response:  custom_compliance_standard, custom_compliance_domain, signatures, custom_signatures See Including Objects for more information.
+        :param list[int] custom_signature_ids: An array of custom signatures identified by custom_signature_id that belong to this custom control
         :param str description: The description for this custom control
         :param int position: The position of this custom control within the custom domain
         :param list[int] signature_ids: An array of signatures identified by signature_id that belong to this custom control
-        :param list[int] custom_signature_ids: An array of custom signatures identified by custom_signature_id that belong to this custom control
-        :param str include: Related objects that can be included in the response:  custom_compliance_standard, custom_compliance_domain, signatures, custom_signatures See Including Objects for more information.
         :return: CustomComplianceControl
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.create_with_http_info(identifier, custom_compliance_domain_id, name, **kwargs)
+            return self.create_with_http_info(custom_compliance_domain_id, identifier, name, **kwargs)
         else:
-            (data) = self.create_with_http_info(identifier, custom_compliance_domain_id, name, **kwargs)
+            (data) = self.create_with_http_info(custom_compliance_domain_id, identifier, name, **kwargs)
             return data
 
-    def create_with_http_info(self, identifier, custom_compliance_domain_id, name, **kwargs):
+    def create_with_http_info(self, custom_compliance_domain_id, identifier, name, **kwargs):
         """
         Create a(n) Custom Compliance Control
         
@@ -319,24 +319,24 @@ class CustomComplianceControlsApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.create_with_http_info(identifier, custom_compliance_domain_id, name, callback=callback_function)
+        >>> thread = api.create_with_http_info(custom_compliance_domain_id, identifier, name, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param str identifier: The identifier of this custom control (required)
         :param int custom_compliance_domain_id: The ID of the Custom Compliance Domain this custom control belongs to (required)
+        :param str identifier: The identifier of this custom control (required)
         :param str name: Name (required)
+        :param str include: Related objects that can be included in the response:  custom_compliance_standard, custom_compliance_domain, signatures, custom_signatures See Including Objects for more information.
+        :param list[int] custom_signature_ids: An array of custom signatures identified by custom_signature_id that belong to this custom control
         :param str description: The description for this custom control
         :param int position: The position of this custom control within the custom domain
         :param list[int] signature_ids: An array of signatures identified by signature_id that belong to this custom control
-        :param list[int] custom_signature_ids: An array of custom signatures identified by custom_signature_id that belong to this custom control
-        :param str include: Related objects that can be included in the response:  custom_compliance_standard, custom_compliance_domain, signatures, custom_signatures See Including Objects for more information.
         :return: CustomComplianceControl
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['identifier', 'custom_compliance_domain_id', 'name', 'description', 'position', 'signature_ids', 'custom_signature_ids', 'include']
+        all_params = ['custom_compliance_domain_id', 'identifier', 'name', 'include', 'custom_signature_ids', 'description', 'position', 'signature_ids']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -351,12 +351,12 @@ class CustomComplianceControlsApi(object):
                 )
             params[key] = val
         del params['kwargs']
-        # verify the required parameter 'identifier' is set
-        if ('identifier' not in params) or (params['identifier'] is None):
-            raise ValueError("Missing the required parameter `identifier` when calling `create`")
         # verify the required parameter 'custom_compliance_domain_id' is set
         if ('custom_compliance_domain_id' not in params) or (params['custom_compliance_domain_id'] is None):
             raise ValueError("Missing the required parameter `custom_compliance_domain_id` when calling `create`")
+        # verify the required parameter 'identifier' is set
+        if ('identifier' not in params) or (params['identifier'] is None):
+            raise ValueError("Missing the required parameter `identifier` when calling `create`")
         # verify the required parameter 'name' is set
         if ('name' not in params) or (params['name'] is None):
             raise ValueError("Missing the required parameter `name` when calling `create`")
@@ -375,21 +375,21 @@ class CustomComplianceControlsApi(object):
 
         form_params = []
         local_var_files = {}
-        if 'identifier' in params:
-            form_params.append(('identifier', params['identifier']))
         if 'custom_compliance_domain_id' in params:
             form_params.append(('custom_compliance_domain_id', params['custom_compliance_domain_id']))
+        if 'custom_signature_ids' in params:
+            form_params.append(('custom_signature_ids', params['custom_signature_ids']))
+            collection_formats['None'] = 'csv'
         if 'description' in params:
             form_params.append(('description', params['description']))
+        if 'identifier' in params:
+            form_params.append(('identifier', params['identifier']))
         if 'name' in params:
             form_params.append(('name', params['name']))
         if 'position' in params:
             form_params.append(('position', params['position']))
         if 'signature_ids' in params:
             form_params.append(('signature_ids', params['signature_ids']))
-            collection_formats['None'] = 'csv'
-        if 'custom_signature_ids' in params:
-            form_params.append(('custom_signature_ids', params['custom_signature_ids']))
             collection_formats['None'] = 'csv'
 
         body_params = None
@@ -433,7 +433,7 @@ class CustomComplianceControlsApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param int id:  ID (required)
+        :param int id: Custom Compliance Control ID (required)
         :return: Meta
                  If the method is called asynchronously,
                  returns the request thread.
@@ -459,7 +459,7 @@ class CustomComplianceControlsApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param int id:  ID (required)
+        :param int id: Custom Compliance Control ID (required)
         :return: Meta
                  If the method is called asynchronously,
                  returns the request thread.
@@ -541,8 +541,8 @@ class CustomComplianceControlsApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param int custom_compliance_control_id: The ID of the Custom Compliance Control this custom signature belongs to (required)
-        :param str page: Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page
-        :param str include: Related objects that can be included in the response:  organization, teams, external_accounts, definitions See Including Objects for more information.
+        :param str include: Related objects that can be included in the response:  organization, teams, external_accounts, definitions, suppressions See Including Objects for more information.
+        :param str page: Page Number and Page Size.  Number is the page number of the collection to return, size is the number of items to return per page.
         :return: PaginatedCollection
                  If the method is called asynchronously,
                  returns the request thread.
@@ -569,14 +569,14 @@ class CustomComplianceControlsApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param int custom_compliance_control_id: The ID of the Custom Compliance Control this custom signature belongs to (required)
-        :param str page: Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page
-        :param str include: Related objects that can be included in the response:  organization, teams, external_accounts, definitions See Including Objects for more information.
+        :param str include: Related objects that can be included in the response:  organization, teams, external_accounts, definitions, suppressions See Including Objects for more information.
+        :param str page: Page Number and Page Size.  Number is the page number of the collection to return, size is the number of items to return per page.
         :return: PaginatedCollection
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['custom_compliance_control_id', 'page', 'include']
+        all_params = ['custom_compliance_control_id', 'include', 'page']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -656,8 +656,8 @@ class CustomComplianceControlsApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param int custom_compliance_control_id: The ID of the Custom Compliance Control this signature belongs to (required)
-        :param str page: Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page
-        :param str include: Related objects that can be included in the response:  service See Including Objects for more information.
+        :param str include: Related objects that can be included in the response:  service, suppressions See Including Objects for more information.
+        :param str page: Page Number and Page Size.  Number is the page number of the collection to return, size is the number of items to return per page.
         :return: PaginatedCollection
                  If the method is called asynchronously,
                  returns the request thread.
@@ -684,14 +684,14 @@ class CustomComplianceControlsApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param int custom_compliance_control_id: The ID of the Custom Compliance Control this signature belongs to (required)
-        :param str page: Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page
-        :param str include: Related objects that can be included in the response:  service See Including Objects for more information.
+        :param str include: Related objects that can be included in the response:  service, suppressions See Including Objects for more information.
+        :param str page: Page Number and Page Size.  Number is the page number of the collection to return, size is the number of items to return per page.
         :return: PaginatedCollection
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['custom_compliance_control_id', 'page', 'include']
+        all_params = ['custom_compliance_control_id', 'include', 'page']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -1110,14 +1110,14 @@ class CustomComplianceControlsApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param int id: Custom Compliance Control ID (required)
-        :param str identifier: The identifier of this custom control
+        :param str include: Related objects that can be included in the response:  custom_compliance_standard, custom_compliance_domain, signatures, custom_signatures See Including Objects for more information.
         :param int custom_compliance_domain_id: The ID of the Custom Compliance Domain this custom control belongs to
+        :param list[int] custom_signature_ids: An array of custom signatures identified by custom_signature_id that belong to this custom control
         :param str description: The description for this custom control
+        :param str identifier: The identifier of this custom control
         :param str name: Name
         :param int position: The position of this custom control within the custom domain
         :param list[int] signature_ids: An array of signatures identified by signature_id that belong to this custom control
-        :param list[int] custom_signature_ids: An array of custom signatures identified by custom_signature_id that belong to this custom control
-        :param str include: Related objects that can be included in the response:  custom_compliance_standard, custom_compliance_domain, signatures, custom_signatures See Including Objects for more information.
         :return: CustomComplianceControl
                  If the method is called asynchronously,
                  returns the request thread.
@@ -1144,20 +1144,20 @@ class CustomComplianceControlsApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param int id: Custom Compliance Control ID (required)
-        :param str identifier: The identifier of this custom control
+        :param str include: Related objects that can be included in the response:  custom_compliance_standard, custom_compliance_domain, signatures, custom_signatures See Including Objects for more information.
         :param int custom_compliance_domain_id: The ID of the Custom Compliance Domain this custom control belongs to
+        :param list[int] custom_signature_ids: An array of custom signatures identified by custom_signature_id that belong to this custom control
         :param str description: The description for this custom control
+        :param str identifier: The identifier of this custom control
         :param str name: Name
         :param int position: The position of this custom control within the custom domain
         :param list[int] signature_ids: An array of signatures identified by signature_id that belong to this custom control
-        :param list[int] custom_signature_ids: An array of custom signatures identified by custom_signature_id that belong to this custom control
-        :param str include: Related objects that can be included in the response:  custom_compliance_standard, custom_compliance_domain, signatures, custom_signatures See Including Objects for more information.
         :return: CustomComplianceControl
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['id', 'identifier', 'custom_compliance_domain_id', 'description', 'name', 'position', 'signature_ids', 'custom_signature_ids', 'include']
+        all_params = ['id', 'include', 'custom_compliance_domain_id', 'custom_signature_ids', 'description', 'identifier', 'name', 'position', 'signature_ids']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -1192,21 +1192,21 @@ class CustomComplianceControlsApi(object):
 
         form_params = []
         local_var_files = {}
-        if 'identifier' in params:
-            form_params.append(('identifier', params['identifier']))
         if 'custom_compliance_domain_id' in params:
             form_params.append(('custom_compliance_domain_id', params['custom_compliance_domain_id']))
+        if 'custom_signature_ids' in params:
+            form_params.append(('custom_signature_ids', params['custom_signature_ids']))
+            collection_formats['None'] = 'csv'
         if 'description' in params:
             form_params.append(('description', params['description']))
+        if 'identifier' in params:
+            form_params.append(('identifier', params['identifier']))
         if 'name' in params:
             form_params.append(('name', params['name']))
         if 'position' in params:
             form_params.append(('position', params['position']))
         if 'signature_ids' in params:
             form_params.append(('signature_ids', params['signature_ids']))
-            collection_formats['None'] = 'csv'
-        if 'custom_signature_ids' in params:
-            form_params.append(('custom_signature_ids', params['custom_signature_ids']))
             collection_formats['None'] = 'csv'
 
         body_params = None

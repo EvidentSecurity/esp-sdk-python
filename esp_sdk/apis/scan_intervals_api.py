@@ -179,7 +179,7 @@ class ScanIntervalsApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param int id:  ID (required)
+        :param int id: Scan Interval ID (required)
         :return: Meta
                  If the method is called asynchronously,
                  returns the request thread.
@@ -205,7 +205,7 @@ class ScanIntervalsApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param int id:  ID (required)
+        :param int id: Scan Interval ID (required)
         :return: Meta
                  If the method is called asynchronously,
                  returns the request thread.
@@ -287,8 +287,8 @@ class ScanIntervalsApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param int external_account_id: The ID of the external account to retrieve (required)
-        :param str page: Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page
         :param str include: Related objects that can be included in the response:  external_account, service See Including Objects for more information.
+        :param str page: Page Number and Page Size.  Number is the page number of the collection to return, size is the number of items to return per page.
         :return: PaginatedCollection
                  If the method is called asynchronously,
                  returns the request thread.
@@ -315,14 +315,14 @@ class ScanIntervalsApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param int external_account_id: The ID of the external account to retrieve (required)
-        :param str page: Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page
         :param str include: Related objects that can be included in the response:  external_account, service See Including Objects for more information.
+        :param str page: Page Number and Page Size.  Number is the page number of the collection to return, size is the number of items to return per page.
         :return: PaginatedCollection
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['external_account_id', 'page', 'include']
+        all_params = ['external_account_id', 'include', 'page']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -513,10 +513,10 @@ class ScanIntervalsApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param int id: Scan Interval ID (required)
+        :param str include: Related objects that can be included in the response:  external_account, service See Including Objects for more information.
         :param int external_account_id: The ID of the external account this scan interval is for
         :param int interval: The interval, in minutes, this service will be scanned
         :param int service_id: The service ID for the scan interval
-        :param str include: Related objects that can be included in the response:  external_account, service See Including Objects for more information.
         :return: ScanInterval
                  If the method is called asynchronously,
                  returns the request thread.
@@ -543,16 +543,16 @@ class ScanIntervalsApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param int id: Scan Interval ID (required)
+        :param str include: Related objects that can be included in the response:  external_account, service See Including Objects for more information.
         :param int external_account_id: The ID of the external account this scan interval is for
         :param int interval: The interval, in minutes, this service will be scanned
         :param int service_id: The service ID for the scan interval
-        :param str include: Related objects that can be included in the response:  external_account, service See Including Objects for more information.
         :return: ScanInterval
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['id', 'external_account_id', 'interval', 'service_id', 'include']
+        all_params = ['id', 'include', 'external_account_id', 'interval', 'service_id']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')

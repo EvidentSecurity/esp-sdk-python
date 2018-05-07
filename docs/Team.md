@@ -11,8 +11,6 @@ Name | Type | Description | Notes
 **custom_signature_ids** | **list[int]** | Associated Custom Signatures IDs | [optional] 
 **external_accounts** | [**list[ExternalAccount]**](ExternalAccount.md) | Associated External Accounts | [optional] 
 **external_account_ids** | **list[int]** | Associated External Accounts IDs | [optional] 
-**organization** | [**Organization**](Organization.md) | Associated Organization | [optional] 
-**organization_id** | **int** | Associated Organization ID | [optional] 
 **sub_organization** | [**SubOrganization**](SubOrganization.md) | Associated Sub Organization | [optional] 
 **sub_organization_id** | **int** | Associated Sub Organization ID | [optional] 
 

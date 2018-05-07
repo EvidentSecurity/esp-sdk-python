@@ -32,7 +32,7 @@ from pprint import pprint
 api_instance = esp_sdk.AzureGroupsApi()
 azure_group_id = 56 # int | The ID of the Azure group associated with this memberhsip
 external_account_id = 56 # int | The ID of the External Account associated with this memberhsip
-include = 'include_example' # str | Related objects that can be included in the response:  organization, sub_organization, team, scan_intervals, disabled_signatures, azure_group, credentials See Including Objects for more information. (optional)
+include = 'include_example' # str | Related objects that can be included in the response:  organization, sub_organization, team, scan_intervals, disabled_signatures, suppressions, azure_group, credentials See Including Objects for more information. (optional)
 
 try: 
     # Add an External Account to an Azure Group
@@ -48,7 +48,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **azure_group_id** | **int**| The ID of the Azure group associated with this memberhsip | 
  **external_account_id** | **int**| The ID of the External Account associated with this memberhsip | 
- **include** | **str**| Related objects that can be included in the response:  organization, sub_organization, team, scan_intervals, disabled_signatures, azure_group, credentials See Including Objects for more information. | [optional] 
+ **include** | **str**| Related objects that can be included in the response:  organization, sub_organization, team, scan_intervals, disabled_signatures, suppressions, azure_group, credentials See Including Objects for more information. | [optional] 
 
 ### Return type
 
@@ -56,7 +56,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-See https://github.com/EvidentSecurity/esp-sdk-python2#set-your-hmac-security-keys
+See https://github.com/EvidentSecurity/esp-sdk-python#set-your-hmac-security-keys
 
 ### HTTP request headers
 
@@ -106,7 +106,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-See https://github.com/EvidentSecurity/esp-sdk-python2#set-your-hmac-security-keys
+See https://github.com/EvidentSecurity/esp-sdk-python#set-your-hmac-security-keys
 
 ### HTTP request headers
 
@@ -132,7 +132,7 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = esp_sdk.AzureGroupsApi()
-id = 56 # int |  ID
+id = 56 # int | Azure Group ID
 
 try: 
     # Delete a(n) Azure Group
@@ -146,7 +146,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **int**|  ID | 
+ **id** | **int**| Azure Group ID | 
 
 ### Return type
 
@@ -154,7 +154,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-See https://github.com/EvidentSecurity/esp-sdk-python2#set-your-hmac-security-keys
+See https://github.com/EvidentSecurity/esp-sdk-python#set-your-hmac-security-keys
 
 ### HTTP request headers
 
@@ -164,7 +164,7 @@ See https://github.com/EvidentSecurity/esp-sdk-python2#set-your-hmac-security-ke
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list**
-> PaginatedCollection list(filter=filter, page=page, include=include)
+> PaginatedCollection list(include=include, filter=filter, page=page)
 
 Get a list of Azure Groups
 
@@ -180,13 +180,13 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = esp_sdk.AzureGroupsApi()
-filter = {'key': 'filter_example'} # dict(str, str) | Filter Params for Searching.  Equality Searchable Attributes: [id, name] Matching Searchable Attribute: [name]  Sortable Attributes: [id, name] Searchable Associations: [organization, external_accounts] See Searching Lists for more information. See the filter parameter of the association's list action to see what attributes are searchable on each association. See Conditions on Relationships in Searching Lists for more information. (optional)
-page = '{:number=>1,+:size=>20}' # str | Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page (optional) (default to {:number=>1,+:size=>20})
 include = 'include_example' # str | Related objects that can be included in the response:  organization, external_accounts See Including Objects for more information. (optional)
+filter = {'key': 'filter_example'} # dict(str, str) | Filter Params for Searching.  Equality Searchable Attributes: [id, name] Matching Searchable Attribute: [name]  Sortable Attributes: [id, name] Searchable Associations: [organization, external_accounts] See Searching Lists for more information. See the filter parameter of the association's list action to see what attributes are searchable on each association. See Conditions on Relationships in Searching Lists for more information. (optional)
+page = '{:number=>1,+:size=>20}' # str | Page Number and Page Size.  Number is the page number of the collection to return, size is the number of items to return per page. (optional) (default to {:number=>1,+:size=>20})
 
 try: 
     # Get a list of Azure Groups
-    api_response = api_instance.list(filter=filter, page=page, include=include)
+    api_response = api_instance.list(include=include, filter=filter, page=page)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling AzureGroupsApi->list: %s\n" % e)
@@ -196,9 +196,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **filter** | [**dict(str, str)**](str.md)| Filter Params for Searching.  Equality Searchable Attributes: [id, name] Matching Searchable Attribute: [name]  Sortable Attributes: [id, name] Searchable Associations: [organization, external_accounts] See Searching Lists for more information. See the filter parameter of the association&#39;s list action to see what attributes are searchable on each association. See Conditions on Relationships in Searching Lists for more information. | [optional] 
- **page** | **str**| Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page | [optional] [default to {:number&#x3D;&gt;1,+:size&#x3D;&gt;20}]
  **include** | **str**| Related objects that can be included in the response:  organization, external_accounts See Including Objects for more information. | [optional] 
+ **filter** | [**dict(str, str)**](str.md)| Filter Params for Searching.  Equality Searchable Attributes: [id, name] Matching Searchable Attribute: [name]  Sortable Attributes: [id, name] Searchable Associations: [organization, external_accounts] See Searching Lists for more information. See the filter parameter of the association&#39;s list action to see what attributes are searchable on each association. See Conditions on Relationships in Searching Lists for more information. | [optional] 
+ **page** | **str**| Page Number and Page Size.  Number is the page number of the collection to return, size is the number of items to return per page. | [optional] [default to {:number&#x3D;&gt;1,+:size&#x3D;&gt;20}]
 
 ### Return type
 
@@ -206,7 +206,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-See https://github.com/EvidentSecurity/esp-sdk-python2#set-your-hmac-security-keys
+See https://github.com/EvidentSecurity/esp-sdk-python#set-your-hmac-security-keys
 
 ### HTTP request headers
 
@@ -256,7 +256,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-See https://github.com/EvidentSecurity/esp-sdk-python2#set-your-hmac-security-keys
+See https://github.com/EvidentSecurity/esp-sdk-python#set-your-hmac-security-keys
 
 ### HTTP request headers
 
@@ -306,7 +306,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-See https://github.com/EvidentSecurity/esp-sdk-python2#set-your-hmac-security-keys
+See https://github.com/EvidentSecurity/esp-sdk-python#set-your-hmac-security-keys
 
 ### HTTP request headers
 
@@ -316,7 +316,7 @@ See https://github.com/EvidentSecurity/esp-sdk-python2#set-your-hmac-security-ke
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update**
-> AzureGroup update(id, name=name, include=include)
+> AzureGroup update(id, include=include, name=name)
 
 Update a(n) Azure Group
 
@@ -333,12 +333,12 @@ from pprint import pprint
 # create an instance of the API class
 api_instance = esp_sdk.AzureGroupsApi()
 id = 56 # int | Azure Group ID
-name = 'name_example' # str | Name (optional)
 include = 'include_example' # str | Related objects that can be included in the response:  organization, external_accounts See Including Objects for more information. (optional)
+name = 'name_example' # str | Name (optional)
 
 try: 
     # Update a(n) Azure Group
-    api_response = api_instance.update(id, name=name, include=include)
+    api_response = api_instance.update(id, include=include, name=name)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling AzureGroupsApi->update: %s\n" % e)
@@ -349,8 +349,8 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| Azure Group ID | 
- **name** | **str**| Name | [optional] 
  **include** | **str**| Related objects that can be included in the response:  organization, external_accounts See Including Objects for more information. | [optional] 
+ **name** | **str**| Name | [optional] 
 
 ### Return type
 
@@ -358,7 +358,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-See https://github.com/EvidentSecurity/esp-sdk-python2#set-your-hmac-security-keys
+See https://github.com/EvidentSecurity/esp-sdk-python#set-your-hmac-security-keys
 
 ### HTTP request headers
 

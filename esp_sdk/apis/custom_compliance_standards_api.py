@@ -40,7 +40,7 @@ class CustomComplianceStandardsApi(object):
                 config.api_client = ApiClient()
             self.api_client = config.api_client
 
-    def create(self, name, description, **kwargs):
+    def create(self, description, name, **kwargs):
         """
         Create a(n) Custom Compliance Standard
         
@@ -50,12 +50,12 @@ class CustomComplianceStandardsApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.create(name, description, callback=callback_function)
+        >>> thread = api.create(description, name, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param str name: Name (required)
         :param str description: The description for this Compliance Standard (required)
+        :param str name: Name (required)
         :param str include: Related objects that can be included in the response:  custom_compliance_domains, custom_compliance_controls See Including Objects for more information.
         :return: CustomComplianceStandard
                  If the method is called asynchronously,
@@ -63,12 +63,12 @@ class CustomComplianceStandardsApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.create_with_http_info(name, description, **kwargs)
+            return self.create_with_http_info(description, name, **kwargs)
         else:
-            (data) = self.create_with_http_info(name, description, **kwargs)
+            (data) = self.create_with_http_info(description, name, **kwargs)
             return data
 
-    def create_with_http_info(self, name, description, **kwargs):
+    def create_with_http_info(self, description, name, **kwargs):
         """
         Create a(n) Custom Compliance Standard
         
@@ -78,19 +78,19 @@ class CustomComplianceStandardsApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.create_with_http_info(name, description, callback=callback_function)
+        >>> thread = api.create_with_http_info(description, name, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param str name: Name (required)
         :param str description: The description for this Compliance Standard (required)
+        :param str name: Name (required)
         :param str include: Related objects that can be included in the response:  custom_compliance_domains, custom_compliance_controls See Including Objects for more information.
         :return: CustomComplianceStandard
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'description', 'include']
+        all_params = ['description', 'name', 'include']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -105,12 +105,12 @@ class CustomComplianceStandardsApi(object):
                 )
             params[key] = val
         del params['kwargs']
-        # verify the required parameter 'name' is set
-        if ('name' not in params) or (params['name'] is None):
-            raise ValueError("Missing the required parameter `name` when calling `create`")
         # verify the required parameter 'description' is set
         if ('description' not in params) or (params['description'] is None):
             raise ValueError("Missing the required parameter `description` when calling `create`")
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `create`")
 
 
         collection_formats = {}
@@ -126,10 +126,10 @@ class CustomComplianceStandardsApi(object):
 
         form_params = []
         local_var_files = {}
-        if 'name' in params:
-            form_params.append(('name', params['name']))
         if 'description' in params:
             form_params.append(('description', params['description']))
+        if 'name' in params:
+            form_params.append(('name', params['name']))
 
         body_params = None
         # HTTP header `Accept`
@@ -172,7 +172,7 @@ class CustomComplianceStandardsApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param int id:  ID (required)
+        :param int id: Custom Compliance Standard ID (required)
         :return: Meta
                  If the method is called asynchronously,
                  returns the request thread.
@@ -198,7 +198,7 @@ class CustomComplianceStandardsApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param int id:  ID (required)
+        :param int id: Custom Compliance Standard ID (required)
         :return: Meta
                  If the method is called asynchronously,
                  returns the request thread.
@@ -391,9 +391,9 @@ class CustomComplianceStandardsApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param int id: Custom Compliance Standard ID (required)
-        :param str name: Name
-        :param str description: The description for this Compliance Standard
         :param str include: Related objects that can be included in the response:  custom_compliance_domains, custom_compliance_controls See Including Objects for more information.
+        :param str description: The description for this Compliance Standard
+        :param str name: Name
         :return: CustomComplianceStandard
                  If the method is called asynchronously,
                  returns the request thread.
@@ -420,15 +420,15 @@ class CustomComplianceStandardsApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param int id: Custom Compliance Standard ID (required)
-        :param str name: Name
-        :param str description: The description for this Compliance Standard
         :param str include: Related objects that can be included in the response:  custom_compliance_domains, custom_compliance_controls See Including Objects for more information.
+        :param str description: The description for this Compliance Standard
+        :param str name: Name
         :return: CustomComplianceStandard
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['id', 'name', 'description', 'include']
+        all_params = ['id', 'include', 'description', 'name']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -463,10 +463,10 @@ class CustomComplianceStandardsApi(object):
 
         form_params = []
         local_var_files = {}
-        if 'name' in params:
-            form_params.append(('name', params['name']))
         if 'description' in params:
             form_params.append(('description', params['description']))
+        if 'name' in params:
+            form_params.append(('name', params['name']))
 
         body_params = None
         # HTTP header `Accept`

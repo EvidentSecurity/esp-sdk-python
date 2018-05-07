@@ -40,7 +40,7 @@ class IntegrationsSlackApi(object):
                 config.api_client = ApiClient()
             self.api_client = config.api_client
 
-    def create(self, url, name, external_account_ids, **kwargs):
+    def create(self, external_account_ids, name, url, **kwargs):
         """
         Create a Slack Integration
         
@@ -50,34 +50,34 @@ class IntegrationsSlackApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.create(url, name, external_account_ids, callback=callback_function)
+        >>> thread = api.create(external_account_ids, name, url, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param str url: The URL for the Slack integration (required)
-        :param str name: Name of the integration (required)
         :param list[int] external_account_ids: External accounts for integration (required)
+        :param str name: Name of the integration (required)
+        :param str url: The URL for the Slack integration (required)
+        :param str include: Related objects that can be included in the response:  integration See Including Objects for more information.
         :param bool all_high_risk: Send all high risk alerts
-        :param bool all_medium_risk: Send all medium risk alerts
         :param bool all_low_risk: Send all low risk alerts
+        :param bool all_medium_risk: Send all medium risk alerts
+        :param list[int] custom_signature_ids: Custom signatures for integration
         :param bool send_updates: This feature enables the integration to send alerts when they are updated. When disabled, alerts will only be sent when they are initially created. When enabled, alerts will additionally be sent when a change is made such as the alert ending. An alert may end for multiple reasons.
         :param bool send_when_suppressed: Send notifications for suppressed alerts
         :param list[int] signature_ids: Signatures for integration
         :param list[str] statuses: Only send alerts that have the status in this list. Valid values are fail, warn, error, pass, info
-        :param list[int] custom_signature_ids: Custom signatures for integration
-        :param str include: Related objects that can be included in the response:  integration See Including Objects for more information.
         :return: IntegrationSlack
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.create_with_http_info(url, name, external_account_ids, **kwargs)
+            return self.create_with_http_info(external_account_ids, name, url, **kwargs)
         else:
-            (data) = self.create_with_http_info(url, name, external_account_ids, **kwargs)
+            (data) = self.create_with_http_info(external_account_ids, name, url, **kwargs)
             return data
 
-    def create_with_http_info(self, url, name, external_account_ids, **kwargs):
+    def create_with_http_info(self, external_account_ids, name, url, **kwargs):
         """
         Create a Slack Integration
         
@@ -87,28 +87,28 @@ class IntegrationsSlackApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.create_with_http_info(url, name, external_account_ids, callback=callback_function)
+        >>> thread = api.create_with_http_info(external_account_ids, name, url, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param str url: The URL for the Slack integration (required)
-        :param str name: Name of the integration (required)
         :param list[int] external_account_ids: External accounts for integration (required)
+        :param str name: Name of the integration (required)
+        :param str url: The URL for the Slack integration (required)
+        :param str include: Related objects that can be included in the response:  integration See Including Objects for more information.
         :param bool all_high_risk: Send all high risk alerts
-        :param bool all_medium_risk: Send all medium risk alerts
         :param bool all_low_risk: Send all low risk alerts
+        :param bool all_medium_risk: Send all medium risk alerts
+        :param list[int] custom_signature_ids: Custom signatures for integration
         :param bool send_updates: This feature enables the integration to send alerts when they are updated. When disabled, alerts will only be sent when they are initially created. When enabled, alerts will additionally be sent when a change is made such as the alert ending. An alert may end for multiple reasons.
         :param bool send_when_suppressed: Send notifications for suppressed alerts
         :param list[int] signature_ids: Signatures for integration
         :param list[str] statuses: Only send alerts that have the status in this list. Valid values are fail, warn, error, pass, info
-        :param list[int] custom_signature_ids: Custom signatures for integration
-        :param str include: Related objects that can be included in the response:  integration See Including Objects for more information.
         :return: IntegrationSlack
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['url', 'name', 'external_account_ids', 'all_high_risk', 'all_medium_risk', 'all_low_risk', 'send_updates', 'send_when_suppressed', 'signature_ids', 'statuses', 'custom_signature_ids', 'include']
+        all_params = ['external_account_ids', 'name', 'url', 'include', 'all_high_risk', 'all_low_risk', 'all_medium_risk', 'custom_signature_ids', 'send_updates', 'send_when_suppressed', 'signature_ids', 'statuses']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -123,15 +123,15 @@ class IntegrationsSlackApi(object):
                 )
             params[key] = val
         del params['kwargs']
-        # verify the required parameter 'url' is set
-        if ('url' not in params) or (params['url'] is None):
-            raise ValueError("Missing the required parameter `url` when calling `create`")
-        # verify the required parameter 'name' is set
-        if ('name' not in params) or (params['name'] is None):
-            raise ValueError("Missing the required parameter `name` when calling `create`")
         # verify the required parameter 'external_account_ids' is set
         if ('external_account_ids' not in params) or (params['external_account_ids'] is None):
             raise ValueError("Missing the required parameter `external_account_ids` when calling `create`")
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `create`")
+        # verify the required parameter 'url' is set
+        if ('url' not in params) or (params['url'] is None):
+            raise ValueError("Missing the required parameter `url` when calling `create`")
 
 
         collection_formats = {}
@@ -147,16 +147,20 @@ class IntegrationsSlackApi(object):
 
         form_params = []
         local_var_files = {}
-        if 'url' in params:
-            form_params.append(('url', params['url']))
-        if 'name' in params:
-            form_params.append(('name', params['name']))
         if 'all_high_risk' in params:
             form_params.append(('all_high_risk', params['all_high_risk']))
-        if 'all_medium_risk' in params:
-            form_params.append(('all_medium_risk', params['all_medium_risk']))
         if 'all_low_risk' in params:
             form_params.append(('all_low_risk', params['all_low_risk']))
+        if 'all_medium_risk' in params:
+            form_params.append(('all_medium_risk', params['all_medium_risk']))
+        if 'custom_signature_ids' in params:
+            form_params.append(('custom_signature_ids', params['custom_signature_ids']))
+            collection_formats['None'] = 'csv'
+        if 'external_account_ids' in params:
+            form_params.append(('external_account_ids', params['external_account_ids']))
+            collection_formats['None'] = 'csv'
+        if 'name' in params:
+            form_params.append(('name', params['name']))
         if 'send_updates' in params:
             form_params.append(('send_updates', params['send_updates']))
         if 'send_when_suppressed' in params:
@@ -167,12 +171,8 @@ class IntegrationsSlackApi(object):
         if 'statuses' in params:
             form_params.append(('statuses', params['statuses']))
             collection_formats['None'] = 'csv'
-        if 'external_account_ids' in params:
-            form_params.append(('external_account_ids', params['external_account_ids']))
-            collection_formats['None'] = 'csv'
-        if 'custom_signature_ids' in params:
-            form_params.append(('custom_signature_ids', params['custom_signature_ids']))
-            collection_formats['None'] = 'csv'
+        if 'url' in params:
+            form_params.append(('url', params['url']))
 
         body_params = None
         # HTTP header `Accept`
@@ -327,18 +327,18 @@ class IntegrationsSlackApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param int integration_id: The ID of the integration (required)
-        :param str url: The URL for the Slack integration
-        :param str name: Name of the integration
+        :param str include: Related objects that can be included in the response:  integration See Including Objects for more information.
         :param bool all_high_risk: Send all high risk alerts
-        :param bool all_medium_risk: Send all medium risk alerts
         :param bool all_low_risk: Send all low risk alerts
+        :param bool all_medium_risk: Send all medium risk alerts
+        :param list[int] custom_signature_ids: Custom signatures for integration
+        :param list[int] external_account_ids: External accounts for integration
+        :param str name: Name of the integration
         :param bool send_updates: This feature enables the integration to send alerts when they are updated. When disabled, alerts will only be sent when they are initially created. When enabled, alerts will additionally be sent when a change is made such as the alert ending. An alert may end for multiple reasons.
         :param bool send_when_suppressed: Send notifications for suppressed alerts
         :param list[int] signature_ids: Signatures for integration
         :param list[str] statuses: Only send alerts that have the status in this list. Valid values are fail, warn, error, pass, info
-        :param list[int] external_account_ids: External accounts for integration
-        :param list[int] custom_signature_ids: Custom signatures for integration
-        :param str include: Related objects that can be included in the response:  integration See Including Objects for more information.
+        :param str url: The URL for the Slack integration
         :return: IntegrationSlack
                  If the method is called asynchronously,
                  returns the request thread.
@@ -365,24 +365,24 @@ class IntegrationsSlackApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param int integration_id: The ID of the integration (required)
-        :param str url: The URL for the Slack integration
-        :param str name: Name of the integration
+        :param str include: Related objects that can be included in the response:  integration See Including Objects for more information.
         :param bool all_high_risk: Send all high risk alerts
-        :param bool all_medium_risk: Send all medium risk alerts
         :param bool all_low_risk: Send all low risk alerts
+        :param bool all_medium_risk: Send all medium risk alerts
+        :param list[int] custom_signature_ids: Custom signatures for integration
+        :param list[int] external_account_ids: External accounts for integration
+        :param str name: Name of the integration
         :param bool send_updates: This feature enables the integration to send alerts when they are updated. When disabled, alerts will only be sent when they are initially created. When enabled, alerts will additionally be sent when a change is made such as the alert ending. An alert may end for multiple reasons.
         :param bool send_when_suppressed: Send notifications for suppressed alerts
         :param list[int] signature_ids: Signatures for integration
         :param list[str] statuses: Only send alerts that have the status in this list. Valid values are fail, warn, error, pass, info
-        :param list[int] external_account_ids: External accounts for integration
-        :param list[int] custom_signature_ids: Custom signatures for integration
-        :param str include: Related objects that can be included in the response:  integration See Including Objects for more information.
+        :param str url: The URL for the Slack integration
         :return: IntegrationSlack
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['integration_id', 'url', 'name', 'all_high_risk', 'all_medium_risk', 'all_low_risk', 'send_updates', 'send_when_suppressed', 'signature_ids', 'statuses', 'external_account_ids', 'custom_signature_ids', 'include']
+        all_params = ['integration_id', 'include', 'all_high_risk', 'all_low_risk', 'all_medium_risk', 'custom_signature_ids', 'external_account_ids', 'name', 'send_updates', 'send_when_suppressed', 'signature_ids', 'statuses', 'url']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -417,16 +417,20 @@ class IntegrationsSlackApi(object):
 
         form_params = []
         local_var_files = {}
-        if 'url' in params:
-            form_params.append(('url', params['url']))
-        if 'name' in params:
-            form_params.append(('name', params['name']))
         if 'all_high_risk' in params:
             form_params.append(('all_high_risk', params['all_high_risk']))
-        if 'all_medium_risk' in params:
-            form_params.append(('all_medium_risk', params['all_medium_risk']))
         if 'all_low_risk' in params:
             form_params.append(('all_low_risk', params['all_low_risk']))
+        if 'all_medium_risk' in params:
+            form_params.append(('all_medium_risk', params['all_medium_risk']))
+        if 'custom_signature_ids' in params:
+            form_params.append(('custom_signature_ids', params['custom_signature_ids']))
+            collection_formats['None'] = 'csv'
+        if 'external_account_ids' in params:
+            form_params.append(('external_account_ids', params['external_account_ids']))
+            collection_formats['None'] = 'csv'
+        if 'name' in params:
+            form_params.append(('name', params['name']))
         if 'send_updates' in params:
             form_params.append(('send_updates', params['send_updates']))
         if 'send_when_suppressed' in params:
@@ -437,12 +441,8 @@ class IntegrationsSlackApi(object):
         if 'statuses' in params:
             form_params.append(('statuses', params['statuses']))
             collection_formats['None'] = 'csv'
-        if 'external_account_ids' in params:
-            form_params.append(('external_account_ids', params['external_account_ids']))
-            collection_formats['None'] = 'csv'
-        if 'custom_signature_ids' in params:
-            form_params.append(('custom_signature_ids', params['custom_signature_ids']))
-            collection_formats['None'] = 'csv'
+        if 'url' in params:
+            form_params.append(('url', params['url']))
 
         body_params = None
         # HTTP header `Accept`

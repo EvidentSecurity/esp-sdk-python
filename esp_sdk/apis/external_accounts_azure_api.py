@@ -40,7 +40,7 @@ class ExternalAccountsAzureApi(object):
                 config.api_client = ApiClient()
             self.api_client = config.api_client
 
-    def create(self, subscription_id, client_id, tenant_id, app_key, name, team_id, **kwargs):
+    def create(self, app_key, client_id, name, subscription_id, team_id, tenant_id, **kwargs):
         """
         Create an Azure External Account
         The channel_url will only be returned in this response and will not be accessible again. The related external_account object will be returned with the response.
@@ -50,28 +50,28 @@ class ExternalAccountsAzureApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.create(subscription_id, client_id, tenant_id, app_key, name, team_id, callback=callback_function)
+        >>> thread = api.create(app_key, client_id, name, subscription_id, team_id, tenant_id, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param str subscription_id: Azure subscription ID (required)
-        :param str client_id: Azure client ID (required)
-        :param str tenant_id: Azure tenant ID (required)
         :param str app_key: Azure app key (required)
+        :param str client_id: Azure client ID (required)
         :param str name: Name (required)
+        :param str subscription_id: Azure subscription ID (required)
         :param int team_id: The ID of the team the external account belongs to (required)
+        :param str tenant_id: Azure tenant ID (required)
         :return: ExternalAccountAzure
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.create_with_http_info(subscription_id, client_id, tenant_id, app_key, name, team_id, **kwargs)
+            return self.create_with_http_info(app_key, client_id, name, subscription_id, team_id, tenant_id, **kwargs)
         else:
-            (data) = self.create_with_http_info(subscription_id, client_id, tenant_id, app_key, name, team_id, **kwargs)
+            (data) = self.create_with_http_info(app_key, client_id, name, subscription_id, team_id, tenant_id, **kwargs)
             return data
 
-    def create_with_http_info(self, subscription_id, client_id, tenant_id, app_key, name, team_id, **kwargs):
+    def create_with_http_info(self, app_key, client_id, name, subscription_id, team_id, tenant_id, **kwargs):
         """
         Create an Azure External Account
         The channel_url will only be returned in this response and will not be accessible again. The related external_account object will be returned with the response.
@@ -81,22 +81,22 @@ class ExternalAccountsAzureApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.create_with_http_info(subscription_id, client_id, tenant_id, app_key, name, team_id, callback=callback_function)
+        >>> thread = api.create_with_http_info(app_key, client_id, name, subscription_id, team_id, tenant_id, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param str subscription_id: Azure subscription ID (required)
-        :param str client_id: Azure client ID (required)
-        :param str tenant_id: Azure tenant ID (required)
         :param str app_key: Azure app key (required)
+        :param str client_id: Azure client ID (required)
         :param str name: Name (required)
+        :param str subscription_id: Azure subscription ID (required)
         :param int team_id: The ID of the team the external account belongs to (required)
+        :param str tenant_id: Azure tenant ID (required)
         :return: ExternalAccountAzure
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['subscription_id', 'client_id', 'tenant_id', 'app_key', 'name', 'team_id']
+        all_params = ['app_key', 'client_id', 'name', 'subscription_id', 'team_id', 'tenant_id']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -111,24 +111,24 @@ class ExternalAccountsAzureApi(object):
                 )
             params[key] = val
         del params['kwargs']
-        # verify the required parameter 'subscription_id' is set
-        if ('subscription_id' not in params) or (params['subscription_id'] is None):
-            raise ValueError("Missing the required parameter `subscription_id` when calling `create`")
-        # verify the required parameter 'client_id' is set
-        if ('client_id' not in params) or (params['client_id'] is None):
-            raise ValueError("Missing the required parameter `client_id` when calling `create`")
-        # verify the required parameter 'tenant_id' is set
-        if ('tenant_id' not in params) or (params['tenant_id'] is None):
-            raise ValueError("Missing the required parameter `tenant_id` when calling `create`")
         # verify the required parameter 'app_key' is set
         if ('app_key' not in params) or (params['app_key'] is None):
             raise ValueError("Missing the required parameter `app_key` when calling `create`")
+        # verify the required parameter 'client_id' is set
+        if ('client_id' not in params) or (params['client_id'] is None):
+            raise ValueError("Missing the required parameter `client_id` when calling `create`")
         # verify the required parameter 'name' is set
         if ('name' not in params) or (params['name'] is None):
             raise ValueError("Missing the required parameter `name` when calling `create`")
+        # verify the required parameter 'subscription_id' is set
+        if ('subscription_id' not in params) or (params['subscription_id'] is None):
+            raise ValueError("Missing the required parameter `subscription_id` when calling `create`")
         # verify the required parameter 'team_id' is set
         if ('team_id' not in params) or (params['team_id'] is None):
             raise ValueError("Missing the required parameter `team_id` when calling `create`")
+        # verify the required parameter 'tenant_id' is set
+        if ('tenant_id' not in params) or (params['tenant_id'] is None):
+            raise ValueError("Missing the required parameter `tenant_id` when calling `create`")
 
 
         collection_formats = {}
@@ -142,18 +142,18 @@ class ExternalAccountsAzureApi(object):
 
         form_params = []
         local_var_files = {}
-        if 'subscription_id' in params:
-            form_params.append(('subscription_id', params['subscription_id']))
-        if 'client_id' in params:
-            form_params.append(('client_id', params['client_id']))
-        if 'tenant_id' in params:
-            form_params.append(('tenant_id', params['tenant_id']))
         if 'app_key' in params:
             form_params.append(('app_key', params['app_key']))
+        if 'client_id' in params:
+            form_params.append(('client_id', params['client_id']))
         if 'name' in params:
             form_params.append(('name', params['name']))
+        if 'subscription_id' in params:
+            form_params.append(('subscription_id', params['subscription_id']))
         if 'team_id' in params:
             form_params.append(('team_id', params['team_id']))
+        if 'tenant_id' in params:
+            form_params.append(('tenant_id', params['tenant_id']))
 
         body_params = None
         # HTTP header `Accept`
@@ -415,12 +415,12 @@ class ExternalAccountsAzureApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param int external_account_id: The ID of the external account to update an Azure credential for (required)
-        :param str subscription_id: Azure subscription ID
-        :param str client_id: Azure client ID
-        :param str tenant_id: Azure tenant ID
         :param str app_key: Azure app key
+        :param str client_id: Azure client ID
         :param str name: Name
+        :param str subscription_id: Azure subscription ID
         :param int team_id: The ID of the team the external account belongs to
+        :param str tenant_id: Azure tenant ID
         :return: ExternalAccountAzure
                  If the method is called asynchronously,
                  returns the request thread.
@@ -447,18 +447,18 @@ class ExternalAccountsAzureApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param int external_account_id: The ID of the external account to update an Azure credential for (required)
-        :param str subscription_id: Azure subscription ID
-        :param str client_id: Azure client ID
-        :param str tenant_id: Azure tenant ID
         :param str app_key: Azure app key
+        :param str client_id: Azure client ID
         :param str name: Name
+        :param str subscription_id: Azure subscription ID
         :param int team_id: The ID of the team the external account belongs to
+        :param str tenant_id: Azure tenant ID
         :return: ExternalAccountAzure
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['external_account_id', 'subscription_id', 'client_id', 'tenant_id', 'app_key', 'name', 'team_id']
+        all_params = ['external_account_id', 'app_key', 'client_id', 'name', 'subscription_id', 'team_id', 'tenant_id']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -491,18 +491,18 @@ class ExternalAccountsAzureApi(object):
 
         form_params = []
         local_var_files = {}
-        if 'subscription_id' in params:
-            form_params.append(('subscription_id', params['subscription_id']))
-        if 'client_id' in params:
-            form_params.append(('client_id', params['client_id']))
-        if 'tenant_id' in params:
-            form_params.append(('tenant_id', params['tenant_id']))
         if 'app_key' in params:
             form_params.append(('app_key', params['app_key']))
+        if 'client_id' in params:
+            form_params.append(('client_id', params['client_id']))
         if 'name' in params:
             form_params.append(('name', params['name']))
+        if 'subscription_id' in params:
+            form_params.append(('subscription_id', params['subscription_id']))
         if 'team_id' in params:
             form_params.append(('team_id', params['team_id']))
+        if 'tenant_id' in params:
+            form_params.append(('tenant_id', params['tenant_id']))
 
         body_params = None
         # HTTP header `Accept`

@@ -56,7 +56,7 @@ class AzureGroupsApi(object):
             for asynchronous request. (optional)
         :param int azure_group_id: The ID of the Azure group associated with this memberhsip (required)
         :param int external_account_id: The ID of the External Account associated with this memberhsip (required)
-        :param str include: Related objects that can be included in the response:  organization, sub_organization, team, scan_intervals, disabled_signatures, azure_group, credentials See Including Objects for more information.
+        :param str include: Related objects that can be included in the response:  organization, sub_organization, team, scan_intervals, disabled_signatures, suppressions, azure_group, credentials See Including Objects for more information.
         :return: ExternalAccount
                  If the method is called asynchronously,
                  returns the request thread.
@@ -84,7 +84,7 @@ class AzureGroupsApi(object):
             for asynchronous request. (optional)
         :param int azure_group_id: The ID of the Azure group associated with this memberhsip (required)
         :param int external_account_id: The ID of the External Account associated with this memberhsip (required)
-        :param str include: Related objects that can be included in the response:  organization, sub_organization, team, scan_intervals, disabled_signatures, azure_group, credentials See Including Objects for more information.
+        :param str include: Related objects that can be included in the response:  organization, sub_organization, team, scan_intervals, disabled_signatures, suppressions, azure_group, credentials See Including Objects for more information.
         :return: ExternalAccount
                  If the method is called asynchronously,
                  returns the request thread.
@@ -283,7 +283,7 @@ class AzureGroupsApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param int id:  ID (required)
+        :param int id: Azure Group ID (required)
         :return: Meta
                  If the method is called asynchronously,
                  returns the request thread.
@@ -309,7 +309,7 @@ class AzureGroupsApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param int id:  ID (required)
+        :param int id: Azure Group ID (required)
         :return: Meta
                  If the method is called asynchronously,
                  returns the request thread.
@@ -390,9 +390,9 @@ class AzureGroupsApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param dict(str, str) filter: Filter Params for Searching.  Equality Searchable Attributes: [id, name] Matching Searchable Attribute: [name]  Sortable Attributes: [id, name] Searchable Associations: [organization, external_accounts] See Searching Lists for more information. See the filter parameter of the association's list action to see what attributes are searchable on each association. See Conditions on Relationships in Searching Lists for more information.
-        :param str page: Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page
         :param str include: Related objects that can be included in the response:  organization, external_accounts See Including Objects for more information.
+        :param dict(str, str) filter: Filter Params for Searching.  Equality Searchable Attributes: [id, name] Matching Searchable Attribute: [name]  Sortable Attributes: [id, name] Searchable Associations: [organization, external_accounts] See Searching Lists for more information. See the filter parameter of the association's list action to see what attributes are searchable on each association. See Conditions on Relationships in Searching Lists for more information.
+        :param str page: Page Number and Page Size.  Number is the page number of the collection to return, size is the number of items to return per page.
         :return: PaginatedCollection
                  If the method is called asynchronously,
                  returns the request thread.
@@ -418,15 +418,15 @@ class AzureGroupsApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param dict(str, str) filter: Filter Params for Searching.  Equality Searchable Attributes: [id, name] Matching Searchable Attribute: [name]  Sortable Attributes: [id, name] Searchable Associations: [organization, external_accounts] See Searching Lists for more information. See the filter parameter of the association's list action to see what attributes are searchable on each association. See Conditions on Relationships in Searching Lists for more information.
-        :param str page: Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page
         :param str include: Related objects that can be included in the response:  organization, external_accounts See Including Objects for more information.
+        :param dict(str, str) filter: Filter Params for Searching.  Equality Searchable Attributes: [id, name] Matching Searchable Attribute: [name]  Sortable Attributes: [id, name] Searchable Associations: [organization, external_accounts] See Searching Lists for more information. See the filter parameter of the association's list action to see what attributes are searchable on each association. See Conditions on Relationships in Searching Lists for more information.
+        :param str page: Page Number and Page Size.  Number is the page number of the collection to return, size is the number of items to return per page.
         :return: PaginatedCollection
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['filter', 'page', 'include']
+        all_params = ['include', 'filter', 'page']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -728,8 +728,8 @@ class AzureGroupsApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param int id: Azure Group ID (required)
-        :param str name: Name
         :param str include: Related objects that can be included in the response:  organization, external_accounts See Including Objects for more information.
+        :param str name: Name
         :return: AzureGroup
                  If the method is called asynchronously,
                  returns the request thread.
@@ -756,14 +756,14 @@ class AzureGroupsApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param int id: Azure Group ID (required)
-        :param str name: Name
         :param str include: Related objects that can be included in the response:  organization, external_accounts See Including Objects for more information.
+        :param str name: Name
         :return: AzureGroup
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['id', 'name', 'include']
+        all_params = ['id', 'include', 'name']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')

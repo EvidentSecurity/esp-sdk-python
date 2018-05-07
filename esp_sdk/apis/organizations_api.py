@@ -54,9 +54,9 @@ class OrganizationsApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param dict(str, str) filter: Filter Params for Searching.  Equality Searchable Attributes: [id, name] Matching Searchable Attribute: [name]  Sortable Attributes: [name, updated_at, created_at, id] 
-        :param str page: Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page
         :param str include: Related objects that can be included in the response:  subscription, custom_signatures, external_accounts, sub_organizations, teams, users, compliance_standards, integrations See Including Objects for more information.
+        :param dict(str, str) filter: Filter Params for Searching.  Equality Searchable Attributes: [id, name] Matching Searchable Attribute: [name]  Sortable Attributes: [name, updated_at, created_at, id] 
+        :param str page: Page Number and Page Size.  Number is the page number of the collection to return, size is the number of items to return per page.
         :return: PaginatedCollection
                  If the method is called asynchronously,
                  returns the request thread.
@@ -82,15 +82,15 @@ class OrganizationsApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param dict(str, str) filter: Filter Params for Searching.  Equality Searchable Attributes: [id, name] Matching Searchable Attribute: [name]  Sortable Attributes: [name, updated_at, created_at, id] 
-        :param str page: Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page
         :param str include: Related objects that can be included in the response:  subscription, custom_signatures, external_accounts, sub_organizations, teams, users, compliance_standards, integrations See Including Objects for more information.
+        :param dict(str, str) filter: Filter Params for Searching.  Equality Searchable Attributes: [id, name] Matching Searchable Attribute: [name]  Sortable Attributes: [name, updated_at, created_at, id] 
+        :param str page: Page Number and Page Size.  Number is the page number of the collection to return, size is the number of items to return per page.
         :return: PaginatedCollection
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['filter', 'page', 'include']
+        all_params = ['include', 'filter', 'page']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -167,8 +167,8 @@ class OrganizationsApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param int organization_id: The ID of the organization this compliance standard belongs to (required)
-        :param str page: Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page
         :param str include: Related objects that can be included in the response:  compliance_domains, compliance_controls See Including Objects for more information.
+        :param str page: Page Number and Page Size.  Number is the page number of the collection to return, size is the number of items to return per page.
         :return: PaginatedCollection
                  If the method is called asynchronously,
                  returns the request thread.
@@ -195,14 +195,14 @@ class OrganizationsApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param int organization_id: The ID of the organization this compliance standard belongs to (required)
-        :param str page: Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page
         :param str include: Related objects that can be included in the response:  compliance_domains, compliance_controls See Including Objects for more information.
+        :param str page: Page Number and Page Size.  Number is the page number of the collection to return, size is the number of items to return per page.
         :return: PaginatedCollection
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['organization_id', 'page', 'include']
+        all_params = ['organization_id', 'include', 'page']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -393,9 +393,9 @@ class OrganizationsApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param int id: Organization ID (required)
+        :param str include: Related objects that can be included in the response:  subscription, custom_signatures, external_accounts, sub_organizations, teams, users, compliance_standards, integrations See Including Objects for more information.
         :param str name: Name of the organization
         :param bool require_mfa: Whether or not users for this organization are required to enable Multi Factor Authentication
-        :param str include: Related objects that can be included in the response:  subscription, custom_signatures, external_accounts, sub_organizations, teams, users, compliance_standards, integrations See Including Objects for more information.
         :return: Organization
                  If the method is called asynchronously,
                  returns the request thread.
@@ -422,15 +422,15 @@ class OrganizationsApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param int id: Organization ID (required)
+        :param str include: Related objects that can be included in the response:  subscription, custom_signatures, external_accounts, sub_organizations, teams, users, compliance_standards, integrations See Including Objects for more information.
         :param str name: Name of the organization
         :param bool require_mfa: Whether or not users for this organization are required to enable Multi Factor Authentication
-        :param str include: Related objects that can be included in the response:  subscription, custom_signatures, external_accounts, sub_organizations, teams, users, compliance_standards, integrations See Including Objects for more information.
         :return: Organization
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['id', 'name', 'require_mfa', 'include']
+        all_params = ['id', 'include', 'name', 'require_mfa']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')

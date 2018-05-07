@@ -1,5 +1,5 @@
-[![Build Status](https://travis-ci.org/EvidentSecurity/esp-sdk-python2.svg?branch=master)](https://travis-ci.org/EvidentSecurity/esp-sdk-python2)
-[![Gem Version](https://badge.fury.io/py/esp-sdk-python2.svg)](http://badge.fury.io/py/esp-sdk-python2)
+[![Build Status](https://travis-ci.org/EvidentSecurity/esp-sdk-python.svg?branch=master)](https://travis-ci.org/EvidentSecurity/esp-sdk-python)
+[![Gem Version](https://badge.fury.io/py/esp-sdk-python.svg)](http://badge.fury.io/py/esp-sdk-python)
 
 # This SDK is still a work in progress.  Once it is ready for Beta testing, a beta release will be published to PyPi.
 
@@ -26,13 +26,13 @@ pip install esp_sdk
 Or you can install directly from Github
 
 ```sh
-pip install git+https://github.com/EvidentSecurity/esp-sdk-python2.git
+pip install git+https://github.com/EvidentSecurity/esp-sdk-python.git
 ```
-(you may need to run `pip` with root permission: `sudo pip install git+https://github.com/EvidentSecurity/esp-sdk-python2.git`)
+(you may need to run `pip` with root permission: `sudo pip install git+https://github.com/EvidentSecurity/esp-sdk-python.git`)
 
 Then import the package:
 ```python
-import esp_sdk 
+import esp_sdk
 ```
 
 ### Setuptools
@@ -96,15 +96,15 @@ import esp_sdk
 from esp_sdk.rest import ApiException
 from pprint import pprint
 
-    
+
 # create an instance of the API class
 api_instance = esp_sdk.APIKeysApi()
-name = 'name_example' # str | The name of the API Key (optional)
 include = 'include_example' # str | Related objects that can be included in the response:  user See Including Objects for more information. (optional)
+name = 'name_example' # str | The name of the API Key (optional)
 
 try:
     # Create a(n) API Key
-    api_response = api_instance.create(name=name, include=include)
+    api_response = api_instance.create(include=include, name=name)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling APIKeysApi->create: %s\n" % e)
@@ -184,7 +184,7 @@ With that call, organization, sub_organization and team will all come back in th
 `external_account.sub_organization` and `external_account.team` will return the associated object.
 
 You can nest include requests with the dot property. For example, requesting `external_account.team` on an alert will expand the `external_account` property into a full `External Account` object, and will then expand the `team` property on that external account into a full `Team` object.
-Deep nesting is available as well.  `external_account.team.organization`
+Deep nesting is available as well:  `external_account.team.sub_organization.organization`
 
 ```python
 alert = esp_sdk.AlertsApi().show(1, include='tags,external_account.team')
@@ -394,7 +394,7 @@ Lists can be sorted by multiple fields by specifying an ordered array.
 esp_sdk.SignaturesApi().list(filter={ "name_cont": 'dns', "sorts": ['risk_level desc', 'created_at'] })
 #=> will return signatures `where name LIKE '%dns%'` sorted by `risk_level` in descending order and then by `created_at` in ascending order.
 ```
-    
+
 ## Documentation for API Endpoints
 
 All URIs are relative to *https://api.evident.io/*
@@ -434,6 +434,7 @@ Class | Method | HTTP request | Description
 *AlertsApi* | [**list_custom_compliance_controls**](docs/AlertsApi.md#list_custom_compliance_controls) | **GET** /api/v2/alerts/{alert_id}/custom_compliance_controls.json_api | Get a list of Custom Compliance Controls for an Alert
 *AlertsApi* | [**list_for_report**](docs/AlertsApi.md#list_for_report) | **PUT** /api/v2/reports/{report_id}/alerts.json_api | Get a list of Alerts for a Report
 *AlertsApi* | [**show**](docs/AlertsApi.md#show) | **GET** /api/v2/alerts/{id}.json_api | Show a single Alert
+*AttributionApi* | [**show**](docs/AttributionApi.md#show) | **GET** /api/v2/alerts/{alert_id}/attribution.json_api | Show the attribution for an alert
 *AuditLogExportApi* | [**request_file**](docs/AuditLogExportApi.md#request_file) | **POST** /api/v2/audit_logs/export/files.json_api | Export an Audit Log File
 *AuditLogExportApi* | [**show_file_details**](docs/AuditLogExportApi.md#show_file_details) | **GET** /api/v2/audit_logs/export/files/{id}.json_api | Show a single Audit Log File
 *AuditLogsApi* | [**list**](docs/AuditLogsApi.md#list) | **PUT** /api/v2/audit_logs.json_api | Get a list of Audit Logs
@@ -445,8 +446,6 @@ Class | Method | HTTP request | Description
 *AzureGroupsApi* | [**remove_external_account**](docs/AzureGroupsApi.md#remove_external_account) | **DELETE** /api/v2/azure_groups/{azure_group_id}/memberships/{external_account_id}.json_api | Remove an External Account from an Azure Group
 *AzureGroupsApi* | [**show**](docs/AzureGroupsApi.md#show) | **GET** /api/v2/azure_groups/{id}.json_api | Show a single Azure Group
 *AzureGroupsApi* | [**update**](docs/AzureGroupsApi.md#update) | **PATCH** /api/v2/azure_groups/{id}.json_api | Update a(n) Azure Group
-*CloudTrailEventsApi* | [**list_for_alert**](docs/CloudTrailEventsApi.md#list_for_alert) | **GET** /api/v2/alerts/{alert_id}/cloud_trail_events.json_api | Get a list of Cloud Trail Events
-*CloudTrailEventsApi* | [**show**](docs/CloudTrailEventsApi.md#show) | **GET** /api/v2/cloud_trail_events/{id}.json_api | Show a single Cloud Trail Event
 *ComplianceControlsApi* | [**list**](docs/ComplianceControlsApi.md#list) | **PUT** /api/v2/compliance_controls.json_api | Get a list of Compliance Controls
 *ComplianceControlsApi* | [**list_signatures**](docs/ComplianceControlsApi.md#list_signatures) | **GET** /api/v2/compliance_controls/{compliance_control_id}/signatures.json_api | Get a list of Signatures for a Compliance Control
 *ComplianceControlsApi* | [**show**](docs/ComplianceControlsApi.md#show) | **GET** /api/v2/compliance_controls/{id}.json_api | Show a single Compliance Control
@@ -566,20 +565,20 @@ Class | Method | HTTP request | Description
 *SignaturesApi* | [**set_custom_risk_level_for_external_account**](docs/SignaturesApi.md#set_custom_risk_level_for_external_account) | **POST** /api/v2/external_accounts/{external_account_id}/signature_custom_risk_levels.json_api | Add a custom risk level to a Signature for an External Account
 *SignaturesApi* | [**show**](docs/SignaturesApi.md#show) | **GET** /api/v2/signatures/{id}.json_api | Show a single Signature
 *SignaturesApi* | [**update_custom_risk_level_for_external_account**](docs/SignaturesApi.md#update_custom_risk_level_for_external_account) | **PATCH** /api/v2/external_accounts/{external_account_id}/signature_custom_risk_levels/{signature_id}.json_api | Update a Signature&#39;s custom risk level for an External Account
-*StatComplianceControlsApi* | [**list_for_stat**](docs/StatComplianceControlsApi.md#list_for_stat) | **GET** /api/v2/stats/{stat_id}/compliance_controls.json_api | Stats for compliance controls
+*StatComplianceControlsApi* | [**list_for_stat**](docs/StatComplianceControlsApi.md#list_for_stat) | **GET** /api/v2/stats/{stat_id}/compliance_controls.json_api | Statistics for compliance controls
 *StatComplianceControlsApi* | [**show**](docs/StatComplianceControlsApi.md#show) | **GET** /api/v2/stats/compliance_controls/{id}.json_api | Show a single Stat Compliance Control
-*StatCustomComplianceControlsApi* | [**list_for_stat**](docs/StatCustomComplianceControlsApi.md#list_for_stat) | **GET** /api/v2/stats/{stat_id}/custom_compliance_controls.json_api | Stats for custom compliance controls
+*StatCustomComplianceControlsApi* | [**list_for_stat**](docs/StatCustomComplianceControlsApi.md#list_for_stat) | **GET** /api/v2/stats/{stat_id}/custom_compliance_controls.json_api | Statistics for custom compliance controls
 *StatCustomComplianceControlsApi* | [**show**](docs/StatCustomComplianceControlsApi.md#show) | **GET** /api/v2/stats/custom_compliance_controls/{id}.json_api | Show a single Stat Custom Compliance Control
-*StatCustomSignaturesApi* | [**list_for_stat**](docs/StatCustomSignaturesApi.md#list_for_stat) | **GET** /api/v2/stats/{stat_id}/custom_signatures.json_api | Stats for custom signatures
+*StatCustomSignaturesApi* | [**list_for_stat**](docs/StatCustomSignaturesApi.md#list_for_stat) | **GET** /api/v2/stats/{stat_id}/custom_signatures.json_api | Statistics for custom signatures
 *StatCustomSignaturesApi* | [**show**](docs/StatCustomSignaturesApi.md#show) | **GET** /api/v2/stats/custom_signatures/{id}.json_api | Show a single Stat Custom Signature
-*StatRegionsApi* | [**list_for_stat**](docs/StatRegionsApi.md#list_for_stat) | **GET** /api/v2/stats/{stat_id}/regions.json_api | Get a list of stats for regions
+*StatRegionsApi* | [**list_for_stat**](docs/StatRegionsApi.md#list_for_stat) | **GET** /api/v2/stats/{stat_id}/regions.json_api | Get a list of statistics for regions
 *StatRegionsApi* | [**show**](docs/StatRegionsApi.md#show) | **GET** /api/v2/stats/regions/{id}.json_api | Show a single Stat Region
-*StatServicesApi* | [**list_for_stat**](docs/StatServicesApi.md#list_for_stat) | **GET** /api/v2/stats/{stat_id}/services.json_api | Get a list of stats for services
+*StatServicesApi* | [**list_for_stat**](docs/StatServicesApi.md#list_for_stat) | **GET** /api/v2/stats/{stat_id}/services.json_api | Get a list of statistics for services
 *StatServicesApi* | [**show**](docs/StatServicesApi.md#show) | **GET** /api/v2/stats/services/{id}.json_api | Show a single Stat Service
-*StatSignaturesApi* | [**list_for_stat**](docs/StatSignaturesApi.md#list_for_stat) | **GET** /api/v2/stats/{stat_id}/signatures.json_api | Get a list of stats for signatures
+*StatSignaturesApi* | [**list_for_stat**](docs/StatSignaturesApi.md#list_for_stat) | **GET** /api/v2/stats/{stat_id}/signatures.json_api | Get a list of statistics for signatures
 *StatSignaturesApi* | [**show**](docs/StatSignaturesApi.md#show) | **GET** /api/v2/stats/signatures/{id}.json_api | Show a single Stat Signature
 *StatsApi* | [**for_report**](docs/StatsApi.md#for_report) | **GET** /api/v2/reports/{report_id}/stats.json_api | Stats for a report
-*StatsApi* | [**latest_for_teams**](docs/StatsApi.md#latest_for_teams) | **PUT** /api/v2/stats/latest_for_teams.json_api | Stats for teams
+*StatsApi* | [**latest_for_teams**](docs/StatsApi.md#latest_for_teams) | **PUT** /api/v2/stats/latest_for_teams.json_api | Statistics for teams
 *StatsApi* | [**show**](docs/StatsApi.md#show) | **GET** /api/v2/stats/{id}.json_api | Show a single Stat
 *SubOrganizationsApi* | [**create**](docs/SubOrganizationsApi.md#create) | **POST** /api/v2/sub_organizations.json_api | Create a(n) Sub Organization
 *SubOrganizationsApi* | [**delete**](docs/SubOrganizationsApi.md#delete) | **DELETE** /api/v2/sub_organizations/{id}.json_api | Delete a(n) Sub Organization
@@ -587,14 +586,11 @@ Class | Method | HTTP request | Description
 *SubOrganizationsApi* | [**show**](docs/SubOrganizationsApi.md#show) | **GET** /api/v2/sub_organizations/{id}.json_api | Show a single Sub Organization
 *SubOrganizationsApi* | [**update**](docs/SubOrganizationsApi.md#update) | **PATCH** /api/v2/sub_organizations/{id}.json_api | Update a(n) Sub Organization
 *SubscriptionsApi* | [**show**](docs/SubscriptionsApi.md#show) | **GET** /api/v2/subscriptions/{id}.json_api | Show a single Subscription
+*SuppressionsApi* | [**create**](docs/SuppressionsApi.md#create) | **POST** /api/v2/suppressions.json_api | Create a suppression
+*SuppressionsApi* | [**create_from_alert**](docs/SuppressionsApi.md#create_from_alert) | **POST** /api/v2/suppressions/alerts.json_api | Creates a suppression from an alert
 *SuppressionsApi* | [**deactivate**](docs/SuppressionsApi.md#deactivate) | **PATCH** /api/v2/suppressions/{id}/deactivate.json_api | Deactivate a suppression
 *SuppressionsApi* | [**list**](docs/SuppressionsApi.md#list) | **PUT** /api/v2/suppressions.json_api | Get a list of Suppressions
 *SuppressionsApi* | [**show**](docs/SuppressionsApi.md#show) | **GET** /api/v2/suppressions/{id}.json_api | Show a single Suppression
-*SuppressionsApi* | [**suppress_region**](docs/SuppressionsApi.md#suppress_region) | **POST** /api/v2/suppressions/regions.json_api | Creates a region suppression
-*SuppressionsApi* | [**suppress_region_from_alert**](docs/SuppressionsApi.md#suppress_region_from_alert) | **POST** /api/v2/suppressions/alert/{alert_id}/regions.json_api | Creates a region suppression from an alert
-*SuppressionsApi* | [**suppress_signature**](docs/SuppressionsApi.md#suppress_signature) | **POST** /api/v2/suppressions/signatures.json_api | Creates a signature suppression
-*SuppressionsApi* | [**suppress_signature_from_alert**](docs/SuppressionsApi.md#suppress_signature_from_alert) | **POST** /api/v2/suppressions/alert/{alert_id}/signatures.json_api | Creates a signature suppression from an alert
-*SuppressionsApi* | [**suppress_unique_identifier_from_alert**](docs/SuppressionsApi.md#suppress_unique_identifier_from_alert) | **POST** /api/v2/suppressions/alert/{alert_id}/unique_identifiers.json_api | Creates a unique identifier suppression from an alert
 *TagsApi* | [**list_for_alert**](docs/TagsApi.md#list_for_alert) | **GET** /api/v2/alerts/{alert_id}/tags.json_api | Get a list of Tags
 *TagsApi* | [**show**](docs/TagsApi.md#show) | **GET** /api/v2/tags/{id}.json_api | Show a single Tag
 *TeamsApi* | [**create**](docs/TeamsApi.md#create) | **POST** /api/v2/teams.json_api | Create a(n) Team
@@ -617,10 +613,10 @@ Class | Method | HTTP request | Description
 
  - [APIKey](docs/APIKey.md)
  - [Alert](docs/Alert.md)
+ - [Attribution](docs/Attribution.md)
  - [AuditLog](docs/AuditLog.md)
  - [AuditLogFile](docs/AuditLogFile.md)
  - [AzureGroup](docs/AzureGroup.md)
- - [CloudTrailEvent](docs/CloudTrailEvent.md)
  - [ComplianceControl](docs/ComplianceControl.md)
  - [ComplianceDomain](docs/ComplianceDomain.md)
  - [ComplianceStandard](docs/ComplianceStandard.md)

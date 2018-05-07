@@ -4,16 +4,16 @@ All URIs are relative to https://api.evident.io
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**list_for_stat**](StatCustomSignaturesApi.md#list_for_stat) | **GET** /api/v2/stats/{stat_id}/custom_signatures.json_api | Stats for custom signatures
+[**list_for_stat**](StatCustomSignaturesApi.md#list_for_stat) | **GET** /api/v2/stats/{stat_id}/custom_signatures.json_api | Statistics for custom signatures
 [**show**](StatCustomSignaturesApi.md#show) | **GET** /api/v2/stats/custom_signatures/{id}.json_api | Show a single Stat Custom Signature
 
 
 # **list_for_stat**
-> PaginatedCollection list_for_stat(stat_id, page=page, include=include)
+> PaginatedCollection list_for_stat(stat_id, include=include, filter=filter, page=page)
 
-Stats for custom signatures
+Statistics for custom signatures
 
-A successful call to this API returns all the stats of all the custom signatures for a report identified by the stat_id parameter. Said report contains all statistics for this alert triggered from signatures contained in all custom_signatures for the selected hour.
+A successful call to this API returns all the statistics of all the custom signatures for a report identified by the stat_id parameter. Said report contains all statistics for this alert triggered from signatures contained in all custom_signatures for the selected hour.
 
 ### Example 
 ```python
@@ -25,13 +25,14 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = esp_sdk.StatCustomSignaturesApi()
-stat_id = 56 # int | The ID of the stat to retrieve custom signature stats for
-page = '{:number=>1,+:size=>20}' # str | Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page (optional) (default to {:number=>1,+:size=>20})
+stat_id = 56 # int | The ID of the stat to retrieve custom signature statistics for
 include = 'include_example' # str | Related objects that can be included in the response:  custom_signature, stat See Including Objects for more information. (optional)
+filter = {'key': 'filter_example'} # dict(str, str) | Filter Params for Searching.  Equality Searchable Attributes: [stat_id, type_id]     (optional)
+page = '{:number=>1,+:size=>20}' # str | Page Number and Page Size.  Number is the page number of the collection to return, size is the number of items to return per page. (optional) (default to {:number=>1,+:size=>20})
 
 try: 
-    # Stats for custom signatures
-    api_response = api_instance.list_for_stat(stat_id, page=page, include=include)
+    # Statistics for custom signatures
+    api_response = api_instance.list_for_stat(stat_id, include=include, filter=filter, page=page)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling StatCustomSignaturesApi->list_for_stat: %s\n" % e)
@@ -41,9 +42,10 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **stat_id** | **int**| The ID of the stat to retrieve custom signature stats for | 
- **page** | **str**| Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page | [optional] [default to {:number&#x3D;&gt;1,+:size&#x3D;&gt;20}]
+ **stat_id** | **int**| The ID of the stat to retrieve custom signature statistics for | 
  **include** | **str**| Related objects that can be included in the response:  custom_signature, stat See Including Objects for more information. | [optional] 
+ **filter** | [**dict(str, str)**](str.md)| Filter Params for Searching.  Equality Searchable Attributes: [stat_id, type_id]     | [optional] 
+ **page** | **str**| Page Number and Page Size.  Number is the page number of the collection to return, size is the number of items to return per page. | [optional] [default to {:number&#x3D;&gt;1,+:size&#x3D;&gt;20}]
 
 ### Return type
 
@@ -51,7 +53,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-See https://github.com/EvidentSecurity/esp-sdk-python2#set-your-hmac-security-keys
+See https://github.com/EvidentSecurity/esp-sdk-python#set-your-hmac-security-keys
 
 ### HTTP request headers
 
@@ -101,7 +103,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-See https://github.com/EvidentSecurity/esp-sdk-python2#set-your-hmac-security-keys
+See https://github.com/EvidentSecurity/esp-sdk-python#set-your-hmac-security-keys
 
 ### HTTP request headers
 

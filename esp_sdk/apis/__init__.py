@@ -3,10 +3,10 @@ from __future__ import absolute_import
 # import apis into api package
 from .api_keys_api import APIKeysApi
 from .alerts_api import AlertsApi
+from .attribution_api import AttributionApi
 from .audit_log_export_api import AuditLogExportApi
 from .audit_logs_api import AuditLogsApi
 from .azure_groups_api import AzureGroupsApi
-from .cloud_trail_events_api import CloudTrailEventsApi
 from .compliance_controls_api import ComplianceControlsApi
 from .compliance_domains_api import ComplianceDomainsApi
 from .compliance_standards_api import ComplianceStandardsApi

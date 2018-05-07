@@ -42,8 +42,8 @@ class StatCustomComplianceControlsApi(object):
 
     def list_for_stat(self, stat_id, **kwargs):
         """
-        Stats for custom compliance controls
-        A successful call to this API returns all the stats of all the custom compliance controls for a report identified by the stat_id parameter. Said report contains all statistics for this alert triggered from signatures contained in all custom compliance controls for the selected hour.
+        Statistics for custom compliance controls
+        A successful call to this API returns all the statistics of all the custom compliance controls for a report identified by the stat_id parameter. Said report contains all statistics for this alert triggered from signatures contained in all custom compliance controls for the selected hour.
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -54,9 +54,10 @@ class StatCustomComplianceControlsApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param int stat_id: The ID of the stat to retrieve custom compliance control stats for (required)
-        :param str page: Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page
+        :param int stat_id: The ID of the stat to retrieve custom compliance control statistics for (required)
         :param str include: Related objects that can be included in the response:  custom_compliance_control, stat See Including Objects for more information.
+        :param dict(str, str) filter: Filter Params for Searching.  Equality Searchable Attributes: [stat_id, type_id]    
+        :param str page: Page Number and Page Size.  Number is the page number of the collection to return, size is the number of items to return per page.
         :return: PaginatedCollection
                  If the method is called asynchronously,
                  returns the request thread.
@@ -70,8 +71,8 @@ class StatCustomComplianceControlsApi(object):
 
     def list_for_stat_with_http_info(self, stat_id, **kwargs):
         """
-        Stats for custom compliance controls
-        A successful call to this API returns all the stats of all the custom compliance controls for a report identified by the stat_id parameter. Said report contains all statistics for this alert triggered from signatures contained in all custom compliance controls for the selected hour.
+        Statistics for custom compliance controls
+        A successful call to this API returns all the statistics of all the custom compliance controls for a report identified by the stat_id parameter. Said report contains all statistics for this alert triggered from signatures contained in all custom compliance controls for the selected hour.
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -82,15 +83,16 @@ class StatCustomComplianceControlsApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param int stat_id: The ID of the stat to retrieve custom compliance control stats for (required)
-        :param str page: Page Number and Page Size.  number is the page number of the collection to return, size is the number of items to return per page
+        :param int stat_id: The ID of the stat to retrieve custom compliance control statistics for (required)
         :param str include: Related objects that can be included in the response:  custom_compliance_control, stat See Including Objects for more information.
+        :param dict(str, str) filter: Filter Params for Searching.  Equality Searchable Attributes: [stat_id, type_id]    
+        :param str page: Page Number and Page Size.  Number is the page number of the collection to return, size is the number of items to return per page.
         :return: PaginatedCollection
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['stat_id', 'page', 'include']
+        all_params = ['stat_id', 'include', 'filter', 'page']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -125,6 +127,8 @@ class StatCustomComplianceControlsApi(object):
 
         form_params = []
         local_var_files = {}
+        if 'filter' in params:
+            form_params.append(('filter', params['filter']))
         if 'page' in params:
             form_params.append(('page', params['page']))
 

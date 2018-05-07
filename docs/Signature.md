@@ -15,7 +15,8 @@ Name | Type | Description | Notes
 **service** | [**Service**](Service.md) | Associated Service | [optional] 
 **service_id** | **int** | Associated Service ID | [optional] 
 **disabled_external_accounts** | [**ExternalAccount**](ExternalAccount.md) | Associated Disabled External Accounts | [optional] 
-**disabled_external_accounts_id** | **int** | Associated Disabled External Accounts ID | [optional] 
+**suppressions** | [**list[Suppression]**](Suppression.md) | Associated Suppressions | [optional] 
+**suppression_ids** | **list[int]** | Associated Suppressions IDs | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

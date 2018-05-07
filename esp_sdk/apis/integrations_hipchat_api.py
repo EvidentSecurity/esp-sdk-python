@@ -40,7 +40,7 @@ class IntegrationsHipchatApi(object):
                 config.api_client = ApiClient()
             self.api_client = config.api_client
 
-    def create(self, token, room, name, external_account_ids, **kwargs):
+    def create(self, external_account_ids, name, room, token, **kwargs):
         """
         Create a Hipchat Integration
         
@@ -50,35 +50,35 @@ class IntegrationsHipchatApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.create(token, room, name, external_account_ids, callback=callback_function)
+        >>> thread = api.create(external_account_ids, name, room, token, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param str token: The Hipchat token (required)
-        :param str room: The Hipchat room (required)
-        :param str name: Name of the integration (required)
         :param list[int] external_account_ids: External accounts for integration (required)
+        :param str name: Name of the integration (required)
+        :param str room: The Hipchat room (required)
+        :param str token: The Hipchat token (required)
+        :param str include: Related objects that can be included in the response:  integration See Including Objects for more information.
         :param bool all_high_risk: Send all high risk alerts
-        :param bool all_medium_risk: Send all medium risk alerts
         :param bool all_low_risk: Send all low risk alerts
+        :param bool all_medium_risk: Send all medium risk alerts
+        :param list[int] custom_signature_ids: Custom signatures for integration
         :param bool send_updates: This feature enables the integration to send alerts when they are updated. When disabled, alerts will only be sent when they are initially created. When enabled, alerts will additionally be sent when a change is made such as the alert ending. An alert may end for multiple reasons.
         :param bool send_when_suppressed: Send notifications for suppressed alerts
         :param list[int] signature_ids: Signatures for integration
         :param list[str] statuses: Only send alerts that have the status in this list. Valid values are fail, warn, error, pass, info
-        :param list[int] custom_signature_ids: Custom signatures for integration
-        :param str include: Related objects that can be included in the response:  integration See Including Objects for more information.
         :return: IntegrationHipchat
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.create_with_http_info(token, room, name, external_account_ids, **kwargs)
+            return self.create_with_http_info(external_account_ids, name, room, token, **kwargs)
         else:
-            (data) = self.create_with_http_info(token, room, name, external_account_ids, **kwargs)
+            (data) = self.create_with_http_info(external_account_ids, name, room, token, **kwargs)
             return data
 
-    def create_with_http_info(self, token, room, name, external_account_ids, **kwargs):
+    def create_with_http_info(self, external_account_ids, name, room, token, **kwargs):
         """
         Create a Hipchat Integration
         
@@ -88,29 +88,29 @@ class IntegrationsHipchatApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.create_with_http_info(token, room, name, external_account_ids, callback=callback_function)
+        >>> thread = api.create_with_http_info(external_account_ids, name, room, token, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param str token: The Hipchat token (required)
-        :param str room: The Hipchat room (required)
-        :param str name: Name of the integration (required)
         :param list[int] external_account_ids: External accounts for integration (required)
+        :param str name: Name of the integration (required)
+        :param str room: The Hipchat room (required)
+        :param str token: The Hipchat token (required)
+        :param str include: Related objects that can be included in the response:  integration See Including Objects for more information.
         :param bool all_high_risk: Send all high risk alerts
-        :param bool all_medium_risk: Send all medium risk alerts
         :param bool all_low_risk: Send all low risk alerts
+        :param bool all_medium_risk: Send all medium risk alerts
+        :param list[int] custom_signature_ids: Custom signatures for integration
         :param bool send_updates: This feature enables the integration to send alerts when they are updated. When disabled, alerts will only be sent when they are initially created. When enabled, alerts will additionally be sent when a change is made such as the alert ending. An alert may end for multiple reasons.
         :param bool send_when_suppressed: Send notifications for suppressed alerts
         :param list[int] signature_ids: Signatures for integration
         :param list[str] statuses: Only send alerts that have the status in this list. Valid values are fail, warn, error, pass, info
-        :param list[int] custom_signature_ids: Custom signatures for integration
-        :param str include: Related objects that can be included in the response:  integration See Including Objects for more information.
         :return: IntegrationHipchat
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['token', 'room', 'name', 'external_account_ids', 'all_high_risk', 'all_medium_risk', 'all_low_risk', 'send_updates', 'send_when_suppressed', 'signature_ids', 'statuses', 'custom_signature_ids', 'include']
+        all_params = ['external_account_ids', 'name', 'room', 'token', 'include', 'all_high_risk', 'all_low_risk', 'all_medium_risk', 'custom_signature_ids', 'send_updates', 'send_when_suppressed', 'signature_ids', 'statuses']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -125,18 +125,18 @@ class IntegrationsHipchatApi(object):
                 )
             params[key] = val
         del params['kwargs']
-        # verify the required parameter 'token' is set
-        if ('token' not in params) or (params['token'] is None):
-            raise ValueError("Missing the required parameter `token` when calling `create`")
-        # verify the required parameter 'room' is set
-        if ('room' not in params) or (params['room'] is None):
-            raise ValueError("Missing the required parameter `room` when calling `create`")
-        # verify the required parameter 'name' is set
-        if ('name' not in params) or (params['name'] is None):
-            raise ValueError("Missing the required parameter `name` when calling `create`")
         # verify the required parameter 'external_account_ids' is set
         if ('external_account_ids' not in params) or (params['external_account_ids'] is None):
             raise ValueError("Missing the required parameter `external_account_ids` when calling `create`")
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `create`")
+        # verify the required parameter 'room' is set
+        if ('room' not in params) or (params['room'] is None):
+            raise ValueError("Missing the required parameter `room` when calling `create`")
+        # verify the required parameter 'token' is set
+        if ('token' not in params) or (params['token'] is None):
+            raise ValueError("Missing the required parameter `token` when calling `create`")
 
 
         collection_formats = {}
@@ -152,18 +152,22 @@ class IntegrationsHipchatApi(object):
 
         form_params = []
         local_var_files = {}
-        if 'token' in params:
-            form_params.append(('token', params['token']))
-        if 'room' in params:
-            form_params.append(('room', params['room']))
-        if 'name' in params:
-            form_params.append(('name', params['name']))
         if 'all_high_risk' in params:
             form_params.append(('all_high_risk', params['all_high_risk']))
-        if 'all_medium_risk' in params:
-            form_params.append(('all_medium_risk', params['all_medium_risk']))
         if 'all_low_risk' in params:
             form_params.append(('all_low_risk', params['all_low_risk']))
+        if 'all_medium_risk' in params:
+            form_params.append(('all_medium_risk', params['all_medium_risk']))
+        if 'custom_signature_ids' in params:
+            form_params.append(('custom_signature_ids', params['custom_signature_ids']))
+            collection_formats['None'] = 'csv'
+        if 'external_account_ids' in params:
+            form_params.append(('external_account_ids', params['external_account_ids']))
+            collection_formats['None'] = 'csv'
+        if 'name' in params:
+            form_params.append(('name', params['name']))
+        if 'room' in params:
+            form_params.append(('room', params['room']))
         if 'send_updates' in params:
             form_params.append(('send_updates', params['send_updates']))
         if 'send_when_suppressed' in params:
@@ -174,12 +178,8 @@ class IntegrationsHipchatApi(object):
         if 'statuses' in params:
             form_params.append(('statuses', params['statuses']))
             collection_formats['None'] = 'csv'
-        if 'external_account_ids' in params:
-            form_params.append(('external_account_ids', params['external_account_ids']))
-            collection_formats['None'] = 'csv'
-        if 'custom_signature_ids' in params:
-            form_params.append(('custom_signature_ids', params['custom_signature_ids']))
-            collection_formats['None'] = 'csv'
+        if 'token' in params:
+            form_params.append(('token', params['token']))
 
         body_params = None
         # HTTP header `Accept`
@@ -334,19 +334,19 @@ class IntegrationsHipchatApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param int integration_id: The ID of the integration (required)
-        :param str token: The Hipchat token
-        :param str room: The Hipchat room
-        :param str name: Name of the integration
+        :param str include: Related objects that can be included in the response:  integration See Including Objects for more information.
         :param bool all_high_risk: Send all high risk alerts
-        :param bool all_medium_risk: Send all medium risk alerts
         :param bool all_low_risk: Send all low risk alerts
+        :param bool all_medium_risk: Send all medium risk alerts
+        :param list[int] custom_signature_ids: Custom signatures for integration
+        :param list[int] external_account_ids: External accounts for integration
+        :param str name: Name of the integration
+        :param str room: The Hipchat room
         :param bool send_updates: This feature enables the integration to send alerts when they are updated. When disabled, alerts will only be sent when they are initially created. When enabled, alerts will additionally be sent when a change is made such as the alert ending. An alert may end for multiple reasons.
         :param bool send_when_suppressed: Send notifications for suppressed alerts
         :param list[int] signature_ids: Signatures for integration
         :param list[str] statuses: Only send alerts that have the status in this list. Valid values are fail, warn, error, pass, info
-        :param list[int] external_account_ids: External accounts for integration
-        :param list[int] custom_signature_ids: Custom signatures for integration
-        :param str include: Related objects that can be included in the response:  integration See Including Objects for more information.
+        :param str token: The Hipchat token
         :return: IntegrationHipchat
                  If the method is called asynchronously,
                  returns the request thread.
@@ -373,25 +373,25 @@ class IntegrationsHipchatApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param int integration_id: The ID of the integration (required)
-        :param str token: The Hipchat token
-        :param str room: The Hipchat room
-        :param str name: Name of the integration
+        :param str include: Related objects that can be included in the response:  integration See Including Objects for more information.
         :param bool all_high_risk: Send all high risk alerts
-        :param bool all_medium_risk: Send all medium risk alerts
         :param bool all_low_risk: Send all low risk alerts
+        :param bool all_medium_risk: Send all medium risk alerts
+        :param list[int] custom_signature_ids: Custom signatures for integration
+        :param list[int] external_account_ids: External accounts for integration
+        :param str name: Name of the integration
+        :param str room: The Hipchat room
         :param bool send_updates: This feature enables the integration to send alerts when they are updated. When disabled, alerts will only be sent when they are initially created. When enabled, alerts will additionally be sent when a change is made such as the alert ending. An alert may end for multiple reasons.
         :param bool send_when_suppressed: Send notifications for suppressed alerts
         :param list[int] signature_ids: Signatures for integration
         :param list[str] statuses: Only send alerts that have the status in this list. Valid values are fail, warn, error, pass, info
-        :param list[int] external_account_ids: External accounts for integration
-        :param list[int] custom_signature_ids: Custom signatures for integration
-        :param str include: Related objects that can be included in the response:  integration See Including Objects for more information.
+        :param str token: The Hipchat token
         :return: IntegrationHipchat
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['integration_id', 'token', 'room', 'name', 'all_high_risk', 'all_medium_risk', 'all_low_risk', 'send_updates', 'send_when_suppressed', 'signature_ids', 'statuses', 'external_account_ids', 'custom_signature_ids', 'include']
+        all_params = ['integration_id', 'include', 'all_high_risk', 'all_low_risk', 'all_medium_risk', 'custom_signature_ids', 'external_account_ids', 'name', 'room', 'send_updates', 'send_when_suppressed', 'signature_ids', 'statuses', 'token']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -426,18 +426,22 @@ class IntegrationsHipchatApi(object):
 
         form_params = []
         local_var_files = {}
-        if 'token' in params:
-            form_params.append(('token', params['token']))
-        if 'room' in params:
-            form_params.append(('room', params['room']))
-        if 'name' in params:
-            form_params.append(('name', params['name']))
         if 'all_high_risk' in params:
             form_params.append(('all_high_risk', params['all_high_risk']))
-        if 'all_medium_risk' in params:
-            form_params.append(('all_medium_risk', params['all_medium_risk']))
         if 'all_low_risk' in params:
             form_params.append(('all_low_risk', params['all_low_risk']))
+        if 'all_medium_risk' in params:
+            form_params.append(('all_medium_risk', params['all_medium_risk']))
+        if 'custom_signature_ids' in params:
+            form_params.append(('custom_signature_ids', params['custom_signature_ids']))
+            collection_formats['None'] = 'csv'
+        if 'external_account_ids' in params:
+            form_params.append(('external_account_ids', params['external_account_ids']))
+            collection_formats['None'] = 'csv'
+        if 'name' in params:
+            form_params.append(('name', params['name']))
+        if 'room' in params:
+            form_params.append(('room', params['room']))
         if 'send_updates' in params:
             form_params.append(('send_updates', params['send_updates']))
         if 'send_when_suppressed' in params:
@@ -448,12 +452,8 @@ class IntegrationsHipchatApi(object):
         if 'statuses' in params:
             form_params.append(('statuses', params['statuses']))
             collection_formats['None'] = 'csv'
-        if 'external_account_ids' in params:
-            form_params.append(('external_account_ids', params['external_account_ids']))
-            collection_formats['None'] = 'csv'
-        if 'custom_signature_ids' in params:
-            form_params.append(('custom_signature_ids', params['custom_signature_ids']))
-            collection_formats['None'] = 'csv'
+        if 'token' in params:
+            form_params.append(('token', params['token']))
 
         body_params = None
         # HTTP header `Accept`
