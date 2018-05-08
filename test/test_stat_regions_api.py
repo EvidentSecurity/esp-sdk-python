@@ -35,7 +35,7 @@ class TestStatRegionsApi(unittest.TestCase):
         """
         Test case for list_for_stat
 
-        Get a list of stats for regions
+        Get a list of statistics for regions
         """
         pass
 

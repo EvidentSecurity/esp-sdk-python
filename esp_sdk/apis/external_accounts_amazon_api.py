@@ -58,7 +58,7 @@ class ExternalAccountsAmazonApi(object):
         :param str external_id: External Identifier set on the role (required)
         :param str name: Name (required)
         :param int team_id: The ID of the team the external account belongs to (required)
-        :return: ExternalAccountAmazonIAM
+        :return: ExternalAccountAmazonIam
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -87,7 +87,7 @@ class ExternalAccountsAmazonApi(object):
         :param str external_id: External Identifier set on the role (required)
         :param str name: Name (required)
         :param int team_id: The ID of the team the external account belongs to (required)
-        :return: ExternalAccountAmazonIAM
+        :return: ExternalAccountAmazonIam
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -160,7 +160,7 @@ class ExternalAccountsAmazonApi(object):
                                         body=body_params,
                                         post_params=form_params,
                                         files=local_var_files,
-                                        response_type='ExternalAccountAmazonIAM',
+                                        response_type='ExternalAccountAmazonIam',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -184,7 +184,7 @@ class ExternalAccountsAmazonApi(object):
             for asynchronous request. (optional)
         :param int external_account_id: The ID of the external account to show an Amazon IAM credential for (required)
         :param str include: Related objects that can be included in the response:  external_account See Including Objects for more information.
-        :return: ExternalAccountAmazonIAM
+        :return: ExternalAccountAmazonIam
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -211,7 +211,7 @@ class ExternalAccountsAmazonApi(object):
             for asynchronous request. (optional)
         :param int external_account_id: The ID of the external account to show an Amazon IAM credential for (required)
         :param str include: Related objects that can be included in the response:  external_account See Including Objects for more information.
-        :return: ExternalAccountAmazonIAM
+        :return: ExternalAccountAmazonIam
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -271,7 +271,7 @@ class ExternalAccountsAmazonApi(object):
                                         body=body_params,
                                         post_params=form_params,
                                         files=local_var_files,
-                                        response_type='ExternalAccountAmazonIAM',
+                                        response_type='ExternalAccountAmazonIam',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -298,7 +298,7 @@ class ExternalAccountsAmazonApi(object):
         :param str external_id: External Identifier set on the role
         :param str name: Name
         :param int team_id: The ID of the team the external account belongs to
-        :return: ExternalAccountAmazonIAM
+        :return: ExternalAccountAmazonIam
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -328,7 +328,7 @@ class ExternalAccountsAmazonApi(object):
         :param str external_id: External Identifier set on the role
         :param str name: Name
         :param int team_id: The ID of the team the external account belongs to
-        :return: ExternalAccountAmazonIAM
+        :return: ExternalAccountAmazonIam
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -394,7 +394,7 @@ class ExternalAccountsAmazonApi(object):
                                         body=body_params,
                                         post_params=form_params,
                                         files=local_var_files,
-                                        response_type='ExternalAccountAmazonIAM',
+                                        response_type='ExternalAccountAmazonIam',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),

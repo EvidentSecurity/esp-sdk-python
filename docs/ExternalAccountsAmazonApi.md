@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 
 # **create**
-> ExternalAccountAmazonIAM create(arn, external_id, name, team_id)
+> ExternalAccountAmazonIam create(arn, external_id, name, team_id)
 
 Create an Amazon External Account
 
@@ -50,7 +50,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ExternalAccountAmazonIAM**](ExternalAccountAmazonIAM.md)
+[**ExternalAccountAmazonIam**](ExternalAccountAmazonIam.md)
 
 ### Authorization
 
@@ -64,7 +64,7 @@ See https://github.com/EvidentSecurity/esp-sdk-python#set-your-hmac-security-key
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **show**
-> ExternalAccountAmazonIAM show(external_account_id, include=include)
+> ExternalAccountAmazonIam show(external_account_id, include=include)
 
 Show an Amazon External Account
 
@@ -100,7 +100,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ExternalAccountAmazonIAM**](ExternalAccountAmazonIAM.md)
+[**ExternalAccountAmazonIam**](ExternalAccountAmazonIam.md)
 
 ### Authorization
 
@@ -114,7 +114,7 @@ See https://github.com/EvidentSecurity/esp-sdk-python#set-your-hmac-security-key
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update**
-> ExternalAccountAmazonIAM update(external_account_id, arn=arn, external_id=external_id, name=name, team_id=team_id)
+> ExternalAccountAmazonIam update(external_account_id, arn=arn, external_id=external_id, name=name, team_id=team_id)
 
 Update an Amazon External Account
 
@@ -156,7 +156,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ExternalAccountAmazonIAM**](ExternalAccountAmazonIAM.md)
+[**ExternalAccountAmazonIam**](ExternalAccountAmazonIam.md)
 
 ### Authorization
 

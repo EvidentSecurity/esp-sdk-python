@@ -44,7 +44,7 @@ class ExternalAccount(BaseObject):
             'suppressions': 'list[Suppression]',
             'suppression_ids': 'list[int]',
             'azure_group': 'AzureGroup',
-            'credentials': 'ExternalAccountAmazonIAM'
+            'credentials': 'ExternalAccountAmazonIam'
         }
 
         self.attribute_map = {
@@ -360,7 +360,7 @@ class ExternalAccount(BaseObject):
         Associated Credentials
 
         :return: The credentials of this ExternalAccount.
-        :rtype: ExternalAccountAmazonIAM
+        :rtype: ExternalAccountAmazonIam
         """
         return self._credentials
 
@@ -371,7 +371,7 @@ class ExternalAccount(BaseObject):
         Associated Credentials
 
         :param credentials: The credentials of this ExternalAccount.
-        :type: ExternalAccountAmazonIAM
+        :type: ExternalAccountAmazonIam
         """
 
         self._credentials = credentials

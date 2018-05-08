@@ -65,7 +65,10 @@ class TestRESTClientObject(TestBase):
             self.assertRegex(args[1], "/v2/sub_organizations.json_api")
         else:
             self.assertRegexpMatches(args[1], "/v2/sub_organizations.json_api")
-        self.assertEqual(kwargs['body'], json.dumps({'data': {'attributes': {"organization_id": 1, 'name': 'Evident'}}}))
+        
+        body = json.loads(kwargs['body'])
+        self.assertEqual(body['data']['attributes']['organization_id'], 1)
+        self.assertEqual(body['data']['attributes']['name'], 'Evident')
 
     def test_request_sets_authorization_headers_for_non_GET(self):
         rest_client = RESTClientObject()

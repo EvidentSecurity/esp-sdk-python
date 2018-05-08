@@ -14,8 +14,8 @@
 from __future__ import absolute_import
 
 # import models into model package
-from .api_key import APIKey
 from .alert import Alert
+from .api_key import ApiKey
 from .attribution import Attribution
 from .audit_log import AuditLog
 from .audit_log_file import AuditLogFile
@@ -33,7 +33,7 @@ from .custom_signature_result import CustomSignatureResult
 from .custom_signature_result_alert import CustomSignatureResultAlert
 from .exported_report import ExportedReport
 from .external_account import ExternalAccount
-from .external_account_amazon_iam import ExternalAccountAmazonIAM
+from .external_account_amazon_iam import ExternalAccountAmazonIam
 from .external_account_azure import ExternalAccountAzure
 from .external_account_user_attribution_channel import ExternalAccountUserAttributionChannel
 from .integration import Integration

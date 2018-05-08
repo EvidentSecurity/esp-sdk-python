@@ -35,7 +35,7 @@ class TestStatCustomComplianceControlsApi(unittest.TestCase):
         """
         Test case for list_for_stat
 
-        Stats for custom compliance controls
+        Statistics for custom compliance controls
         """
         pass
 
