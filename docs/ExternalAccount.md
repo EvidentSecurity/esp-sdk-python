@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 **suppressions** | [**list[Suppression]**](Suppression.md) | Associated Suppressions | [optional] 
 **suppression_ids** | **list[int]** | Associated Suppressions IDs | [optional] 
 **azure_group** | [**AzureGroup**](AzureGroup.md) | Associated Azure Group | [optional] 
-**credentials** | [**ExternalAccountAmazonIAM**](ExternalAccountAmazonIAM.md) | Associated Credentials | [optional] 
+**credentials** | [**ExternalAccountAmazonIam**](ExternalAccountAmazonIam.md) | Associated Credentials | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

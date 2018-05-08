@@ -31,22 +31,6 @@ class TestComplianceControlsApi(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def test_create(self):
-        """
-        Test case for create
-
-        Create a(n) Compliance Control
-        """
-        pass
-
-    def test_destroy(self):
-        """
-        Test case for destroy
-
-        Remove a(n) ComplianceControl
-        """
-        pass
-
     def test_list(self):
         """
         Test case for list
@@ -55,19 +39,19 @@ class TestComplianceControlsApi(unittest.TestCase):
         """
         pass
 
+    def test_list_signatures(self):
+        """
+        Test case for list_signatures
+
+        Get a list of Signatures for a Compliance Control
+        """
+        pass
+
     def test_show(self):
         """
         Test case for show
 
         Show a single Compliance Control
-        """
-        pass
-
-    def test_update(self):
-        """
-        Test case for update
-
-        Update a(n) Compliance Control
         """
         pass
 

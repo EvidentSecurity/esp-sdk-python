@@ -19,11 +19,11 @@ import unittest
 
 import esp_sdk
 from esp_sdk.rest import ApiException
-from esp_sdk.models.external_account_amazon_iam import ExternalAccountAmazonIAM
+from esp_sdk.models.external_account_amazon_iam import ExternalAccountAmazonIam
 
 
-class TestExternalAccountAmazonIAM(unittest.TestCase):
-    """ ExternalAccountAmazonIAM unit test stubs """
+class TestExternalAccountAmazonIam(unittest.TestCase):
+    """ ExternalAccountAmazonIam unit test stubs """
 
     def setUp(self):
         pass
@@ -31,11 +31,11 @@ class TestExternalAccountAmazonIAM(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def testExternalAccountAmazonIAM(self):
+    def testExternalAccountAmazonIam(self):
         """
-        Test ExternalAccountAmazonIAM
+        Test ExternalAccountAmazonIam
         """
-        model = esp_sdk.models.external_account_amazon_iam.ExternalAccountAmazonIAM()
+        model = esp_sdk.models.external_account_amazon_iam.ExternalAccountAmazonIam()
 
 
 if __name__ == '__main__':

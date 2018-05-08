@@ -35,7 +35,7 @@ class TestStatSignaturesApi(unittest.TestCase):
         """
         Test case for list_for_stat
 
-        Get a list of stats for signatures
+        Get a list of statistics for signatures
         """
         pass
 

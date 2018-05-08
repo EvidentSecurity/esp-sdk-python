@@ -35,7 +35,7 @@ class TestStatServicesApi(unittest.TestCase):
         """
         Test case for list_for_stat
 
-        Get a list of stats for services
+        Get a list of statistics for services
         """
         pass
 

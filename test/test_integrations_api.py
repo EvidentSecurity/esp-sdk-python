@@ -31,11 +31,43 @@ class TestIntegrationsApi(unittest.TestCase):
     def tearDown(self):
         pass
 
+    def test_delete(self):
+        """
+        Test case for delete
+
+        Delete a(n) Integration
+        """
+        pass
+
+    def test_disable(self):
+        """
+        Test case for disable
+
+        Disable a single Integration
+        """
+        pass
+
+    def test_list(self):
+        """
+        Test case for list
+
+        Get a list of Integrations
+        """
+        pass
+
     def test_show(self):
         """
         Test case for show
 
         Show a single Integration
+        """
+        pass
+
+    def test_test_notify(self):
+        """
+        Test case for test_notify
+
+        Test an Integration
         """
         pass
 

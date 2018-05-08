@@ -611,8 +611,8 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
- - [APIKey](docs/APIKey.md)
  - [Alert](docs/Alert.md)
+ - [ApiKey](docs/ApiKey.md)
  - [Attribution](docs/Attribution.md)
  - [AuditLog](docs/AuditLog.md)
  - [AuditLogFile](docs/AuditLogFile.md)
@@ -630,7 +630,7 @@ Class | Method | HTTP request | Description
  - [CustomSignatureResultAlert](docs/CustomSignatureResultAlert.md)
  - [ExportedReport](docs/ExportedReport.md)
  - [ExternalAccount](docs/ExternalAccount.md)
- - [ExternalAccountAmazonIAM](docs/ExternalAccountAmazonIAM.md)
+ - [ExternalAccountAmazonIam](docs/ExternalAccountAmazonIam.md)
  - [ExternalAccountAzure](docs/ExternalAccountAzure.md)
  - [ExternalAccountUserAttributionChannel](docs/ExternalAccountUserAttributionChannel.md)
  - [Integration](docs/Integration.md)

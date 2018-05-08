@@ -31,22 +31,6 @@ class TestComplianceStandardsApi(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def test_create(self):
-        """
-        Test case for create
-
-        Create a(n) Compliance Standard
-        """
-        pass
-
-    def test_destroy(self):
-        """
-        Test case for destroy
-
-        Remove a(n) ComplianceStandard
-        """
-        pass
-
     def test_list(self):
         """
         Test case for list
@@ -60,14 +44,6 @@ class TestComplianceStandardsApi(unittest.TestCase):
         Test case for show
 
         Show a single Compliance Standard
-        """
-        pass
-
-    def test_update(self):
-        """
-        Test case for update
-
-        Update a(n) Compliance Standard
         """
         pass
 

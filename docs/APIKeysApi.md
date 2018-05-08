@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 
 # **create**
-> APIKey create(include=include, name=name)
+> ApiKey create(include=include, name=name)
 
 Create a(n) API Key
 
@@ -48,7 +48,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**APIKey**](APIKey.md)
+[**ApiKey**](ApiKey.md)
 
 ### Authorization
 
@@ -160,7 +160,7 @@ See https://github.com/EvidentSecurity/esp-sdk-python#set-your-hmac-security-key
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **show**
-> APIKey show(id, include=include)
+> ApiKey show(id, include=include)
 
 Show a single API Key
 
@@ -196,7 +196,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**APIKey**](APIKey.md)
+[**ApiKey**](ApiKey.md)
 
 ### Authorization
 
@@ -210,7 +210,7 @@ See https://github.com/EvidentSecurity/esp-sdk-python#set-your-hmac-security-key
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update**
-> APIKey update(id, include=include, name=name)
+> ApiKey update(id, include=include, name=name)
 
 Update a(n) API Key
 
@@ -248,7 +248,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**APIKey**](APIKey.md)
+[**ApiKey**](ApiKey.md)
 
 ### Authorization
 

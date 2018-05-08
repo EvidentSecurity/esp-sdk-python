@@ -56,7 +56,7 @@ class APIKeysApi(object):
             for asynchronous request. (optional)
         :param str include: Related objects that can be included in the response:  user See Including Objects for more information.
         :param str name: The name of the API Key
-        :return: APIKey
+        :return: ApiKey
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -83,7 +83,7 @@ class APIKeysApi(object):
             for asynchronous request. (optional)
         :param str include: Related objects that can be included in the response:  user See Including Objects for more information.
         :param str name: The name of the API Key
-        :return: APIKey
+        :return: ApiKey
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -140,7 +140,7 @@ class APIKeysApi(object):
                                         body=body_params,
                                         post_params=form_params,
                                         files=local_var_files,
-                                        response_type='APIKey',
+                                        response_type='ApiKey',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -379,7 +379,7 @@ class APIKeysApi(object):
             for asynchronous request. (optional)
         :param int id: API Key ID (required)
         :param str include: Related objects that can be included in the response:  user See Including Objects for more information.
-        :return: APIKey
+        :return: ApiKey
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -406,7 +406,7 @@ class APIKeysApi(object):
             for asynchronous request. (optional)
         :param int id: API Key ID (required)
         :param str include: Related objects that can be included in the response:  user See Including Objects for more information.
-        :return: APIKey
+        :return: ApiKey
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -466,7 +466,7 @@ class APIKeysApi(object):
                                         body=body_params,
                                         post_params=form_params,
                                         files=local_var_files,
-                                        response_type='APIKey',
+                                        response_type='ApiKey',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -491,7 +491,7 @@ class APIKeysApi(object):
         :param int id: API Key ID (required)
         :param str include: Related objects that can be included in the response:  user See Including Objects for more information.
         :param str name: The name of the API Key
-        :return: APIKey
+        :return: ApiKey
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -519,7 +519,7 @@ class APIKeysApi(object):
         :param int id: API Key ID (required)
         :param str include: Related objects that can be included in the response:  user See Including Objects for more information.
         :param str name: The name of the API Key
-        :return: APIKey
+        :return: ApiKey
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -581,7 +581,7 @@ class APIKeysApi(object):
                                         body=body_params,
                                         post_params=form_params,
                                         files=local_var_files,
-                                        response_type='APIKey',
+                                        response_type='ApiKey',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),

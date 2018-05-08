@@ -19,11 +19,11 @@ import unittest
 
 import esp_sdk
 from esp_sdk.rest import ApiException
-from esp_sdk.models.api_key import APIKey
+from esp_sdk.models.api_key import ApiKey
 
 
-class TestAPIKey(unittest.TestCase):
-    """ APIKey unit test stubs """
+class TestApiKey(unittest.TestCase):
+    """ ApiKey unit test stubs """
 
     def setUp(self):
         pass
@@ -31,11 +31,11 @@ class TestAPIKey(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def testAPIKey(self):
+    def testApiKey(self):
         """
-        Test APIKey
+        Test ApiKey
         """
-        model = esp_sdk.models.api_key.APIKey()
+        model = esp_sdk.models.api_key.ApiKey()
 
 
 if __name__ == '__main__':
