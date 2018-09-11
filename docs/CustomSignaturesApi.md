@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 
 # **create**
-> CustomSignature create(external_account_ids, identifier, name, risk_level, include=include, description=description, resolution=resolution)
+> CustomSignature create(external_account_ids, identifier, name, risk_level, include=include, description=description, include_new_accounts=include_new_accounts, resolution=resolution, service_id=service_id)
 
 Create a(n) Custom Signature
 
@@ -32,13 +32,15 @@ external_account_ids = [56] # list[int] | The external account IDs this custom s
 identifier = 'identifier_example' # str | The identifier to use for the custom signature. Common format is AWS:- such as AWS:IAM-001
 name = 'name_example' # str | The name of the custom signature
 risk_level = 'risk_level_example' # str | The risk-level of the problem identified by the custom signature. Valid values are low, medium, high
-include = 'include_example' # str | Related objects that can be included in the response:  organization, teams, external_accounts, definitions, suppressions See Including Objects for more information. (optional)
+include = 'include_example' # str | Related objects that can be included in the response:  organization, teams, external_accounts, definitions, suppressions, service See Including Objects for more information. (optional)
 description = 'description_example' # str | The description of the custom signature that is displayed on alerts (optional)
+include_new_accounts = true # bool | When enabled, automatically adds new accounts to this signature. This field can only be set by an organization level user. (optional)
 resolution = 'resolution_example' # str | Details for how to resolve this custom signature that is displayed on alerts (optional)
+service_id = 56 # int | The service this custom signature is for. If no service is selected it will default to Custom. (optional)
 
 try: 
     # Create a(n) Custom Signature
-    api_response = api_instance.create(external_account_ids, identifier, name, risk_level, include=include, description=description, resolution=resolution)
+    api_response = api_instance.create(external_account_ids, identifier, name, risk_level, include=include, description=description, include_new_accounts=include_new_accounts, resolution=resolution, service_id=service_id)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling CustomSignaturesApi->create: %s\n" % e)
@@ -52,9 +54,11 @@ Name | Type | Description  | Notes
  **identifier** | **str**| The identifier to use for the custom signature. Common format is AWS:- such as AWS:IAM-001 | 
  **name** | **str**| The name of the custom signature | 
  **risk_level** | **str**| The risk-level of the problem identified by the custom signature. Valid values are low, medium, high | 
- **include** | **str**| Related objects that can be included in the response:  organization, teams, external_accounts, definitions, suppressions See Including Objects for more information. | [optional] 
+ **include** | **str**| Related objects that can be included in the response:  organization, teams, external_accounts, definitions, suppressions, service See Including Objects for more information. | [optional] 
  **description** | **str**| The description of the custom signature that is displayed on alerts | [optional] 
+ **include_new_accounts** | **bool**| When enabled, automatically adds new accounts to this signature. This field can only be set by an organization level user. | [optional] 
  **resolution** | **str**| Details for how to resolve this custom signature that is displayed on alerts | [optional] 
+ **service_id** | **int**| The service this custom signature is for. If no service is selected it will default to Custom. | [optional] 
 
 ### Return type
 
@@ -136,7 +140,7 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = esp_sdk.CustomSignaturesApi()
-include = 'include_example' # str | Related objects that can be included in the response:  organization, teams, external_accounts, definitions, suppressions See Including Objects for more information. (optional)
+include = 'include_example' # str | Related objects that can be included in the response:  organization, teams, external_accounts, definitions, suppressions, service See Including Objects for more information. (optional)
 filter = {'key': 'filter_example'} # dict(str, str) | Filter Params for Searching.  Equality Searchable Attributes: [id, risk_level, service_id, name, identifier] Matching Searchable Attributes: [name, identifier]  Sortable Attributes: [name, updated_at, created_at, id] Searchable Associations: [organization, teams, definitions, integrations, suppressions] See Searching Lists for more information. See the filter parameter of the association's list action to see what attributes are searchable on each association. See Conditions on Relationships in Searching Lists for more information. (optional)
 page = '{:number=>1,+:size=>20}' # str | Page Number and Page Size.  Number is the page number of the collection to return, size is the number of items to return per page. (optional) (default to {:number=>1,+:size=>20})
 
@@ -152,7 +156,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **include** | **str**| Related objects that can be included in the response:  organization, teams, external_accounts, definitions, suppressions See Including Objects for more information. | [optional] 
+ **include** | **str**| Related objects that can be included in the response:  organization, teams, external_accounts, definitions, suppressions, service See Including Objects for more information. | [optional] 
  **filter** | [**dict(str, str)**](str.md)| Filter Params for Searching.  Equality Searchable Attributes: [id, risk_level, service_id, name, identifier] Matching Searchable Attributes: [name, identifier]  Sortable Attributes: [name, updated_at, created_at, id] Searchable Associations: [organization, teams, definitions, integrations, suppressions] See Searching Lists for more information. See the filter parameter of the association&#39;s list action to see what attributes are searchable on each association. See Conditions on Relationships in Searching Lists for more information. | [optional] 
  **page** | **str**| Page Number and Page Size.  Number is the page number of the collection to return, size is the number of items to return per page. | [optional] [default to {:number&#x3D;&gt;1,+:size&#x3D;&gt;20}]
 
@@ -189,7 +193,7 @@ from pprint import pprint
 # create an instance of the API class
 api_instance = esp_sdk.CustomSignaturesApi()
 id = 56 # int | Custom Signature ID
-include = 'include_example' # str | Related objects that can be included in the response:  organization, teams, external_accounts, definitions, suppressions See Including Objects for more information. (optional)
+include = 'include_example' # str | Related objects that can be included in the response:  organization, teams, external_accounts, definitions, suppressions, service See Including Objects for more information. (optional)
 
 try: 
     # Show a single Custom Signature
@@ -204,7 +208,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| Custom Signature ID | 
- **include** | **str**| Related objects that can be included in the response:  organization, teams, external_accounts, definitions, suppressions See Including Objects for more information. | [optional] 
+ **include** | **str**| Related objects that can be included in the response:  organization, teams, external_accounts, definitions, suppressions, service See Including Objects for more information. | [optional] 
 
 ### Return type
 
@@ -222,7 +226,7 @@ See https://github.com/EvidentSecurity/esp-sdk-python#set-your-hmac-security-key
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update**
-> CustomSignature update(id, include=include, description=description, external_account_ids=external_account_ids, identifier=identifier, name=name, resolution=resolution, risk_level=risk_level)
+> CustomSignature update(id, include=include, description=description, external_account_ids=external_account_ids, identifier=identifier, include_new_accounts=include_new_accounts, name=name, resolution=resolution, risk_level=risk_level, service_id=service_id)
 
 Update a(n) Custom Signature
 
@@ -239,17 +243,19 @@ from pprint import pprint
 # create an instance of the API class
 api_instance = esp_sdk.CustomSignaturesApi()
 id = 56 # int | Custom Signature ID
-include = 'include_example' # str | Related objects that can be included in the response:  organization, teams, external_accounts, definitions, suppressions See Including Objects for more information. (optional)
+include = 'include_example' # str | Related objects that can be included in the response:  organization, teams, external_accounts, definitions, suppressions, service See Including Objects for more information. (optional)
 description = 'description_example' # str | The description of the custom signature that is displayed on alerts (optional)
 external_account_ids = [56] # list[int] | The external account IDs this custom signature should run for. If no accounts are selected the custom signature will not be run. (optional)
 identifier = 'identifier_example' # str | The identifier to use for the custom signature. Common format is AWS:- such as AWS:IAM-001 (optional)
+include_new_accounts = true # bool | When enabled, automatically adds new accounts to this signature. This field can only be set by an organization level user. (optional)
 name = 'name_example' # str | The name of the custom signature (optional)
 resolution = 'resolution_example' # str | Details for how to resolve this custom signature that is displayed on alerts (optional)
 risk_level = 'risk_level_example' # str | The risk-level of the problem identified by the custom signature. Valid values are low, medium, high (optional)
+service_id = 56 # int | The service this custom signature is for. If no service is selected it will default to Custom. (optional)
 
 try: 
     # Update a(n) Custom Signature
-    api_response = api_instance.update(id, include=include, description=description, external_account_ids=external_account_ids, identifier=identifier, name=name, resolution=resolution, risk_level=risk_level)
+    api_response = api_instance.update(id, include=include, description=description, external_account_ids=external_account_ids, identifier=identifier, include_new_accounts=include_new_accounts, name=name, resolution=resolution, risk_level=risk_level, service_id=service_id)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling CustomSignaturesApi->update: %s\n" % e)
@@ -260,13 +266,15 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| Custom Signature ID | 
- **include** | **str**| Related objects that can be included in the response:  organization, teams, external_accounts, definitions, suppressions See Including Objects for more information. | [optional] 
+ **include** | **str**| Related objects that can be included in the response:  organization, teams, external_accounts, definitions, suppressions, service See Including Objects for more information. | [optional] 
  **description** | **str**| The description of the custom signature that is displayed on alerts | [optional] 
  **external_account_ids** | [**list[int]**](int.md)| The external account IDs this custom signature should run for. If no accounts are selected the custom signature will not be run. | [optional] 
  **identifier** | **str**| The identifier to use for the custom signature. Common format is AWS:- such as AWS:IAM-001 | [optional] 
+ **include_new_accounts** | **bool**| When enabled, automatically adds new accounts to this signature. This field can only be set by an organization level user. | [optional] 
  **name** | **str**| The name of the custom signature | [optional] 
  **resolution** | **str**| Details for how to resolve this custom signature that is displayed on alerts | [optional] 
  **risk_level** | **str**| The risk-level of the problem identified by the custom signature. Valid values are low, medium, high | [optional] 
+ **service_id** | **int**| The service this custom signature is for. If no service is selected it will default to Custom. | [optional] 
 
 ### Return type
 

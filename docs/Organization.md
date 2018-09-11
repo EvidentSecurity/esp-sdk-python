@@ -5,6 +5,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **int** | Unique ID | [optional] 
 **created_at** | [**datetime**](DateTime.md) | ISO 8601 timestamp when the resource was created | [optional] 
+**enable_new_signatures** | **bool** | Whether new signatures should be enabled for all accounts on this organization | [optional] 
 **name** | **str** | Name of the organization | [optional] 
 **require_mfa** | **bool** | Whether or not users for this organization are required to enable Multi Factor Authentication | [optional] 
 **updated_at** | [**datetime**](DateTime.md) | ISO 8601 timestamp when the resource was updated | [optional] 

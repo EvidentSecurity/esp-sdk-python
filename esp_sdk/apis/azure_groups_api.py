@@ -56,7 +56,7 @@ class AzureGroupsApi(object):
             for asynchronous request. (optional)
         :param int azure_group_id: The ID of the Azure group associated with this memberhsip (required)
         :param int external_account_id: The ID of the External Account associated with this memberhsip (required)
-        :param str include: Related objects that can be included in the response:  organization, sub_organization, team, scan_intervals, disabled_signatures, suppressions, azure_group, credentials See Including Objects for more information.
+        :param str include: Related objects that can be included in the response:  organization, sub_organization, team, scan_intervals, disabled_signatures, suppressions, azure_group See Including Objects for more information.
         :return: ExternalAccount
                  If the method is called asynchronously,
                  returns the request thread.
@@ -84,7 +84,7 @@ class AzureGroupsApi(object):
             for asynchronous request. (optional)
         :param int azure_group_id: The ID of the Azure group associated with this memberhsip (required)
         :param int external_account_id: The ID of the External Account associated with this memberhsip (required)
-        :param str include: Related objects that can be included in the response:  organization, sub_organization, team, scan_intervals, disabled_signatures, suppressions, azure_group, credentials See Including Objects for more information.
+        :param str include: Related objects that can be included in the response:  organization, sub_organization, team, scan_intervals, disabled_signatures, suppressions, azure_group See Including Objects for more information.
         :return: ExternalAccount
                  If the method is called asynchronously,
                  returns the request thread.

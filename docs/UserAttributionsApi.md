@@ -172,7 +172,7 @@ from pprint import pprint
 # create an instance of the API class
 api_instance = esp_sdk.UserAttributionsApi()
 external_account_id = 56 # int | The ID of the external account to update the user attributions of
-include = 'include_example' # str | Related objects that can be included in the response:  organization, sub_organization, team, scan_intervals, disabled_signatures, suppressions, azure_group, credentials See Including Objects for more information. (optional)
+include = 'include_example' # str | Related objects that can be included in the response:  organization, sub_organization, team, scan_intervals, disabled_signatures, suppressions, azure_group See Including Objects for more information. (optional)
 cloudtrail_name = 'cloudtrail_name_example' # str | The name of the cloudetrail associated with the user attribution. (optional)
 
 try: 
@@ -188,7 +188,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **external_account_id** | **int**| The ID of the external account to update the user attributions of | 
- **include** | **str**| Related objects that can be included in the response:  organization, sub_organization, team, scan_intervals, disabled_signatures, suppressions, azure_group, credentials See Including Objects for more information. | [optional] 
+ **include** | **str**| Related objects that can be included in the response:  organization, sub_organization, team, scan_intervals, disabled_signatures, suppressions, azure_group See Including Objects for more information. | [optional] 
  **cloudtrail_name** | **str**| The name of the cloudetrail associated with the user attribution. | [optional] 
 
 ### Return type

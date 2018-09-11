@@ -165,7 +165,7 @@ See https://github.com/EvidentSecurity/esp-sdk-python#set-your-hmac-security-key
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update**
-> Organization update(id, include=include, name=name, require_mfa=require_mfa)
+> Organization update(id, include=include, enable_new_signatures=enable_new_signatures, name=name, require_mfa=require_mfa)
 
 Update a(n) Organization
 
@@ -183,12 +183,13 @@ from pprint import pprint
 api_instance = esp_sdk.OrganizationsApi()
 id = 56 # int | Organization ID
 include = 'include_example' # str | Related objects that can be included in the response:  subscription, custom_signatures, external_accounts, sub_organizations, teams, users, compliance_standards, integrations See Including Objects for more information. (optional)
+enable_new_signatures = true # bool | Whether new signatures should be enabled for all accounts on this organization (optional)
 name = 'name_example' # str | Name of the organization (optional)
 require_mfa = true # bool | Whether or not users for this organization are required to enable Multi Factor Authentication (optional)
 
 try: 
     # Update a(n) Organization
-    api_response = api_instance.update(id, include=include, name=name, require_mfa=require_mfa)
+    api_response = api_instance.update(id, include=include, enable_new_signatures=enable_new_signatures, name=name, require_mfa=require_mfa)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling OrganizationsApi->update: %s\n" % e)
@@ -200,6 +201,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| Organization ID | 
  **include** | **str**| Related objects that can be included in the response:  subscription, custom_signatures, external_accounts, sub_organizations, teams, users, compliance_standards, integrations See Including Objects for more information. | [optional] 
+ **enable_new_signatures** | **bool**| Whether new signatures should be enabled for all accounts on this organization | [optional] 
  **name** | **str**| Name of the organization | [optional] 
  **require_mfa** | **bool**| Whether or not users for this organization are required to enable Multi Factor Authentication | [optional] 
 

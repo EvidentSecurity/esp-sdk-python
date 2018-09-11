@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 **disable_daily_emails** | **bool** | Specifies whether the daily emails should be turned off or not | [optional] 
 **locked** | **bool** | Specifies whether the user account is locked from accessing ESP | [optional] 
 **locked_at** | [**datetime**](DateTime.md) | The time the user account was locked | [optional] 
-**access_level** | **str** | The level of access this user has. Team access has access to items belonging only to that team. Sub Organization access has access to items belonging only to all teams under that sub organization. Organization access has access to all sub organizations and teams under that organization. Valid values are organization, sub_organization, team | [optional] 
+**access_level** | **str** | The level of access this user has. Team access has access to items belonging only to that team. Sub Organization access has access to items belonging only to all teams under that sub organization. Organization access has access to all sub organizations and teams under that organization. Valid values are organization_level, sub_organization_level, team_level | [optional] 
 **organization** | [**Organization**](Organization.md) | Associated Organization | [optional] 
 **organization_id** | **int** | Associated Organization ID | [optional] 
 **sub_organizations** | [**list[SubOrganization]**](SubOrganization.md) | Associated Sub Organizations | [optional] 

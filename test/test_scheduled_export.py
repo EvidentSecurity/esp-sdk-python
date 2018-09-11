@@ -19,25 +19,23 @@ import unittest
 
 import esp_sdk
 from esp_sdk.rest import ApiException
-from esp_sdk.apis.contact_requests_api import ContactRequestsApi
+from esp_sdk.models.scheduled_export import ScheduledExport
 
 
-class TestContactRequestsApi(unittest.TestCase):
-    """ ContactRequestsApi unit test stubs """
+class TestScheduledExport(unittest.TestCase):
+    """ ScheduledExport unit test stubs """
 
     def setUp(self):
-        self.api = esp_sdk.apis.contact_requests_api.ContactRequestsApi()
+        pass
 
     def tearDown(self):
         pass
 
-    def test_create(self):
+    def testScheduledExport(self):
         """
-        Test case for create
-
-        Create a(n) Contact Request
+        Test ScheduledExport
         """
-        pass
+        model = esp_sdk.models.scheduled_export.ScheduledExport()
 
 
 if __name__ == '__main__':

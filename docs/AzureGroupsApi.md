@@ -32,7 +32,7 @@ from pprint import pprint
 api_instance = esp_sdk.AzureGroupsApi()
 azure_group_id = 56 # int | The ID of the Azure group associated with this memberhsip
 external_account_id = 56 # int | The ID of the External Account associated with this memberhsip
-include = 'include_example' # str | Related objects that can be included in the response:  organization, sub_organization, team, scan_intervals, disabled_signatures, suppressions, azure_group, credentials See Including Objects for more information. (optional)
+include = 'include_example' # str | Related objects that can be included in the response:  organization, sub_organization, team, scan_intervals, disabled_signatures, suppressions, azure_group See Including Objects for more information. (optional)
 
 try: 
     # Add an External Account to an Azure Group
@@ -48,7 +48,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **azure_group_id** | **int**| The ID of the Azure group associated with this memberhsip | 
  **external_account_id** | **int**| The ID of the External Account associated with this memberhsip | 
- **include** | **str**| Related objects that can be included in the response:  organization, sub_organization, team, scan_intervals, disabled_signatures, suppressions, azure_group, credentials See Including Objects for more information. | [optional] 
+ **include** | **str**| Related objects that can be included in the response:  organization, sub_organization, team, scan_intervals, disabled_signatures, suppressions, azure_group See Including Objects for more information. | [optional] 
 
 ### Return type
 

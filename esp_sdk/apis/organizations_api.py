@@ -394,6 +394,7 @@ class OrganizationsApi(object):
             for asynchronous request. (optional)
         :param int id: Organization ID (required)
         :param str include: Related objects that can be included in the response:  subscription, custom_signatures, external_accounts, sub_organizations, teams, users, compliance_standards, integrations See Including Objects for more information.
+        :param bool enable_new_signatures: Whether new signatures should be enabled for all accounts on this organization
         :param str name: Name of the organization
         :param bool require_mfa: Whether or not users for this organization are required to enable Multi Factor Authentication
         :return: Organization
@@ -423,6 +424,7 @@ class OrganizationsApi(object):
             for asynchronous request. (optional)
         :param int id: Organization ID (required)
         :param str include: Related objects that can be included in the response:  subscription, custom_signatures, external_accounts, sub_organizations, teams, users, compliance_standards, integrations See Including Objects for more information.
+        :param bool enable_new_signatures: Whether new signatures should be enabled for all accounts on this organization
         :param str name: Name of the organization
         :param bool require_mfa: Whether or not users for this organization are required to enable Multi Factor Authentication
         :return: Organization
@@ -430,7 +432,7 @@ class OrganizationsApi(object):
                  returns the request thread.
         """
 
-        all_params = ['id', 'include', 'name', 'require_mfa']
+        all_params = ['id', 'include', 'enable_new_signatures', 'name', 'require_mfa']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -465,6 +467,8 @@ class OrganizationsApi(object):
 
         form_params = []
         local_var_files = {}
+        if 'enable_new_signatures' in params:
+            form_params.append(('enable_new_signatures', params['enable_new_signatures']))
         if 'name' in params:
             form_params.append(('name', params['name']))
         if 'require_mfa' in params:

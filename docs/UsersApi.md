@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 
 # **create**
-> User create(email, first_name, last_name, include=include, disable_daily_emails=disable_daily_emails, phone=phone, role_id=role_id, sub_organization_ids=sub_organization_ids, team_ids=team_ids, time_zone=time_zone)
+> User create(email, first_name, last_name, include=include, access_level=access_level, disable_daily_emails=disable_daily_emails, phone=phone, role_id=role_id, sub_organization_ids=sub_organization_ids, team_ids=team_ids, time_zone=time_zone)
 
 Create a(n) User
 
@@ -32,6 +32,7 @@ email = 'email_example' # str | The email of the user
 first_name = 'first_name_example' # str | The first name of the user
 last_name = 'last_name_example' # str | The last name of the user
 include = 'include_example' # str | Related objects that can be included in the response:  organization, sub_organizations, teams, role See Including Objects for more information. (optional)
+access_level = 'access_level_example' # str | The level of access this user has. Team access has access to items belonging only to that team. Sub Organization access has access to items belonging only to all teams under that sub organization. Organization access has access to all sub organizations and teams under that organization. Valid values are organization_level, sub_organization_level, team_level (optional)
 disable_daily_emails = true # bool | Specifies whether the daily emails should be turned off or not (optional)
 phone = 'phone_example' # str | The phone number of the user (optional)
 role_id = 56 # int | The ID of the role of the user. Only a manager can set or modify the role id. (optional)
@@ -41,7 +42,7 @@ time_zone = 'time_zone_example' # str | The time zone of the user. See Time Zone
 
 try: 
     # Create a(n) User
-    api_response = api_instance.create(email, first_name, last_name, include=include, disable_daily_emails=disable_daily_emails, phone=phone, role_id=role_id, sub_organization_ids=sub_organization_ids, team_ids=team_ids, time_zone=time_zone)
+    api_response = api_instance.create(email, first_name, last_name, include=include, access_level=access_level, disable_daily_emails=disable_daily_emails, phone=phone, role_id=role_id, sub_organization_ids=sub_organization_ids, team_ids=team_ids, time_zone=time_zone)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling UsersApi->create: %s\n" % e)
@@ -55,6 +56,7 @@ Name | Type | Description  | Notes
  **first_name** | **str**| The first name of the user | 
  **last_name** | **str**| The last name of the user | 
  **include** | **str**| Related objects that can be included in the response:  organization, sub_organizations, teams, role See Including Objects for more information. | [optional] 
+ **access_level** | **str**| The level of access this user has. Team access has access to items belonging only to that team. Sub Organization access has access to items belonging only to all teams under that sub organization. Organization access has access to all sub organizations and teams under that organization. Valid values are organization_level, sub_organization_level, team_level | [optional] 
  **disable_daily_emails** | **bool**| Specifies whether the daily emails should be turned off or not | [optional] 
  **phone** | **str**| The phone number of the user | [optional] 
  **role_id** | **int**| The ID of the role of the user. Only a manager can set or modify the role id. | [optional] 
@@ -230,7 +232,7 @@ See https://github.com/EvidentSecurity/esp-sdk-python#set-your-hmac-security-key
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update**
-> User update(id, include=include, disable_daily_emails=disable_daily_emails, first_name=first_name, last_name=last_name, phone=phone, role_id=role_id, sub_organization_ids=sub_organization_ids, team_ids=team_ids, time_zone=time_zone)
+> User update(id, include=include, access_level=access_level, disable_daily_emails=disable_daily_emails, first_name=first_name, last_name=last_name, phone=phone, role_id=role_id, sub_organization_ids=sub_organization_ids, team_ids=team_ids, time_zone=time_zone)
 
 Update a(n) User
 
@@ -248,6 +250,7 @@ from pprint import pprint
 api_instance = esp_sdk.UsersApi()
 id = 56 # int | User ID
 include = 'include_example' # str | Related objects that can be included in the response:  organization, sub_organizations, teams, role See Including Objects for more information. (optional)
+access_level = 'access_level_example' # str | The level of access this user has. Team access has access to items belonging only to that team. Sub Organization access has access to items belonging only to all teams under that sub organization. Organization access has access to all sub organizations and teams under that organization. Valid values are organization_level, sub_organization_level, team_level (optional)
 disable_daily_emails = true # bool | Specifies whether the daily emails should be turned off or not (optional)
 first_name = 'first_name_example' # str | The first name of the user (optional)
 last_name = 'last_name_example' # str | The last name of the user (optional)
@@ -259,7 +262,7 @@ time_zone = 'time_zone_example' # str | The time zone of the user. See Time Zone
 
 try: 
     # Update a(n) User
-    api_response = api_instance.update(id, include=include, disable_daily_emails=disable_daily_emails, first_name=first_name, last_name=last_name, phone=phone, role_id=role_id, sub_organization_ids=sub_organization_ids, team_ids=team_ids, time_zone=time_zone)
+    api_response = api_instance.update(id, include=include, access_level=access_level, disable_daily_emails=disable_daily_emails, first_name=first_name, last_name=last_name, phone=phone, role_id=role_id, sub_organization_ids=sub_organization_ids, team_ids=team_ids, time_zone=time_zone)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling UsersApi->update: %s\n" % e)
@@ -271,6 +274,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| User ID | 
  **include** | **str**| Related objects that can be included in the response:  organization, sub_organizations, teams, role See Including Objects for more information. | [optional] 
+ **access_level** | **str**| The level of access this user has. Team access has access to items belonging only to that team. Sub Organization access has access to items belonging only to all teams under that sub organization. Organization access has access to all sub organizations and teams under that organization. Valid values are organization_level, sub_organization_level, team_level | [optional] 
  **disable_daily_emails** | **bool**| Specifies whether the daily emails should be turned off or not | [optional] 
  **first_name** | **str**| The first name of the user | [optional] 
  **last_name** | **str**| The last name of the user | [optional] 

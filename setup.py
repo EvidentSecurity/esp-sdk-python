@@ -15,7 +15,7 @@ import sys
 from setuptools import setup, find_packages
 
 NAME = "esp_sdk"
-VERSION = "1.0.0"
+VERSION = "1.0.0.rc1"
 # To install the library, run the following
 #
 # python setup.py install
