@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 
 # **request_file**
-> ExportedReport request_file(report_ids, requested_format, include=include, filter=filter)
+> ExportedReport request_file(report_ids, requested_format, filter=filter)
 
 Export all alerts for a set of reports to a file
 
@@ -28,12 +28,11 @@ from pprint import pprint
 api_instance = esp_sdk.ReportExportApi()
 report_ids = [56] # list[int] | An array of report IDs to export alerts for
 requested_format = 'requested_format_example' # str | The file format of the export. Valid values are csv, json, pdf
-include = 'include_example' # str | Related objects that can be included in the response:  user See Including Objects for more information. (optional)
 filter = {'key': 'filter_example'} # dict(str, str) | Params used to filter the alerts that will be exported (optional)
 
 try: 
     # Export all alerts for a set of reports to a file
-    api_response = api_instance.request_file(report_ids, requested_format, include=include, filter=filter)
+    api_response = api_instance.request_file(report_ids, requested_format, filter=filter)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling ReportExportApi->request_file: %s\n" % e)
@@ -45,7 +44,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **report_ids** | [**list[int]**](int.md)| An array of report IDs to export alerts for | 
  **requested_format** | **str**| The file format of the export. Valid values are csv, json, pdf | 
- **include** | **str**| Related objects that can be included in the response:  user See Including Objects for more information. | [optional] 
  **filter** | [**dict(str, str)**](str.md)| Params used to filter the alerts that will be exported | [optional] 
 
 ### Return type
@@ -116,7 +114,7 @@ See https://github.com/EvidentSecurity/esp-sdk-python#set-your-hmac-security-key
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **show_file_details**
-> ExportedReport show_file_details(id, include=include)
+> ExportedReport show_file_details(id)
 
 Show a single Exported Report
 
@@ -133,11 +131,10 @@ from pprint import pprint
 # create an instance of the API class
 api_instance = esp_sdk.ReportExportApi()
 id = 56 # int | Exported Report ID
-include = 'include_example' # str | Related objects that can be included in the response:  user See Including Objects for more information. (optional)
 
 try: 
     # Show a single Exported Report
-    api_response = api_instance.show_file_details(id, include=include)
+    api_response = api_instance.show_file_details(id)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling ReportExportApi->show_file_details: %s\n" % e)
@@ -148,7 +145,6 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| Exported Report ID | 
- **include** | **str**| Related objects that can be included in the response:  user See Including Objects for more information. | [optional] 
 
 ### Return type
 

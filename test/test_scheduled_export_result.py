@@ -19,11 +19,11 @@ import unittest
 
 import esp_sdk
 from esp_sdk.rest import ApiException
-from esp_sdk.models.contact_request import ContactRequest
+from esp_sdk.models.scheduled_export_result import ScheduledExportResult
 
 
-class TestContactRequest(unittest.TestCase):
-    """ ContactRequest unit test stubs """
+class TestScheduledExportResult(unittest.TestCase):
+    """ ScheduledExportResult unit test stubs """
 
     def setUp(self):
         pass
@@ -31,11 +31,11 @@ class TestContactRequest(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def testContactRequest(self):
+    def testScheduledExportResult(self):
         """
-        Test ContactRequest
+        Test ScheduledExportResult
         """
-        model = esp_sdk.models.contact_request.ContactRequest()
+        model = esp_sdk.models.scheduled_export_result.ScheduledExportResult()
 
 
 if __name__ == '__main__':

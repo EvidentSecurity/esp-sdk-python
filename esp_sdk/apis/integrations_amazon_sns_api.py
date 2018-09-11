@@ -59,7 +59,7 @@ class IntegrationsAmazonSNSApi(object):
         :param str external_id: The external ID for the IAM role (required)
         :param str name: Name of the integration (required)
         :param str topic: The SNS topic arn (required)
-        :param str include: Related objects that can be included in the response:  region, integration See Including Objects for more information.
+        :param str include: Related objects that can be included in the response:  integration See Including Objects for more information.
         :param bool all_high_risk: Send all high risk alerts
         :param bool all_low_risk: Send all low risk alerts
         :param bool all_medium_risk: Send all medium risk alerts
@@ -98,7 +98,7 @@ class IntegrationsAmazonSNSApi(object):
         :param str external_id: The external ID for the IAM role (required)
         :param str name: Name of the integration (required)
         :param str topic: The SNS topic arn (required)
-        :param str include: Related objects that can be included in the response:  region, integration See Including Objects for more information.
+        :param str include: Related objects that can be included in the response:  integration See Including Objects for more information.
         :param bool all_high_risk: Send all high risk alerts
         :param bool all_low_risk: Send all low risk alerts
         :param bool all_medium_risk: Send all medium risk alerts
@@ -230,7 +230,7 @@ class IntegrationsAmazonSNSApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param int integration_id: The ID of the integration (required)
-        :param str include: Related objects that can be included in the response:  region, integration See Including Objects for more information.
+        :param str include: Related objects that can be included in the response:  integration See Including Objects for more information.
         :return: IntegrationAmazonSns
                  If the method is called asynchronously,
                  returns the request thread.
@@ -257,7 +257,7 @@ class IntegrationsAmazonSNSApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param int integration_id: The ID of the integration (required)
-        :param str include: Related objects that can be included in the response:  region, integration See Including Objects for more information.
+        :param str include: Related objects that can be included in the response:  integration See Including Objects for more information.
         :return: IntegrationAmazonSns
                  If the method is called asynchronously,
                  returns the request thread.
@@ -341,7 +341,7 @@ class IntegrationsAmazonSNSApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param int integration_id: The ID of the integration (required)
-        :param str include: Related objects that can be included in the response:  region, integration See Including Objects for more information.
+        :param str include: Related objects that can be included in the response:  integration See Including Objects for more information.
         :param bool all_high_risk: Send all high risk alerts
         :param bool all_low_risk: Send all low risk alerts
         :param bool all_medium_risk: Send all medium risk alerts
@@ -381,7 +381,7 @@ class IntegrationsAmazonSNSApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param int integration_id: The ID of the integration (required)
-        :param str include: Related objects that can be included in the response:  region, integration See Including Objects for more information.
+        :param str include: Related objects that can be included in the response:  integration See Including Objects for more information.
         :param bool all_high_risk: Send all high risk alerts
         :param bool all_low_risk: Send all low risk alerts
         :param bool all_medium_risk: Send all medium risk alerts

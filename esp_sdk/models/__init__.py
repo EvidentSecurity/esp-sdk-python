@@ -23,7 +23,6 @@ from .azure_group import AzureGroup
 from .compliance_control import ComplianceControl
 from .compliance_domain import ComplianceDomain
 from .compliance_standard import ComplianceStandard
-from .contact_request import ContactRequest
 from .custom_compliance_control import CustomComplianceControl
 from .custom_compliance_domain import CustomComplianceDomain
 from .custom_compliance_standard import CustomComplianceStandard
@@ -53,6 +52,8 @@ from .region import Region
 from .report import Report
 from .role import Role
 from .scan_interval import ScanInterval
+from .scheduled_export import ScheduledExport
+from .scheduled_export_result import ScheduledExportResult
 from .service import Service
 from .signature import Signature
 from .stat import Stat

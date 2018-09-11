@@ -5,6 +5,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **int** | Unique ID | [optional] 
 **created_at** | [**datetime**](DateTime.md) | ISO 8601 timestamp when the resource was created | [optional] 
+**include_new_accounts** | **bool** | When enabled, automatically adds new accounts to this suppression. This field can only be set by an organization level user. | [optional] 
 **reason** | **str** | The reason for the suppresion | [optional] 
 **resource** | **str** | The resource string this suppression will suppress alerts for | [optional] 
 **status** | **str** | The status of this suppresion. Valid values are active, inactive | [optional] 

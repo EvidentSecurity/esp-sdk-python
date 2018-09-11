@@ -56,7 +56,6 @@ class ReportExportApi(object):
             for asynchronous request. (optional)
         :param list[int] report_ids: An array of report IDs to export alerts for (required)
         :param str requested_format: The file format of the export. Valid values are csv, json, pdf (required)
-        :param str include: Related objects that can be included in the response:  user See Including Objects for more information.
         :param dict(str, str) filter: Params used to filter the alerts that will be exported
         :return: ExportedReport
                  If the method is called asynchronously,
@@ -85,14 +84,13 @@ class ReportExportApi(object):
             for asynchronous request. (optional)
         :param list[int] report_ids: An array of report IDs to export alerts for (required)
         :param str requested_format: The file format of the export. Valid values are csv, json, pdf (required)
-        :param str include: Related objects that can be included in the response:  user See Including Objects for more information.
         :param dict(str, str) filter: Params used to filter the alerts that will be exported
         :return: ExportedReport
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['report_ids', 'requested_format', 'include', 'filter']
+        all_params = ['report_ids', 'requested_format', 'filter']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -121,8 +119,6 @@ class ReportExportApi(object):
         path_params = {}
 
         query_params = {}
-        if 'include' in params:
-            query_params['include'] = params['include']
 
         header_params = {}
 
@@ -297,7 +293,6 @@ class ReportExportApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param int id: Exported Report ID (required)
-        :param str include: Related objects that can be included in the response:  user See Including Objects for more information.
         :return: ExportedReport
                  If the method is called asynchronously,
                  returns the request thread.
@@ -324,13 +319,12 @@ class ReportExportApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param int id: Exported Report ID (required)
-        :param str include: Related objects that can be included in the response:  user See Including Objects for more information.
         :return: ExportedReport
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['id', 'include']
+        all_params = ['id']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -358,8 +352,6 @@ class ReportExportApi(object):
             path_params['id'] = params['id']
 
         query_params = {}
-        if 'include' in params:
-            query_params['include'] = params['include']
 
         header_params = {}
 

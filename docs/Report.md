@@ -5,7 +5,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **int** | Unique ID | [optional] 
 **created_at** | [**datetime**](DateTime.md) | ISO 8601 timestamp when the resource was created | [optional] 
-**status** | **str** | Status of the report. Valid values are queued, processing, partial, complete, failed | [optional] 
+**status** | **str** | Status of the report. Valid values are complete | [optional] 
 **updated_at** | [**datetime**](DateTime.md) | ISO 8601 timestamp when the resource was updated | [optional] 
 **external_account** | [**ExternalAccount**](ExternalAccount.md) | Associated External Account | [optional] 
 **external_account_id** | **int** | Associated External Account ID | [optional] 

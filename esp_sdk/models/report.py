@@ -112,7 +112,7 @@ class Report(BaseObject):
     def status(self):
         """
         Gets the status of this Report.
-        Status of the report. Valid values are queued, processing, partial, complete, failed
+        Status of the report. Valid values are complete
 
         :return: The status of this Report.
         :rtype: str
@@ -123,7 +123,7 @@ class Report(BaseObject):
     def status(self, status):
         """
         Sets the status of this Report.
-        Status of the report. Valid values are queued, processing, partial, complete, failed
+        Status of the report. Valid values are complete
 
         :param status: The status of this Report.
         :type: str

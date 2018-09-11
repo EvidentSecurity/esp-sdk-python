@@ -9,10 +9,11 @@ Method | HTTP request | Description
 [**deactivate**](SuppressionsApi.md#deactivate) | **PATCH** /api/v2/suppressions/{id}/deactivate.json_api | Deactivate a suppression
 [**list**](SuppressionsApi.md#list) | **PUT** /api/v2/suppressions.json_api | Get a list of Suppressions
 [**show**](SuppressionsApi.md#show) | **GET** /api/v2/suppressions/{id}.json_api | Show a single Suppression
+[**update**](SuppressionsApi.md#update) | **PATCH** /api/v2/suppressions/{id}.json_api | Update a(n) Suppression
 
 
 # **create**
-> Suppression create(external_account_ids, reason, regions, include=include, custom_signature_ids=custom_signature_ids, resource=resource, signature_ids=signature_ids)
+> Suppression create(external_account_ids, reason, regions, include=include, custom_signature_ids=custom_signature_ids, include_new_accounts=include_new_accounts, resource=resource, signature_ids=signature_ids)
 
 Create a suppression
 
@@ -33,12 +34,13 @@ reason = 'reason_example' # str | The reason for the suppresion
 regions = ['regions_example'] # list[str] | Codes of regions to be suppressed
 include = 'include_example' # str | Related objects that can be included in the response:  organization, created_by, regions, external_accounts, signatures, custom_signatures See Including Objects for more information. (optional)
 custom_signature_ids = [56] # list[int] | IDs of custom signatures to be suppressed (optional)
+include_new_accounts = true # bool | When enabled, automatically adds new accounts to this suppression. This field can only be set by an organization level user. (optional)
 resource = 'resource_example' # str | The resource string this suppression will suppress alerts for (optional)
 signature_ids = [56] # list[int] | IDs of signatures to be suppressed (optional)
 
 try: 
     # Create a suppression
-    api_response = api_instance.create(external_account_ids, reason, regions, include=include, custom_signature_ids=custom_signature_ids, resource=resource, signature_ids=signature_ids)
+    api_response = api_instance.create(external_account_ids, reason, regions, include=include, custom_signature_ids=custom_signature_ids, include_new_accounts=include_new_accounts, resource=resource, signature_ids=signature_ids)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling SuppressionsApi->create: %s\n" % e)
@@ -53,6 +55,7 @@ Name | Type | Description  | Notes
  **regions** | [**list[str]**](str.md)| Codes of regions to be suppressed | 
  **include** | **str**| Related objects that can be included in the response:  organization, created_by, regions, external_accounts, signatures, custom_signatures See Including Objects for more information. | [optional] 
  **custom_signature_ids** | [**list[int]**](int.md)| IDs of custom signatures to be suppressed | [optional] 
+ **include_new_accounts** | **bool**| When enabled, automatically adds new accounts to this suppression. This field can only be set by an organization level user. | [optional] 
  **resource** | **str**| The resource string this suppression will suppress alerts for | [optional] 
  **signature_ids** | [**list[int]**](int.md)| IDs of signatures to be suppressed | [optional] 
 
@@ -72,7 +75,7 @@ See https://github.com/EvidentSecurity/esp-sdk-python#set-your-hmac-security-key
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_from_alert**
-> Suppression create_from_alert(reason, include=include)
+> Suppression create_from_alert(alert_id, reason, include=include)
 
 Creates a suppression from an alert
 
@@ -88,12 +91,13 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = esp_sdk.SuppressionsApi()
+alert_id = 56 # int | The ID for the alert you want to create a suppression for
 reason = 'reason_example' # str | The reason for creating the suppression
 include = 'include_example' # str | Related objects that can be included in the response:  organization, created_by, regions, external_accounts, signatures, custom_signatures See Including Objects for more information. (optional)
 
 try: 
     # Creates a suppression from an alert
-    api_response = api_instance.create_from_alert(reason, include=include)
+    api_response = api_instance.create_from_alert(alert_id, reason, include=include)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling SuppressionsApi->create_from_alert: %s\n" % e)
@@ -103,6 +107,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **alert_id** | **int**| The ID for the alert you want to create a suppression for | 
  **reason** | **str**| The reason for creating the suppression | 
  **include** | **str**| Related objects that can be included in the response:  organization, created_by, regions, external_accounts, signatures, custom_signatures See Including Objects for more information. | [optional] 
 
@@ -257,6 +262,70 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| Suppression ID | 
  **include** | **str**| Related objects that can be included in the response:  organization, created_by, regions, external_accounts, signatures, custom_signatures See Including Objects for more information. | [optional] 
+
+### Return type
+
+[**Suppression**](Suppression.md)
+
+### Authorization
+
+See https://github.com/EvidentSecurity/esp-sdk-python#set-your-hmac-security-keys
+
+### HTTP request headers
+
+ - **Content-Type**: application/vnd.api+json
+ - **Accept**: application/vnd.api+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **update**
+> Suppression update(id, include=include, custom_signature_ids=custom_signature_ids, external_account_ids=external_account_ids, include_new_accounts=include_new_accounts, reason=reason, regions=regions, resource=resource, signature_ids=signature_ids)
+
+Update a(n) Suppression
+
+
+
+### Example 
+```python
+from __future__ import print_statement
+import time
+import esp_sdk
+from esp_sdk.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = esp_sdk.SuppressionsApi()
+id = 56 # int | Suppression ID
+include = 'include_example' # str | Related objects that can be included in the response:  organization, created_by, regions, external_accounts, signatures, custom_signatures See Including Objects for more information. (optional)
+custom_signature_ids = [56] # list[int] | IDs of custom signatures to be suppressed (optional)
+external_account_ids = [56] # list[int] | IDs of external accounts to be suppressed (optional)
+include_new_accounts = true # bool | When enabled, automatically adds new accounts to this suppression. This field can only be set by an organization level user. (optional)
+reason = 'reason_example' # str | The reason for the suppresion (optional)
+regions = ['regions_example'] # list[str] | Codes of regions to be suppressed (optional)
+resource = 'resource_example' # str | The resource string this suppression will suppress alerts for (optional)
+signature_ids = [56] # list[int] | IDs of signatures to be suppressed (optional)
+
+try: 
+    # Update a(n) Suppression
+    api_response = api_instance.update(id, include=include, custom_signature_ids=custom_signature_ids, external_account_ids=external_account_ids, include_new_accounts=include_new_accounts, reason=reason, regions=regions, resource=resource, signature_ids=signature_ids)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling SuppressionsApi->update: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**| Suppression ID | 
+ **include** | **str**| Related objects that can be included in the response:  organization, created_by, regions, external_accounts, signatures, custom_signatures See Including Objects for more information. | [optional] 
+ **custom_signature_ids** | [**list[int]**](int.md)| IDs of custom signatures to be suppressed | [optional] 
+ **external_account_ids** | [**list[int]**](int.md)| IDs of external accounts to be suppressed | [optional] 
+ **include_new_accounts** | **bool**| When enabled, automatically adds new accounts to this suppression. This field can only be set by an organization level user. | [optional] 
+ **reason** | **str**| The reason for the suppresion | [optional] 
+ **regions** | [**list[str]**](str.md)| Codes of regions to be suppressed | [optional] 
+ **resource** | **str**| The resource string this suppression will suppress alerts for | [optional] 
+ **signature_ids** | [**list[int]**](int.md)| IDs of signatures to be suppressed | [optional] 
 
 ### Return type
 

@@ -19,39 +19,47 @@ import unittest
 
 import esp_sdk
 from esp_sdk.rest import ApiException
-from esp_sdk.apis.suppressions_api import SuppressionsApi
+from esp_sdk.apis.scheduled_exports_api import ScheduledExportsApi
 
 
-class TestSuppressionsApi(unittest.TestCase):
-    """ SuppressionsApi unit test stubs """
+class TestScheduledExportsApi(unittest.TestCase):
+    """ ScheduledExportsApi unit test stubs """
 
     def setUp(self):
-        self.api = esp_sdk.apis.suppressions_api.SuppressionsApi()
+        self.api = esp_sdk.apis.scheduled_exports_api.ScheduledExportsApi()
 
     def tearDown(self):
+        pass
+
+    def test_activate_export(self):
+        """
+        Test case for activate_export
+
+        Update a(n) Scheduled Export
+        """
         pass
 
     def test_create(self):
         """
         Test case for create
 
-        Create a suppression
+        Create a(n) Scheduled Export
         """
         pass
 
-    def test_create_from_alert(self):
+    def test_delete(self):
         """
-        Test case for create_from_alert
+        Test case for delete
 
-        Creates a suppression from an alert
+        Delete a(n) Scheduled Export
         """
         pass
 
-    def test_deactivate(self):
+    def test_disable_export(self):
         """
-        Test case for deactivate
+        Test case for disable_export
 
-        Deactivate a suppression
+        Update a(n) Scheduled Export
         """
         pass
 
@@ -59,7 +67,7 @@ class TestSuppressionsApi(unittest.TestCase):
         """
         Test case for list
 
-        Get a list of Suppressions
+        Get a list of Scheduled Exports
         """
         pass
 
@@ -67,7 +75,23 @@ class TestSuppressionsApi(unittest.TestCase):
         """
         Test case for show
 
-        Show a single Suppression
+        Show a single Scheduled Export
+        """
+        pass
+
+    def test_show_file_details(self):
+        """
+        Test case for show_file_details
+
+        Show a single Scheduled Export Result
+        """
+        pass
+
+    def test_unsubscribe_export(self):
+        """
+        Test case for unsubscribe_export
+
+        Update a(n) Scheduled Export
         """
         pass
 
@@ -75,7 +99,7 @@ class TestSuppressionsApi(unittest.TestCase):
         """
         Test case for update
 
-        Update a(n) Suppression
+        Update a(n) Scheduled Export
         """
         pass
 

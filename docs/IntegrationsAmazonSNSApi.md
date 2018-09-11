@@ -31,7 +31,7 @@ external_account_ids = [56] # list[int] | External accounts for integration
 external_id = 'external_id_example' # str | The external ID for the IAM role
 name = 'name_example' # str | Name of the integration
 topic = 'topic_example' # str | The SNS topic arn
-include = 'include_example' # str | Related objects that can be included in the response:  region, integration See Including Objects for more information. (optional)
+include = 'include_example' # str | Related objects that can be included in the response:  integration See Including Objects for more information. (optional)
 all_high_risk = true # bool | Send all high risk alerts (optional)
 all_low_risk = true # bool | Send all low risk alerts (optional)
 all_medium_risk = true # bool | Send all medium risk alerts (optional)
@@ -58,7 +58,7 @@ Name | Type | Description  | Notes
  **external_id** | **str**| The external ID for the IAM role | 
  **name** | **str**| Name of the integration | 
  **topic** | **str**| The SNS topic arn | 
- **include** | **str**| Related objects that can be included in the response:  region, integration See Including Objects for more information. | [optional] 
+ **include** | **str**| Related objects that can be included in the response:  integration See Including Objects for more information. | [optional] 
  **all_high_risk** | **bool**| Send all high risk alerts | [optional] 
  **all_low_risk** | **bool**| Send all low risk alerts | [optional] 
  **all_medium_risk** | **bool**| Send all medium risk alerts | [optional] 
@@ -101,7 +101,7 @@ from pprint import pprint
 # create an instance of the API class
 api_instance = esp_sdk.IntegrationsAmazonSNSApi()
 integration_id = 56 # int | The ID of the integration
-include = 'include_example' # str | Related objects that can be included in the response:  region, integration See Including Objects for more information. (optional)
+include = 'include_example' # str | Related objects that can be included in the response:  integration See Including Objects for more information. (optional)
 
 try: 
     # Show a single Amazon SNS Integration
@@ -116,7 +116,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **integration_id** | **int**| The ID of the integration | 
- **include** | **str**| Related objects that can be included in the response:  region, integration See Including Objects for more information. | [optional] 
+ **include** | **str**| Related objects that can be included in the response:  integration See Including Objects for more information. | [optional] 
 
 ### Return type
 
@@ -151,7 +151,7 @@ from pprint import pprint
 # create an instance of the API class
 api_instance = esp_sdk.IntegrationsAmazonSNSApi()
 integration_id = 56 # int | The ID of the integration
-include = 'include_example' # str | Related objects that can be included in the response:  region, integration See Including Objects for more information. (optional)
+include = 'include_example' # str | Related objects that can be included in the response:  integration See Including Objects for more information. (optional)
 all_high_risk = true # bool | Send all high risk alerts (optional)
 all_low_risk = true # bool | Send all low risk alerts (optional)
 all_medium_risk = true # bool | Send all medium risk alerts (optional)
@@ -179,7 +179,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **integration_id** | **int**| The ID of the integration | 
- **include** | **str**| Related objects that can be included in the response:  region, integration See Including Objects for more information. | [optional] 
+ **include** | **str**| Related objects that can be included in the response:  integration See Including Objects for more information. | [optional] 
  **all_high_risk** | **bool**| Send all high risk alerts | [optional] 
  **all_low_risk** | **bool**| Send all low risk alerts | [optional] 
  **all_medium_risk** | **bool**| Send all medium risk alerts | [optional] 

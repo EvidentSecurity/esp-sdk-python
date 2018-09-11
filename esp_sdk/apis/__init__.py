@@ -10,7 +10,6 @@ from .azure_groups_api import AzureGroupsApi
 from .compliance_controls_api import ComplianceControlsApi
 from .compliance_domains_api import ComplianceDomainsApi
 from .compliance_standards_api import ComplianceStandardsApi
-from .contact_requests_api import ContactRequestsApi
 from .custom_compliance_controls_api import CustomComplianceControlsApi
 from .custom_compliance_domains_api import CustomComplianceDomainsApi
 from .custom_compliance_standards_api import CustomComplianceStandardsApi
@@ -36,6 +35,7 @@ from .report_export_api import ReportExportApi
 from .reports_api import ReportsApi
 from .roles_api import RolesApi
 from .scan_intervals_api import ScanIntervalsApi
+from .scheduled_exports_api import ScheduledExportsApi
 from .services_api import ServicesApi
 from .signatures_api import SignaturesApi
 from .stat_compliance_controls_api import StatComplianceControlsApi

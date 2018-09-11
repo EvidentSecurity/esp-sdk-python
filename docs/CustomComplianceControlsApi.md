@@ -35,7 +35,7 @@ from pprint import pprint
 api_instance = esp_sdk.CustomComplianceControlsApi()
 custom_compliance_control_id = 56 # int | The ID of the Custom Compliance Control this custom signature belongs to
 custom_signature_id = 56 # int | The ID of the custom signature that belongs to this custom control
-include = 'include_example' # str | Related objects that can be included in the response:  organization, teams, external_accounts, definitions, suppressions See Including Objects for more information. (optional)
+include = 'include_example' # str | Related objects that can be included in the response:  organization, teams, external_accounts, definitions, suppressions, service See Including Objects for more information. (optional)
 
 try: 
     # Add a Custom Signature to a Custom Compliance Control
@@ -51,7 +51,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **custom_compliance_control_id** | **int**| The ID of the Custom Compliance Control this custom signature belongs to | 
  **custom_signature_id** | **int**| The ID of the custom signature that belongs to this custom control | 
- **include** | **str**| Related objects that can be included in the response:  organization, teams, external_accounts, definitions, suppressions See Including Objects for more information. | [optional] 
+ **include** | **str**| Related objects that can be included in the response:  organization, teams, external_accounts, definitions, suppressions, service See Including Objects for more information. | [optional] 
 
 ### Return type
 
@@ -248,7 +248,7 @@ from pprint import pprint
 # create an instance of the API class
 api_instance = esp_sdk.CustomComplianceControlsApi()
 custom_compliance_control_id = 56 # int | The ID of the Custom Compliance Control this custom signature belongs to
-include = 'include_example' # str | Related objects that can be included in the response:  organization, teams, external_accounts, definitions, suppressions See Including Objects for more information. (optional)
+include = 'include_example' # str | Related objects that can be included in the response:  organization, teams, external_accounts, definitions, suppressions, service See Including Objects for more information. (optional)
 page = '{:number=>1,+:size=>20}' # str | Page Number and Page Size.  Number is the page number of the collection to return, size is the number of items to return per page. (optional) (default to {:number=>1,+:size=>20})
 
 try: 
@@ -264,7 +264,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **custom_compliance_control_id** | **int**| The ID of the Custom Compliance Control this custom signature belongs to | 
- **include** | **str**| Related objects that can be included in the response:  organization, teams, external_accounts, definitions, suppressions See Including Objects for more information. | [optional] 
+ **include** | **str**| Related objects that can be included in the response:  organization, teams, external_accounts, definitions, suppressions, service See Including Objects for more information. | [optional] 
  **page** | **str**| Page Number and Page Size.  Number is the page number of the collection to return, size is the number of items to return per page. | [optional] [default to {:number&#x3D;&gt;1,+:size&#x3D;&gt;20}]
 
 ### Return type

@@ -376,7 +376,7 @@ class UserAttributionsApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param int external_account_id: The ID of the external account to update the user attributions of (required)
-        :param str include: Related objects that can be included in the response:  organization, sub_organization, team, scan_intervals, disabled_signatures, suppressions, azure_group, credentials See Including Objects for more information.
+        :param str include: Related objects that can be included in the response:  organization, sub_organization, team, scan_intervals, disabled_signatures, suppressions, azure_group See Including Objects for more information.
         :param str cloudtrail_name: The name of the cloudetrail associated with the user attribution.
         :return: ExternalAccount
                  If the method is called asynchronously,
@@ -404,7 +404,7 @@ class UserAttributionsApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param int external_account_id: The ID of the external account to update the user attributions of (required)
-        :param str include: Related objects that can be included in the response:  organization, sub_organization, team, scan_intervals, disabled_signatures, suppressions, azure_group, credentials See Including Objects for more information.
+        :param str include: Related objects that can be included in the response:  organization, sub_organization, team, scan_intervals, disabled_signatures, suppressions, azure_group See Including Objects for more information.
         :param str cloudtrail_name: The name of the cloudetrail associated with the user attribution.
         :return: ExternalAccount
                  If the method is called asynchronously,

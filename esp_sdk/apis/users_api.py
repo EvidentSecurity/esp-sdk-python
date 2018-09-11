@@ -58,6 +58,7 @@ class UsersApi(object):
         :param str first_name: The first name of the user (required)
         :param str last_name: The last name of the user (required)
         :param str include: Related objects that can be included in the response:  organization, sub_organizations, teams, role See Including Objects for more information.
+        :param str access_level: The level of access this user has. Team access has access to items belonging only to that team. Sub Organization access has access to items belonging only to all teams under that sub organization. Organization access has access to all sub organizations and teams under that organization. Valid values are organization_level, sub_organization_level, team_level
         :param bool disable_daily_emails: Specifies whether the daily emails should be turned off or not
         :param str phone: The phone number of the user
         :param int role_id: The ID of the role of the user. Only a manager can set or modify the role id.
@@ -93,6 +94,7 @@ class UsersApi(object):
         :param str first_name: The first name of the user (required)
         :param str last_name: The last name of the user (required)
         :param str include: Related objects that can be included in the response:  organization, sub_organizations, teams, role See Including Objects for more information.
+        :param str access_level: The level of access this user has. Team access has access to items belonging only to that team. Sub Organization access has access to items belonging only to all teams under that sub organization. Organization access has access to all sub organizations and teams under that organization. Valid values are organization_level, sub_organization_level, team_level
         :param bool disable_daily_emails: Specifies whether the daily emails should be turned off or not
         :param str phone: The phone number of the user
         :param int role_id: The ID of the role of the user. Only a manager can set or modify the role id.
@@ -104,7 +106,7 @@ class UsersApi(object):
                  returns the request thread.
         """
 
-        all_params = ['email', 'first_name', 'last_name', 'include', 'disable_daily_emails', 'phone', 'role_id', 'sub_organization_ids', 'team_ids', 'time_zone']
+        all_params = ['email', 'first_name', 'last_name', 'include', 'access_level', 'disable_daily_emails', 'phone', 'role_id', 'sub_organization_ids', 'team_ids', 'time_zone']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -143,6 +145,8 @@ class UsersApi(object):
 
         form_params = []
         local_var_files = {}
+        if 'access_level' in params:
+            form_params.append(('access_level', params['access_level']))
         if 'disable_daily_emails' in params:
             form_params.append(('disable_daily_emails', params['disable_daily_emails']))
         if 'email' in params:
@@ -541,6 +545,7 @@ class UsersApi(object):
             for asynchronous request. (optional)
         :param int id: User ID (required)
         :param str include: Related objects that can be included in the response:  organization, sub_organizations, teams, role See Including Objects for more information.
+        :param str access_level: The level of access this user has. Team access has access to items belonging only to that team. Sub Organization access has access to items belonging only to all teams under that sub organization. Organization access has access to all sub organizations and teams under that organization. Valid values are organization_level, sub_organization_level, team_level
         :param bool disable_daily_emails: Specifies whether the daily emails should be turned off or not
         :param str first_name: The first name of the user
         :param str last_name: The last name of the user
@@ -576,6 +581,7 @@ class UsersApi(object):
             for asynchronous request. (optional)
         :param int id: User ID (required)
         :param str include: Related objects that can be included in the response:  organization, sub_organizations, teams, role See Including Objects for more information.
+        :param str access_level: The level of access this user has. Team access has access to items belonging only to that team. Sub Organization access has access to items belonging only to all teams under that sub organization. Organization access has access to all sub organizations and teams under that organization. Valid values are organization_level, sub_organization_level, team_level
         :param bool disable_daily_emails: Specifies whether the daily emails should be turned off or not
         :param str first_name: The first name of the user
         :param str last_name: The last name of the user
@@ -589,7 +595,7 @@ class UsersApi(object):
                  returns the request thread.
         """
 
-        all_params = ['id', 'include', 'disable_daily_emails', 'first_name', 'last_name', 'phone', 'role_id', 'sub_organization_ids', 'team_ids', 'time_zone']
+        all_params = ['id', 'include', 'access_level', 'disable_daily_emails', 'first_name', 'last_name', 'phone', 'role_id', 'sub_organization_ids', 'team_ids', 'time_zone']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -624,6 +630,8 @@ class UsersApi(object):
 
         form_params = []
         local_var_files = {}
+        if 'access_level' in params:
+            form_params.append(('access_level', params['access_level']))
         if 'disable_daily_emails' in params:
             form_params.append(('disable_daily_emails', params['disable_daily_emails']))
         if 'first_name' in params:

@@ -23,7 +23,6 @@ from .models.azure_group import AzureGroup
 from .models.compliance_control import ComplianceControl
 from .models.compliance_domain import ComplianceDomain
 from .models.compliance_standard import ComplianceStandard
-from .models.contact_request import ContactRequest
 from .models.custom_compliance_control import CustomComplianceControl
 from .models.custom_compliance_domain import CustomComplianceDomain
 from .models.custom_compliance_standard import CustomComplianceStandard
@@ -53,6 +52,8 @@ from .models.region import Region
 from .models.report import Report
 from .models.role import Role
 from .models.scan_interval import ScanInterval
+from .models.scheduled_export import ScheduledExport
+from .models.scheduled_export_result import ScheduledExportResult
 from .models.service import Service
 from .models.signature import Signature
 from .models.stat import Stat
@@ -79,7 +80,6 @@ from .apis.azure_groups_api import AzureGroupsApi
 from .apis.compliance_controls_api import ComplianceControlsApi
 from .apis.compliance_domains_api import ComplianceDomainsApi
 from .apis.compliance_standards_api import ComplianceStandardsApi
-from .apis.contact_requests_api import ContactRequestsApi
 from .apis.custom_compliance_controls_api import CustomComplianceControlsApi
 from .apis.custom_compliance_domains_api import CustomComplianceDomainsApi
 from .apis.custom_compliance_standards_api import CustomComplianceStandardsApi
@@ -105,6 +105,7 @@ from .apis.report_export_api import ReportExportApi
 from .apis.reports_api import ReportsApi
 from .apis.roles_api import RolesApi
 from .apis.scan_intervals_api import ScanIntervalsApi
+from .apis.scheduled_exports_api import ScheduledExportsApi
 from .apis.services_api import ServicesApi
 from .apis.signatures_api import SignaturesApi
 from .apis.stat_compliance_controls_api import StatComplianceControlsApi

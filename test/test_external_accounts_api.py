@@ -51,7 +51,7 @@ class TestExternalAccountsApi(unittest.TestCase):
         """
         Test case for add_disabled_signature
 
-        Disable a signature for an external account
+        Disable a set of signatures for an external account or a set of external accounts for a signature
         """
         pass
 
@@ -115,7 +115,7 @@ class TestExternalAccountsApi(unittest.TestCase):
         """
         Test case for remove_disabled_signature
 
-        Re-enable a signature for an external account
+        Re-enable a set of signatures for an external account or a set of external accounts for a signature
         """
         pass
 
