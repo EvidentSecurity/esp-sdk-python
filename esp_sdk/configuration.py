@@ -88,6 +88,11 @@ class Configuration(object):
         self.cert_file = None
         # client key file
         self.key_file = None
+        
+        # proxy url
+        self.proxy = None
+
+    
 
     @property
     def access_key_id(self):
