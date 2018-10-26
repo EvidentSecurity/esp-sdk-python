@@ -59,7 +59,7 @@ class Configuration(object):
         # Manually set the access_key_id you created from https://esp.evident.io/settings/api_keys.
         # You can optionally set the +ESP_ACCESS_KEY_ID+ environment variable.
         self.access_key_id = None
-        
+
         # Manually set the secret_access_key you created from https://esp.evident.io/settings/api_keys.
         # You can optionally set the +ESP_SECRET_ACCESS_KEY+ environment variable.
         self.secret_access_key = None
@@ -88,6 +88,16 @@ class Configuration(object):
         self.cert_file = None
         # client key file
         self.key_file = None
+        # proxy url
+        self.proxy = None
+
+    @property
+    def proxy(self):
+        return self.__proxy
+
+    @proxy.setter
+    def proxy(self, value):
+        self.__proxy = value
 
     @property
     def access_key_id(self):

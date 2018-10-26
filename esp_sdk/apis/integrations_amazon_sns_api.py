@@ -64,6 +64,7 @@ class IntegrationsAmazonSNSApi(object):
         :param bool all_low_risk: Send all low risk alerts
         :param bool all_medium_risk: Send all medium risk alerts
         :param list[int] custom_signature_ids: Custom signatures for integration
+        :param bool send_admin_audit_logs: Send all Admin Audit Logs
         :param bool send_updates: This feature enables the integration to send alerts when they are updated. When disabled, alerts will only be sent when they are initially created. When enabled, alerts will additionally be sent when a change is made such as the alert ending. An alert may end for multiple reasons.
         :param bool send_when_suppressed: Send notifications for suppressed alerts
         :param list[int] signature_ids: Signatures for integration
@@ -103,6 +104,7 @@ class IntegrationsAmazonSNSApi(object):
         :param bool all_low_risk: Send all low risk alerts
         :param bool all_medium_risk: Send all medium risk alerts
         :param list[int] custom_signature_ids: Custom signatures for integration
+        :param bool send_admin_audit_logs: Send all Admin Audit Logs
         :param bool send_updates: This feature enables the integration to send alerts when they are updated. When disabled, alerts will only be sent when they are initially created. When enabled, alerts will additionally be sent when a change is made such as the alert ending. An alert may end for multiple reasons.
         :param bool send_when_suppressed: Send notifications for suppressed alerts
         :param list[int] signature_ids: Signatures for integration
@@ -112,7 +114,7 @@ class IntegrationsAmazonSNSApi(object):
                  returns the request thread.
         """
 
-        all_params = ['arn', 'external_account_ids', 'external_id', 'name', 'topic', 'include', 'all_high_risk', 'all_low_risk', 'all_medium_risk', 'custom_signature_ids', 'send_updates', 'send_when_suppressed', 'signature_ids', 'statuses']
+        all_params = ['arn', 'external_account_ids', 'external_id', 'name', 'topic', 'include', 'all_high_risk', 'all_low_risk', 'all_medium_risk', 'custom_signature_ids', 'send_admin_audit_logs', 'send_updates', 'send_when_suppressed', 'signature_ids', 'statuses']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -175,6 +177,8 @@ class IntegrationsAmazonSNSApi(object):
             form_params.append(('external_id', params['external_id']))
         if 'name' in params:
             form_params.append(('name', params['name']))
+        if 'send_admin_audit_logs' in params:
+            form_params.append(('send_admin_audit_logs', params['send_admin_audit_logs']))
         if 'send_updates' in params:
             form_params.append(('send_updates', params['send_updates']))
         if 'send_when_suppressed' in params:
@@ -350,6 +354,7 @@ class IntegrationsAmazonSNSApi(object):
         :param list[int] external_account_ids: External accounts for integration
         :param str external_id: The external ID for the IAM role
         :param str name: Name of the integration
+        :param bool send_admin_audit_logs: Send all Admin Audit Logs
         :param bool send_updates: This feature enables the integration to send alerts when they are updated. When disabled, alerts will only be sent when they are initially created. When enabled, alerts will additionally be sent when a change is made such as the alert ending. An alert may end for multiple reasons.
         :param bool send_when_suppressed: Send notifications for suppressed alerts
         :param list[int] signature_ids: Signatures for integration
@@ -390,6 +395,7 @@ class IntegrationsAmazonSNSApi(object):
         :param list[int] external_account_ids: External accounts for integration
         :param str external_id: The external ID for the IAM role
         :param str name: Name of the integration
+        :param bool send_admin_audit_logs: Send all Admin Audit Logs
         :param bool send_updates: This feature enables the integration to send alerts when they are updated. When disabled, alerts will only be sent when they are initially created. When enabled, alerts will additionally be sent when a change is made such as the alert ending. An alert may end for multiple reasons.
         :param bool send_when_suppressed: Send notifications for suppressed alerts
         :param list[int] signature_ids: Signatures for integration
@@ -400,7 +406,7 @@ class IntegrationsAmazonSNSApi(object):
                  returns the request thread.
         """
 
-        all_params = ['integration_id', 'include', 'all_high_risk', 'all_low_risk', 'all_medium_risk', 'arn', 'custom_signature_ids', 'external_account_ids', 'external_id', 'name', 'send_updates', 'send_when_suppressed', 'signature_ids', 'statuses', 'topic']
+        all_params = ['integration_id', 'include', 'all_high_risk', 'all_low_risk', 'all_medium_risk', 'arn', 'custom_signature_ids', 'external_account_ids', 'external_id', 'name', 'send_admin_audit_logs', 'send_updates', 'send_when_suppressed', 'signature_ids', 'statuses', 'topic']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -453,6 +459,8 @@ class IntegrationsAmazonSNSApi(object):
             form_params.append(('external_id', params['external_id']))
         if 'name' in params:
             form_params.append(('name', params['name']))
+        if 'send_admin_audit_logs' in params:
+            form_params.append(('send_admin_audit_logs', params['send_admin_audit_logs']))
         if 'send_updates' in params:
             form_params.append(('send_updates', params['send_updates']))
         if 'send_when_suppressed' in params:
