@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 
 # **create**
-> CustomSignature create(external_account_ids, identifier, name, risk_level, include=include, description=description, include_new_accounts=include_new_accounts, resolution=resolution, service_id=service_id)
+> CustomSignature create(external_account_ids, identifier, name, provider, risk_level, include=include, description=description, include_new_accounts=include_new_accounts, resolution=resolution, service_id=service_id)
 
 Create a(n) Custom Signature
 
@@ -31,6 +31,7 @@ api_instance = esp_sdk.CustomSignaturesApi()
 external_account_ids = [56] # list[int] | The external account IDs this custom signature should run for. If no accounts are selected the custom signature will not be run.
 identifier = 'identifier_example' # str | The identifier to use for the custom signature. Common format is AWS:- such as AWS:IAM-001
 name = 'name_example' # str | The name of the custom signature
+provider = 'provider_example' # str | The cloud provider this account is for
 risk_level = 'risk_level_example' # str | The risk-level of the problem identified by the custom signature. Valid values are low, medium, high
 include = 'include_example' # str | Related objects that can be included in the response:  organization, teams, external_accounts, definitions, suppressions, service See Including Objects for more information. (optional)
 description = 'description_example' # str | The description of the custom signature that is displayed on alerts (optional)
@@ -40,7 +41,7 @@ service_id = 56 # int | The service this custom signature is for. If no service 
 
 try: 
     # Create a(n) Custom Signature
-    api_response = api_instance.create(external_account_ids, identifier, name, risk_level, include=include, description=description, include_new_accounts=include_new_accounts, resolution=resolution, service_id=service_id)
+    api_response = api_instance.create(external_account_ids, identifier, name, provider, risk_level, include=include, description=description, include_new_accounts=include_new_accounts, resolution=resolution, service_id=service_id)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling CustomSignaturesApi->create: %s\n" % e)
@@ -53,6 +54,7 @@ Name | Type | Description  | Notes
  **external_account_ids** | [**list[int]**](int.md)| The external account IDs this custom signature should run for. If no accounts are selected the custom signature will not be run. | 
  **identifier** | **str**| The identifier to use for the custom signature. Common format is AWS:- such as AWS:IAM-001 | 
  **name** | **str**| The name of the custom signature | 
+ **provider** | **str**| The cloud provider this account is for | 
  **risk_level** | **str**| The risk-level of the problem identified by the custom signature. Valid values are low, medium, high | 
  **include** | **str**| Related objects that can be included in the response:  organization, teams, external_accounts, definitions, suppressions, service See Including Objects for more information. | [optional] 
  **description** | **str**| The description of the custom signature that is displayed on alerts | [optional] 
@@ -141,7 +143,7 @@ from pprint import pprint
 # create an instance of the API class
 api_instance = esp_sdk.CustomSignaturesApi()
 include = 'include_example' # str | Related objects that can be included in the response:  organization, teams, external_accounts, definitions, suppressions, service See Including Objects for more information. (optional)
-filter = {'key': 'filter_example'} # dict(str, str) | Filter Params for Searching.  Equality Searchable Attributes: [id, risk_level, service_id, name, identifier] Matching Searchable Attributes: [name, identifier]  Sortable Attributes: [name, updated_at, created_at, id] Searchable Associations: [organization, teams, definitions, integrations, suppressions] See Searching Lists for more information. See the filter parameter of the association's list action to see what attributes are searchable on each association. See Conditions on Relationships in Searching Lists for more information. (optional)
+filter = {'key': 'filter_example'} # dict(str, str) | Filter Params for Searching.  Equality Searchable Attributes: [id, risk_level, service_id, name, identifier] Matching Searchable Attributes: [name, identifier] Limited Searchable Attribute: [provider_eq] Sortable Attributes: [name, provider, updated_at, created_at, id] Searchable Associations: [organization, teams, definitions, integrations, suppressions] See Searching Lists for more information. See the filter parameter of the association's list action to see what attributes are searchable on each association. See Conditions on Relationships in Searching Lists for more information. (optional)
 page = '{:number=>1,+:size=>20}' # str | Page Number and Page Size.  Number is the page number of the collection to return, size is the number of items to return per page. (optional) (default to {:number=>1,+:size=>20})
 
 try: 
@@ -157,7 +159,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **include** | **str**| Related objects that can be included in the response:  organization, teams, external_accounts, definitions, suppressions, service See Including Objects for more information. | [optional] 
- **filter** | [**dict(str, str)**](str.md)| Filter Params for Searching.  Equality Searchable Attributes: [id, risk_level, service_id, name, identifier] Matching Searchable Attributes: [name, identifier]  Sortable Attributes: [name, updated_at, created_at, id] Searchable Associations: [organization, teams, definitions, integrations, suppressions] See Searching Lists for more information. See the filter parameter of the association&#39;s list action to see what attributes are searchable on each association. See Conditions on Relationships in Searching Lists for more information. | [optional] 
+ **filter** | [**dict(str, str)**](str.md)| Filter Params for Searching.  Equality Searchable Attributes: [id, risk_level, service_id, name, identifier] Matching Searchable Attributes: [name, identifier] Limited Searchable Attribute: [provider_eq] Sortable Attributes: [name, provider, updated_at, created_at, id] Searchable Associations: [organization, teams, definitions, integrations, suppressions] See Searching Lists for more information. See the filter parameter of the association&#39;s list action to see what attributes are searchable on each association. See Conditions on Relationships in Searching Lists for more information. | [optional] 
  **page** | **str**| Page Number and Page Size.  Number is the page number of the collection to return, size is the number of items to return per page. | [optional] [default to {:number&#x3D;&gt;1,+:size&#x3D;&gt;20}]
 
 ### Return type

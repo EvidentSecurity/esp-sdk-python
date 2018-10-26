@@ -4,6 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **int** | Unique ID | [optional] 
+**provider** | **str** | The cloud provider this account is for | [optional] 
 **created_at** | [**datetime**](DateTime.md) | ISO 8601 timestamp when the resource was created | [optional] 
 **description** | **str** | The description of the custom signature that is displayed on alerts | [optional] 
 **identifier** | **str** | The identifier to use for the custom signature. Common format is AWS:- such as AWS:IAM-001 | [optional] 

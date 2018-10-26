@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 
 # **create**
-> IntegrationAmazonSns create(arn, external_account_ids, external_id, name, topic, include=include, all_high_risk=all_high_risk, all_low_risk=all_low_risk, all_medium_risk=all_medium_risk, custom_signature_ids=custom_signature_ids, send_updates=send_updates, send_when_suppressed=send_when_suppressed, signature_ids=signature_ids, statuses=statuses)
+> IntegrationAmazonSns create(arn, external_account_ids, external_id, name, topic, include=include, all_high_risk=all_high_risk, all_low_risk=all_low_risk, all_medium_risk=all_medium_risk, custom_signature_ids=custom_signature_ids, send_admin_audit_logs=send_admin_audit_logs, send_updates=send_updates, send_when_suppressed=send_when_suppressed, signature_ids=signature_ids, statuses=statuses)
 
 Create an Amazon SNS Integration
 
@@ -36,6 +36,7 @@ all_high_risk = true # bool | Send all high risk alerts (optional)
 all_low_risk = true # bool | Send all low risk alerts (optional)
 all_medium_risk = true # bool | Send all medium risk alerts (optional)
 custom_signature_ids = [56] # list[int] | Custom signatures for integration (optional)
+send_admin_audit_logs = true # bool | Send all Admin Audit Logs (optional)
 send_updates = true # bool | This feature enables the integration to send alerts when they are updated. When disabled, alerts will only be sent when they are initially created. When enabled, alerts will additionally be sent when a change is made such as the alert ending. An alert may end for multiple reasons. (optional)
 send_when_suppressed = true # bool | Send notifications for suppressed alerts (optional)
 signature_ids = [56] # list[int] | Signatures for integration (optional)
@@ -43,7 +44,7 @@ statuses = ['statuses_example'] # list[str] | Only send alerts that have the sta
 
 try: 
     # Create an Amazon SNS Integration
-    api_response = api_instance.create(arn, external_account_ids, external_id, name, topic, include=include, all_high_risk=all_high_risk, all_low_risk=all_low_risk, all_medium_risk=all_medium_risk, custom_signature_ids=custom_signature_ids, send_updates=send_updates, send_when_suppressed=send_when_suppressed, signature_ids=signature_ids, statuses=statuses)
+    api_response = api_instance.create(arn, external_account_ids, external_id, name, topic, include=include, all_high_risk=all_high_risk, all_low_risk=all_low_risk, all_medium_risk=all_medium_risk, custom_signature_ids=custom_signature_ids, send_admin_audit_logs=send_admin_audit_logs, send_updates=send_updates, send_when_suppressed=send_when_suppressed, signature_ids=signature_ids, statuses=statuses)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling IntegrationsAmazonSNSApi->create: %s\n" % e)
@@ -63,6 +64,7 @@ Name | Type | Description  | Notes
  **all_low_risk** | **bool**| Send all low risk alerts | [optional] 
  **all_medium_risk** | **bool**| Send all medium risk alerts | [optional] 
  **custom_signature_ids** | [**list[int]**](int.md)| Custom signatures for integration | [optional] 
+ **send_admin_audit_logs** | **bool**| Send all Admin Audit Logs | [optional] 
  **send_updates** | **bool**| This feature enables the integration to send alerts when they are updated. When disabled, alerts will only be sent when they are initially created. When enabled, alerts will additionally be sent when a change is made such as the alert ending. An alert may end for multiple reasons. | [optional] 
  **send_when_suppressed** | **bool**| Send notifications for suppressed alerts | [optional] 
  **signature_ids** | [**list[int]**](int.md)| Signatures for integration | [optional] 
@@ -134,7 +136,7 @@ See https://github.com/EvidentSecurity/esp-sdk-python#set-your-hmac-security-key
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update**
-> IntegrationAmazonSns update(integration_id, include=include, all_high_risk=all_high_risk, all_low_risk=all_low_risk, all_medium_risk=all_medium_risk, arn=arn, custom_signature_ids=custom_signature_ids, external_account_ids=external_account_ids, external_id=external_id, name=name, send_updates=send_updates, send_when_suppressed=send_when_suppressed, signature_ids=signature_ids, statuses=statuses, topic=topic)
+> IntegrationAmazonSns update(integration_id, include=include, all_high_risk=all_high_risk, all_low_risk=all_low_risk, all_medium_risk=all_medium_risk, arn=arn, custom_signature_ids=custom_signature_ids, external_account_ids=external_account_ids, external_id=external_id, name=name, send_admin_audit_logs=send_admin_audit_logs, send_updates=send_updates, send_when_suppressed=send_when_suppressed, signature_ids=signature_ids, statuses=statuses, topic=topic)
 
 Update an Amazon SNS Integration
 
@@ -160,6 +162,7 @@ custom_signature_ids = [56] # list[int] | Custom signatures for integration (opt
 external_account_ids = [56] # list[int] | External accounts for integration (optional)
 external_id = 'external_id_example' # str | The external ID for the IAM role (optional)
 name = 'name_example' # str | Name of the integration (optional)
+send_admin_audit_logs = true # bool | Send all Admin Audit Logs (optional)
 send_updates = true # bool | This feature enables the integration to send alerts when they are updated. When disabled, alerts will only be sent when they are initially created. When enabled, alerts will additionally be sent when a change is made such as the alert ending. An alert may end for multiple reasons. (optional)
 send_when_suppressed = true # bool | Send notifications for suppressed alerts (optional)
 signature_ids = [56] # list[int] | Signatures for integration (optional)
@@ -168,7 +171,7 @@ topic = 'topic_example' # str | The SNS topic arn (optional)
 
 try: 
     # Update an Amazon SNS Integration
-    api_response = api_instance.update(integration_id, include=include, all_high_risk=all_high_risk, all_low_risk=all_low_risk, all_medium_risk=all_medium_risk, arn=arn, custom_signature_ids=custom_signature_ids, external_account_ids=external_account_ids, external_id=external_id, name=name, send_updates=send_updates, send_when_suppressed=send_when_suppressed, signature_ids=signature_ids, statuses=statuses, topic=topic)
+    api_response = api_instance.update(integration_id, include=include, all_high_risk=all_high_risk, all_low_risk=all_low_risk, all_medium_risk=all_medium_risk, arn=arn, custom_signature_ids=custom_signature_ids, external_account_ids=external_account_ids, external_id=external_id, name=name, send_admin_audit_logs=send_admin_audit_logs, send_updates=send_updates, send_when_suppressed=send_when_suppressed, signature_ids=signature_ids, statuses=statuses, topic=topic)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling IntegrationsAmazonSNSApi->update: %s\n" % e)
@@ -188,6 +191,7 @@ Name | Type | Description  | Notes
  **external_account_ids** | [**list[int]**](int.md)| External accounts for integration | [optional] 
  **external_id** | **str**| The external ID for the IAM role | [optional] 
  **name** | **str**| Name of the integration | [optional] 
+ **send_admin_audit_logs** | **bool**| Send all Admin Audit Logs | [optional] 
  **send_updates** | **bool**| This feature enables the integration to send alerts when they are updated. When disabled, alerts will only be sent when they are initially created. When enabled, alerts will additionally be sent when a change is made such as the alert ending. An alert may end for multiple reasons. | [optional] 
  **send_when_suppressed** | **bool**| Send notifications for suppressed alerts | [optional] 
  **signature_ids** | [**list[int]**](int.md)| Signatures for integration | [optional] 
